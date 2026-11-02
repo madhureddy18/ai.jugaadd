@@ -1,0 +1,33 @@
+name: Keep Instagram token alive
+
+# Instagram long-lived tokens expire after 60 days unless refreshed. This refreshes it every week and saves the
+# new one back into the AIJUGAADIGTOKEN secret. The FINEGRAINTOKEN secret holds a GitHub fine-grained token for THIS
+# repo with "Secrets: Read and write" permission, used to save the refreshed Instagram token.
+
+on:
+  schedule:
+    - cron: "15 6 * * 1"     # every Monday
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Refresh token
+        env:
+          IG_TOKEN: ${{ secrets.AIJUGAADIGTOKEN }}
+          GH_TOKEN: ${{ secrets.FINEGRAINTOKEN }}
+        run: |
+          set -e
+          RES=$(curl -s "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=${IG_TOKEN}")
+          NEW=$(echo "$RES" | python3 -c "import sys,json; print(json.load(sys.stdin).get('access_token',''))")
+          DAYS=$(echo "$RES" | python3 -c "import sys,json; print(int(json.load(sys.stdin).get('expires_in',0))//86400)")
+          if [ -z "$NEW" ]; then echo "Refresh failed: $(echo "$RES" | head -c 300)"; exit 1; fi
+          echo "::add-mask::$NEW"
+          echo "Token refreshed, valid for $DAYS more days"
+          if [ -n "$GH_TOKEN" ]; then
+            gh secret set AIJUGAADIGTOKEN --repo "$GITHUB_REPOSITORY" --body "$NEW"
+            echo "Saved the new token into AIJUGAADIGTOKEN"
+          else
+            echo "::warning::FINEGRAINTOKEN secret not set - the token was extended but couldn't be saved. Add it so this is fully automatic."
+          fi
