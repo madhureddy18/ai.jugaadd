@@ -61,7 +61,7 @@ const OWNER = "madhureddy18", REPO = "ai.jugaadd", API = "https://api.github.com
 const $ = s => document.querySelector(s), app = $("#app");
 const esc = s => (s ?? "").toString().replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const store = { get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }, set(k,v){ try { v==null ? localStorage.removeItem(k) : localStorage.setItem(k,v); } catch(e){} } };
-let TOKEN = store.get("mc_token") || "", timer = null, DATA = null;
+let TOKEN = store.get("aij_token") || "", timer = null, DATA = null;
 const DEFAULT_CAP = "\n\nFollow for one money question every day 💰\n#money #finance #india #3danimation";
 function toast(m, ms=3000){ const t=$("#toast"); t.textContent=m; t.style.display="block"; clearTimeout(t._h); t._h=setTimeout(()=>t.style.display="none", ms); }
 const fmt = iso => { try { return new Date(iso).toLocaleString("en-IN",{timeZone:"Asia/Kolkata",weekday:"short",day:"numeric",month:"short",hour:"numeric",minute:"2-digit"}); } catch(e){ return iso; } };
@@ -142,11 +142,11 @@ function tokenPage(msg){
     <input id="tok" type="password" placeholder="github_pat_..." style="margin-top:12px" autocomplete="off">
     <button class="primary" id="go" style="margin-top:10px;width:100%">Connect</button></div>`;
   $("#go").onclick = async () => { TOKEN = $("#tok").value.trim(); if (!TOKEN) return;
-    try { await gh(R); store.set("mc_token", TOKEN); route(); } catch(e){ tokenPage(e.message); } };
+    try { await gh(R); store.set("aij_token", TOKEN); route(); } catch(e){ tokenPage(e.message); } };
 }
 const head = (back) => `<header>${back ? `<button class="ghost" onclick="location.hash='#/'" aria-label="Back">←</button>` : `<div class="logo"></div>`}<h1>AI Jugaad Studio<small>@ai.jugaadd · Instagram</small></h1><span class="spacer"></span>
   ${TOKEN ? `<button class="ghost" onclick="refresh()" aria-label="Refresh">↻</button>${back ? "" : `<button class="ghost" onclick="logout()">Log out</button>`}` : ""}</header>`;
-function logout(){ if (!confirm("Log out on this device?")) return; store.set("mc_token", null); TOKEN = ""; tokenPage(); }
+function logout(){ if (!confirm("Log out on this device?")) return; store.set("aij_token", null); TOKEN = ""; tokenPage(); }
 async function refresh(){ DATA = null; route(); }
 
 async function getData(force){
