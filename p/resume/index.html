@@ -23,20 +23,32 @@ footer{margin-top:36px;text-align:center;color:var(--mute);font-size:14px}footer
 <body><main>
 <span class="tag">AI JUGAAD · EP 1</span>
 <h1>300 applications, 0 calls?<br><span>Use this prompt.</span></h1>
-<p class="sub">Paste it into Claude (or any AI chat) with the job post and your resume. 2 minutes per job.</p>
-<div class="card"><pre id="pr">Here's a job description and my resume.
+<p class="sub">Paste it into Claude (or any AI chat) with the job post and your resume. Answer its questions, get your tailored resume.</p>
+<div class="card"><pre id="pr">You are a senior recruiter for Indian tech and analytics companies, and an ATS (Applicant Tracking System) expert. I am a fresher applying for the job below. Help me tailor my resume for THIS job only.
 
-1) List the important skills and keywords in the job post that are missing from my resume.
-2) Rewrite my resume bullet points to match this job, using numbers from my real work (time saved, users, accuracy, marks, project size).
-3) Do NOT add any skill or experience I don't have. If something is missing, tell me instead of inventing it.
-4) Write a 2-line summary for the top of my resume for this role.
-5) Give me the final resume text, ready to copy.
+Step 1 - Ask first: if any of my resume points are missing numbers (users, rows of data, time saved, accuracy, marks, team size), ask me up to 5 short questions to get the real numbers before you rewrite. Wait for my answers.
+
+Step 2 - Keyword check: make a table of the important skills, tools and keywords from the job post. For each one, mark: already in my resume / missing but I might have it (ask me) / missing.
+
+Step 3 - Rewrite: rewrite every bullet point as: action verb + what I did + tool used + result with a number. Max 2 lines each. Use the job post's exact words where they are true for me.
+
+Step 4 - Summary: write a 2-line summary for the top of my resume that uses the exact job title from the post.
+
+Step 5 - Skills: rewrite my skills section in plain words, most relevant to this job first.
+
+Step 6 - Final resume: give me the full resume as plain text in one column, with these headings: Summary, Skills, Projects, Experience/Internships, Education, Certifications. ATS-friendly: no tables, no icons, no photos.
+
+Step 7 - Score: give my resume a match score out of 100 for this job, before and after your changes, and tell me the top 3 things still missing.
+
+Step 8 - Interview prep: list 5 questions the interviewer will most likely ask from this resume, with short answers based only on my real experience.
+
+Strict rule: NEVER add any skill, tool, project, internship or number I don't have. If something important is missing, tell me what it is and how I can learn it in 2 weeks for free. I will be asked about every line in the interview.
 
 JOB POST:
-[paste the job description here]
+[paste the full job description here]
 
 MY RESUME:
-[paste your resume here]</pre>
+[paste your resume text here]</pre>
 <button id="cp">Copy prompt</button>
 <a href="ai-jugaadd-resume-kit.pdf" download style="display:block;text-align:center;margin-top:10px;padding:14px;border-radius:14px;border:2px solid var(--gold);color:var(--gold);font-weight:900;text-decoration:none">⬇ Download the free 2-page Resume Kit (PDF)</a></div>
 <h2>How to use it</h2>
