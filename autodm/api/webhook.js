@@ -81,6 +81,21 @@ async function finalMessage(myId, uid, a, name) {
   }
 }
 
+
+// Which reel was this chat about? Look at our own last messages in the conversation.
+async function lastAutoInChat(uid) {
+  try {
+    const conv = await ig('GET', `me/conversations?platform=instagram&user_id=${uid}&fields=messages.limit(10){message,from}`);
+    const msgs = (((conv.data || [])[0] || {}).messages || {}).data || [];
+    for (const msg of msgs) {
+      const text = (msg.message || '').toLowerCase();
+      const hit = autos().find(a => [a.opening, a.follow_text, a.final_text].some(x => x && text && fill(x, '').toLowerCase().slice(-40).trim() && text.includes(fill(x, '').toLowerCase().split('!').pop().trim().slice(0, 30))));
+      if (hit) return hit;
+    }
+  } catch (e) { log('chat lookup failed:', e.message); }
+  return autos().length === 1 ? autos()[0] : null;
+}
+
 async function onMessage(m) {
   if (m.postback && !m.message) m.message = { text: m.postback.title || '', quick_reply: { payload: m.postback.payload } };
   if (!m.message || m.message.is_echo || !m.sender) return;
@@ -94,9 +109,11 @@ async function onMessage(m) {
     if (kind !== 'SEND' && kind !== 'FOLLOWED') return;
     a = autoById(id); tries = Number(n) || 0;
   } else {
-    a = autoByKeyword(m.message.text || '');      // they typed the keyword in DMs
+    const t = (m.message.text || '').toLowerCase();
+    a = autoByKeyword(t);                          // they typed the keyword in DMs
+    if (!a && /send it|i followed|followed|^yes|^done|^ok/.test(t)) a = await lastAutoInChat(uid);   // tapped an old button / typed yes
   }
-  if (!a) return;
+  if (!a) { log('message ignored (no matching reel):', m.message.text); return; }
   let follows = true, name = '';
   try {
     const p = await ig('GET', `${uid}?fields=username,is_user_follow_business`);
