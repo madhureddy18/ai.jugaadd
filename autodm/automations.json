@@ -9,16 +9,7 @@
     "resume",
     "ats"
    ],
-   "comment_replies": [
-    "Sent {{name}}! 300 applications won't be needed anymore 😄 check DMs",
-    "{{name}} your resume glow-up is in your DMs 📄✨",
-    "Done {{name}} ✅ tailor it for every job, trust me",
-    "In your inbox {{name}}! ATS won't ignore you now 🤖",
-    "Check DMs {{name}} 📩 2 mins per job, that's it",
-    "Sent! All the best for the calls {{name}} 🔥",
-    "{{name}} prompt + free kit sent 📩 go get those interviews",
-    "Your DM has it {{name}} 🚀 only true points, remember!"
-   ],
+   "comment_replies": [],
    "opening": "Hey {{name}} 👋 Thanks for watching! Tap below and I'll send you the resume prompt + free kit 📄",
    "opening_button": "Send it 🚀",
    "follow_gate": true,
@@ -29,7 +20,17 @@
    "link": "https://madhureddy18.github.io/ai.jugaadd/p/resume/",
    "direct": false,
    "direct_text": "Hey {{name}} 👋 here's your prompt 🤖🔥 Paste it into Claude with the job post + your resume. Do it for every job, 2 mins each!",
-   "any_comment": true
+   "any_comment": true,
+   "comment_replies_off": [
+    "Sent {{name}}! 300 applications won't be needed anymore 😄 check DMs",
+    "{{name}} your resume glow-up is in your DMs 📄✨",
+    "Done {{name}} ✅ tailor it for every job, trust me",
+    "In your inbox {{name}}! ATS won't ignore you now 🤖",
+    "Check DMs {{name}} 📩 2 mins per job, that's it",
+    "Sent! All the best for the calls {{name}} 🔥",
+    "{{name}} prompt + free kit sent 📩 go get those interviews",
+    "Your DM has it {{name}} 🚀 only true points, remember!"
+   ]
   },
   {
    "id": "intro",
@@ -38,16 +39,7 @@
    "keywords": [
     "intro"
    ],
-   "comment_replies": [
-    "Sent {{name}}! No more biodata answers 😄 check DMs",
-    "{{name}} NOW, PROOF, NEXT is in your DMs 🎤",
-    "Done {{name}} ✅ practise it out loud 5 times",
-    "In your inbox {{name}}! 60 seconds, you've got this 🔥",
-    "Check DMs {{name}} 📩 that interviewer won't know what hit them",
-    "Sent! Record yourself once, it really helps {{name}} 🎥",
-    "{{name}} your intro prompt is waiting in DMs 🤖",
-    "On its way {{name}} 🚀 all the best for the interview"
-   ],
+   "comment_replies": [],
    "opening": "Hey {{name}} 👋 Thanks for watching! Tap below and I'll send you the 60-second intro prompt 🎤",
    "opening_button": "Send it 🚀",
    "follow_gate": true,
@@ -58,7 +50,17 @@
    "link": "https://madhureddy18.github.io/ai.jugaadd/p/intro/",
    "direct": false,
    "direct_text": "Hey {{name}} 👋 here's your prompt 🤖🔥 Paste it into Claude with the job post + your resume. NOW, PROOF, NEXT. 60 seconds. You've got this!",
-   "any_comment": true
+   "any_comment": true,
+   "comment_replies_off": [
+    "Sent {{name}}! No more biodata answers 😄 check DMs",
+    "{{name}} NOW, PROOF, NEXT is in your DMs 🎤",
+    "Done {{name}} ✅ practise it out loud 5 times",
+    "In your inbox {{name}}! 60 seconds, you've got this 🔥",
+    "Check DMs {{name}} 📩 that interviewer won't know what hit them",
+    "Sent! Record yourself once, it really helps {{name}} 🎥",
+    "{{name}} your intro prompt is waiting in DMs 🤖",
+    "On its way {{name}} 🚀 all the best for the interview"
+   ]
   },
   {
    "id": "hr",
@@ -67,16 +69,7 @@
    "keywords": [
     "hr"
    ],
-   "comment_replies": [
-    "Sent {{name}}! No more 'Respected Sir' please 😄 check DMs",
-    "{{name}} your 4-line HR message is in DMs 📩",
-    "Done {{name}} ✅ apply first, then message the same day",
-    "In your inbox {{name}}! Their name, one proof, one ask 🤖",
-    "Check DMs {{name}} 📩 5 good messages beat 300 applications",
-    "Sent! Go find who posted that job {{name}} 🔥",
-    "{{name}} prompt sent 📩 follow up after 5 days if no reply",
-    "Your DM has it {{name}} 🚀 all the best for the interview call"
-   ],
+   "comment_replies": [],
    "opening": "Hey {{name}} 👋 Thanks for watching! Tap below and I'll send you the HR message prompt ✉️",
    "opening_button": "Send it 🚀",
    "follow_gate": true,
@@ -87,7 +80,17 @@
    "link": "https://madhureddy18.github.io/ai.jugaadd/p/hr/",
    "direct": false,
    "direct_text": "Hey {{name}} 👋 here's your HR message prompt 🤖✉️ Apply first, then paste the job post + your resume into Claude and send the 4 lines to the recruiter.",
-   "any_comment": true
+   "any_comment": true,
+   "comment_replies_off": [
+    "Sent {{name}}! No more 'Respected Sir' please 😄 check DMs",
+    "{{name}} your 4-line HR message is in DMs 📩",
+    "Done {{name}} ✅ apply first, then message the same day",
+    "In your inbox {{name}}! Their name, one proof, one ask 🤖",
+    "Check DMs {{name}} 📩 5 good messages beat 300 applications",
+    "Sent! Go find who posted that job {{name}} 🔥",
+    "{{name}} prompt sent 📩 follow up after 5 days if no reply",
+    "Your DM has it {{name}} 🚀 all the best for the interview call"
+   ]
   }
  ]
 }
