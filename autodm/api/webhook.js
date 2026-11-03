@@ -87,7 +87,7 @@ async function onComment(v) {
   const who = (v.from && v.from.username) || '';
   if (!v.id || !v.text || v.parent_id || who.toLowerCase() === (myName || '').toLowerCase()) return;
   const a = await autoForMedia(v.media && v.media.id, v.text);
-  if (!a || !hasKw(a, v.text)) return;
+  if (!a || !(a.any_comment && a.reel ? String(v.text || '').trim() : hasKw(a, v.text))) return;   // any_comment: every comment on that reel gets the DM
   log(`comment ${a.id} @${who}: ${v.text}`);
   const replies = a.comment_replies || [];
   if (replies.length) {

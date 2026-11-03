@@ -1,5 +1,5 @@
 {
- "_help": "One entry per reel. active=true switches it on. {{name}} = their username. Buttons max 20 characters. Comments are never hidden. comment_replies: write 6-10 different lines per reel; one is picked at random so public replies never look identical.",
+ "_help": "One entry per reel. any_comment=true (needs the reel link) = ANY comment, word or emoji, gets the DM; otherwise only the keywords. active=true switches it on. {{name}} = their username. Buttons max 20 characters. Comments are never hidden. comment_replies: write 6-10 different lines per reel; one is picked at random so public replies never look identical.",
  "automations": [
   {
    "id": "resume",
