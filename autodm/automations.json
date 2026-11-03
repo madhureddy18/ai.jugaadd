@@ -3,7 +3,7 @@
  "automations": [
   {
    "id": "resume",
-   "active": false,
+   "active": true,
    "reel": "https://www.instagram.com/reel/DfQJIplFfpc/",
    "keywords": [
     "resume",
@@ -25,7 +25,7 @@
   },
   {
    "id": "intro",
-   "active": false,
+   "active": true,
    "reel": "https://www.instagram.com/reel/DfRbRXekdhR/",
    "keywords": [
     "intro"
