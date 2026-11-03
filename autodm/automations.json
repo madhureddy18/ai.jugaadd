@@ -1,13 +1,19 @@
 {
- "_help": "One entry per reel. Set active=true to switch it on. 'since' = only comments after this time get a DM. {{name}} = their username. Buttons max 20 characters.",
+ "_help": "One entry per reel. active=true switches it on. {{name}} = their username. Buttons max 20 characters. Comments are never hidden.",
  "automations": [
   {
    "id": "resume",
    "active": false,
    "reel": "https://www.instagram.com/reel/DfQJIplFfpc/",
-   "since": "2026-11-03T14:00:00+05:30",
-   "keywords": ["resume", "ats"],
-   "comment_replies": ["Sent {{name}}! Check your DMs 📩", "Check your inbox {{name}}, it's on the way 🚀", "Done {{name}} ✅ check your DMs"],
+   "keywords": [
+    "resume",
+    "ats"
+   ],
+   "comment_replies": [
+    "Sent {{name}}! Check your DMs 📩",
+    "Check your inbox {{name}}, it's on the way 🚀",
+    "Done {{name}} ✅ check your DMs"
+   ],
    "opening": "Hey {{name}} 👋 Thanks for watching! Tap below and I'll send you the resume prompt + free kit 📄",
    "opening_button": "Send it 🚀",
    "follow_gate": true,
@@ -21,9 +27,14 @@
    "id": "intro",
    "active": false,
    "reel": "https://www.instagram.com/reel/DfRbRXekdhR/",
-   "since": "2026-11-03T14:00:00+05:30",
-   "keywords": ["intro"],
-   "comment_replies": ["Sent {{name}}! Check your DMs 📩", "On its way {{name}} 🚀", "Done {{name}} ✅ check your DMs"],
+   "keywords": [
+    "intro"
+   ],
+   "comment_replies": [
+    "Sent {{name}}! Check your DMs 📩",
+    "On its way {{name}} 🚀",
+    "Done {{name}} ✅ check your DMs"
+   ],
    "opening": "Hey {{name}} 👋 Thanks for watching! Tap below and I'll send you the 60-second intro prompt 🎤",
    "opening_button": "Send it 🚀",
    "follow_gate": true,

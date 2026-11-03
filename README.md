@@ -23,8 +23,9 @@ Note: the repo is public because Instagram downloads videos from a public link.
 ## Prompt pages (the link sent in DMs)
 Each reel's "comment KEYWORD" freebie lives at `p/<keyword>/` — e.g. **https://madhureddy18.github.io/ai.jugaadd/p/resume/**
 
-## Auto DM (our own comment-to-DM, no branding, never hides comments)
-- Settings: `dm/automations.json` (one entry per reel: keywords, messages, link, `active`).
-- Runs every 5 min via `.github/workflows/autodm.yml` (Actions → "Auto DM" → Run workflow to run now / dry run).
-- Needs the `AIJUGAADIGTOKEN` token to include `instagram_business_manage_comments` and `instagram_business_manage_messages`.
-- Turn OFF the same reel in Elev8or before switching an entry to `active: true`, or people get two DMs.
+## Auto DM (our own instant comment-to-DM; no branding, never hides comments)
+- Code: `autodm/api/webhook.js` (a free Vercel function). Settings: `autodm/automations.json` (one entry per reel: keywords, messages, link, `active`).
+- Instagram calls it the moment someone comments or taps a button, so replies go out in seconds.
+- Vercel env vars: `IG_TOKEN`, `APP_SECRET`, `VERIFY_TOKEN`, `NODEJS_HELPERS=0`. Root directory: `autodm`.
+- Changing `automations.json` on GitHub redeploys it automatically.
+- Privacy policy for the Meta app: https://madhureddy18.github.io/ai.jugaadd/privacy/
