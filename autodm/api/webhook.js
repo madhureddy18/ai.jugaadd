@@ -82,6 +82,7 @@ async function finalMessage(myId, uid, a, name) {
 }
 
 async function onMessage(m) {
+  if (m.postback && !m.message) m.message = { text: m.postback.title || '', quick_reply: { payload: m.postback.payload } };
   if (!m.message || m.message.is_echo || !m.sender) return;
   const { id: myId } = await me().then(x => ({ id: String(x.user_id || x.id) }));
   const uid = String(m.sender.id);
@@ -136,6 +137,7 @@ module.exports = async (req, res) => {
   const raw = await readRaw(req);
   if (!validSignature(req, raw)) { log('bad signature'); return reply(res, 401, 'bad signature'); }
   let body = {}; try { body = JSON.parse(raw || '{}'); } catch (e) { return reply(res, 400, 'bad json'); }
+  log('event:', JSON.stringify(body).slice(0, 600));
   const jobs = [];
   for (const entry of body.entry || []) {
     for (const ch of entry.changes || []) if (ch.field === 'comments' && ch.value) jobs.push(onComment(ch.value));
