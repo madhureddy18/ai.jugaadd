@@ -1,5 +1,5 @@
 {
- "_help": "One entry per reel. active=true switches it on. {{name}} = their username. Buttons max 20 characters. Comments are never hidden.",
+ "_help": "One entry per reel. active=true switches it on. {{name}} = their username. Buttons max 20 characters. Comments are never hidden. comment_replies: write 6-10 different lines per reel; one is picked at random so public replies never look identical.",
  "automations": [
   {
    "id": "resume",
@@ -10,9 +10,14 @@
     "ats"
    ],
    "comment_replies": [
-    "Sent {{name}}! Check your DMs 📩",
-    "Check your inbox {{name}}, it's on the way 🚀",
-    "Done {{name}} ✅ check your DMs"
+    "Sent {{name}}! 300 applications won't be needed anymore 😄 check DMs",
+    "{{name}} your resume glow-up is in your DMs 📄✨",
+    "Done {{name}} ✅ tailor it for every job, trust me",
+    "In your inbox {{name}}! ATS won't ignore you now 🤖",
+    "Check DMs {{name}} 📩 2 mins per job, that's it",
+    "Sent! All the best for the calls {{name}} 🔥",
+    "{{name}} prompt + free kit sent 📩 go get those interviews",
+    "Your DM has it {{name}} 🚀 only true points, remember!"
    ],
    "opening": "Hey {{name}} 👋 Thanks for watching! Tap below and I'll send you the resume prompt + free kit 📄",
    "opening_button": "Send it 🚀",
@@ -33,9 +38,14 @@
     "intro"
    ],
    "comment_replies": [
-    "Sent {{name}}! Check your DMs 📩",
-    "On its way {{name}} 🚀",
-    "Done {{name}} ✅ check your DMs"
+    "Sent {{name}}! No more biodata answers 😄 check DMs",
+    "{{name}} NOW, PROOF, NEXT is in your DMs 🎤",
+    "Done {{name}} ✅ practise it out loud 5 times",
+    "In your inbox {{name}}! 60 seconds, you've got this 🔥",
+    "Check DMs {{name}} 📩 that interviewer won't know what hit them",
+    "Sent! Record yourself once, it really helps {{name}} 🎥",
+    "{{name}} your intro prompt is waiting in DMs 🤖",
+    "On its way {{name}} 🚀 all the best for the interview"
    ],
    "opening": "Hey {{name}} 👋 Thanks for watching! Tap below and I'll send you the 60-second intro prompt 🎤",
    "opening_button": "Send it 🚀",
