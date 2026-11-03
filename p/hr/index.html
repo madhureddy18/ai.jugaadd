@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HR Message Prompt · @ai.jugaadd</title>
+<meta name="description" content="Applied? Now message the HR. The exact prompt that writes your 4-line message, from @ai.jugaadd.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d1020;--card:#171b33;--ink:#f4f1ec;--mute:#a7adc9;--org:#ff7a3d;--gold:#ffc53d;--green:#33d17a;--red:#ff4d5e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.5}
+main{max-width:640px;margin:0 auto;padding:28px 16px 60px}
+.tag{display:inline-block;background:var(--org);color:#fff;font-weight:900;font-size:13px;padding:6px 14px;border-radius:99px;letter-spacing:.04em}
+h1{font-size:30px;line-height:1.15;margin:16px 0 8px;font-weight:900}h1 span{color:var(--gold)}
+p.sub{color:var(--mute);margin:0 0 22px}
+.card{background:var(--card);border:1px solid #2a3058;border-radius:18px;padding:18px}
+pre{white-space:pre-wrap;word-wrap:break-word;font-family:inherit;font-size:15px;margin:0;color:#e8e6f5}
+button{width:100%;margin-top:14px;border:0;border-radius:14px;padding:16px;font:900 17px Inter,sans-serif;background:var(--org);color:#fff;cursor:pointer}
+button.done{background:var(--green);color:#0b1026}
+h2{font-size:18px;margin:30px 0 10px}
+ol{padding-left:20px;margin:0}ol li{margin:6px 0}
+.rule{margin-top:18px;border-left:4px solid var(--red);padding:10px 14px;background:rgba(255,77,94,.08);border-radius:8px;font-size:15px}
+footer{margin-top:36px;text-align:center;color:var(--mute);font-size:14px}footer a{color:var(--gold);font-weight:700;text-decoration:none}
+.steps{display:grid;gap:10px}.st{background:var(--card);border:1px solid #2a3058;border-radius:14px;padding:12px 14px}.st b{color:var(--gold)}
+.where li{margin:8px 0}.where b{color:var(--gold)}
+</style></head>
+<body><main>
+<span class="tag">@ai.jugaadd</span>
+<h1>Applied? <span>Now message the HR.</span></h1>
+<p class="sub">Your application is one of 2,000. A short message to the person who's hiring makes them open it. Apply first, then send this.</p>
+<div class="steps">
+<div class="st"><b>1. Apply</b> on the portal like normal. HR can only shortlist you if you're in their system.</div>
+<div class="st"><b>2. Find who posted it</b> (see the list below).</div>
+<div class="st"><b>3. Send 4 lines:</b> "I just applied" + their name + one proof + one ask.</div>
+</div>
+<h2>The prompt</h2>
+<p class="sub" style="margin-bottom:12px">Paste it into Claude (or any AI chat) with the job post and your resume.</p>
+<div class="card"><pre id="pr">You are a senior tech recruiter in India. I have ALREADY APPLIED to the job below. Help me write a short message to the recruiter or hiring manager so they open my application.
+
+Recruiter's name: [their first name, or "unknown"]
+Where I'm messaging them: [LinkedIn / Naukri / Instahyre / Wellfound / email]
+
+Write these 3 things:
+
+1) MAIN MESSAGE (4 lines, under 80 words):
+- Line 1: Hi [name], I just applied for the [exact job title] role at [company].
+- Line 2: ONE proof from my resume that matches this job, with a real number (time saved, users, accuracy, marks, team size).
+- Line 3: ONE clear ask (10 minutes to talk, or a quick look at my application).
+- Line 4: Resume attached / thank you.
+
+2) LINKEDIN CONNECTION NOTE: the same idea in under 200 characters.
+
+3) FOLLOW-UP for 5 days later if they don't reply: 2 lines, polite, adds one new small detail.
+
+Rules:
+- Simple, friendly, confident English. Sound like a real fresher, not a template.
+- NO "Respected Sir/Madam", NO "kindly consider my profile", NO "I am writing to express my interest".
+- NEVER invent any project, skill, internship or number I don't have. If my resume has no number, ask me 2 short questions first and wait for my answers.
+- Pick the proof that matches the job post best, not just my first project.
+
+JOB POST:
+[paste the job description here]
+
+MY RESUME:
+[paste your resume text here]</pre>
+<button id="cp">Copy prompt</button></div>
+<h2>Where to find the HR / recruiter</h2>
+<ul class="where">
+<li><b>LinkedIn:</b> search "Company name + Talent Acquisition" or "+ HR". Also check the job post: "Meet the hiring team" shows who posted it.</li>
+<li><b>Naukri:</b> open the job and scroll to "Recruiter details" / "About company". Many posts show the recruiter's name.</li>
+<li><b>Instahyre / Cutshort:</b> the recruiter's name is on the job. Message them in the app after applying.</li>
+<li><b>Wellfound (startups):</b> message the founder or hiring lead shown on the job.</li>
+</ul>
+<h2>Small rules that work</h2>
+<ol><li>Apply first, then message the same day.</li><li>One message per job. Use their name, never "Dear Hiring Manager".</li><li>No reply in 5 days? Send the follow-up once. Then move on.</li><li>Do it for the 5 jobs you want most each day, not 300.</li></ol>
+<div class="rule"><b>Never:</b> "Respected Sir, kindly consider my profile." Four real lines beat one long request.</div>
+<a href="../resume/" style="display:block;text-align:center;margin-top:22px;padding:14px;border-radius:14px;border:2px solid var(--gold);color:var(--gold);font-weight:900;text-decoration:none">Also get: the resume prompt + free Resume Kit →</a>
+<a href="../intro/" style="display:block;text-align:center;margin-top:10px;padding:14px;border-radius:14px;border:2px solid #2a3058;color:var(--ink);font-weight:700;text-decoration:none">"Tell me about yourself" prompt →</a>
+<footer>More fresher hacks every day · <a href="https://www.instagram.com/ai.jugaadd/">@ai.jugaadd</a><br><small>Fan-made, not affiliated with Anthropic.</small></footer>
+</main>
+<script>
+const b=document.getElementById('cp');b.onclick=async()=>{const t=document.getElementById('pr').innerText;
+try{await navigator.clipboard.writeText(t)}catch(e){const r=document.createRange();r.selectNode(document.getElementById('pr'));getSelection().removeAllRanges();getSelection().addRange(r);document.execCommand('copy')}
+b.textContent='Copied ✓';b.classList.add('done');setTimeout(()=>{b.textContent='Copy prompt';b.classList.remove('done')},2000)};
+</script>
+</body></html>

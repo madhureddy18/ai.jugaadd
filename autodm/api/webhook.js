@@ -32,16 +32,20 @@ let ME = null;
 async function me() { return ME || (ME = await ig('GET', 'me?fields=user_id,username')); }
 
 const mediaCache = {};
-async function autoForMedia(mediaId) {
+// keyword must start a word ("hr" matches "HR", "hr!", "hrs" but not "three")
+const hasKw = (a, text) => (a.keywords || []).some(k => new RegExp('(^|[^a-z0-9])' + k.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).test(String(text || '').toLowerCase()));
+async function autoForMedia(mediaId, text) {
   if (!(mediaId in mediaCache)) {
     const m = await ig('GET', `${mediaId}?fields=permalink`).catch(() => ({}));
     mediaCache[mediaId] = m.permalink || '';
   }
   const link = mediaCache[mediaId];
-  return autos().find(a => link && link.includes(a.reel.replace(/\/+$/, '').split('/').pop()));
+  const code = a => (a.reel || '').replace(/\/+$/, '').split('/').pop();
+  return autos().find(a => link && code(a) && link.includes(code(a)))
+    || autos().find(a => !code(a) && hasKw(a, text));   // new reel without its link yet: match by keyword
 }
 const autoById = id => autos().find(a => a.id === id);
-const autoByKeyword = text => autos().find(a => (a.keywords || []).some(k => text.toLowerCase().includes(k.toLowerCase())));
+const autoByKeyword = text => autos().find(a => hasKw(a, text));
 
 async function send(myId, recipient, message) {
   try {
@@ -82,8 +86,8 @@ async function onComment(v) {
   const { id: myId, username: myName } = await me().then(m => ({ id: String(m.user_id || m.id), username: m.username }));
   const who = (v.from && v.from.username) || '';
   if (!v.id || !v.text || v.parent_id || who.toLowerCase() === (myName || '').toLowerCase()) return;
-  const a = await autoForMedia(v.media && v.media.id);
-  if (!a || !(a.keywords || []).some(k => v.text.toLowerCase().includes(k.toLowerCase()))) return;
+  const a = await autoForMedia(v.media && v.media.id, v.text);
+  if (!a || !hasKw(a, v.text)) return;
   log(`comment ${a.id} @${who}: ${v.text}`);
   const replies = a.comment_replies || [];
   if (replies.length) {
