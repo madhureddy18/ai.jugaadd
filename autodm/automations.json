@@ -45,7 +45,7 @@
    "final_text": "Here you go {{name}} 🤖 Paste it into Claude with the job post + your resume. NOW, PROOF, NEXT. 60 seconds. You've got this!",
    "link_label": "Get the prompt 🤖",
    "link": "https://madhureddy18.github.io/ai.jugaadd/p/intro/",
-   "direct": true,
+   "direct": false,
    "direct_text": "Hey {{name}} 👋 here's your prompt 🤖🔥 Paste it into Claude with the job post + your resume. NOW, PROOF, NEXT. 60 seconds. You've got this!"
   }
  ]
