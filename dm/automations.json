@@ -1,0 +1,37 @@
+{
+ "_help": "One entry per reel. Set active=true to switch it on. 'since' = only comments after this time get a DM. {{name}} = their username. Buttons max 20 characters.",
+ "automations": [
+  {
+   "id": "resume",
+   "active": false,
+   "reel": "https://www.instagram.com/reel/DfQJIplFfpc/",
+   "since": "2026-11-03T14:00:00+05:30",
+   "keywords": ["resume", "ats"],
+   "comment_replies": ["Sent {{name}}! Check your DMs 📩", "Check your inbox {{name}}, it's on the way 🚀", "Done {{name}} ✅ check your DMs"],
+   "opening": "Hey {{name}} 👋 Thanks for watching! Tap below and I'll send you the resume prompt + free kit 📄",
+   "opening_button": "Send it 🚀",
+   "follow_gate": true,
+   "follow_text": "Almost there {{name}}! 😄 The prompt is only for followers. Follow @ai.jugaadd (new fresher hacks daily) and tap below 👇",
+   "follow_button": "I followed ✅",
+   "final_text": "Here you go {{name}} 🤖🔥 Paste it into Claude with the job post + your resume. Do it for every job, 2 mins each!",
+   "link_label": "Get the prompt 🤖",
+   "link": "https://madhureddy18.github.io/ai.jugaadd/p/resume/"
+  },
+  {
+   "id": "intro",
+   "active": false,
+   "reel": "https://www.instagram.com/reel/DfRbRXekdhR/",
+   "since": "2026-11-03T14:00:00+05:30",
+   "keywords": ["intro"],
+   "comment_replies": ["Sent {{name}}! Check your DMs 📩", "On its way {{name}} 🚀", "Done {{name}} ✅ check your DMs"],
+   "opening": "Hey {{name}} 👋 Thanks for watching! Tap below and I'll send you the 60-second intro prompt 🎤",
+   "opening_button": "Send it 🚀",
+   "follow_gate": true,
+   "follow_text": "Almost there {{name}}! 😄 The prompt is only for followers. Follow @ai.jugaadd (new fresher hacks daily) and tap below 👇",
+   "follow_button": "I followed ✅",
+   "final_text": "Here you go {{name}} 🤖 Paste it into Claude with the job post + your resume. NOW, PROOF, NEXT. 60 seconds. You've got this!",
+   "link_label": "Get the prompt 🤖",
+   "link": "https://madhureddy18.github.io/ai.jugaadd/p/intro/"
+  }
+ ]
+}

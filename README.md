@@ -22,3 +22,9 @@ Note: the repo is public because Instagram downloads videos from a public link.
 
 ## Prompt pages (the link sent in DMs)
 Each reel's "comment KEYWORD" freebie lives at `p/<keyword>/` — e.g. **https://madhureddy18.github.io/ai.jugaadd/p/resume/**
+
+## Auto DM (our own comment-to-DM, no branding, never hides comments)
+- Settings: `dm/automations.json` (one entry per reel: keywords, messages, link, `active`).
+- Runs every 5 min via `.github/workflows/autodm.yml` (Actions → "Auto DM" → Run workflow to run now / dry run).
+- Needs the `AIJUGAADIGTOKEN` token to include `instagram_business_manage_comments` and `instagram_business_manage_messages`.
+- Turn OFF the same reel in Elev8or before switching an entry to `active: true`, or people get two DMs.
