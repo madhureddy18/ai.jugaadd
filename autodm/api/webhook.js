@@ -141,7 +141,8 @@ module.exports = async (req, res) => {
   const jobs = [];
   for (const entry of body.entry || []) {
     for (const ch of entry.changes || []) if (ch.field === 'comments' && ch.value) jobs.push(onComment(ch.value));
-    for (const m of entry.messaging || []) jobs.push(onMessage(m));
+    // 'standby' = another connected app (e.g. Elev8or) owns the chat; we still handle it
+    for (const m of [...(entry.messaging || []), ...(entry.standby || [])]) jobs.push(onMessage(m));
   }
   const results = await Promise.allSettled(jobs);
   results.filter(r => r.status === 'rejected').forEach(r => log('error:', r.reason && r.reason.message));
