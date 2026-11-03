@@ -21,7 +21,9 @@
    "follow_button": "I followed ✅",
    "final_text": "Here you go {{name}} 🤖🔥 Paste it into Claude with the job post + your resume. Do it for every job, 2 mins each!",
    "link_label": "Get the prompt 🤖",
-   "link": "https://madhureddy18.github.io/ai.jugaadd/p/resume/"
+   "link": "https://madhureddy18.github.io/ai.jugaadd/p/resume/",
+   "direct": true,
+   "direct_text": "Hey {{name}} 👋 here's your prompt 🤖🔥 Paste it into Claude with the job post + your resume. Do it for every job, 2 mins each!"
   },
   {
    "id": "intro",
@@ -42,7 +44,9 @@
    "follow_button": "I followed ✅",
    "final_text": "Here you go {{name}} 🤖 Paste it into Claude with the job post + your resume. NOW, PROOF, NEXT. 60 seconds. You've got this!",
    "link_label": "Get the prompt 🤖",
-   "link": "https://madhureddy18.github.io/ai.jugaadd/p/intro/"
+   "link": "https://madhureddy18.github.io/ai.jugaadd/p/intro/",
+   "direct": true,
+   "direct_text": "Hey {{name}} 👋 here's your prompt 🤖🔥 Paste it into Claude with the job post + your resume. NOW, PROOF, NEXT. 60 seconds. You've got this!"
   }
  ]
 }

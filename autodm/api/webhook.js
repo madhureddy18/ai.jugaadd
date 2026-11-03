@@ -69,6 +69,10 @@ async function onComment(v) {
     await ig('POST', `${v.id}/replies`, { message: msg }).catch(e => log('public reply failed:', e.message));
   }
   const text = fill(a.opening, who);
+  if (a.direct) {                                  // one-message mode: link straight in the private reply (no button step)
+    const msg = `${fill(a.direct_text || a.final_text, who)}\n\n👉 ${a.link}\n\n${fill(a.direct_follow || 'Follow @ai.jugaadd for a new fresher hack every day 🚀', who)}`;
+    return send(myId, { comment_id: v.id }, { text: msg }).catch(e => log('private reply failed:', e.message));
+  }
   try {
     await send(myId, { comment_id: v.id }, { text, quick_replies: qr(a.opening_button || 'Send it 🚀', `SEND|${a.id}|0`) });
   } catch (e) {
