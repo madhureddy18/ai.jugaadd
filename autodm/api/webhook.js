@@ -183,6 +183,18 @@ const reply = (res, code, text) => { res.statusCode = code; res.setHeader('Conte
 module.exports = async (req, res) => {
   if (req.method === 'GET') {                       // Meta's webhook verification
     const q = Object.fromEntries(new URL(req.url, 'http://x').searchParams);
+    if (q.check === '1') {                         // read-only report: which comments the API says are hidden
+      const out = [];
+      try {
+        const media = await ig('GET', 'me/media?fields=id,permalink,comments_count&limit=3');
+        for (const m of media.data || []) {
+          const cs = await ig('GET', `${m.id}/comments?fields=id,text,hidden,username&limit=50`).catch(e => ({ error: e.message, data: [] }));
+          out.push(`${m.permalink}  count=${m.comments_count}  api_returned=${(cs.data || []).length}${cs.error ? '  ERROR ' + cs.error : ''}`);
+          (cs.data || []).forEach(c => out.push(`   ${c.hidden ? 'HIDDEN ' : 'visible'}  @${c.username}: ${c.text}`));
+        }
+      } catch (e) { out.push('error: ' + e.message); }
+      return reply(res, 200, out.join('\n'));
+    }
     if (q.unhide === '1') { const n = await unhideSweep(true); return reply(res, 200, `unhid ${n || 0} comment(s)`); }
     if (q['hub.mode'] === 'subscribe' && q['hub.verify_token'] === process.env.VERIFY_TOKEN) return reply(res, 200, q['hub.challenge']);
     return reply(res, 200, 'ai.jugaadd autodm is running');
