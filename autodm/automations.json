@@ -63,7 +63,7 @@
   {
    "id": "hr",
    "active": true,
-   "reel": "",
+   "reel": "https://www.instagram.com/reel/DfR-qvbgtSY/",
    "keywords": [
     "hr"
    ],
@@ -87,7 +87,7 @@
    "link": "https://madhureddy18.github.io/ai.jugaadd/p/hr/",
    "direct": false,
    "direct_text": "Hey {{name}} 👋 here's your HR message prompt 🤖✉️ Apply first, then paste the job post + your resume into Claude and send the 4 lines to the recruiter.",
-   "any_comment": false
+   "any_comment": true
   }
  ]
 }
