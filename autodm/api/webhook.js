@@ -56,6 +56,28 @@ async function send(myId, recipient, message) {
 }
 const qr = (title, payload) => [{ content_type: 'text', title: title.slice(0, 20), payload }];
 
+
+// Keep comments visible: unhide any hidden comment on our recent reels (Instagram / old tools hid them).
+let lastSweep = 0;
+async function unhideSweep(force) {
+  if (!force && Date.now() - lastSweep < 60000) return;
+  lastSweep = Date.now();
+  let n = 0;
+  try {
+    const media = await ig('GET', 'me/media?fields=id&limit=12');
+    for (const m of media.data || []) {
+      const cs = await ig('GET', `${m.id}/comments?fields=id,text,hidden,username&limit=50`).catch(() => ({ data: [] }));
+      for (const c of cs.data || []) {
+        if (c.hidden) {
+          await ig('POST', `${c.id}?hide=false`).then(() => { n++; log(`unhid comment @${c.username}: ${c.text}`); })
+            .catch(e => log('unhide failed:', e.message));
+        }
+      }
+    }
+  } catch (e) { log('unhide sweep failed:', e.message); }
+  return n;
+}
+
 async function onComment(v) {
   const { id: myId, username: myName } = await me().then(m => ({ id: String(m.user_id || m.id), username: m.username }));
   const who = (v.from && v.from.username) || '';
@@ -161,6 +183,7 @@ const reply = (res, code, text) => { res.statusCode = code; res.setHeader('Conte
 module.exports = async (req, res) => {
   if (req.method === 'GET') {                       // Meta's webhook verification
     const q = Object.fromEntries(new URL(req.url, 'http://x').searchParams);
+    if (q.unhide === '1') { const n = await unhideSweep(true); return reply(res, 200, `unhid ${n || 0} comment(s)`); }
     if (q['hub.mode'] === 'subscribe' && q['hub.verify_token'] === process.env.VERIFY_TOKEN) return reply(res, 200, q['hub.challenge']);
     return reply(res, 200, 'ai.jugaadd autodm is running');
   }
@@ -170,7 +193,7 @@ module.exports = async (req, res) => {
   log('event:', JSON.stringify(body).slice(0, 600));
   const jobs = [];
   for (const entry of body.entry || []) {
-    for (const ch of entry.changes || []) if (ch.field === 'comments' && ch.value) jobs.push(onComment(ch.value));
+    for (const ch of entry.changes || []) if (ch.field === 'comments' && ch.value) { jobs.push(onComment(ch.value)); jobs.push(new Promise(r => setTimeout(r, 4000)).then(() => unhideSweep())); }
     // 'standby' = another connected app (e.g. Elev8or) owns the chat; we still handle it
     for (const m of [...(entry.messaging || []), ...(entry.standby || [])]) jobs.push(onMessage(m));
   }
