@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tell Me About Yourself · @ai.jugaadd</title>
+<meta name="description" content="Your 'tell me about yourself' is just biodata. Fix it in 60 seconds with the Now · Proof · Next prompt from @ai.jugaadd.">
+<meta property="og:title" content="Tell me about yourself, fixed in 60 seconds">
+<meta property="og:description" content="The exact prompt from @ai.jugaadd. Now · Proof · Next.">
+<meta name="theme-color" content="#0f0d0b">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f0d0b;--bg2:#16130f;--card:#1b1713;--line:#2c261f;
+  --ink:#efe7db;--mute:#a59a8b;--faint:#6f665b;
+  --lamp:#e8b06a;--lamp-soft:rgba(232,176,106,.12);--sage:#9fb79a;--rose:#d48b7e;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Inter,system-ui,sans-serif;
+  background-image:radial-gradient(600px 420px at 85% -60px,rgba(232,176,106,.16),transparent 70%),radial-gradient(500px 500px at -10% 110%,rgba(159,183,154,.06),transparent 70%);
+  background-attachment:fixed;min-height:100vh}
+main{max-width:640px;margin:0 auto;padding:36px 16px 64px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:40px}
+.handle{font-weight:600;font-size:14px;color:var(--mute);text-decoration:none;letter-spacing:.02em}
+.handle b{color:var(--lamp);font-weight:600}
+.pill{font-size:12px;color:var(--faint);border:1px solid var(--line);padding:5px 12px;border-radius:99px}
+.eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--lamp);margin:0 0 14px}
+h1{font-family:Fraunces,Georgia,serif;font-weight:400;font-size:clamp(32px,8vw,44px);line-height:1.12;margin:0 0 16px;letter-spacing:-.01em}
+h1 em{font-style:italic;color:var(--lamp)}
+.lede{color:var(--mute);font-size:17px;margin:0 0 36px;max-width:34em}
+h2{font-family:Fraunces,Georgia,serif;font-weight:400;font-size:24px;margin:56px 0 6px}
+.h2sub{color:var(--mute);margin:0 0 20px;font-size:15px}
+
+/* before / after */
+.ba{display:grid;gap:12px}
+.ba .q{border-radius:16px;padding:16px 18px;border:1px solid var(--line);background:var(--bg2)}
+.ba .lab{font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.ba .bad .lab{color:var(--rose)}.ba .good .lab{color:var(--sage)}
+.ba .bad p{color:var(--faint);margin:0;text-decoration:line-through;text-decoration-color:rgba(212,139,126,.5)}
+.ba .good{border-color:rgba(159,183,154,.3)}
+.ba .good p{margin:0}
+.dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+
+/* formula */
+.steps{display:grid;gap:10px;counter-reset:s}
+.step{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;padding:16px 18px;background:var(--card);border:1px solid var(--line);border-radius:16px}
+.step .n{font-family:Fraunces,serif;font-size:28px;line-height:1;color:var(--lamp)}
+.step h3{margin:0 0 2px;font-size:16px;font-weight:600}
+.step p{margin:0;color:var(--mute);font-size:15px}
+.step .t{float:right;font-size:12px;color:var(--faint);font-weight:500}
+
+/* prompt */
+.prompt{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.prompt .bar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--mute)}
+.prompt pre{margin:0;padding:18px;white-space:pre-wrap;word-wrap:break-word;font:400 14.5px/1.65 Inter,system-ui,sans-serif;color:#e4dccf;max-height:340px;overflow:auto}
+.prompt.open pre{max-height:none}
+.more{background:none;border:0;color:var(--lamp);font:600 13px Inter,sans-serif;cursor:pointer;padding:0}
+.btn{display:block;width:100%;border:0;border-radius:14px;padding:16px;font:600 16px Inter,sans-serif;cursor:pointer;transition:background .2s,color .2s,transform .1s}
+.btn:active{transform:scale(.99)}
+.btn.main{background:var(--lamp);color:#1a140c;margin-top:14px}
+.btn.main.done{background:var(--sage)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);margin-top:10px}
+
+/* builder */
+.field{margin-bottom:14px}
+.field label{display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:6px}
+.field label span{color:var(--faint);font-weight:400}
+textarea{width:100%;resize:vertical;min-height:72px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--ink);font:400 15px/1.5 Inter,sans-serif}
+textarea:focus{outline:none;border-color:rgba(232,176,106,.55);box-shadow:0 0 0 3px var(--lamp-soft)}
+textarea::placeholder{color:var(--faint)}
+.out{margin-top:18px;padding:18px;border-radius:16px;background:linear-gradient(180deg,var(--lamp-soft),transparent);border:1px solid rgba(232,176,106,.25)}
+.out .meta{display:flex;justify-content:space-between;font-size:13px;color:var(--mute);margin-bottom:8px}
+.out .meta b{color:var(--lamp);font-weight:600}
+#ans{font-family:Fraunces,Georgia,serif;font-size:18px;line-height:1.55;margin:0;min-height:3em}
+#ans.empty{color:var(--faint);font-style:italic}
+.meter{height:4px;border-radius:4px;background:var(--line);margin-top:14px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--sage);transition:width .3s,background .3s}
+
+/* rules */
+.rules{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.rules li{padding:14px 16px;border-radius:14px;background:var(--bg2);border:1px solid var(--line);font-size:15px}
+.rules b{color:var(--lamp);font-weight:600}
+.howto{padding-left:20px;margin:0;color:var(--mute)}.howto li{margin:6px 0}.howto b{color:var(--ink);font-weight:600}
+
+footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);text-align:center;color:var(--faint);font-size:14px}
+footer a{color:var(--lamp);text-decoration:none;font-weight:600}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:99px;font-size:14px;font-weight:600;transition:.25s;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head>
+<body><main>
+
+<div class="top">
+  <a class="handle" href="https://www.instagram.com/ai.jugaadd/"><b>@</b>ai.jugaadd</a>
+  <span class="pill">Interview prep</span>
+</div>
+
+<p class="eyebrow">Tell me about yourself</p>
+<h1>That wasn't you.<br>That was your <em>biodata.</em></h1>
+<p class="lede">Name, native place, father's job, hobbies. Every fresher says it, so every interviewer forgets it. Here's the 60-second answer that actually sticks, and the prompt that writes yours.</p>
+
+<div class="ba">
+  <div class="q bad"><div class="lab"><span class="dot"></span>What most people say</div>
+    <p>"My name is Maddie. I was born in Hyderabad. My father is a businessman, my mother is a homemaker. My hobbies are cricket and sleeping. My strength is I'm a hard worker."</p></div>
+  <div class="q good"><div class="lab"><span class="dot"></span>What gets remembered</div>
+    <p>"I'm a computer science fresher who builds data tools. In my final year I built an app that cut report time from two hours to ten minutes. I want to do that at scale, and that's why this role."</p></div>
+</div>
+
+<h2>Three parts. Sixty seconds.</h2>
+<p class="h2sub">Nothing about your family, your hobbies or "hard worker" unless the role asks for it.</p>
+<div class="steps">
+  <div class="step"><div class="n">1</div><div><h3>Now <span class="t">~15 sec</span></h3><p>Who you are today, in one line: your degree plus what you do or build.</p></div></div>
+  <div class="step"><div class="n">2</div><div><h3>Proof <span class="t">~30 sec</span></h3><p>One real thing you built or did, with a number: time saved, users, accuracy, marks, team size.</p></div></div>
+  <div class="step"><div class="n">3</div><div><h3>Next <span class="t">~15 sec</span></h3><p>Why this role, at this company. Connect your proof to what they need.</p></div></div>
+</div>
+
+<h2>The prompt</h2>
+<p class="h2sub">Paste it into Claude (or any AI chat) with your resume and the job post.</p>
+<div class="prompt" id="pbox">
+  <div class="bar"><span>Copy, then fill the two brackets at the end</span><button class="more" id="more">Show all</button></div>
+<pre id="pr">You are a friendly senior interviewer at an Indian tech company. I am a fresher preparing for the question "Tell me about yourself" for the job below. Help me build a 60-second answer that is 100% true.
+
+Step 1 - Ask first: read my resume and the job post. Then ask me up to 5 short questions to find my strongest real story (a project, internship, college work or result) and the real numbers in it (time saved, users, rows of data, accuracy, marks, team size). Wait for my answers before writing anything.
+
+Step 2 - Write my answer in 3 parts, about 130-150 words, in simple spoken English:
+- NOW (1-2 lines): who I am today - my degree and what I do or build. No name, native place, family details or hobbies.
+- PROOF (2-3 lines): my single best real story, with the number.
+- NEXT (1-2 lines): why this exact role at this company, linked to my proof. Use the job title from the post.
+
+Step 3 - Make it sound like me: short sentences, no big words like "passionate", "synergy" or "hardworking individual". It should sound natural said out loud, not read from paper.
+
+Step 4 - Give me 2 versions: a 60-second one and a 30-second one (for when they say "keep it short").
+
+Step 5 - Follow-ups: list the 3 questions the interviewer will most likely ask right after my answer, with short honest answers based only on my real experience.
+
+Step 6 - Practice tips: tell me which 3 words to stress, where to pause, and one thing to avoid saying.
+
+Strict rule: NEVER invent any skill, project, internship, company or number I don't have. If my story is weak, tell me honestly and suggest a small real project I can finish in one week to make it stronger.
+
+JOB POST:
+[paste the job description here]
+
+MY RESUME:
+[paste your resume text here]</pre>
+</div>
+<button class="btn main" id="cp">Copy prompt</button>
+
+<h2>Try it right here</h2>
+<p class="h2sub">Type your three parts. Read the result out loud and aim for the green zone.</p>
+<div class="field"><label for="f1">Now <span>who you are today</span></label>
+  <textarea id="f1" rows="2" placeholder="I'm a computer science fresher who builds data tools."></textarea></div>
+<div class="field"><label for="f2">Proof <span>one real thing + a number</span></label>
+  <textarea id="f2" rows="3" placeholder="In my final year I built an app that cut report time from two hours to ten minutes."></textarea></div>
+<div class="field"><label for="f3">Next <span>why this role</span></label>
+  <textarea id="f3" rows="2" placeholder="I want to do that at scale, and that's why this role."></textarea></div>
+<div class="out">
+  <div class="meta"><span>Your answer</span><span><b id="secs">0 sec</b> · <span id="words">0 words</span></span></div>
+  <p id="ans" class="empty">Start typing above…</p>
+  <div class="meter"><i id="bar"></i></div>
+  <div class="meta" style="margin:6px 0 0"><span id="hint">Aim for 40–60 seconds</span><span></span></div>
+</div>
+<button class="btn ghost" id="cpa">Copy my answer</button>
+
+<h2>Before the interview</h2>
+<ol class="howto">
+  <li><b>Say it out loud 5 times.</b> Record it on your phone once and listen back.</li>
+  <li><b>Don't memorise word for word.</b> Remember the three parts and the number. The rest comes naturally.</li>
+  <li><b>Change "Next" for every company.</b> Read their job post and use their words.</li>
+</ol>
+
+<h2>Three rules</h2>
+<ul class="rules">
+  <li><b>Only true things.</b> They will ask about every line. A small real project beats a big fake one.</li>
+  <li><b>One story, not five.</b> A single clear example with a number is remembered. A list of skills isn't.</li>
+  <li><b>Stop at 60 seconds.</b> End on "Next" and let them ask the next question.</li>
+</ul>
+
+<footer>Calm fresher hacks, every week · <a href="https://www.instagram.com/ai.jugaadd/">@ai.jugaadd</a><br>
+<a href="../resume/" style="font-weight:500">Also: the resume prompt →</a><br><br>
+<small>Fan-made, not affiliated with Anthropic.</small></footer>
+</main>
+<div class="toast" id="toast">Copied</div>
+<script>
+const $=id=>document.getElementById(id);
+const toast=m=>{const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('on'),1600)};
+async function copy(text){
+  try{await navigator.clipboard.writeText(text);return true}
+  catch(e){const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();
+    let ok=false;try{ok=document.execCommand('copy')}catch(_){}document.body.removeChild(ta);return ok}
+}
+$('cp').onclick=async()=>{const ok=await copy($('pr').innerText);const b=$('cp');
+  b.textContent=ok?'Copied ✓':'Select and copy manually';b.classList.toggle('done',ok);setTimeout(()=>{b.textContent='Copy prompt';b.classList.remove('done')},2200)};
+$('more').onclick=()=>{const p=$('pbox');p.classList.toggle('open');$('more').textContent=p.classList.contains('open')?'Show less':'Show all'};
+
+const WPM=140; // calm interview speaking pace
+const KEY='aij_intro_v1';
+const fields=['f1','f2','f3'];
+function render(){
+  const parts=fields.map(f=>$(f).value.trim()).filter(Boolean);
+  const text=parts.join(' ');
+  const w=text?text.split(/\s+/).length:0;
+  const s=Math.round(w/WPM*60);
+  $('words').textContent=w+' word'+(w===1?'':'s');
+  $('secs').textContent=s+' sec';
+  const a=$('ans');a.textContent=text||'Start typing above…';a.classList.toggle('empty',!text);
+  const bar=$('bar');bar.style.width=Math.min(100,s/75*100)+'%';
+  let hint='Aim for 40–60 seconds',col='var(--sage)';
+  if(!w){}
+  else if(s<30){hint='A bit short. Add the number to your Proof.';col='var(--lamp)'}
+  else if(s<=60){hint='Good length ✓'}
+  else{hint='Too long. Cut one line.';col='var(--rose)'}
+  bar.style.background=col;$('hint').textContent=hint;
+  try{localStorage.setItem(KEY,JSON.stringify(fields.map(f=>$(f).value)))}catch(e){}
+}
+try{const saved=JSON.parse(localStorage.getItem(KEY)||'null');if(Array.isArray(saved))fields.forEach((f,i)=>$(f).value=saved[i]||'')}catch(e){}
+fields.forEach(f=>$(f).addEventListener('input',render));render();
+$('cpa').onclick=async()=>{const t=fields.map(f=>$(f).value.trim()).filter(Boolean).join(' ');
+  if(!t){toast('Type your answer first');return}toast((await copy(t))?'Answer copied':'Copy failed')};
+</script>
+</body></html>
