@@ -44,7 +44,15 @@ const autoById = id => autos().find(a => a.id === id);
 const autoByKeyword = text => autos().find(a => (a.keywords || []).some(k => text.toLowerCase().includes(k.toLowerCase())));
 
 async function send(myId, recipient, message) {
-  return ig('POST', `${myId}/messages`, { recipient, message });
+  try {
+    return await ig('POST', `${myId}/messages`, { recipient, message });
+  } catch (e) {
+    if (!/thread owner/i.test(e.message) || !recipient.id) throw e;
+    // another app (e.g. Elev8or) owns this chat: take it over, then send again
+    await ig('POST', `${myId}/take_thread_control`, { recipient: { id: recipient.id }, metadata: 'autodm' })
+      .catch(e2 => log('take_thread_control failed:', e2.message));
+    return ig('POST', `${myId}/messages`, { recipient, message });
+  }
 }
 const qr = (title, payload) => [{ content_type: 'text', title: title.slice(0, 20), payload }];
 
