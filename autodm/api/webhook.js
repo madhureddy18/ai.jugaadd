@@ -90,7 +90,7 @@ async function lastAutoInChat(uid) {
     for (const msg of msgs) {
       const text = (msg.message || '').toLowerCase();
       const tail = x => fill(x, '').toLowerCase().slice(-28);   // the end of each template is unique per reel
-      const hit = autos().find(a => [a.opening, a.follow_text, a.final_text].some(x => x && text.includes(tail(x))));
+      const hit = autos().find(a => [a.opening, a.final_text].some(x => x && text.includes(tail(x))));
       if (hit) return hit;
     }
   } catch (e) { log('chat lookup failed:', e.message); }
