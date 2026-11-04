@@ -121,6 +121,27 @@
     "Done {{name}} ✅ the subject has received the prompt",
     "Your DM has it {{name}} 🎬 brace yourself"
    ]
+  },
+  {
+   "id": "stop",
+   "active": true,
+   "reel": "",
+   "keywords": [
+    "stop"
+   ],
+   "comment_replies": [],
+   "opening": "Hey {{name}} 👋 \"5 minutes\" again? 😅 Tap below and I'll send you the 3 settings that give you your 2 hours back 📵",
+   "opening_button": "Send it 📵",
+   "follow_gate": true,
+   "follow_text": "Almost there {{name}}! 😄 This one's for followers. Follow @ai.jugaadd (new AI skits daily) and tap below 👇",
+   "follow_button": "I followed ✅",
+   "final_text": "Here you go {{name}} 📵 Set all 3 tonight, it takes 2 minutes. There's a bonus prompt at the bottom for your phone-free evening plan.",
+   "link_label": "Get the 3 settings 📵",
+   "link": "https://madhureddy18.github.io/ai.jugaadd/p/stop/",
+   "direct": false,
+   "direct_text": "Hey {{name}} 👋 here are the 3 settings 📵 Set all 3 tonight, it takes 2 minutes.",
+   "any_comment": true,
+   "comment_replies_off": []
   }
  ]
 }
