@@ -20,9 +20,11 @@
  "tip": "Post in the evening (7–10 PM): it's a 'tag your friend' reel, and people tag more at night. After posting, send me the reel link so the ROAST auto-DM switches to 'any comment'.",
  "at": null,
  "created": "2026-11-04T13:45:00+05:30",
- "trim": {
-  "start": 0,
+ "cut": {
+  "start": 0.0,
   "end": 28.5,
-  "asked": "2026-11-04T08:24:42.594Z"
+  "from": 33.33,
+  "length": 28.5,
+  "at": "2026-11-04T13:57:33+05:30"
  }
 }
