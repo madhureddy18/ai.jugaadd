@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Make Reels With Claude · @ai.jugaadd</title>
+<meta name="description" content="Stop watching reels, start making them. The prompt that makes 3D animated reels with Claude, from @ai.jugaadd.">
+<meta property="og:title" content="Make 3D reels like @ai.jugaadd with Claude">
+<meta property="og:description" content="The exact prompts: easy (20 minutes, just the Claude app) and pro (full render with voices).">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0e14;--card:#161722;--line:#272a3a;--ink:#f7f3ec;--mute:#a6a4b6;--gold:#ffc53d;--org:#ff7a3d;--red:#ff5a5f;--green:#3ddc97}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+.ig{height:6px;background:linear-gradient(90deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)}
+main{max-width:660px;margin:0 auto;padding:28px 16px 64px}
+.tag{display:inline-block;background:var(--org);color:#fff;font-weight:900;font-size:13px;padding:6px 14px;border-radius:99px}
+h1{font-size:34px;line-height:1.12;margin:16px 0 10px;font-weight:900}h1 span{color:var(--gold)}
+p.sub{color:var(--mute);margin:0 0 22px;font-size:16px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 0 6px}
+.flow div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 6px;text-align:center;font-size:13px;color:var(--mute)}
+.flow b{display:block;font-size:22px}
+h2{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:34px 0 12px;font-weight:800}
+.lvl{display:flex;gap:10px;align-items:center;margin:0 0 10px}.lvl span{font-size:12px;font-weight:800;padding:4px 10px;border-radius:99px;background:#12291f;color:var(--green)}.lvl span.pro{background:#2a1d12;color:var(--org)}
+.lvl h3{margin:0;font-size:21px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:12px}
+pre{white-space:pre-wrap;word-wrap:break-word;font-family:inherit;font-size:15px;margin:0;color:#e9e6f2}
+pre b{color:var(--gold);font-weight:700}
+button{width:100%;margin-top:14px;border:0;border-radius:14px;padding:16px;font:900 17px Inter,sans-serif;background:var(--gold);color:#1a1206;cursor:pointer}
+button.done{background:var(--green);color:#0b1026}
+ol.steps{padding-left:20px;margin:0}ol.steps li{margin:8px 0}ol.steps b{color:var(--ink)}
+.ex{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--ink);background:linear-gradient(135deg,#1e2033,#2a1d3a);border:1px solid #3a3456;border-radius:18px;padding:14px 16px;margin:14px 0}
+.ex i{font-style:normal;font-size:30px}.ex small{display:block;color:var(--mute)}
+.rules{display:grid;gap:8px}.rules div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:15px}.rules b{color:var(--gold)}
+.set{font-size:15px;color:var(--mute)}.set b{color:var(--ink)}
+.note{font-size:14px;color:var(--mute);margin-top:10px}
+footer{margin-top:40px;text-align:center;color:var(--mute);font-size:14px}footer a{color:var(--gold);font-weight:700;text-decoration:none}
+</style></head>
+<body>
+<div class="ig"></div>
+<main>
+<span class="tag">@ai.jugaadd</span>
+<h1>Stop watching reels. <span>Start making them.</span></h1>
+<p class="sub">That reel with Maddie and his robot? Made with Claude, no animation skills needed. Here are the exact prompts, from a 20-minute version you can do on your phone today to the full version we use.</p>
+<div class="flow"><div><b>💡</b>idea</div><div><b>✍️</b>prompt</div><div><b>🎬</b>3D scene</div><div><b>📱</b>post</div></div>
+
+<h2>Level 1 · 20 minutes</h2>
+<div class="lvl"><span>EASY</span><h3>Just the Claude app</h3></div>
+<p class="sub" style="margin-bottom:12px">Claude builds your skit as a 3D animated page you can play on your phone. Fill in the <b style="color:var(--gold)">[brackets]</b>, paste it into Claude, and ask for it as an artifact.</p>
+<div class="card"><pre id="p1">Make me a 3D animated skit for an Instagram Reel, as a single HTML page (artifact) using Three.js.
+
+Characters:
+- [Main character: a cute toy-style boy named ___, big round head, dark hair, navy t-shirt]
+- [Sidekick: a small orange boxy robot with round eyes and an antenna]
+
+Setting: [a cozy bedroom at night: bed, window with city lights, wall clock, lamp]
+
+The skit (about 20 seconds):
+1. Hook (0–3s): [the relatable moment, e.g. "I'll sleep at 11"]
+2. Build-up (3–11s): [what goes wrong, e.g. time-lapse: clock spins, robot paces]
+3. Twist (11–17s): [the surprise, e.g. "it's 2:47 AM"]
+4. Punchline (17–20s): [one funny last line]
+
+Rules:
+- Vertical 9:16 frame that fills the whole screen (no black bars).
+- Characters move: walk, turn their heads, small gestures; mouths move when they talk.
+- Big readable captions in the middle of the screen (not at the very bottom), timed to the story.
+- At least 3 different camera shots with smooth moves.
+- Simple motion graphics: pop-up cards, a clock or counter, emoji tags.
+- A big ▶ Play button that starts it from the beginning, and a ⟲ Replay button. Hide buttons while it plays.
+- No sound (I'll add voice and music later).
+- Build everything from code shapes (no image files).</pre>
+<button data-c="p1">Copy the easy prompt</button></div>
+<a class="ex" href="example.html" target="_blank" rel="noopener"><i>▶️</i><span><b>See an example made with this prompt</b><small>"I'll sleep at 11" · tap Play, then screen-record</small></span></a>
+<div class="card"><ol class="steps">
+<li><b>Paste the prompt</b> in the Claude app and send it. If something looks off, just say what to fix: "make the robot bigger", "add a shot of the clock".</li>
+<li><b>Open the artifact full screen</b> on your phone and turn on <b>screen recording</b>. Tap ▶ Play.</li>
+<li><b>Edit in CapCut</b> (or Instagram's editor): trim the start, add your voice or text-to-speech, add a trending sound.</li>
+<li><b>Post</b> with a hook caption and one question for comments.</li>
+</ol></div>
+
+<h2>Level 2 · the way our reels are made</h2>
+<div class="lvl"><span class="pro">PRO</span><h3>Full render with voices</h3></div>
+<p class="sub" style="margin-bottom:12px">Claude writes the whole thing as code (3D scene, motion graphics, AI voices, subtitles) and renders a finished MP4. Use Claude with its code tools (Claude Code, or a Claude chat that can create files and run code).</p>
+<div class="card"><pre id="p2">You are my reel studio. Make a finished vertical video (1080x1920, 30 fps, MP4) of a 3D animated skit, rendered from code.
+
+Tools: build the scene in Three.js, render it frame by frame in headless Chrome (Playwright), and join frames + audio with ffmpeg. Use a free text-to-speech model (e.g. Kokoro) for the voices.
+
+Characters: [main character description] and [sidekick description]. Keep their look identical in every shot.
+Voices: [main character: warm, young] · [sidekick: dry, slightly British].
+Setting: [room / place, time of day, lighting mood].
+
+Script (about 30s):
+[HOOK line + what we see]
+[BUILD-UP: what happens, with a visual gag]
+[TWIST line]
+[PUNCHLINE line]
+[CTA: "Comment ___" (one word)]
+
+Make it look premium:
+- Fill the full 9:16 frame, no black bars. Hook in the first 2 seconds.
+- Motion graphics drawn on top (cards, counters, labels) that never cover faces.
+- Burned-in subtitles a little above the middle-bottom (above Instagram's buttons), speaker-coloured, 2–4 words at a time.
+- Real camera work: wide, close-ups, slow push-ins; mouths move with the voice.
+- Light background music that ducks under speech, plus small sound effects (pops, whooshes, ticks).
+Before rendering the full video, show me still frames of the key moments so we can fix framing first.</pre>
+<button data-c="p2">Copy the pro prompt</button></div>
+<div class="rules">
+<div><b>Hook first:</b> the funniest or most relatable moment goes in the first 2 seconds.</div>
+<div><b>One idea per reel:</b> a single relatable situation, then a twist. 20–35 seconds.</div>
+<div><b>Same characters every time:</b> people follow characters, not one-off videos.</div>
+<div><b>One-word CTA:</b> "Comment BUILD", not a sentence.</div>
+</div>
+
+<h2>Bonus · get your 2 hours back</h2>
+<div class="card set">
+<b>1. Instagram daily limit:</b> Profile → ☰ → Time management → Daily limit.<br>
+<b>2. App timer:</b> Android: Digital Wellbeing → Instagram → App timer. iPhone: Screen Time → App Limits.<br>
+<b>3. Grayscale at night:</b> Android: Bedtime mode → Grayscale. iPhone: Accessibility → Color Filters.
+<p class="note">Use the time you save to make your first reel. 🎬</p>
+</div>
+
+<footer>Made by <a href="https://www.instagram.com/ai.jugaadd/">@ai.jugaadd</a> · Maddie + his AI robot 🤖 · Tag us in your first reel</footer>
+</main>
+<script>
+document.querySelectorAll('button[data-c]').forEach(b=>{const label=b.textContent;b.onclick=async()=>{const t=document.getElementById(b.dataset.c).innerText;try{await navigator.clipboard.writeText(t)}catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove()}b.textContent='Copied ✓ now paste it into Claude';b.classList.add('done');setTimeout(()=>{b.textContent=label;b.classList.remove('done')},2600)}});
+</script>
+</body></html>

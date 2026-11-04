@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sleep at 11 · example skit</title>
+<style>
+html,body{margin:0;height:100%;background:#000;overflow:hidden;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+#stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#frame{position:relative;aspect-ratio:9/16;height:100%;max-width:100%;overflow:hidden;background:#111}
+@media (max-aspect-ratio:9/16){#frame{width:100%;height:auto}}
+canvas{display:block;width:100%;height:100%}
+#cap{position:absolute;left:6%;right:6%;top:58%;text-align:center;color:#fff;font-weight:800;font-size:clamp(18px,4.6vh,44px);line-height:1.15;text-shadow:0 3px 10px rgba(0,0,0,.7);opacity:0;transition:opacity .2s}
+#cap.claude{color:#ffd23d}
+#card{position:absolute;left:8%;right:8%;top:6%;padding:3% 4%;border-radius:22px;background:rgba(14,14,20,.85);color:#fff;text-align:center;font-weight:800;font-size:clamp(16px,4vh,40px);transform:scale(.6);opacity:0;transition:transform .35s cubic-bezier(.3,1.6,.5,1),opacity .2s}
+#card.on{transform:scale(1);opacity:1}
+#card small{display:block;font-weight:600;font-size:.5em;opacity:.7;letter-spacing:.2em}
+.btn{position:absolute;left:50%;transform:translateX(-50%);bottom:12%;border:0;border-radius:999px;padding:16px 34px;font:800 20px system-ui;background:#ffc53d;color:#1a1206;cursor:pointer}
+.hide{display:none}
+</style>
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }</script>
+</head><body>
+<div id="stage"><div id="frame"><canvas id="c"></canvas><div id="card"></div><div id="cap"></div>
+<button class="btn" id="play">▶ Play</button><button class="btn hide" id="replay">⟲ Replay</button></div></div>
+<script type="module">
+// Example made with the "Easy" prompt from madhureddy18.github.io/ai.jugaadd/p/build/
+import * as THREE from 'three';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+const cv = document.getElementById('c'), frame = document.getElementById('frame');
+const R = new THREE.WebGLRenderer({ canvas: cv, antialias: true, preserveDrawingBuffer: true });
+R.setPixelRatio(Math.min(2, devicePixelRatio)); R.outputColorSpace = THREE.SRGBColorSpace; R.shadowMap.enabled = true;
+R.toneMapping = THREE.ACESFilmicToneMapping;
+const S = new THREE.Scene(); S.background = new THREE.Color(0x14182a);
+const cam = new THREE.PerspectiveCamera(40, 9 / 16, 0.1, 50);
+const resize = () => { const w = frame.clientWidth, h = frame.clientHeight; R.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); };
+addEventListener('resize', resize);
+const M = (c, r = 0.7) => new THREE.MeshStandardMaterial({ color: c, roughness: r });
+const box = (w, h, d, m, x, y, z, r = 0.03, p = S) => { const o = new THREE.Mesh(new RoundedBoxGeometry(w, h, d, 3, Math.min(r, w / 2, h / 2, d / 2)), m); o.position.set(x, y, z); o.castShadow = o.receiveShadow = true; p.add(o); return o; };
+const sph = (r, m, x, y, z, p = S) => { const o = new THREE.Mesh(new THREE.SphereGeometry(r, 24, 16), m); o.position.set(x, y, z); o.castShadow = true; p.add(o); return o; };
+
+// --- room ---
+box(4, 0.1, 4, M(0x7a5638), 0, -0.05, 0, 0.01); box(4, 2.8, 0.1, M(0x2f4a5a), 0, 1.4, -1.6, 0.01); box(0.1, 2.8, 4, M(0x2f4a5a), -1.6, 1.4, 0, 0.01);
+const win = new THREE.Mesh(new THREE.PlaneGeometry(0.8, 0.9), new THREE.MeshBasicMaterial({ color: 0x1b2552 })); win.position.set(0.8, 1.6, -1.54); S.add(win);
+for (let i = 0; i < 18; i++) { const l = new THREE.Mesh(new THREE.PlaneGeometry(0.04, 0.05), new THREE.MeshBasicMaterial({ color: 0xffcd7d })); l.position.set(0.45 + (i % 6) * 0.13, 1.25 + Math.floor(i / 6) * 0.12, -1.53); S.add(l); }
+box(1.3, 0.3, 1.9, M(0x6a4630), -0.3, 0.15, -0.6); box(1.25, 0.15, 1.85, M(0xf4f1ea, 0.9), -0.3, 0.37, -0.6, 0.06); box(1.27, 0.08, 1.0, M(0xe7a64a, 0.95), -0.3, 0.46, -0.9, 0.04);
+const clockFace = new THREE.Mesh(new THREE.CircleGeometry(0.16, 32), M(0xf6f1e7)); clockFace.position.set(-0.3, 1.95, -1.54); S.add(clockFace);
+const hand = (len, w) => { const g = new THREE.Group(); g.position.set(-0.3, 1.95, -1.53); S.add(g); const m = new THREE.Mesh(new THREE.PlaneGeometry(w, len), new THREE.MeshBasicMaterial({ color: 0x111111 })); m.position.y = len / 2; g.add(m); return g; };
+const hourH = hand(0.08, 0.014), minH = hand(0.12, 0.008);
+// --- toy boy (sitting on the bed) ---
+const boy = new THREE.Group(); boy.position.set(-0.3, 0.45, 0.15); S.add(boy);
+box(0.36, 0.42, 0.24, M(0x24324a), 0, 0.25, 0, 0.1, boy);                    // body
+const head = new THREE.Group(); head.position.set(0, 0.68, 0); boy.add(head);
+box(0.46, 0.44, 0.4, M(0xd9a27a, 0.6), 0, 0, 0, 0.16, head); box(0.5, 0.16, 0.44, M(0x24170f), 0, 0.2, -0.02, 0.07, head);
+const eyes = [-0.09, 0.09].map(x => sph(0.035, M(0x111111, 0.3), x, 0.02, 0.2, head));
+const mouth = sph(0.035, M(0x5a2420), 0, -0.1, 0.2, head); mouth.scale.set(1, 0.2, 0.4);
+[-1, 1].forEach(s => { const a = box(0.09, 0.32, 0.09, M(0xd9a27a), s * 0.22, 0.25, 0.08, 0.04, boy); a.rotation.x = -0.9; });
+[-1, 1].forEach(s => { box(0.12, 0.12, 0.34, M(0x6d7f9c), s * 0.09, 0.0, 0.17, 0.05, boy); box(0.1, 0.36, 0.1, M(0x6d7f9c), s * 0.09, -0.2, 0.32, 0.04, boy); });
+const phone = box(0.09, 0.16, 0.012, M(0x7b5cff, 0.4), 0, 0.33, 0.24, 0.012, boy); phone.rotation.x = -0.6;
+const glow = new THREE.PointLight(0x9fc4ff, 0.6, 1.2); glow.position.set(-0.3, 0.95, 0.5); S.add(glow);
+// --- robot ---
+const bot = new THREE.Group(); bot.position.set(0.5, 0, 0.6); S.add(bot);
+box(0.3, 0.24, 0.22, M(0xc4532c), 0, 0.15, 0, 0.06, bot);
+const bh = new THREE.Group(); bh.position.set(0, 0.42, 0); bot.add(bh);
+box(0.42, 0.3, 0.3, M(0xe0663a, 0.5), 0, 0, 0, 0.08, bh); [-1, 1].forEach(s => box(0.05, 0.14, 0.14, M(0xf0a63a), s * 0.23, 0, 0, 0.02, bh));
+const be = [-0.09, 0.09].map(x => sph(0.04, M(0x3c3a3e, 0.3), x, 0.02, 0.15, bh));
+const bm = box(0.12, 0.03, 0.02, M(0xf2b544), 0, -0.08, 0.15, 0.01, bh);
+sph(0.025, M(0xf0a63a), 0, 0.24, 0, bh);
+// --- lights ---
+S.add(new THREE.HemisphereLight(0x8fa0d8, 0x2a1d14, 0.7));
+const key = new THREE.DirectionalLight(0xfff1e2, 1.1); key.position.set(-1, 3, 3); key.castShadow = true; S.add(key);
+const lamp = new THREE.PointLight(0xffb766, 0, 3); lamp.position.set(-1.2, 1.0, -1.0); S.add(lamp);
+
+// --- the skit: [start, end, who, caption] ---
+const LINES = [[0.4, 2.6, 'me', 'Me at 10:59 PM: "I\'ll sleep at 11."'], [3.0, 5.0, 'claude', 'Sure you will.'], [11.5, 14.0, 'me', 'Okay… one more reel.'], [14.5, 17.5, 'claude', 'It\'s 2:47 AM. The sun is negotiating.'], [18.0, 20.0, 'claude', 'Follow for more 🤖']];
+const CARDS = [[5.4, 11.2, t => `<small>TIME NOW</small>${clock(t)}`]];
+const clock = t => { const m = 23 * 60 - 1 + Math.floor(Math.max(0, t - 5.4) / 5.8 * 228); const h = Math.floor(m / 60) % 24, mm = m % 60; return `${(h % 12) || 12}:${String(mm).padStart(2, '0')} ${h >= 12 && h < 24 ? 'PM' : 'AM'}`; };
+const SHOTS = [[0, 5.4, [0.1, 1.3, 3.9], [0.1, 0.75, 0]], [5.4, 11.2, [0.0, 1.6, 3.8], [0.0, 0.9, -0.3]], [11.2, 14.4, [-0.3, 1.15, 2.1], [-0.3, 1.0, 0.15]], [14.4, 17.8, [0.25, 0.75, 2.4], [0.5, 0.45, 0.6]], [17.8, 99, [0.1, 1.4, 4.1], [0.1, 0.75, 0]]];
+const cap = document.getElementById('cap'), card = document.getElementById('card');
+let t0 = null, running = false;
+const ease = k => k * k * (3 - 2 * k);
+function frameAt(t) {
+  const s = SHOTS.find(x => t >= x[0] && t < x[1]) || SHOTS[0]; const k = ease(Math.min(1, (t - s[0]) / (s[1] - s[0])));
+  cam.position.set(s[2][0], s[2][1], s[2][2] - k * 0.25); cam.lookAt(...s[3]);
+  const talk = (who) => LINES.some(l => l[2] === who && t >= l[0] && t < l[1]) ? Math.abs(Math.sin(t * 14)) : 0;
+  mouth.scale.y = 0.2 + talk('me') * 0.6; bm.scale.y = 1 + talk('claude') * 2.5;
+  head.rotation.x = t > 11.2 && t < 14 ? 0.0 : 0.35; head.rotation.y = Math.sin(t * 0.7) * 0.06; head.rotation.z = t > 5.4 && t < 11.2 ? Math.sin(t * 3) * 0.08 : 0;
+  bh.rotation.y = -0.6 + Math.sin(t * 0.8) * 0.05; bh.rotation.z = t > 3 && t < 5 ? 0.15 : 0;
+  // time-lapse: clock spins, robot paces, lamp switches on
+  const tl = Math.max(0, Math.min(1, (t - 5.4) / 5.8)); minH.rotation.z = -tl * Math.PI * 2 * 3.8; hourH.rotation.z = -Math.PI * 2 * (11 / 12) - tl * Math.PI * 2 * (3.8 / 12);
+  if (t > 5.4 && t < 11.2) { bot.position.x = 0.5 + Math.sin(t * 2.2) * 0.45; bot.rotation.y = Math.cos(t * 2.2) > 0 ? -1.4 : 1.4; bot.position.y = Math.abs(Math.sin(t * 9)) * 0.03; } else { bot.position.set(0.5, 0, 0.6); bot.rotation.y = -0.7; }
+  lamp.intensity = t > 8 ? 1.2 : 0; glow.intensity = 0.6 + Math.sin(t * 8) * 0.1;
+  const l = LINES.find(x => t >= x[0] && t < x[1]); cap.style.opacity = l ? 1 : 0; if (l) { cap.textContent = l[3]; cap.className = l[2] === 'claude' ? 'claude' : ''; }
+  const c = CARDS.find(x => t >= x[0] && t < x[1]); card.classList.toggle('on', !!c); if (c) card.innerHTML = c[2](t);
+  R.render(S, cam);
+}
+window.frameAt = frameAt;          // lets you export frames from code if you want
+function loop(now) { if (!running) return; const t = (now - t0) / 1000; frameAt(t); if (t > 20.5) { running = false; document.getElementById('replay').classList.remove('hide'); return; } requestAnimationFrame(loop); }
+function start() { document.getElementById('play').classList.add('hide'); document.getElementById('replay').classList.add('hide'); t0 = performance.now(); running = true; requestAnimationFrame(loop); }
+document.getElementById('play').onclick = start; document.getElementById('replay').onclick = start;
+resize(); frameAt(0.5);
+</script>
+</body></html>
