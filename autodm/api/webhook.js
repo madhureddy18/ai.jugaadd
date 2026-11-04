@@ -32,17 +32,26 @@ let ME = null;
 async function me() { return ME || (ME = await ig('GET', 'me?fields=user_id,username')); }
 
 const mediaCache = {};
-// keyword must start a word ("hr" matches "HR", "hr!", "hrs" but not "three")
-const hasKw = (a, text) => (a.keywords || []).some(k => new RegExp('(^|[^a-z0-9])' + k.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).test(String(text || '').toLowerCase()));
-async function autoForMedia(mediaId, text) {
-  if (!(mediaId in mediaCache)) {
-    const m = await ig('GET', `${mediaId}?fields=permalink`).catch(() => ({}));
-    mediaCache[mediaId] = m.permalink || '';
-  }
-  const link = mediaCache[mediaId];
-  const code = a => (a.reel || '').replace(/\/+$/, '').split('/').pop();
-  return autos().find(a => link && code(a) && link.includes(code(a)))
-    || autos().find(a => !code(a) && hasKw(a, text));   // new reel without its link yet: match by keyword
+// Comments are normalised first so every way of typing the keyword works: Resume, RESUME, résumé, 𝗥𝗘𝗦𝗨𝗠𝗘, "H.R", "h r", "#hr"
+const norm = t => String(t || '').normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const esc = k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+// keyword must start a word ("hr" matches "HR", "hr!", "hrs" but not "three"); a short comment that is only the keyword with dots/spaces also counts
+const hasKw = (a, text) => { const t = norm(text), flat = t.replace(/[^a-z0-9]/g, '');
+  return (a.keywords || []).some(k => { k = norm(k); return new RegExp('(^|[^a-z0-9])' + esc(k)).test(t) || flat === k; }); };
+async function permalink(mediaId) {
+  if (!mediaId) return '';
+  if (!(mediaId in mediaCache)) { const m = await ig('GET', `${mediaId}?fields=permalink`).catch(() => ({})); mediaCache[mediaId] = m.permalink || ''; }
+  return mediaCache[mediaId];
+}
+const code = a => (a.reel || '').replace(/\/+$/, '').split('/').pop();
+// 1) a comment with a keyword gets THAT keyword's DM on any reel or post ("HR" under the resume reel -> HR prompt)
+// 2) otherwise, a reel with any_comment=true gives its own DM for any comment
+async function pickAuto(mediaId, text) {
+  const byKw = autos().find(a => hasKw(a, text));
+  if (byKw) return byKw;
+  const link = await permalink(mediaId);
+  const a = autos().find(x => link && code(x) && link.includes(code(x)));
+  return a && a.any_comment && String(text || '').trim() ? a : null;
 }
 const autoById = id => autos().find(a => a.id === id);
 const autoByKeyword = text => autos().find(a => hasKw(a, text));
@@ -68,16 +77,12 @@ async function unhideSweep(force) {
   lastSweep = Date.now();
   let n = 0;
   try {
-    const media = await ig('GET', 'me/media?fields=id&limit=12');
-    for (const m of media.data || []) {
+    const media = await ig('GET', 'me/media?fields=id&limit=6');
+    await Promise.all((media.data || []).map(async m => {
       const cs = await ig('GET', `${m.id}/comments?fields=id,text,hidden,username&limit=50`).catch(() => ({ data: [] }));
-      for (const c of cs.data || []) {
-        if (c.hidden) {
-          await ig('POST', `${c.id}?hide=false`).then(() => { n++; log(`unhid comment @${c.username}: ${c.text}`); })
-            .catch(e => log('unhide failed:', e.message));
-        }
-      }
-    }
+      await Promise.all((cs.data || []).filter(c => c.hidden).map(c => ig('POST', `${c.id}?hide=false`)
+        .then(() => { n++; log(`unhid comment @${c.username}: ${c.text}`); }).catch(e => log('unhide failed:', e.message))));
+    }));
   } catch (e) { log('unhide sweep failed:', e.message); }
   return n;
 }
@@ -85,9 +90,10 @@ async function unhideSweep(force) {
 async function onComment(v) {
   const { id: myId, username: myName } = await me().then(m => ({ id: String(m.user_id || m.id), username: m.username }));
   const who = (v.from && v.from.username) || '';
-  if (!v.id || !v.text || v.parent_id || who.toLowerCase() === (myName || '').toLowerCase()) return;
-  const a = await autoForMedia(v.media && v.media.id, v.text);
-  if (!a || !(a.any_comment && a.reel ? String(v.text || '').trim() : hasKw(a, v.text))) return;   // any_comment: every comment on that reel gets the DM
+  if (!v.id || !v.text || who.toLowerCase() === (myName || '').toLowerCase()) return;   // replies to other comments count too
+  if (v.parent_id && !autos().some(a => hasKw(a, v.text))) return;                      // ...but only when they contain a keyword
+  const a = await pickAuto(v.media && v.media.id, v.text);
+  if (!a) { log(`comment ignored (no keyword / reel not set up) @${who}: ${v.text}`); return; }
   log(`comment ${a.id} @${who}: ${v.text}`);
   const replies = a.comment_replies || [];
   if (replies.length) {
@@ -209,7 +215,7 @@ module.exports = async (req, res) => {
   log('event:', JSON.stringify(body).slice(0, 600));
   const jobs = [];
   for (const entry of body.entry || []) {
-    for (const ch of entry.changes || []) if (ch.field === 'comments' && ch.value) { jobs.push(onComment(ch.value)); jobs.push(new Promise(r => setTimeout(r, 4000)).then(() => unhideSweep())); }
+    for (const ch of entry.changes || []) if (ch.field === 'comments' && ch.value) { jobs.push(onComment(ch.value)); jobs.push(new Promise(r => setTimeout(r, 2500)).then(() => Promise.race([unhideSweep(), new Promise(r => setTimeout(r, 6000))]))); }
     // 'standby' = another connected app (e.g. Elev8or) owns the chat; we still handle it
     for (const m of [...(entry.messaging || []), ...(entry.standby || [])]) jobs.push(onMessage(m));
   }
