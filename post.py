@@ -1,4 +1,4 @@
-"""Post Reels to Instagram (@ai.jugaadd). Runs on GitHub Actions, driven by the website (index.html).
+"""Post Reels to Instagram (@maddiee.makess). Runs on GitHub Actions, driven by the website (index.html).
 
 queue/<id>.mp4 + queue/<id>.json + optional queue/<id>.jpg (cover)
   json: {"title", "caption", "hashtags": [max 5], "first_comment", "keywords", "audio_name", "thumb_offset" (ms),

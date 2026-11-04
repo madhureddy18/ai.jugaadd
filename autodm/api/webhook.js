@@ -1,4 +1,4 @@
-// Instant comment-to-DM for @ai.jugaadd (Vercel serverless function). No branding, never hides comments.
+// Instant comment-to-DM for @maddiee.makess (Vercel serverless function). No branding, never hides comments.
 //
 // Instagram calls this URL the moment someone comments or messages:
 //   comment containing a keyword  -> public reply under the comment + private-reply DM with a "Send it" button
@@ -96,7 +96,7 @@ async function onComment(v) {
   }
   const text = fill(a.opening, who);
   if (a.direct) {                                  // one-message mode: link straight in the private reply (no button step)
-    const msg = `${fill(a.direct_text || a.final_text, who)}\n\n👉 ${a.link}\n\n${fill(a.direct_follow || 'Follow @ai.jugaadd for a new fresher hack every day 🚀', who)}`;
+    const msg = `${fill(a.direct_text || a.final_text, who)}\n\n👉 ${a.link}\n\n${fill(a.direct_follow || 'Follow @maddiee.makess for new AI reels every day 🚀', who)}`;
     return send(myId, { comment_id: v.id }, { text: msg }).catch(e => log('private reply failed:', e.message));
   }
   try {

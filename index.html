@@ -157,7 +157,7 @@ function tokenPage(msg){
   $("#go").onclick = async () => { TOKEN = $("#tok").value.trim(); if (!TOKEN) return;
     try { await gh(R); store.set("aij_token", TOKEN); route(); } catch(e){ tokenPage(e.message); } };
 }
-const head = (back) => `<header>${back ? `<button class="ghost" onclick="location.hash='#/'" aria-label="Back">←</button>` : `<div class="logo"></div>`}<h1>AI Jugaad Studio<small>@ai.jugaadd · Instagram</small></h1><span class="spacer"></span>
+const head = (back) => `<header>${back ? `<button class="ghost" onclick="location.hash='#/'" aria-label="Back">←</button>` : `<div class="logo"></div>`}<h1>Maddie Makes Studio<small>@maddiee.makess · Instagram</small></h1><span class="spacer"></span>
   ${TOKEN ? `<button class="ghost" onclick="refresh()" aria-label="Refresh">↻</button>${back ? "" : `<button class="ghost" onclick="logout()">Log out</button>`}` : ""}</header>`;
 function logout(){ if (!confirm("Log out on this device?")) return; store.set("aij_token", null); TOKEN = ""; tokenPage(); }
 async function refresh(){ DATA = null; route(); }
