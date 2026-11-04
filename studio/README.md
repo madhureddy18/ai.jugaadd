@@ -5,4 +5,5 @@ Scene files for @ai.jugaadd reels, kept here so nothing is lost. They render wit
 - `scenes/aij_doc.js` — "Maddie: A Documentary" (comment ROAST)
 - `scenes/aij_5min.js` — "POV: 5 minutes on Instagram" (comment STOP)
 - `scenes/aij_5min2.js` — "POV: 5 minutes on Instagram" v2 (poses, chores, book throw, made-with-Claude reveal; comment BUILD)
+- `scenes/aij_5min3.js` — v3: new ending (post reels with Claude, comment PROMPT); frames before the BONK reused from v2
 - `render-docscore.patch` — adds the documentary string score and scratch/swoosh/timpani sounds to codevid/render.js
