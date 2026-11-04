@@ -11,6 +11,7 @@ const oldKw = (a, t) => (a.keywords || []).some(k => new RegExp('(^|[^a-z0-9])' 
   const convs = []; try { let c = await ig('me/conversations?platform=instagram&fields=participants,messages.limit(4){message,from,created_time}&limit=100'); convs.push(...(c.data || [])); } catch (e) { console.log('conversations:', e.message); }
   const dmTo = new Map(); for (const c of convs) { const other = (c.participants.data || []).find(p => p.username !== me.username); const ours = ((c.messages || {}).data || []).filter(m => m.from && m.from.username === me.username); if (other) dmTo.set(other.username, ours.map(m => m.created_time)); }
   console.log(`conversations found: ${convs.length}`);
+  console.log('\nlatest posts:'); for (const x of media.slice(0, 10)) { const d = await ig(`${x.id}?fields=caption,media_product_type`).catch(() => ({})); console.log(`  ${x.timestamp.slice(0, 16)}  ${x.permalink}  ${x.comments_count} comments  ${d.media_product_type || ''}  "${(d.caption || '').replace(/\s+/g, ' ').slice(0, 50)}"`); }
   for (const a of CONFIG.automations.filter(x => x.reel)) {
     const code = a.reel.replace(/\/+$/, '').split('/').pop(); const m = media.find(x => (x.permalink || '').includes(code));
     console.log(`\n=== ${a.id.toUpperCase()}  ${a.reel}  ${m ? `posted ${m.timestamp}, ${m.comments_count} comments` : 'NOT FOUND in last 50 posts'}`);
