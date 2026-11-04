@@ -48,7 +48,7 @@ jobs:
         run: |
           git config user.name "aijugaadd-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A queue posted.json
+          git add -A queue posted.json; git add -A originals 2>/dev/null || true
           if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
           git commit -m "Post update $(date -u +%F' '%H:%M)"
           for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done

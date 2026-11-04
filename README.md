@@ -20,6 +20,11 @@ The website asks for a fine-grained GitHub token with **Contents** and **Actions
 
 Note: the repo is public because Instagram downloads videos from a public link.
 
+## Cutting a video
+Open a video on the website → **✂️ Cut video**. Drag Start/End (or play it and tap "Set start / Set end = ▶ now", nudge with ±0.1s), tap **Preview cut**, then **Save cut**.
+- The cut runs on GitHub Actions (`.github/workflows/cut.yml` → `cut.py`, ffmpeg) and takes about 1–2 minutes; Post/Schedule are paused until it's done.
+- The very first original is kept in `originals/` so **Undo cut** can bring it back. It's deleted automatically once the Reel is posted.
+
 ## Prompt pages (the link sent in DMs)
 Each reel's "comment KEYWORD" freebie lives at `p/<keyword>/` — e.g. **https://madhureddy18.github.io/ai.jugaadd/p/resume/**
 
