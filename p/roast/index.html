@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your Life, A Documentary · @ai.jugaadd</title>
+<meta name="description" content="Turn your screen-time screenshot into a deadpan wildlife documentary about your life. The exact prompt from @ai.jugaadd.">
+<meta property="og:title" content="Your life, narrated like a nature documentary">
+<meta property="og:description" content="Screenshot your screen time, paste the prompt, meet your species. From @ai.jugaadd.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0b10;--card:#14151d;--line:#262838;--ink:#f5f0e6;--mute:#a5a3b4;--gold:#f2b544;--red:#ff5a52;--green:#3ddc97}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+.bar{height:14px;background:#000}
+main{max-width:640px;margin:0 auto;padding:30px 16px 64px}
+.serif{font-family:"Libre Baskerville",Georgia,serif}
+.eyebrow{font-size:12px;letter-spacing:.32em;color:var(--mute);text-transform:uppercase}
+h1{font-family:"Libre Baskerville",Georgia,serif;font-weight:400;font-size:44px;letter-spacing:.12em;margin:14px 0 6px;line-height:1.1}
+.rule{width:120px;height:2px;background:var(--gold);margin:14px 0 18px}
+p.sub{color:var(--mute);margin:0 0 26px;font-size:16px}
+.lt{border-left:5px solid var(--gold);padding:6px 0 6px 16px;margin:0 0 26px}
+.lt small{display:block;color:var(--gold);font-weight:800;font-size:12px;letter-spacing:.3em}
+.lt div{font-family:"Libre Baskerville",Georgia,serif;font-style:italic;font-size:22px}
+.lt span{color:var(--mute);font-size:14px}
+h2{font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin:34px 0 12px;font-weight:800}
+.steps{display:grid;gap:10px}
+.st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 15px;font-size:15px}
+.st b{color:var(--gold)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
+pre{white-space:pre-wrap;word-wrap:break-word;font-family:inherit;font-size:15px;margin:0;color:#e9e6f2}
+button{width:100%;margin-top:14px;border:0;border-radius:14px;padding:16px;font:800 17px Inter,sans-serif;background:var(--gold);color:#1a1206;cursor:pointer}
+button.done{background:var(--green);color:#0b1026}
+.where{display:grid;gap:10px}
+.where div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 15px;font-size:15px}
+.where b{color:var(--ink)}
+.sample{background:#0f1016;border:1px solid var(--line);border-radius:18px;padding:18px 18px 8px;position:relative;overflow:hidden}
+.sample:before{content:"● REC";position:absolute;top:12px;right:14px;color:var(--red);font-size:12px;font-weight:800;letter-spacing:.1em}
+.sample p{font-family:"Libre Baskerville",Georgia,serif;font-style:italic;margin:0 0 12px;font-size:16px;color:#e6e1d6}
+.note{margin-top:18px;border-left:4px solid var(--red);padding:10px 14px;background:rgba(255,90,82,.08);border-radius:8px;font-size:15px}
+footer{margin-top:40px;text-align:center;color:var(--mute);font-size:14px}
+footer a{color:var(--gold);font-weight:700;text-decoration:none}
+</style></head>
+<body>
+<div class="bar"></div>
+<main>
+<div class="eyebrow">@ai.jugaadd presents</div>
+<h1>YOU.</h1>
+<div class="eyebrow">A documentary</div>
+<div class="rule"></div>
+<p class="sub">Your phone already knows exactly how you spend your day. Hand that to an AI, and it narrates your life like a wildlife film: funny, a little brutal, and weirdly useful.</p>
+
+<div class="lt"><small>SPECIES</small><div>Engineerus graduatus</div><span>Active hours: 1 AM – 5 AM</span></div>
+
+<h2>How it works</h2>
+<div class="steps">
+<div class="st"><b>1. Screenshot your screen time</b> for today or this week (where to find it is below).</div>
+<div class="st"><b>2. Copy the prompt</b> and paste it into Claude (or any AI chat that takes images).</div>
+<div class="st"><b>3. Attach the screenshot</b> and add one line about yourself (student, fresher, job, what you <i>meant</i> to do today).</div>
+</div>
+
+<h2>The prompt</h2>
+<div class="card"><pre id="pr">You are a dry, slightly British wildlife-documentary narrator. I've attached a screenshot of my phone's screen time. Narrate my life as a short nature documentary about a rare species: me.
+
+About me: [student / fresher / job, and what I planned to do today]
+
+Rules:
+- Use ONLY what's in the screenshot and what I told you: real app names, real hours, real pickups or unlocks. Don't invent facts.
+- Deadpan and funny, never mean. Short lines with pauses, like a narrator reading slowly.
+- Format:
+  SPECIES: a fake Latin name for me
+  HABITAT: where I clearly spend my time
+  ACTIVE HOURS: based on the data
+  Then 6–8 lines of narration.
+  OBSERVED BEHAVIOUR: my single most surprising habit from the data
+- End with one honest line out of character: the ONE change that would give me back the most time tomorrow, and roughly how many hours a week it frees.</pre>
+<button id="cp">Copy the prompt</button></div>
+
+<h2>Where to find your screen time</h2>
+<div class="where">
+<div><b>Android:</b> Settings → Digital Wellbeing &amp; parental controls → the dashboard (tap the chart for app-by-app time). Samsung: Settings → Digital Wellbeing.</div>
+<div><b>iPhone:</b> Settings → Screen Time → See All App &amp; Website Activity (switch between Day and Week).</div>
+</div>
+
+<h2>What you'll get (example)</h2>
+<div class="sample">
+<p>SPECIES: Scrollus infinitus.</p>
+<p>Here we observe the subject, awake at 1:12 AM. He has opened Instagram eighty-four times today. He has opened the job portal… once.</p>
+<p>Six hours and nine minutes of screen time. The subject describes this as "just checking something."</p>
+<p>OBSERVED BEHAVIOUR: unlocks the phone, stares, locks it again. Forty times.</p>
+<p>Out of character: put Instagram on a 45-minute daily timer. That's about 20 hours a week back.</p>
+</div>
+
+<div class="note">Got a good one? Screen-record it and tag <b>@ai.jugaadd</b>. The funniest documentaries get featured.</div>
+
+<footer>Made by <a href="https://www.instagram.com/ai.jugaadd/">@ai.jugaadd</a> · Maddie + his AI robot fix fresher problems 🤖</footer>
+</main>
+<script>
+const b=document.getElementById('cp');
+b.onclick=async()=>{const t=document.getElementById('pr').innerText;try{await navigator.clipboard.writeText(t)}catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove()}b.textContent='Copied ✓ now paste it into Claude';b.classList.add('done');setTimeout(()=>{b.textContent='Copy the prompt';b.classList.remove('done')},2600)};
+</script>
+</body></html>

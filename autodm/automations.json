@@ -91,6 +91,36 @@
     "{{name}} prompt sent 📩 follow up after 5 days if no reply",
     "Your DM has it {{name}} 🚀 all the best for the interview call"
    ]
+  },
+  {
+   "id": "roast",
+   "active": true,
+   "reel": "",
+   "keywords": [
+    "roast"
+   ],
+   "comment_replies": [],
+   "opening": "Hey {{name}} 👋 The narrator has noticed you. Tap below and I'll send you the documentary prompt 🎬",
+   "opening_button": "Send it 🎬",
+   "follow_gate": true,
+   "follow_text": "Almost there {{name}}! 😄 The prompt is only for followers. Follow @ai.jugaadd (new AI hacks daily) and tap below 👇",
+   "follow_button": "I followed ✅",
+   "final_text": "Here you go {{name}} 🎬 Screenshot your screen time, paste the prompt into Claude with it, and meet your species.",
+   "link_label": "Get the prompt 🎬",
+   "link": "https://madhureddy18.github.io/ai.jugaadd/p/roast/",
+   "direct": false,
+   "direct_text": "Hey {{name}} 👋 here's your documentary prompt 🎬 Screenshot your screen time, paste the prompt into Claude with it, and meet your species.",
+   "any_comment": true,
+   "comment_replies_off": [
+    "The narrator has detected {{name}} 🎬 check DMs",
+    "{{name}} your documentary prompt is in DMs 📩",
+    "Sent {{name}}! Remarkable. 🧐",
+    "Check DMs {{name}} 📩 screenshot your screen time first",
+    "{{name}} prompt sent 🎬 tag us with your species",
+    "In your inbox {{name}}! Five more minutes… then read it 😄",
+    "Done {{name}} ✅ the subject has received the prompt",
+    "Your DM has it {{name}} 🎬 brace yourself"
+   ]
   }
  ]
 }
