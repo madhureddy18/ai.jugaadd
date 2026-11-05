@@ -100,7 +100,7 @@ window.SCENE = {
     for (let x = -60; x < 160; x += 7) { palm(x + (rng() - 0.5) * 1.2, -2.35 - rng() * 0.4, 0.9 + rng() * 0.25); if (Math.round(x / 7) % 3 === 0) lamp(x + 3.5, -1.95); }
     for (let x = -50; x < 160; x += 23) { const b = new THREE.Group(); b.position.set(x, 0, 1.45); S.add(b); rbox(1.4, 0.06, 0.4, SM(0x8a5a3a, 0.6), 0, 0.42, 0, 0.02, b); rbox(1.4, 0.36, 0.05, SM(0x8a5a3a, 0.6), 0, 0.64, 0.2, 0.02, b); [-0.6, 0.6].forEach(dx => rbox(0.06, 0.42, 0.36, SM(0x2c3240, 0.5), dx, 0.21, 0, 0.01, b)); }
     // coconut cart
-    const cart = new THREE.Group(); cart.position.set(22, 0, 2.7); S.add(cart);
+    const cart = new THREE.Group(); cart.position.set(-40, 0, 2.7); S.add(cart);
     rbox(1.2, 0.5, 0.6, SM(0x2f9e7a, 0.6), 0, 0.6, 0, 0.04, cart); [-0.45, 0.45].forEach(dx => { const w = cyl(0.22, 0.22, 0.06, SM(0x222, 0.6), dx, 0.22, 0.32, 16, cart); w.rotation.x = Math.PI / 2; });
     for (let i = 0; i < 14; i++) sph(0.11, SM(0x5f8a2a, 0.6), -0.45 + (i % 5) * 0.22, 0.95 + Math.floor(i / 5) * 0.14, -0.12 + (i % 2) * 0.2, cart, 12);
     cyl(0.025, 0.025, 1.4, SM(0x888, 0.4), 0, 1.5, 0, 8, cart); const umb = new THREE.Mesh(new THREE.ConeGeometry(0.95, 0.4, 12, 1, true), SM(0xff7a3d, 0.6, { side: THREE.DoubleSide })); umb.position.set(0, 2.2, 0); cart.add(umb);
