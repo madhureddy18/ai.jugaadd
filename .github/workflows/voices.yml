@@ -20,7 +20,7 @@ jobs:
       - run: mkdir -p out && cp -r studio/voices/refs out/ 2>/dev/null || true; python studio/voices/omnivoice_gen.py "${{ github.event.inputs.config }}" out
       - name: Push results to the voices-out branch
         run: |
-          cd out && rm -f option?.wav && git init -q && git checkout -q -b voices-out
+          cd out && rm -f option?.wav && mkdir -p autodm && echo '{"git":{"deploymentEnabled":false}}' > autodm/vercel.json && git init -q && git checkout -q -b voices-out
           git -c user.name=voices-bot -c user.email=bot@users.noreply.github.com add -A
           git -c user.name=voices-bot -c user.email=bot@users.noreply.github.com commit -qm "voices ${{ github.run_id }}"
           git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" voices-out
