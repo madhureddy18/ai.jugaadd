@@ -97,7 +97,7 @@ window.SCENE = {
       palms.push({ top, ph: x }); return g; };
     const lamp = (x, z) => { const g = new THREE.Group(); g.position.set(x, 0, z); S.add(g); cyl(0.05, 0.08, 3.2, SM(0x2c3240, 0.4, { metalness: 0.5 }), 0, 1.6, 0, 10, g); const arm = cyl(0.03, 0.03, 0.6, SM(0x2c3240, 0.4), 0, 3.15, 0.25, 8, g); arm.rotation.x = Math.PI / 2;
       const head = rbox(0.34, 0.12, 0.2, SM(0x2c3240, 0.4), 0, 3.12, 0.52, 0.03, g); const bulb = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.03, 0.14), BM(0xffe2a6)); bulb.position.set(0, 3.05, 0.52); g.add(bulb); lamps.push(bulb); };
-    for (let x = -60; x < 160; x += 7) { palm(x + (rng() - 0.5) * 1.2, -2.35 - rng() * 0.4, 0.9 + rng() * 0.25); if (Math.round(x / 7) % 2 === 0) lamp(x + 3.5, -1.85); }
+    for (let x = -60; x < 160; x += 7) { palm(x + (rng() - 0.5) * 1.2, -2.35 - rng() * 0.4, 0.9 + rng() * 0.25); if (Math.round(x / 7) % 3 === 0) lamp(x + 3.5, -1.95); }
     for (let x = -50; x < 160; x += 23) { const b = new THREE.Group(); b.position.set(x, 0, 1.45); S.add(b); rbox(1.4, 0.06, 0.4, SM(0x8a5a3a, 0.6), 0, 0.42, 0, 0.02, b); rbox(1.4, 0.36, 0.05, SM(0x8a5a3a, 0.6), 0, 0.64, 0.2, 0.02, b); [-0.6, 0.6].forEach(dx => rbox(0.06, 0.42, 0.36, SM(0x2c3240, 0.5), dx, 0.21, 0, 0.01, b)); }
     // coconut cart
     const cart = new THREE.Group(); cart.position.set(22, 0, 2.7); S.add(cart);
@@ -123,7 +123,7 @@ window.SCENE = {
     // a few other walkers far away (simple toy people)
     const walkers = Array.from({ length: 5 }, (_, i) => { const g = new THREE.Group(); S.add(g); const col = [0xd94a3a, 0x3b6ea8, 0xffc53d, 0x8a5cc7, 0x2f9e7a][i];
       rbox(0.34, 0.5, 0.22, SM(col, 0.8), 0, 0.95, 0, 0.08, g); rbox(0.26, 0.26, 0.24, SM([0xf0c4a0, 0xc98a5c, 0xa96f4c][i % 3], 0.6), 0, 1.38, 0, 0.1, g); rbox(0.28, 0.1, 0.26, SM(0x2a1c15, 0.7), 0, 1.5, -0.01, 0.04, g);
-      [-0.08, 0.08].forEach(dx => rbox(0.1, 0.7, 0.12, SM(0x2b2f45, 0.8), dx, 0.35, 0, 0.04, g)); return { g, x0: 6 + i * 9 + rng() * 4, z: [0.9, -0.9, 1.0, -0.8, 0.7][i], dir: i % 2 ? -1 : 1, sp: 0.6 + rng() * 0.3 }; });
+      [-0.08, 0.08].forEach(dx => rbox(0.1, 0.7, 0.12, SM(0x2b2f45, 0.8), dx, 0.35, 0, 0.04, g)); return { g, x0: 45 + i * 9 + rng() * 4, z: [0.9, -0.9, 1.0, -0.8, 0.7][i], dir: i % 2 ? -1 : 1, sp: 0.6 + rng() * 0.3 }; });
 
     // ================= MADDIE (standing, walking; degree tube) =================
     const SEAT = 0.5;
@@ -242,7 +242,7 @@ window.SCENE = {
       seaTex.offset.set(t * 0.004, -t * 0.012); glitTex.offset.y = (t * 0.05) % 1;
       palms.forEach(p => { p.top.rotation.z = Math.sin(t * 1.1 + p.ph) * 0.05; p.top.rotation.x = Math.sin(t * 0.8 + p.ph * 0.7) * 0.04; });
       birds.forEach(b => { const a = Math.sin(t * 7 + b.k) * 0.5; b.w1.rotation.z = a; b.w2.rotation.z = -a; b.g.position.set(X - 18 + ((t * 1.5 + b.k * 3.1) % 40), 7.5 + Math.sin(t * 0.7 + b.k) * 0.6 + (b.k % 3) * 0.6, -14 - (b.k % 4) * 3); });
-      walkers.forEach((w, i) => { const wx = w.x0 + w.dir * w.sp * t; w.g.position.set(wx, Math.abs(Math.sin(t * 6 + i)) * 0.03, w.z); w.g.rotation.y = w.dir > 0 ? Math.PI / 2 : -Math.PI / 2; });
+      walkers.forEach((w, i) => { const wx = X + 14 + i * 7 + Math.sin(t * 0.2 + i) * 1.5; w.g.position.set(wx, Math.abs(Math.sin(t * 6 + i)) * 0.03, w.z * 1.1); w.g.rotation.y = Math.PI / 2; });   // strolling far ahead, never in the way
       gondolas.forEach((g, i) => { const p = ((t * 0.02 + i / 3) % 1); g.position.copy(cableA).lerp(cableB, p); });
       clouds.forEach(c => c.c.position.set(c.x + t * 0.3 + X * 0.6, c.y, c.z));
       lamps.forEach(l => l.material.color.setHex(0xffe2a6));
@@ -257,12 +257,12 @@ window.SCENE = {
     // shot definitions are relative to the walkers' x (dx), resolved every frame
     const REL = {
       est: [P([4.2, 3.0, 4.6], [0.2, 1.0, -1.2], 44), P([2.9, 1.75, 3.3], [0.3, 1.15, -0.4], 40)],
-      two: [P([2.2, 1.45, 2.9], [0.35, 1.22, -0.2], 36), P([2.0, 1.45, 2.6], [0.35, 1.22, -0.2], 36)],
-      twoF: [P([3.3, 1.45, 1.7], [0.3, 1.2, -0.3], 36), P([3.0, 1.45, 1.55], [0.3, 1.2, -0.3], 36)],
+      two: [P([2.4, 1.65, 3.2], [0.35, 1.5, -0.2], 36), P([2.2, 1.65, 2.9], [0.35, 1.5, -0.2], 36)],
+      twoF: [P([3.6, 1.65, 1.9], [0.3, 1.5, -0.3], 36), P([3.3, 1.65, 1.75], [0.3, 1.5, -0.3], 36)],
       mad: [P([2.2, 1.5, 2.0], [0.1, 1.28, MZ], 32), P([2.05, 1.5, 1.85], [0.1, 1.28, MZ], 32)],
-      botC: [P([1.55, 1.4, 1.35], [0.62, 1.3, BZ], 30), P([1.45, 1.4, 1.2], [0.62, 1.3, BZ], 30)],
-      side: [P([0.4, 1.35, 3.4], [0.35, 1.18, -0.3], 38), P([0.7, 1.35, 3.3], [0.55, 1.18, -0.3], 38)],
-      wide: [P([-3, 2.6, 5.5], [1.5, 1.2, -4], 46), P([-1.5, 2.3, 5.2], [2.0, 1.2, -4], 46)],
+      botC: [P([2.4, 1.55, 2.3], [0.6, 1.42, BZ], 30), P([2.25, 1.55, 2.1], [0.6, 1.42, BZ], 30)],
+      side: [P([0.5, 1.6, 3.8], [0.35, 1.48, -0.3], 38), P([0.8, 1.6, 3.7], [0.55, 1.48, -0.3], 38)],
+      wide: [P([4.6, 2.5, 4.6], [0.4, 1.55, -1.4], 42), P([4.0, 2.2, 4.2], [0.5, 1.5, -1.4], 42)],
       back: [P([0.4, 1.55, 3.4], [0.4, 1.5, -8], 44), P([0.4, 1.65, 4.2], [0.4, 1.9, -10], 46)],
     };
     const plan = [
@@ -285,7 +285,7 @@ window.SCENE = {
     const hTex = new THREE.CanvasTexture(hc); hTex.colorSpace = THREE.SRGBColorSpace;
     const hud = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: hTex, transparent: true, depthTest: false, depthWrite: false, toneMapped: false, fog: false }));
     hud.renderOrder = 1000; K.cam.add(hud);
-    const ACC = '#ffc53d', OR = '#ff7a3d', RED = '#ff4d5a', GRN = '#2fbf7f', INK = '#1d1b2e', PAPER = 'rgba(255,251,244,0.97)', DIMK = 'rgba(29,27,46,0.55)', TXT = '#fbf7f0';
+    const ACC = '#ffc53d', OR = '#ff7a3d', RED = '#ff4d5a', GRN = '#2fbf7f', INK = '#1d1b2e', PAPER = 'rgba(238,232,222,0.97)', DIMK = 'rgba(29,27,46,0.55)', TXT = '#fbf7f0';
     const FR = '"Fredoka Light", "Inter Display"', MONO = '"DejaVu Sans Mono", monospace';
     const F = (s, w = 400, fam = '"Inter", "DejaVu Sans"') => `${w} ${s}px ${fam}`;
     const txt = (s, x, y, size, col, w = 400, align = 'left', a = 1, fam) => { if (a <= 0) return; h.save(); h.globalAlpha *= a; h.font = F(size, w, fam); h.fillStyle = col; h.textAlign = align; h.textBaseline = 'middle'; h.fillText(s, x, y); h.restore(); };
@@ -317,7 +317,7 @@ window.SCENE = {
         shadowCard(-120, -160, 240, 320, 14); txt('RESUME.pdf', 0, -125, 22, INK, 800, 'center', 1, MONO); for (let r = 0; r < 7; r++) { h.fillStyle = 'rgba(29,27,46,0.13)'; h.fillRect(-90, -90 + r * 30, r % 3 === 2 ? 110 : 180, 12); } h.restore(); }
       chip('× 60  same file', 540, 680, 38, RED, '#fff', fin(t, C.SAME + 0.6, 0.3), pop(t, C.SAME + 0.6, 0.35)); h.restore(); };
     const drawRepo = t => { if (t < C.TOOL || t >= C.S1) return; const a = 1 - pr(t, C.S1 - 0.25, C.S1);
-      const k = pop(t, B('name') - 0.05, 0.45); scaleAt(540, 430, k * a, () => { shadowCard(130, 290, 820, 290, 34, '#ffffff');
+      const k = pop(t, B('name') - 0.05, 0.45); scaleAt(540, 430, k * a, () => { shadowCard(130, 290, 820, 290, 34, PAPER);
         h.fillStyle = INK; h.beginPath(); h.arc(200, 360, 30, 0, 7); h.fill(); txt('🐙', 200, 362, 34, '#fff', 400, 'center'); txt('career-ops-hq /', 250, 345, 28, DIMK, 600); txt('career-ops', 250, 385, 46, INK, 800, 'left', 1, FR);
         txt('Open-source AI job search agent', 170, 450, 28, DIMK, 600);
         const st = lerp(0, 80000, eo(pr(t, B('stars'), E('stars') + 0.1))); rr(170, 490, 330, 64, 18, '#fff4dc', '#f2c96b', 3); txt('⭐', 205, 523, 34, '#000', 400, 'center'); txt(fmt(st), 240, 523, 40, INK, 700, 'left', 1, FR);
