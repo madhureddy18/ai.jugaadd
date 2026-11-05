@@ -1,0 +1,18 @@
+name: auto-DM backup
+on:
+  schedule: [{ cron: '*/10 * * * *' }]
+  workflow_dispatch:
+    inputs:
+      dry: { description: 'Only print, do not send (1 = dry run)', default: '' }
+concurrency: { group: sweep-dm, cancel-in-progress: false }
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: node tools/sweep_dm.js
+        env:
+          IG_TOKEN: ${{ secrets.AIJUGAADIGTOKEN }}
+          DRY: ${{ github.event.inputs.dry }}

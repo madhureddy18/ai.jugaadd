@@ -44,15 +44,15 @@ async function permalink(mediaId) {
   return mediaCache[mediaId];
 }
 const code = a => (a.reel || '').replace(/\/+$/, '').split('/').pop();
-// 1) a comment with a keyword gets THAT keyword's DM on any reel or post ("HR" under the resume reel -> HR prompt)
-// 2) otherwise, a reel with any_comment=true gives its own DM for any comment
+// Which DM a comment gets: 1) its keyword's DM, on any reel ("HR" under the resume reel -> HR prompt)
+// 2) else the DM set up for that reel  3) else the default DM (CONFIG.default). Every comment, words or emoji, gets one.
 async function pickAuto(mediaId, text) {
   const byKw = autos().find(a => hasKw(a, text));
   if (byKw) return byKw;
   const link = await permalink(mediaId);
-  const a = autos().find(x => link && code(x) && link.includes(code(x)));
-  return a && a.any_comment && String(text || '').trim() ? a : null;
+  return autos().find(x => link && code(x) && link.includes(code(x))) || autos().find(x => x.id === CONFIG.default) || null;
 }
+const directText = (a, who) => `${fill(a.direct_text || a.final_text, who)}\n\n👉 ${a.link}\n\n${fill(a.direct_follow || CONFIG.direct_follow || 'Follow @maddiee.makess for new AI reels every day 🚀', who)}`;
 const autoById = id => autos().find(a => a.id === id);
 const autoByKeyword = text => autos().find(a => hasKw(a, text));
 
@@ -90,28 +90,14 @@ async function unhideSweep(force) {
 async function onComment(v) {
   const { id: myId, username: myName } = await me().then(m => ({ id: String(m.user_id || m.id), username: m.username }));
   const who = (v.from && v.from.username) || '';
-  if (!v.id || !v.text || who.toLowerCase() === (myName || '').toLowerCase()) return;   // replies to other comments count too
-  if (v.parent_id && !autos().some(a => hasKw(a, v.text))) return;                      // ...but only when they contain a keyword
+  if (!v.id || who.toLowerCase() === (myName || '').toLowerCase()) return;     // never answer our own comments/replies
   const a = await pickAuto(v.media && v.media.id, v.text);
-  if (!a) { log(`comment ignored (no keyword / reel not set up) @${who}: ${v.text}`); return; }
+  if (!a) { log(`comment ignored (no DM set up) @${who}: ${v.text}`); return; }
   log(`comment ${a.id} @${who}: ${v.text}`);
-  const replies = a.comment_replies || [];
-  if (replies.length) {
-    const msg = fill(replies[Math.floor(Math.random() * replies.length)], '@' + who);
-    await ig('POST', `${v.id}/replies`, { message: msg }).catch(e => log('public reply failed:', e.message));
-  }
-  const text = fill(a.opening, who);
-  if (a.direct) {                                  // one-message mode: link straight in the private reply (no button step)
-    const msg = `${fill(a.direct_text || a.final_text, who)}\n\n👉 ${a.link}\n\n${fill(a.direct_follow || 'Follow @maddiee.makess for new AI reels every day 🚀', who)}`;
-    return send(myId, { comment_id: v.id }, { text: msg }).catch(e => log('private reply failed:', e.message));
-  }
-  try {
-    await send(myId, { comment_id: v.id }, { text, quick_replies: qr(a.opening_button || 'Send it 🚀', `SEND|${a.id}|0`) });
-  } catch (e) {
-    log('quick reply in private reply refused, using text:', e.message);
-    await send(myId, { comment_id: v.id }, { text: `${text}\n\nReply ${a.keywords[0].toUpperCase()} and I'll send it 👇` })
-      .catch(e2 => log('private reply failed:', e2.message));
-  }
+  // one private-reply DM with the link in it (no button: buttons don't work while the DM sits in Message Requests)
+  return send(myId, { comment_id: v.id }, { text: directText(a, who) })
+    .then(() => log(`DM sent (${a.id}) to @${who}`))
+    .catch(e => log(`DM FAILED (${a.id}) to @${who}:`, e.message));
 }
 
 async function finalMessage(myId, uid, a, name) {
@@ -191,6 +177,7 @@ async function readRaw(req) {        // needs NODEJS_HELPERS=0 on Vercel so the 
 const reply = (res, code, text) => { res.statusCode = code; res.setHeader('Content-Type', 'text/plain'); res.end(String(text)); };
 
 module.exports = async (req, res) => {
+  if (req === 'helpers') return { pickAuto, directText, ig, me };
   if (req.method === 'GET') {                       // Meta's webhook verification
     const q = Object.fromEntries(new URL(req.url, 'http://x').searchParams);
     if (q.check === '1') {                         // read-only report: which comments the API says are hidden
