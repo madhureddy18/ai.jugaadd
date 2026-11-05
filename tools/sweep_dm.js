@@ -2,9 +2,9 @@
 // and doesn't have a DM thread with us yet (Instagram sometimes doesn't notify the webhook). Same DM text as the webhook.
 // DRY=1 only prints what it would send. Usernames are masked in the log.
 process.env.IG_TOKEN = process.env.IG_TOKEN || '';
-const H = require('../autodm/api/webhook.js')('helpers');
 const mask = u => (u || '?').slice(0, 3) + '***';
 (async () => {
+  const H = await require('../autodm/api/webhook.js')('helpers');   // the webhook's own logic, so both pick the same DM
   const meU = await H.me(); const myName = meU.username, myId = String(meU.user_id || meU.id);
   const media = (await H.ig('GET', 'me/media?fields=id,permalink,timestamp&limit=10')).data || [];
   const known = new Set(); let next = 'me/conversations?platform=instagram&fields=participants&limit=50';
