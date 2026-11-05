@@ -1,0 +1,167 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 3, chosen 2026-11-05). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Hey guys, I'm Maddie. Today I'll show you something crazy I made with my robot.",
+  "claude": "Good evening. I am Claude. I write the code, and I render the whole reel."
+ },
+ "voices": {
+  "maddie_C": "male, teenager, moderate pitch, american accent",
+  "claude_B": "male, young adult, moderate pitch, british accent"
+ },
+ "cast": {
+  "maddie": "maddie_C",
+  "claude": "claude_B"
+ },
+ "jobs": [
+  {
+   "voice": "maddie_C",
+   "text": "[sigh] Four days since graduation...",
+   "speed": 1,
+   "file": "01.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "and I've applied to sixty jobs.",
+   "speed": 1,
+   "file": "02.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Replies?",
+   "speed": 1,
+   "file": "03.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "...Zero.",
+   "speed": 1,
+   "file": "04.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Because you sent the same resume, sixty times.",
+   "speed": 1,
+   "file": "05.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[dissatisfaction-hnn] What else am I supposed to do?!",
+   "speed": 1,
+   "file": "06.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Let a free tool do the boring part.",
+   "speed": 1,
+   "file": "07.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "It's called career ops.",
+   "speed": 1,
+   "file": "08.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Eighty thousand stars on GitHub.",
+   "speed": 1,
+   "file": "09.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-wa] Eighty thousand?!",
+   "speed": 1,
+   "file": "10.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Step one. One line in Claude Code. Done.",
+   "speed": 1,
+   "file": "11.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Step two. It checks the career pages of a hundred plus companies.",
+   "speed": 1,
+   "file": "12.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Step three. Every job gets a score, one to five, against your C V.",
+   "speed": 1,
+   "file": "13.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "And it flags the fake ones.",
+   "speed": 1,
+   "file": "14.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[question-en] Fake jobs?",
+   "speed": 1,
+   "file": "15.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Ghost postings. They exist. It skips them.",
+   "speed": 1,
+   "file": "16.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Step four. A new resume, for every job.",
+   "speed": 1,
+   "file": "17.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "A T S friendly. Plus the cover letter.",
+   "speed": 1,
+   "file": "18.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Step five. It fills the whole form.",
+   "speed": 1,
+   "file": "19.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "And submits it?",
+   "speed": 1,
+   "file": "20.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "No. You press submit. Your name, your call.",
+   "speed": 1,
+   "file": "21.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Everything goes in one tracker. Free. Open source.",
+   "speed": 1,
+   "file": "22.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "So I just... press it?",
+   "speed": 1,
+   "file": "23.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Yes. Hardest thing you'll do this week.",
+   "speed": 1,
+   "file": "24.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[laughter] Okay... I'm getting hired!",
+   "speed": 1,
+   "file": "25.wav"
+  }
+ ]
+}
