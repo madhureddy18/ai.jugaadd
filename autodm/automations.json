@@ -143,6 +143,30 @@
    "direct_text": "Hey {{name}} 👋 here are the prompts to make reels like this with Claude 🤖🎬 idea → script → 3D reel → caption → 30-day plan. No editing needed!",
    "any_comment": true,
    "comment_replies_off": []
+  },
+  {
+   "id": "jobs",
+   "active": true,
+   "reel": "",
+   "caption_has": "career-ops",
+   "reel_first": true,
+   "keywords": [
+    "career-ops",
+    "careerops"
+   ],
+   "comment_replies": [],
+   "opening": "Hey {{name}} 👋 Thanks for watching! Tap below and I'll send you the career-ops GitHub link + the full setup guide 🎓",
+   "opening_button": "Send it 🚀",
+   "follow_gate": true,
+   "follow_text": "Almost there {{name}}! 😄 The guide is only for followers. Follow @maddiee.makess (new AI reels daily) and tap below 👇",
+   "follow_button": "I followed ✅",
+   "final_text": "Here you go {{name}} 🎓🔥\n\n⭐ GitHub repo: https://github.com/career-ops-hq/career-ops\n\n📖 The setup guide below has every step, top to bottom: install, first run, daily commands. You still press submit 😉",
+   "link_label": "Open setup guide 📖",
+   "link": "https://madhureddy18.github.io/ai.jugaadd/p/jobs/",
+   "direct": false,
+   "direct_text": "Hey {{name}} 👋 here's career-ops 🎓 GitHub: https://github.com/career-ops-hq/career-ops — full setup guide below.",
+   "any_comment": true,
+   "comment_replies_off": []
   }
  ],
  "default": "prompt",

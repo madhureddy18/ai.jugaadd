@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>career-ops Setup Guide · @maddiee.makess</title>
+<meta name="description" content="Set up career-ops (free, open source, 80k stars) with Claude: it scans career pages, scores every job against your CV, tailors your resume and fills the form. You press submit.">
+<meta property="og:title" content="Stop sending the same resume 60 times: career-ops setup guide">
+<meta property="og:description" content="GitHub repo + every setup step, top to bottom. From @maddiee.makess.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#120f1a;--card:#1c1826;--line:#2e2840;--ink:#f7f3ec;--mute:#aaa3b8;--gold:#ffc53d;--org:#ff7a3d;--green:#3ddc97;--blue:#5a8cff}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+.top{height:6px;background:linear-gradient(90deg,#f6a070,#d97a9a,#6d5fa8)}
+main{max-width:680px;margin:0 auto;padding:28px 16px 64px}
+.tag{display:inline-block;background:var(--org);color:#fff;font-weight:900;font-size:13px;padding:6px 14px;border-radius:99px}
+h1{font-size:33px;line-height:1.12;margin:16px 0 10px;font-weight:900}h1 span{color:var(--gold)}
+p.sub{color:var(--mute);margin:0 0 18px;font-size:16px}
+.repo{display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--ink);background:linear-gradient(135deg,#221d33,#2d2140);border:1px solid #40365a;border-radius:18px;padding:16px;margin:6px 0 10px}
+.repo i{font-style:normal;font-size:34px}.repo b{font-size:18px}.repo small{display:block;color:var(--mute)}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}.badges span{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:5px 12px;font-size:13px;font-weight:700}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:18px 0 4px}
+.flow div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:9px 4px;text-align:center;font-size:12px;color:var(--mute)}.flow b{display:block;font-size:20px}
+h2{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:34px 0 12px;font-weight:800}
+h3{margin:0 0 6px;font-size:19px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:12px}
+.lvl{display:inline-block;font-size:12px;font-weight:800;padding:4px 10px;border-radius:99px;background:#12291f;color:var(--green);margin-bottom:8px}.lvl.b{background:#2a1d12;color:var(--org)}.lvl.c{background:#151d38;color:var(--blue)}
+ol{padding-left:20px;margin:6px 0 0}li{margin:7px 0}li b{color:var(--ink)}
+.cmd{display:flex;gap:8px;align-items:stretch;margin:8px 0}
+code,.cmd pre{font-family:"JetBrains Mono",monospace;font-size:14px}
+.cmd pre{flex:1;margin:0;background:#0d0b13;border:1px solid var(--line);border-radius:10px;padding:11px 12px;white-space:pre-wrap;word-break:break-all;color:#f3efe6}
+.cmd button{border:0;border-radius:10px;padding:0 14px;font:800 14px Inter,sans-serif;background:var(--gold);color:#1a1206;cursor:pointer;min-width:70px}
+.cmd button.done{background:var(--green)}
+code{background:#0d0b13;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:15px}td{border-top:1px solid var(--line);padding:9px 6px;vertical-align:top}td:first-child{white-space:nowrap;width:1%}
+.note{font-size:14px;color:var(--mute);margin-top:8px}
+.tip{background:#1f1a12;border:1px solid #4a3a1c;border-radius:14px;padding:12px 14px;font-size:15px;margin-bottom:10px}.tip b{color:var(--gold)}
+footer{margin-top:40px;text-align:center;color:var(--mute);font-size:14px}footer a{color:var(--gold);font-weight:700;text-decoration:none}
+</style></head>
+<body>
+<div class="top"></div>
+<main>
+<span class="tag">@maddiee.makess · job search</span>
+<h1>Stop sending the same resume <span>60 times.</span></h1>
+<p class="sub">career-ops is a free, open-source AI job search agent that runs inside Claude. It finds jobs, scores each one against your CV, writes a tailored resume and cover letter, and fills the form. <b style="color:var(--ink)">You press Submit.</b></p>
+
+<a class="repo" href="https://github.com/career-ops-hq/career-ops" target="_blank" rel="noopener"><i>🐙</i><span><b>github.com/career-ops-hq/career-ops</b><small>Open the repo on GitHub</small></span></a>
+<div class="badges"><span>⭐ 80k stars</span><span>MIT · free forever</span><span>Works in Claude Code</span><span>Your data stays on your computer</span></div>
+<div class="flow"><div><b>🔎</b>scan</div><div><b>📊</b>score</div><div><b>📄</b>tailor</div><div><b>✍️</b>fill</div><div><b>✅</b>you submit</div></div>
+
+<h2>What you need</h2>
+<div class="card"><ol>
+<li><b>A Claude account with Claude Code</b>: a Claude Pro or Max plan works. (It also runs on other AI CLIs and free/local models, see the repo's "Running on a budget" guide.)</li>
+<li><b>A computer</b> (Windows, Mac or Linux). It doesn't run on a phone.</li>
+<li><b>Your CV</b> as a PDF or text, and an idea of the roles you want.</li>
+<li>Only for Option C: <a style="color:var(--gold)" href="https://nodejs.org" target="_blank" rel="noopener">Node.js 22.13+</a> and git.</li>
+</ol></div>
+
+<h2>Step 1 · Install (pick one)</h2>
+<div class="card"><span class="lvl">EASIEST · no terminal</span><h3>Option A: Claude desktop app</h3><ol>
+<li>Open the Claude desktop app → <b>Customize → Plugins</b>.</li>
+<li>Click <b>Add → Add marketplace</b> and paste:<div class="cmd"><pre>career-ops-hq/career-ops</pre><button>Copy</button></div></li>
+<li>Open <b>Discover</b>, find <b>career-ops</b> and click <b>Add</b>.</li>
+<li>Open the <b>Code</b> tab and start a new session. The first start takes a few seconds while it installs.</li>
+</ol></div>
+<div class="card"><span class="lvl b">CLAUDE CODE IN THE TERMINAL</span><h3>Option B: two commands</h3><ol>
+<li>Open Claude Code and type:<div class="cmd"><pre>/plugin marketplace add career-ops-hq/career-ops</pre><button>Copy</button></div><div class="cmd"><pre>/plugin install career-ops@career-ops</pre><button>Copy</button></div></li>
+<li>Close it and start a <b>new session</b>.</li>
+</ol></div>
+<div class="card"><span class="lvl c">FULL WORKSPACE</span><h3>Option C: its own folder</h3><ol>
+<li>Install Node.js 22.13+ and git, then run:<div class="cmd"><pre>npx @santifer/career-ops init</pre><button>Copy</button></div></li>
+<li>Go into the folder and open Claude Code:<div class="cmd"><pre>cd career-ops
+claude</pre><button>Copy</button></div></li>
+</ol><p class="note">In this folder the command is <code>/career-ops</code>. With the plugin (A or B) it's <code>/career-ops:career-ops</code>.</p></div>
+
+<h2>Step 2 · First run: tell it about you</h2>
+<div class="card"><ol>
+<li>Type <code>/career-ops:career-ops</code> (or <code>/career-ops</code> in Option C). On a fresh setup it starts a chat to set you up. Nothing to edit by hand.</li>
+<li><b>Paste your CV</b> when it asks.</li>
+<li>Tell it what you want and what you refuse. For example:<div class="cmd"><pre>I graduated in 2026 (B.Tech). I want fresher roles: data analyst, backend developer, cloud. Hyderabad, Bengaluru or remote. No unpaid internships, no sales roles.</pre><button>Copy</button></div></li>
+<li><b>Add the companies you care about</b>. It also reads career pages built on Darwinbox and Keka, which many Indian companies use:<div class="cmd"><pre>Add these companies to portals.yml: [company 1], [company 2], [company 3]</pre><button>Copy</button></div></li>
+</ol></div>
+
+<h2>Step 3 · Use it every day</h2>
+<div class="card"><table>
+<tr><td><b>Paste a job link</b></td><td>The full pipeline: checks the job is still live, scores it 1–5 against your CV, writes a report, makes a tailored CV (PDF) and adds it to your tracker.</td></tr>
+<tr><td><code>scan</code></td><td>Scans your companies' career pages for new jobs.</td></tr>
+<tr><td><code>pipeline</code></td><td>Works through the jobs it found, skipping obvious mismatches.</td></tr>
+<tr><td><code>cover</code></td><td>Cover letter for a job.</td></tr>
+<tr><td><code>apply</code></td><td>Fills the application form with you, field by field. <b>It stops before Submit.</b></td></tr>
+<tr><td><code>tracker</code></td><td>Where every application stands.</td></tr>
+<tr><td><code>followup</code></td><td>Which applications need a follow-up, with drafts.</td></tr>
+<tr><td><code>interview-prep</code></td><td>Prep notes for a specific company's interview.</td></tr>
+</table><p class="note">Type the word after the command, e.g. <code>/career-ops:career-ops scan</code>. Plain English works too: "run the career-ops scan".</p></div>
+
+<h2>Tips</h2>
+<div class="tip"><b>Read every CV before you send it.</b> It rewrites your CV for each job but must not invent things. Check it anyway.</div>
+<div class="tip"><b>Trust the score.</b> It tells you not to apply below 4.0/5. Fewer, better applications beat 60 copies of the same resume.</div>
+<div class="tip"><b>On a Claude Pro/Max plan?</b> If an <code>ANTHROPIC_API_KEY</code> is set on your computer, Claude Code bills the API instead of your plan. Remove it and log in with <code>/login</code>.</div>
+<div class="tip"><b>The first runs are rough.</b> Talk to it like a recruiter in their first week: what you liked, what you didn't. It learns.</div>
+
+<footer>Made by <a href="https://www.instagram.com/maddiee.makess/">@maddiee.makess</a> · send this to a friend who just graduated 🎓<br><span style="font-size:12px">career-ops is by its open-source authors; we're not affiliated, just fans.</span></footer>
+</main>
+<script>
+document.querySelectorAll('.cmd button').forEach(b=>{b.onclick=async()=>{const t=b.previousElementSibling.innerText;try{await navigator.clipboard.writeText(t)}catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove()}b.textContent='Copied ✓';b.classList.add('done');setTimeout(()=>{b.textContent='Copy';b.classList.remove('done')},2000)}});
+</script>
+</body></html>

@@ -38,19 +38,25 @@ const esc = k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 // keyword must start a word ("hr" matches "HR", "hr!", "hrs" but not "three"); a short comment that is only the keyword with dots/spaces also counts
 const hasKw = (a, text) => { const t = norm(text), flat = t.replace(/[^a-z0-9]/g, '');
   return (a.keywords || []).some(k => { k = norm(k); return new RegExp('(^|[^a-z0-9])' + esc(k)).test(t) || flat === k; }); };
-async function permalink(mediaId) {
-  if (!mediaId) return '';
-  if (!(mediaId in mediaCache)) { const m = await ig('GET', `${mediaId}?fields=permalink`).catch(() => ({})); mediaCache[mediaId] = m.permalink || ''; }
+async function mediaInfo(mediaId) {
+  if (!mediaId) return { link: '', caption: '' };
+  if (!(mediaId in mediaCache)) { const m = await ig('GET', `${mediaId}?fields=permalink,caption`).catch(() => ({})); mediaCache[mediaId] = { link: m.permalink || '', caption: m.caption || '' }; }
   return mediaCache[mediaId];
 }
+const permalink = async id => (await mediaInfo(id)).link;
 const code = a => (a.reel || '').replace(/\/+$/, '').split('/').pop();
-// Which DM a comment gets: 1) its keyword's DM, on any reel ("HR" under the resume reel -> HR prompt)
+const onReel = (a, info) => (info.link && code(a) && info.link.includes(code(a))) || (a.caption_has && norm(info.caption).includes(norm(a.caption_has)));
+// Which DM a comment gets:
+// 0) a reel marked reel_first (e.g. the career-ops reel): EVERY comment on it gets its DM, even "prompt"
+// 1) else the keyword's DM, on any reel ("HR" under the resume reel -> HR prompt)
 // 2) else the DM set up for that reel  3) else the default DM (CONFIG.default). Every comment, words or emoji, gets one.
 async function pickAuto(mediaId, text) {
-  const byKw = autos().find(a => hasKw(a, text));
+  const info = await mediaInfo(mediaId);
+  const first = autos().find(x => x.reel_first && onReel(x, info));
+  if (first) return first;
+  const byKw = autos().find(a => !a.reel_first && hasKw(a, text));
   if (byKw) return byKw;
-  const link = await permalink(mediaId);
-  return autos().find(x => link && code(x) && link.includes(code(x))) || autos().find(x => x.id === CONFIG.default) || null;
+  return autos().find(x => onReel(x, info)) || autos().find(x => x.id === CONFIG.default) || null;
 }
 const directText = (a, who) => `${fill(a.direct_text || a.final_text, who)}\n\n👉 ${a.link}\n\n${fill(a.direct_follow || CONFIG.direct_follow || 'Follow @maddiee.makess for new AI reels every day 🚀', who)}`;
 const autoById = id => autos().find(a => a.id === id);
