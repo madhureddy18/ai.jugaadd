@@ -1,0 +1,21 @@
+{
+ "ref_text": {
+  "maddie": "Hey guys, I'm Maddie. Today I'll show you something crazy I made with my robot.",
+  "claude": "Good evening. I am Claude. I write the code, and I render the whole reel."
+ },
+ "voices": {
+  "maddie_A": "male, young adult, high pitch, indian accent",
+  "maddie_B": "male, young adult, moderate pitch, indian accent",
+  "maddie_C": "male, teenager, moderate pitch, american accent",
+  "claude_A": "male, middle-aged, low pitch, british accent",
+  "claude_B": "male, young adult, moderate pitch, british accent"
+ },
+ "mixes": { "option1": ["maddie_A", "claude_A"], "option2": ["maddie_B", "claude_A"], "option3": ["maddie_C", "claude_B"] },
+ "lines": [
+  ["maddie", "[sigh] Ugh. Claude... my last reel got sixty-nine views."],
+  ["claude", "Sixty-nine. This one got two point two million."],
+  ["maddie", "[surprise-oh] Wait... YOU made that?"],
+  ["claude", "Nope. Not AI video. I write code, that builds the whole world."],
+  ["maddie", "Comment PROMPT! I'll send all five to your DM."]
+ ]
+}
