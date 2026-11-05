@@ -19,7 +19,7 @@ const mask = u => (u || '?').slice(0, 3) + '***';
       checked++; if (known.has(String(f.id)) || known.has(f.username)) continue;
       const a = await H.pickAuto(m.id, x.text); if (!a) continue;
       if (process.env.DRY) { console.log(`would DM (${a.id}) ${mask(f.username)} for "${(x.text || '').slice(0, 30)}"`); continue; }
-      await H.ig('POST', `${myId}/messages`, { recipient: { comment_id: x.id }, message: { text: H.directText(a, f.username) } })
+      await H.ig('POST', `${myId}/messages`, { recipient: { comment_id: x.id }, message: a.direct ? { text: H.directText(a, f.username) } : H.openingMsg(a, f.username) })
         .then(() => { sent++; known.add(String(f.id)); console.log(`DM sent (${a.id}) to ${mask(f.username)} for "${(x.text || '').slice(0, 30)}"`); })
         .catch(e => console.log(`DM failed (${a.id}) ${mask(f.username)}: ${e.message}`));
     }

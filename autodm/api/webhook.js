@@ -94,11 +94,14 @@ async function onComment(v) {
   const a = await pickAuto(v.media && v.media.id, v.text);
   if (!a) { log(`comment ignored (no DM set up) @${who}: ${v.text}`); return; }
   log(`comment ${a.id} @${who}: ${v.text}`);
-  // one private-reply DM with the link in it (no button: buttons don't work while the DM sits in Message Requests)
-  return send(myId, { comment_id: v.id }, { text: directText(a, who) })
-    .then(() => log(`DM sent (${a.id}) to @${who}`))
-    .catch(e => log(`DM FAILED (${a.id}) to @${who}:`, e.message));
+  // follow-gate flow: "Send it" button -> follow check -> link only for followers ("I followed" button for the rest)
+  if (a.direct) return send(myId, { comment_id: v.id }, { text: directText(a, who) }).catch(e => log(`DM FAILED (${a.id}) to @${who}:`, e.message));
+  return send(myId, { comment_id: v.id }, openingMsg(a, who))
+    .then(() => log(`opening DM sent (${a.id}) to @${who}`))
+    .catch(async e => { log('quick reply refused, sending text:', e.message);
+      await send(myId, { comment_id: v.id }, { text: `${fill(a.opening, who)}\n\nReply ${a.keywords[0].toUpperCase()} and I'll send it 👇` }).catch(e2 => log(`DM FAILED (${a.id}) to @${who}:`, e2.message)); });
 }
+const openingMsg = (a, who) => ({ text: fill(a.opening, who), quick_replies: qr(a.opening_button || 'Send it 🚀', `SEND|${a.id}|0`) });
 
 async function finalMessage(myId, uid, a, name) {
   const text = fill(a.final_text, name);
@@ -177,7 +180,7 @@ async function readRaw(req) {        // needs NODEJS_HELPERS=0 on Vercel so the 
 const reply = (res, code, text) => { res.statusCode = code; res.setHeader('Content-Type', 'text/plain'); res.end(String(text)); };
 
 module.exports = async (req, res) => {
-  if (req === 'helpers') return { pickAuto, directText, ig, me };
+  if (req === 'helpers') return { pickAuto, directText, openingMsg, ig, me };
   if (req.method === 'GET') {                       // Meta's webhook verification
     const q = Object.fromEntries(new URL(req.url, 'http://x').searchParams);
     if (q.check === '1') {                         // read-only report: which comments the API says are hidden
