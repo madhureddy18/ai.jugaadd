@@ -140,7 +140,7 @@ window.SCENE = {
       rbox(0.13, 0.085, 0.25, shoeM, 0, -0.012, 0.05, 0.04, foot); rbox(0.135, 0.022, 0.255, soleM, 0, -0.05, 0.05, 0.008, foot);
       return { hip, knee, foot, sx }; });
     // degree tube in his left hand
-    const tube = new THREE.Group(); M.arms[0].hand.add(tube); tube.position.set(0, 0.02, 0.02);
+    const tube = new THREE.Group(); tube.visible = false; M.arms[0].hand.add(tube); tube.position.set(0, 0.02, 0.02);
     cyl(0.035, 0.035, 0.42, SM(0x7a1f2a, 0.5), 0, 0, 0, 16, tube); [-0.2, 0.2].forEach(y => cyl(0.038, 0.038, 0.03, SM(0xe8c24a, 0.3, { metalness: 0.6 }), 0, y, 0, 16, tube));
 
     // ================= MASCOT: original hover-bot with headphones =================
@@ -169,7 +169,7 @@ window.SCENE = {
       const c1 = cyl(0.1, 0.1, 0.09, hpM, 0, 0, 0, 28, cup); c1.rotation.z = Math.PI / 2; const c2 = cyl(0.075, 0.075, 0.1, hpD, sx * 0.012, 0, 0, 28, cup); c2.rotation.z = Math.PI / 2;
       const ring = new THREE.Mesh(new THREE.TorusGeometry(0.1, 0.012, 8, 28), SM(0xdfe8ff, 0.4)); ring.rotation.y = Math.PI / 2; ring.position.x = sx * 0.046; cup.add(ring); });
     // floating mitten hands
-    const hands = [-1, 1].map(sx => { const g = new THREE.Group(); bot.add(g); const m = sph(0.065, shellM, 0, 0, 0, g, 20); m.scale.set(0.85, 1, 0.75); const cuff = cyl(0.05, 0.05, 0.03, orM, 0, -0.06, 0, 16, g); return { g, sx }; });
+    const hands = [-1, 1].map(sx => { const g = new THREE.Group(); g.visible = false; bot.add(g); const m = sph(0.065, shellM, 0, 0, 0, g, 20); m.scale.set(0.85, 1, 0.75); const cuff = cyl(0.05, 0.05, 0.03, orM, 0, -0.06, 0, 16, g); return { g, sx }; });
     // hover glow + soft ground shadow
     const ringTex = K.canvasTex(128, 128, (x, w, h) => { const g = x.createRadialGradient(64, 64, 10, 64, 64, 62); g.addColorStop(0, 'rgba(120,220,255,0.9)'); g.addColorStop(0.5, 'rgba(90,180,255,0.35)'); g.addColorStop(1, 'rgba(90,180,255,0)'); x.fillStyle = g; x.fillRect(0, 0, w, h); });
     const thr = new THREE.Mesh(new THREE.CircleGeometry(0.16, 24), BM(0xffffff, { map: ringTex, transparent: true, depthWrite: false })); thr.rotation.x = Math.PI / 2; thr.position.y = -0.27; bot.add(thr);
@@ -373,7 +373,7 @@ window.SCENE = {
       chip(me ? 'MADDIE' : 'BOT', 540, 1308, 24, me ? 'rgba(255,251,244,0.95)' : OR, me ? INK : '#fff', fin(t, l.t - 0.05, 0.15), 1, 800, '"Inter"'); };
     const vig = document.createElement('canvas'); vig.width = HW; vig.height = HH; { const x = vig.getContext('2d'), g = x.createRadialGradient(HW / 2, HH * 0.5, HH * 0.32, HW / 2, HH * 0.5, HH * 0.78); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(40,10,30,0.32)'); x.fillStyle = g; x.fillRect(0, 0, HW, HH); }
     const hudDraw = t => { h.clearRect(0, 0, HW, HH); h.globalAlpha = 1; h.drawImage(vig, 0, 0);
-      drawHook(t); drawSame(t); drawRepo(t); drawS1(t); drawS2(t); drawS3(t); drawS4(t); drawS5(t); drawTrack(t); drawJust(t); drawHired(t); drawTag(t);
+      drawHook(t); drawSame(t); drawRepo(t); drawS1(t); drawS2(t); drawS3(t); drawS4(t); drawS5(t); drawTrack(t); drawJust(t); drawHired(t);
       const fi = 1 - pr(t, 0, 0.35); if (fi > 0) { h.fillStyle = `rgba(0,0,0,${fi})`; h.fillRect(0, 0, HW, HH); }
       const fo = pr(t, D - 0.6, D); if (fo > 0) { h.fillStyle = `rgba(0,0,0,${fo})`; h.fillRect(0, 0, HW, HH); }
       h.fillStyle = 'rgba(255,255,255,0.25)'; h.fillRect(0, 0, HW, 6); h.fillStyle = OR; h.fillRect(0, 0, HW * cl(t / D), 6);
