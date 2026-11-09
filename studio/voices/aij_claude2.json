@@ -1,0 +1,293 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 3, chosen 2026-11-05). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Hey guys, I'm Maddie. Today I'll show you something crazy I made with my robot.",
+  "claude": "Good evening. I am Claude. I write the code, and I render the whole reel."
+ },
+ "voices": {
+  "maddie_C": "male, teenager, moderate pitch, american accent",
+  "claude_B": "male, young adult, moderate pitch, british accent"
+ },
+ "cast": {
+  "maddie": "maddie_C",
+  "claude": "claude_B"
+ },
+ "jobs": [
+  {
+   "voice": "maddie_C",
+   "text": "[sigh] Ugh.",
+   "speed": 1,
+   "file": "01.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Claude...",
+   "speed": 1.05,
+   "file": "02.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "my last reel got sixty-nine views.",
+   "speed": 1.05,
+   "file": "03.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Sixty-nine.",
+   "speed": 1.08,
+   "file": "04.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "This one got two point two million.",
+   "speed": 1.08,
+   "file": "05.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-oh] Wait...",
+   "speed": 1.05,
+   "file": "06.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "You made that?!",
+   "speed": 1.05,
+   "file": "07.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "That one.",
+   "speed": 1.08,
+   "file": "08.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "And forty-seven more.",
+   "speed": 1.08,
+   "file": "09.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Almost twenty-eight million views.",
+   "speed": 1.08,
+   "file": "10.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Okay.",
+   "speed": 1.05,
+   "file": "11.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Nobody ever shows how.",
+   "speed": 1.05,
+   "file": "12.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Show me!",
+   "speed": 1.05,
+   "file": "13.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Step one.",
+   "speed": 1.08,
+   "file": "14.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Give me one line.",
+   "speed": 1.08,
+   "file": "15.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Umm...",
+   "speed": 1,
+   "file": "16.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "What if every phone in India",
+   "speed": 1.05,
+   "file": "17.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "switched off, for five seconds?",
+   "speed": 1.05,
+   "file": "18.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Nobody's posted that yet.",
+   "speed": 1.08,
+   "file": "19.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "I checked.",
+   "speed": 1.08,
+   "file": "20.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Step two.",
+   "speed": 1.08,
+   "file": "21.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "I find a source, for every fact.",
+   "speed": 1.08,
+   "file": "22.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[question-en] And then you generate the video?",
+   "speed": 1.05,
+   "file": "23.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Nope.",
+   "speed": 1.08,
+   "file": "24.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Not, AI video.",
+   "speed": 1.08,
+   "file": "25.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "I write code, that builds",
+   "speed": 1.08,
+   "file": "26.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "the whole world.",
+   "speed": 1.08,
+   "file": "27.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Marine Drive.",
+   "speed": 1.08,
+   "file": "28.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Four hundred and eighteen cars.",
+   "speed": 1.08,
+   "file": "29.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[dissatisfaction-hnn] But I can't code.",
+   "speed": 1.05,
+   "file": "30.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "You never touch it.",
+   "speed": 1.08,
+   "file": "31.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Step four.",
+   "speed": 1.08,
+   "file": "32.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "I check my own frames...",
+   "speed": 1.08,
+   "file": "33.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "and fix what's weak.",
+   "speed": 1.08,
+   "file": "34.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Step five.",
+   "speed": 1.08,
+   "file": "35.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "I render it.",
+   "speed": 1.08,
+   "file": "36.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Two thousand, seven hundred frames.",
+   "speed": 1.08,
+   "file": "37.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Sixteen minutes.",
+   "speed": 1.08,
+   "file": "38.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Okay...",
+   "speed": 1.05,
+   "file": "39.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "how much does that cost?",
+   "speed": 1.05,
+   "file": "40.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "No extra cost.",
+   "speed": 1.08,
+   "file": "41.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Just your Claude plan.",
+   "speed": 1.08,
+   "file": "42.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "That's it.",
+   "speed": 1.08,
+   "file": "43.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Five prompts.",
+   "speed": 1.08,
+   "file": "44.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Comment PROMPT!",
+   "speed": 1.05,
+   "file": "45.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "I'll send all five, to your D M.",
+   "speed": 1.05,
+   "file": "46.wav"
+  }
+ ]
+}
