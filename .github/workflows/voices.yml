@@ -8,7 +8,10 @@ permissions:
 jobs:
   tts:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 60
+    strategy:
+      matrix:
+        shard: [0, 1, 2]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -17,10 +20,10 @@ jobs:
       - run: pip install -q torch torchaudio --index-url https://download.pytorch.org/whl/cpu && pip install -q omnivoice
       - uses: actions/cache@v4
         with: { path: ~/.cache/huggingface, key: hf-omnivoice-v1 }
-      - run: mkdir -p out && cp -r studio/voices/refs out/ 2>/dev/null || true; python studio/voices/omnivoice_gen.py "${{ github.event.inputs.config }}" out
+      - run: mkdir -p out && cp -r studio/voices/refs out/ 2>/dev/null || true; SHARD=${{ matrix.shard }} NSHARDS=3 python studio/voices/omnivoice_gen.py "${{ github.event.inputs.config }}" out
       - name: Push results to the voices-out branch
         run: |
-          cd out && rm -f option?.wav && mkdir -p autodm && echo '{"git":{"deploymentEnabled":false}}' > autodm/vercel.json && git init -q && git checkout -q -b voices-out
+          cd out && rm -f option?.wav && mkdir -p autodm && echo '{"git":{"deploymentEnabled":false}}' > autodm/vercel.json && git init -q && git checkout -q -b voices-out-${{ matrix.shard }}
           git -c user.name=voices-bot -c user.email=bot@users.noreply.github.com add -A
           git -c user.name=voices-bot -c user.email=bot@users.noreply.github.com commit -qm "voices ${{ github.run_id }}"
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" voices-out
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" voices-out-${{ matrix.shard }}

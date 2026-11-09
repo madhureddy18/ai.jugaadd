@@ -29,6 +29,12 @@ for mix, (mv, cv) in cfg.get("mixes", {}).items():
         print(mix, i, who, flush=True)
     sf.write(f"{out}/{mix}.wav", np.concatenate(parts), SR)
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", f"{out}/{mix}.wav", "-b:a", "160k", f"{out}/{mix}.mp3"], check=True)
-for job in cfg.get("jobs", []):          # production: [{"voice": "maddie_A", "text": "...", "file": "01.wav", "speed": 1.0}]
+import time
+SH, NSH = int(os.environ.get("SHARD", "0")), int(os.environ.get("NSHARDS", "1"))
+jobs = cfg.get("jobs", [])
+for k, job in enumerate(jobs):          # production: [{"voice": "maddie_C", "text": "...", "file": "01.wav", "speed": 1.0}]
+    if k % NSH != SH:
+        continue
+    t0 = time.time()
     a = model.generate(text=job["text"], voice_clone_prompt=prompts[job["voice"]], speed=job.get("speed", 1.0))[0]
-    sf.write(f"{out}/{job['file']}", a, SR); print("job", job["file"], flush=True)
+    sf.write(f"{out}/{job['file']}", a, SR); print("job", job["file"], f"{len(a)/SR:.2f}s audio in {time.time()-t0:.0f}s", flush=True)
