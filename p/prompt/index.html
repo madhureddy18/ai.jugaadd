@@ -42,6 +42,7 @@ footer{margin-top:40px;text-align:center;color:var(--mute);font-size:14px}footer
 <span class="tag">@maddiee.makess</span>
 <h1>Stop watching reels. <span>Start posting them.</span></h1>
 <p class="sub">Can't edit? No ideas? You don't need either. Claude finds the idea, writes it and makes the whole reel. You need these 5 prompts and an Instagram page.</p>
+<a class="ex" href="maddiee-makess-5-prompts.txt" download><i>📄</i><span><b>Download the prompt file</b><small>All 5 prompts + the pro prompt in one .txt file</small></span></a>
 <div class="flow"><div><b>💡</b>idea</div><div><b>✍️</b>script</div><div><b>🎬</b>3D reel</div><div><b>📲</b>post</div></div>
 <div class="hero">Do them <b>in order</b>. Paste each one into the Claude app, fill in the <b>[brackets]</b>, and carry the answer into the next step.</div>
 <div class="step"><i>1</i><div><h3>Find your niche + 30 reel ideas</h3><small>so you never run out of content</small></div></div>
@@ -121,7 +122,7 @@ Write:
 <p class="sub" style="margin-bottom:12px">How our reels are made: Claude writes the code, renders a finished MP4 with voices and subtitles. Use Claude with its code tools (Claude Code, or a Claude chat that can create files and run code).</p>
 <div class="card"><pre id="p6">You are my reel studio. Make a finished vertical video (1080x1920, 30 fps, MP4) of a 3D animated skit, rendered from code.
 
-Tools: build the scene in Three.js, render it frame by frame in headless Chrome (Playwright), and join frames + audio with ffmpeg. Use a free text-to-speech model (e.g. Kokoro) for the voices.
+Tools: build the scene in Three.js, render it frame by frame in headless Chrome (Playwright), and join frames + audio with ffmpeg. Voices: use OmniVoice (free, open source): design each character's voice once from a description, then clone it for every line so they always sound the same. Add emotion tags like [sigh], [laughter], [surprise-oh] inside the lines.
 
 Characters: [main character description] and [sidekick description]. Keep their look identical in every shot.
 Voices: [main character: warm, young] · [sidekick: dry, slightly British].
