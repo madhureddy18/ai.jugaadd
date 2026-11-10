@@ -1,0 +1,76 @@
+{
+ "ref_text": {
+  "maddie": "Hey guys, I'm Maddie. Today I'll show you something crazy I made with my robot.",
+  "claude": "Good evening. I am Claude. I write the code, and I render the whole reel."
+ },
+ "voices": {
+  "maddie_D": "male, child, high pitch, american accent",
+  "maddie_E": "male, teenager, high pitch, american accent",
+  "maddie_F": "male, teenager, low pitch, american accent",
+  "claude_C": "male, middle-aged, very low pitch, american accent",
+  "claude_D": "male, middle-aged, low pitch, american accent",
+  "claude_E": "male, elderly, low pitch, british accent"
+ },
+ "jobs": [
+  {
+   "voice": "maddie_D",
+   "text": "Claude, this faceless channel got a million views last month, and made two thousand six hundred dollars.",
+   "file": "maddie_D_1.wav"
+  },
+  {
+   "voice": "maddie_D",
+   "text": "[surprise-oh] Wait... do I need to code?",
+   "file": "maddie_D_2.wav"
+  },
+  {
+   "voice": "maddie_E",
+   "text": "Claude, this faceless channel got a million views last month, and made two thousand six hundred dollars.",
+   "file": "maddie_E_1.wav"
+  },
+  {
+   "voice": "maddie_E",
+   "text": "[surprise-oh] Wait... do I need to code?",
+   "file": "maddie_E_2.wav"
+  },
+  {
+   "voice": "maddie_F",
+   "text": "Claude, this faceless channel got a million views last month, and made two thousand six hundred dollars.",
+   "file": "maddie_F_1.wav"
+  },
+  {
+   "voice": "maddie_F",
+   "text": "[surprise-oh] Wait... do I need to code?",
+   "file": "maddie_F_2.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "And you've been starting a YouTube channel for two years.",
+   "file": "claude_C_1.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "No. You need to wait a few minutes, without touching anything.",
+   "file": "claude_C_2.wav"
+  },
+  {
+   "voice": "claude_D",
+   "text": "And you've been starting a YouTube channel for two years.",
+   "file": "claude_D_1.wav"
+  },
+  {
+   "voice": "claude_D",
+   "text": "No. You need to wait a few minutes, without touching anything.",
+   "file": "claude_D_2.wav"
+  },
+  {
+   "voice": "claude_E",
+   "text": "And you've been starting a YouTube channel for two years.",
+   "file": "claude_E_1.wav"
+  },
+  {
+   "voice": "claude_E",
+   "text": "No. You need to wait a few minutes, without touching anything.",
+   "file": "claude_E_2.wav"
+  }
+ ]
+}
