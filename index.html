@@ -205,7 +205,7 @@ function home(){
   <h2 style="margin:18px 2px 10px">Posted</h2>
   ${posted.length ? posted.slice(0, 30).map(p => `<div class="card" style="padding:12px 16px"><div class="row"><span class="chip ok">Posted</span><b class="small">${esc(p.title || "")}</b><span class="spacer"></span><span class="small muted">${esc(fmt(p.posted))}</span></div>
       <div class="row" style="margin-top:6px">${p.url ? `<a class="small" href="${esc(p.url)}" target="_blank" rel="noopener">Open on Instagram ↗</a>` : ""}${p.comment_error ? `<span class="small muted">· first comment not added</span>` : ""}</div></div>`).join("") : `<div class="card small muted">Nothing posted yet.</div>`}
-  <div class="small muted" style="margin-top:18px">Scheduled Reels are checked every 15 minutes, and GitHub can start a few minutes late. "Post now" takes about 1–4 minutes.</div>`;
+  <div class="small muted" style="margin-top:18px">Scheduled Reels go out within about 1–2 minutes of the time you pick. "Post now" takes about 1–4 minutes.</div>`;
   const setMode = m => { MODE = m; document.querySelectorAll(".tabs button").forEach(b => b.classList.toggle("on", b.dataset.m === m));
     $("#whenBox").style.display = m === "schedule" ? "block" : "none"; $("#add").textContent = m === "now" ? "Upload & post now" : m === "schedule" ? "Upload & schedule" : "Upload as draft"; };
   document.querySelectorAll(".tabs button").forEach(b => b.onclick = () => setMode(b.dataset.m)); setMode(MODE);
