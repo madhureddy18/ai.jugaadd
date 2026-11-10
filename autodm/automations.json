@@ -167,6 +167,29 @@
    "direct_text": "Hey {{name}} 👋 here's career-ops 🎓 GitHub: https://github.com/career-ops-hq/career-ops — full setup guide below.",
    "any_comment": true,
    "comment_replies_off": []
+  },
+  {
+   "id": "auto",
+   "active": true,
+   "reel": "",
+   "caption_has": "#youtubeautomation",
+   "reel_first": false,
+   "keywords": [
+    "auto"
+   ],
+   "comment_replies": [],
+   "opening": "Hey {{name}} 👋 Thanks for watching! Tap below and I'll send you the secret repo's name + the full setup guide 📺",
+   "opening_button": "Send it 🚀",
+   "follow_gate": true,
+   "follow_text": "Almost there {{name}}! 😄 The secret is only for followers. Follow @maddiee.makess (new AI reels daily) and tap below 👇",
+   "follow_button": "I followed ✅",
+   "final_text": "Here's the secret {{name}} 🤫📺\n\n⭐ MoneyPrinterTurbo (free, open source): https://github.com/harry0703/MoneyPrinterTurbo\n\n📖 The guide below has every step, top to bottom: install, settings, your first Short, posting. One good topic a day 😉",
+   "link_label": "Open setup guide 📖",
+   "link": "https://madhureddy18.github.io/ai.jugaadd/p/auto/",
+   "direct": false,
+   "direct_text": "Hey {{name}} 👋 here's the secret: MoneyPrinterTurbo https://github.com/harry0703/MoneyPrinterTurbo — full setup guide below.",
+   "any_comment": true,
+   "comment_replies_off": []
   }
  ],
  "default": "prompt",

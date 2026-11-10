@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MoneyPrinterTurbo Setup Guide · @maddiee.makess</title>
+<meta name="description" content="Set up MoneyPrinterTurbo (free, open source, MIT): one topic in, a finished Short out. Script, stock clips, voice, subtitles, music, batch versions, and optional posting.">
+<meta property="og:title" content="The YouTube channel run by nobody: MoneyPrinterTurbo setup guide">
+<meta property="og:description" content="GitHub repo + every setup step, top to bottom. From @maddiee.makess.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#120f1a;--card:#1c1826;--line:#2e2840;--ink:#f7f3ec;--mute:#aaa3b8;--gold:#ffc53d;--org:#ff7a3d;--green:#3ddc97;--blue:#5a8cff}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+.top{height:6px;background:linear-gradient(90deg,#f6a070,#d97a9a,#6d5fa8)}
+main{max-width:680px;margin:0 auto;padding:28px 16px 64px}
+.tag{display:inline-block;background:var(--org);color:#fff;font-weight:900;font-size:13px;padding:6px 14px;border-radius:99px}
+h1{font-size:33px;line-height:1.12;margin:16px 0 10px;font-weight:900}h1 span{color:var(--gold)}
+p.sub{color:var(--mute);margin:0 0 18px;font-size:16px}
+.repo{display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--ink);background:linear-gradient(135deg,#221d33,#2d2140);border:1px solid #40365a;border-radius:18px;padding:16px;margin:6px 0 10px}
+.repo i{font-style:normal;font-size:34px}.repo b{font-size:18px}.repo small{display:block;color:var(--mute)}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}.badges span{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:5px 12px;font-size:13px;font-weight:700}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:18px 0 4px}
+.flow div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:9px 4px;text-align:center;font-size:12px;color:var(--mute)}.flow b{display:block;font-size:20px}
+h2{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:34px 0 12px;font-weight:800}
+h3{margin:0 0 6px;font-size:19px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:12px}
+.lvl{display:inline-block;font-size:12px;font-weight:800;padding:4px 10px;border-radius:99px;background:#12291f;color:var(--green);margin-bottom:8px}.lvl.b{background:#2a1d12;color:var(--org)}.lvl.c{background:#151d38;color:var(--blue)}
+ol{padding-left:20px;margin:6px 0 0}li{margin:7px 0}li b{color:var(--ink)}
+.cmd{display:flex;gap:8px;align-items:stretch;margin:8px 0}
+code,.cmd pre{font-family:"JetBrains Mono",monospace;font-size:14px}
+.cmd pre{flex:1;margin:0;background:#0d0b13;border:1px solid var(--line);border-radius:10px;padding:11px 12px;white-space:pre-wrap;word-break:break-all;color:#f3efe6}
+.cmd button{border:0;border-radius:10px;padding:0 14px;font:800 14px Inter,sans-serif;background:var(--gold);color:#1a1206;cursor:pointer;min-width:70px}
+.cmd button.done{background:var(--green)}
+code{background:#0d0b13;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:15px}td{border-top:1px solid var(--line);padding:9px 6px;vertical-align:top}td:first-child{white-space:nowrap;width:1%}
+.note{font-size:14px;color:var(--mute);margin-top:8px}
+.tip{background:#1f1a12;border:1px solid #4a3a1c;border-radius:14px;padding:12px 14px;font-size:15px;margin-bottom:10px}.tip b{color:var(--gold)}
+footer{margin-top:40px;text-align:center;color:var(--mute);font-size:14px}footer a{color:var(--gold);font-weight:700;text-decoration:none}
+</style></head>
+<body>
+<div class="top"></div>
+<main>
+<span class="tag">@maddiee.makess · YouTube automation</span>
+<h1>The channel run by <span>nobody.</span></h1>
+<p class="sub">MoneyPrinterTurbo is a free, open-source app. You type one topic, and it writes the script, finds a stock clip for every line, adds a voice, subtitles and music, and renders a finished Short. It can make several versions at once and even post them. <b style="color:var(--ink)">You pick good topics.</b></p>
+
+<a class="repo" href="https://github.com/harry0703/MoneyPrinterTurbo" target="_blank" rel="noopener"><i>🐙</i><span><b>github.com/harry0703/MoneyPrinterTurbo</b><small>Open the repo on GitHub</small></span></a>
+<div class="badges"><span>⭐ 69k+ stars</span><span>MIT · free</span><span>Windows · Mac · Linux</span><span>9:16 · 16:9 · 1:1</span></div>
+<div class="flow"><div><b>💡</b>topic</div><div><b>✍️</b>script</div><div><b>🎞</b>clips</div><div><b>🎙</b>voice + subs</div><div><b>🎬</b>render</div></div>
+
+<h2>What you need</h2>
+<div class="card"><ol>
+<li><b>A computer</b> (Windows, Mac or Linux). A GPU is not needed.</li>
+<li><b>A free Pexels API key</b> for the stock clips: sign up at <a style="color:var(--gold)" href="https://www.pexels.com/api/" target="_blank" rel="noopener">pexels.com/api</a> and copy your key. (Pixabay works too, also free.)</li>
+<li><b>An AI to write the scripts</b>, pick one:
+  <ul style="padding-left:18px;margin:6px 0 0">
+  <li><b>Your Claude Pro/Max plan</b>: install Claude Code, log in once, then choose <b>Claude Code</b> as the provider. No API key needed.</li>
+  <li><b>A free local model</b> with <a style="color:var(--gold)" href="https://ollama.com" target="_blank" rel="noopener">Ollama</a>.</li>
+  <li>Or any API key you already have (OpenAI, Gemini, DeepSeek…).</li>
+  </ul></li>
+<li><b>Voice:</b> nothing to set up. The default voice (Edge TTS) is free and needs no key.</li>
+</ol></div>
+
+<h2>Step 1 · Install (pick one)</h2>
+<div class="card"><span class="lvl">EASIEST · WINDOWS</span><h3>Option A: one-click package</h3><ol>
+<li>Open the <a style="color:var(--gold)" href="https://github.com/harry0703/MoneyPrinterTurbo/releases/latest" target="_blank" rel="noopener">latest release</a> and download the <b>.7z</b> file under <b>Assets</b> (not "Source code").</li>
+<li>Extract it to a simple path with no spaces, like <code>C:\mpt</code>.</li>
+<li>Double-click <b>update.bat</b> first, then <b>start.bat</b>. The app opens in your browser (use Chrome or Edge if it's blank).</li>
+</ol></div>
+<div class="card"><span class="lvl b">ANY COMPUTER · PYTHON 3.11+</span><h3>Option B: two commands</h3><ol>
+<li>Make a virtual environment (Mac/Linux shown):<div class="cmd"><pre>python3 -m venv .venv
+source .venv/bin/activate</pre><button>Copy</button></div>
+<p class="note">Windows PowerShell: <code>python -m venv .venv</code> then <code>.venv\Scripts\Activate.ps1</code></p></li>
+<li>Install and start:<div class="cmd"><pre>python -m pip install mpt
+mpt webui</pre><button>Copy</button></div>
+<p class="note">The official package is <b>mpt</b> (by the author). The one called "MoneyPrinterTurbo" on PyPI is from someone else.</p></li>
+</ol></div>
+<div class="card"><span class="lvl c">DOCKER</span><h3>Option C: Docker</h3><ol>
+<li>Clone it and copy the config:<div class="cmd"><pre>git clone https://github.com/harry0703/MoneyPrinterTurbo.git
+cd MoneyPrinterTurbo
+cp config.example.toml config.toml</pre><button>Copy</button></div></li>
+<li>Start it, then open <code>http://127.0.0.1:8501</code>:<div class="cmd"><pre>docker compose -f docker-compose.release.yml up</pre><button>Copy</button></div></li>
+</ol></div>
+
+<h2>Step 2 · Settings (once)</h2>
+<div class="card"><ol>
+<li>Click <b>Basic Settings</b> at the top of the web app to expand it.</li>
+<li><b>LLM provider:</b> choose <b>Claude Code</b> (uses your Claude plan), <b>Ollama</b> (free, local) or paste the key for the one you use.</li>
+<li><b>Pexels API key:</b> paste the key you copied.</li>
+<li><b>Voice:</b> pick a free Edge TTS voice and press <b>Voice Sample</b> to hear it.</li>
+</ol></div>
+
+<h2>Step 3 · Make a Short</h2>
+<div class="card"><ol>
+<li><b>Video Subject:</b> type one line, for example:<div class="cmd"><pre>5 facts about black holes</pre><button>Copy</button></div></li>
+<li>Click <b>Generate Script &amp; Keywords with AI</b>. Read it and fix anything you don't like.</li>
+<li><b>Video Aspect Ratio:</b> 9:16 for Shorts and Reels. <b>Video Source:</b> Pexels.</li>
+<li>Pick a voice, turn on <b>Enable Subtitles</b> and pick <b>Background Music</b>.</li>
+<li>Set <b>Videos per Run</b> to 3–5 to get several versions, then click <b>Generate video</b>.</li>
+<li>Watch them all and <b>keep the best one</b>.</li>
+</ol></div>
+
+<h2>Step 4 · Posting (optional)</h2>
+<div class="card"><ol>
+<li>Upload it yourself in YouTube Studio and schedule the week. Takes 10 seconds per video.</li>
+<li>Or let the app post for you: it connects to <a style="color:var(--gold)" href="https://upload-post.com" target="_blank" rel="noopener">Upload-Post</a> (a separate service with its own account and API key) and can publish to <b>YouTube Shorts, Instagram and TikTok</b>. Turn it on in the settings and pick your platforms.</li>
+</ol></div>
+
+<h2>Tips</h2>
+<div class="tip"><b>Topics are the real job.</b> One good, specific topic a day beats ten random ones.</div>
+<div class="tip"><b>Don't post junk on repeat.</b> YouTube doesn't pay channels for mass-produced, repetitive videos. Check every script, mix your own ideas in and keep quality high.</div>
+<div class="tip"><b>Check facts.</b> AI scripts can be wrong. Read the script before you render.</div>
+<div class="tip"><b>Stock clips are free, but check the license</b> on Pexels/Pixabay if you plan to monetize.</div>
+
+<footer>Made by <a href="https://www.instagram.com/maddiee.makess/">@maddiee.makess</a> · send this to a friend who wants a YouTube channel 📺<br><span style="font-size:12px">MoneyPrinterTurbo is by its open-source authors; we're not affiliated, just fans.</span></footer>
+</main>
+<script>
+document.querySelectorAll('.cmd button').forEach(b=>{b.onclick=async()=>{const t=b.previousElementSibling.innerText;try{await navigator.clipboard.writeText(t)}catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove()}b.textContent='Copied ✓';b.classList.add('done');setTimeout(()=>{b.textContent='Copy';b.classList.remove('done')},2000)}});
+</script>
+</body></html>

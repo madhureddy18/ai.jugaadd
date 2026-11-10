@@ -1,0 +1,53 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 1 of the reel-8 round, chosen 2026-11-10 (kid boy + very deep robot)). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Hey guys, I'm Maddie. Today I'll show you something crazy I made with my robot.",
+  "claude": "Good evening. I am Claude. I write the code, and I render the whole reel."
+ },
+ "voices": {
+  "maddie_D": "male, child, high pitch, american accent",
+  "claude_C": "male, middle-aged, very low pitch, american accent"
+ },
+ "cast": {
+  "maddie": "maddie_D",
+  "claude": "claude_C"
+ },
+ "jobs": [
+  {
+   "voice": "claude_C",
+   "text": "Last step. It can even post it.",
+   "speed": 1.05,
+   "file": "24.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "YouTube. Instagram. TikTok.",
+   "speed": 1.05,
+   "file": "25.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "But post junk every day?",
+   "speed": 1.05,
+   "file": "26.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "That's how channels get demonetized.",
+   "speed": 1.05,
+   "file": "27.wav"
+  },
+  {
+   "voice": "maddie_D",
+   "text": "[sigh] So I still have to think.",
+   "speed": 1.05,
+   "file": "28.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "One good topic a day. You'll survive.",
+   "speed": 1.05,
+   "file": "29.wav"
+  }
+ ]
+}
