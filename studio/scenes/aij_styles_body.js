@@ -562,7 +562,7 @@ window.SCENE = {
     ];
     const codeWin = (t, a) => { const k = pop(t, a, 0.35); h.save(); h.translate(W / 2, 1000); h.scale(k, k);
       rr(-470, -290, 940, 580, 26, 'rgba(6,14,10,0.92)', '#3ddc97', 4); ['#ff5f56', '#ffbd2e', '#27c93f'].forEach((c, i) => { h.beginPath(); h.arc(-430 + i * 34, -255, 10, 0, 7); h.fillStyle = c; h.fill(); }); txt('pick_a_style.js', 0, -255, 28, '#8fd9b0', 700, 'center', MONO);
-      const n = (t - a) * 34; let left = n; CODE.forEach((ln, i) => { if (left <= 0) return; const s2 = ln.slice(0, Math.floor(left)); left -= ln.length + 3; txt(s2, -430, -190 + i * 58, 32, i === 0 || i === 1 ? '#ffd27a' : '#b8f5d0', 600, 'left', MONO); });
+      const n = (t - a) * 75; let left = n; CODE.forEach((ln, i) => { if (left <= 0) return; const s2 = ln.slice(0, Math.floor(left)); left -= ln.length + 3; txt(s2, -430, -190 + i * 58, 32, i === 0 || i === 1 ? '#ffd27a' : '#b8f5d0', 600, 'left', MONO); });
       if (Math.floor(t * 3) % 2 === 0) { h.fillStyle = '#3ddc97'; h.fillRect(-430 + Math.min(820, (n % 30) * 19), -205 + Math.min(7, Math.floor(n / 30)) * 58, 16, 32); }
       h.restore(); };
     // CTA: wall of styles (7 real thumbnails + locked, blurred "more")
