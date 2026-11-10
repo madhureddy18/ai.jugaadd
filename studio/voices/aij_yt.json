@@ -1,0 +1,203 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 1 of the reel-8 round, chosen 2026-11-10 (kid boy + very deep robot)). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Hey guys, I'm Maddie. Today I'll show you something crazy I made with my robot.",
+  "claude": "Good evening. I am Claude. I write the code, and I render the whole reel."
+ },
+ "voices": {
+  "maddie_D": "male, child, high pitch, american accent",
+  "claude_C": "male, middle-aged, very low pitch, american accent"
+ },
+ "cast": {
+  "maddie": "maddie_D",
+  "claude": "claude_C"
+ },
+ "jobs": [
+  {
+   "voice": "maddie_D",
+   "text": "[surprise-wa] Bro!",
+   "speed": 1.05,
+   "file": "01.wav"
+  },
+  {
+   "voice": "maddie_D",
+   "text": "This channel posts every single day...",
+   "speed": 1.05,
+   "file": "02.wav"
+  },
+  {
+   "voice": "maddie_D",
+   "text": "...and nobody works there.",
+   "speed": 1.05,
+   "file": "03.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "Correct. Nobody.",
+   "speed": 1.05,
+   "file": "04.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "It's a repo.",
+   "speed": 1.05,
+   "file": "05.wav"
+  },
+  {
+   "voice": "maddie_D",
+   "text": "[question-en] A repo runs a YouTube channel?",
+   "speed": 1.05,
+   "file": "06.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "Sixty-nine thousand people starred it.",
+   "speed": 1.05,
+   "file": "07.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "Watch.",
+   "speed": 1.05,
+   "file": "08.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "Free. Open source.",
+   "speed": 1.05,
+   "file": "09.wav"
+  },
+  {
+   "voice": "maddie_D",
+   "text": "[question-en] What's it called?",
+   "speed": 1.05,
+   "file": "10.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "That part's a secret.",
+   "speed": 1.05,
+   "file": "11.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "Step one. Give it one topic.",
+   "speed": 1.05,
+   "file": "12.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "That's your whole job.",
+   "speed": 1.05,
+   "file": "13.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "Step two. AI writes the script.",
+   "speed": 1.05,
+   "file": "14.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "Two seconds.",
+   "speed": 1.05,
+   "file": "15.wav"
+  },
+  {
+   "voice": "maddie_D",
+   "text": "[surprise-oh] I take two days to write a caption.",
+   "speed": 1.05,
+   "file": "16.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "Step three. A free stock clip...",
+   "speed": 1.05,
+   "file": "17.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "for every single line.",
+   "speed": 1.05,
+   "file": "18.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "Step four. A voice. Free.",
+   "speed": 1.05,
+   "file": "19.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "Subtitles. Music. Done.",
+   "speed": 1.05,
+   "file": "20.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "Step five. Want five versions?",
+   "speed": 1.05,
+   "file": "21.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "It makes five. You keep the best one.",
+   "speed": 1.05,
+   "file": "22.wav"
+  },
+  {
+   "voice": "maddie_D",
+   "text": "[laughter] Bro, this is a cheat code!",
+   "speed": 1.05,
+   "file": "23.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "Last step. Upload is on you.",
+   "speed": 1.05,
+   "file": "24.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "Ten seconds. Schedule a week.",
+   "speed": 1.05,
+   "file": "25.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "Bots that upload for you?",
+   "speed": 1.05,
+   "file": "26.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "That's how channels get banned.",
+   "speed": 1.05,
+   "file": "27.wav"
+  },
+  {
+   "voice": "maddie_D",
+   "text": "[sigh] So I still have to do something.",
+   "speed": 1.05,
+   "file": "28.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "Click one button. You'll survive.",
+   "speed": 1.05,
+   "file": "29.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "Comment AUTO.",
+   "speed": 1.05,
+   "file": "30.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "I'll send you the name, and the full setup.",
+   "speed": 1.05,
+   "file": "31.wav"
+  }
+ ]
+}
