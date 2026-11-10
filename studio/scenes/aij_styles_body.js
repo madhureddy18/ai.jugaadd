@@ -177,11 +177,11 @@ window.SCENE = {
 
     // timeline (snap cuts land just before each style's first line)
     const C = {
-      PIX: 0, VOX: B('vox1') - 0.3, COM: B('com1') - 0.3, PAP: B('pap1') - 0.3, NEO: B('neo1') - 0.3, TOON: B('toon1') - 0.3, DIO: B('dio1') - 0.3, TOY: B('toy1') - 0.3,
-      REV1: B('rev1') - 0.12, CODE: B('rev2') - 0.1, REV3: B('rev3') - 0.1, REV4: B('rev4') - 0.08, CTA: B('cta1') - 0.18, CTA2: B('cta2') - 0.1, CTA3: B('cta3') - 0.1,
+      HOOK: 0, PIX: B('pix1') - 0.3, VOX: B('vox1') - 0.3, COM: B('com1') - 0.3, PAP: B('pap1') - 0.3, NEO: B('neo1') - 0.3, TOON: B('toon1') - 0.3, DIO: B('dio1') - 0.3, TOY: B('toy1') - 0.3,
+      REV1: B('toy2') - 0.1, CODE: B('rev2') - 0.1, REV3: B('rev3') - 0.1, REV4: B('rev4') - 0.08, CTA: B('cta2') - 0.2, CTA2: B('cta2') + 0.75, CTA3: B('cta3') - 0.1,
     };
-    const CUTS = [C.VOX, C.COM, C.PAP, C.NEO, C.TOON, C.DIO, C.TOY, C.CODE, C.REV3];
-    const styleAt = t => t < C.VOX ? 'pixel' : t < C.COM ? 'voxel' : t < C.PAP ? 'comic' : t < C.NEO ? 'paper' : t < C.TOON ? 'neon' : t < C.DIO ? 'toon' : t < C.TOY ? 'dio' : (t >= C.CODE && t < C.REV3) ? 'code' : 'toy';
+    const CUTS = [C.PIX, C.VOX, C.COM, C.PAP, C.NEO, C.TOON, C.DIO, C.TOY, C.CODE, C.REV3];
+    const styleAt = t => t < C.PIX ? 'toy' : t < C.VOX ? 'pixel' : t < C.COM ? 'voxel' : t < C.PAP ? 'comic' : t < C.NEO ? 'paper' : t < C.TOON ? 'neon' : t < C.DIO ? 'toon' : t < C.TOY ? 'dio' : (t >= C.CODE && t < C.REV3) ? 'code' : 'toy';
     const segStart = t => [0, ...CUTS].filter(c => c <= t).pop();
 
     // ---------- material registry: every mesh remembers its toy material; other looks are made from it once
@@ -418,8 +418,9 @@ window.SCENE = {
       const mT = K.voice('maddie', tq), rT = K.voice('claude', tq) * 0.6;
       const k = last < 0 || Math.abs(t - last) > 0.2 ? 1 : cl((t - last) * 5); last = t;
       let mL = toR, face = 'neutral', lean = 0.1, pose = 'rest', bounce = 0;
-      if (t < C.VOX) { const a = t < B('pix1') + 0.55; mL = a ? hands : t < B('pix2') ? toR : toR; face = 'shock'; pose = a ? 'lookHands' : t < B('pix2') ? 'shrug' : 'rest'; lean = a ? 0.25 : -0.05; if (t >= B('pix2')) face = 'worried'; }
-      else if (t < C.COM) { const a = t < B('vox1') + 0.5; mL = a ? hands : t < B('vox2') ? toCam : toR; pose = a ? 'lookHands' : t < B('vox2') ? 'chin' : 'rest'; face = a ? 'shock' : 'smile'; }
+      if (t < C.PIX) { const asked = t >= B('hook2') - 0.1; mL = toR; face = asked ? 'smile' : 'neutral'; pose = asked ? 'rest' : 'chin'; lean = asked ? -0.2 : 0.05; }
+      else if (t < C.VOX) { const a = t < B('pix1') + 0.6; mL = a ? hands : toCam; face = 'shock'; pose = a ? 'lookHands' : 'both'; lean = a ? 0.25 : -0.1; }
+      else if (t < C.COM) { const a = t < B('vox1') + 0.5; mL = a ? hands : toCam; pose = a ? 'lookHands' : 'chin'; face = a ? 'shock' : 'smile'; }
       else if (t < C.PAP) { mL = toCam; pose = t < B('com1') + 0.2 ? 'rest' : 'fist'; face = 'smile'; lean = -0.1; bounce = 1; }
       else if (t < C.NEO) { mL = t < B('pap2') ? hands : toCam; pose = t < B('pap2') ? 'lookHands' : 'hug'; face = t < B('pap2') ? 'shock' : 'worried'; lean = -0.2; }
       else if (t < C.TOON) { mL = t < B('neo2') ? toR : [0.25, -0.25 + 0.1 * Math.sin(t * 2)]; face = t < B('neo2') ? 'neutral' : 'shock'; pose = 'rest'; lean = -0.05; }
@@ -444,7 +445,8 @@ window.SCENE = {
       if (t >= C.REV3 && t < C.REV4) M.head.rotation.x -= 0.08;
       // mascot
       let rL = [-0.35, 0.05], mood = 'calm';
-      if (t < C.VOX) { mood = t >= B('pix2') ? 'smile' : 'calm'; rL = t >= B('pix2') ? [0.3, 0.02] : [-0.35, 0.05]; }
+      if (t < C.PIX) { mood = t >= B('hook2') ? 'smile' : 'calm'; rL = t >= B('hook2') + 0.3 ? [0.3, 0.02] : [-0.35, 0.05]; }
+      else if (t < C.VOX) { mood = 'smile'; }
       else if (t < C.COM) { mood = 'calm'; }
       else if (t < C.PAP) { mood = 'smile'; }
       else if (t < C.NEO) { mood = 'flat'; }
@@ -452,14 +454,15 @@ window.SCENE = {
       else if (t < C.DIO) { mood = 'smile'; }
       else if (t < C.TOY) { rL = [0.1, -0.35]; mood = 'happy'; }
       else if (t < C.REV1) { mood = 'calm'; }
+      else if (t < C.CODE) { rL = [0.35, 0.02]; mood = t >= B('toy2') + 0.6 ? 'wink' : 'calm'; }
       else if (t < C.REV3) { rL = [0.35, 0.02]; mood = 'calm'; }
       else if (t < C.REV4) { rL = [-0.4, 0.05]; mood = 'smile'; }
       else if (t < C.CTA) { rL = [0.35, 0.02]; mood = 'wink'; }
       else { rL = [0.35, 0.02]; mood = 'smile'; }
       rYaw = smv(rYaw, rL[0], k); rPitch = smv(rPitch, rL[1], k);
       R.update(tq, { talk: rT, look: [rYaw, rPitch], mood });
-      R.head.rotation.z += 0.22 * K.pulse(t, B('vox2'), 0.7) + 0.1 * K.pulse(t, B('pix2'), 0.8);       // head tilt "keep going?"
-      R.head.rotation.x += 0.14 * K.pulse(t, B('rev4'), 0.45) + 0.1 * K.pulse(t, B('rev1'), 0.4);
+      R.head.rotation.z += 0.22 * K.pulse(t, B('toy2'), 0.7) + 0.1 * K.pulse(t, B('hook2'), 0.8);       // head tilt "honestly?"
+      R.head.rotation.x += 0.14 * K.pulse(t, B('rev4'), 0.45) + 0.1 * K.pulse(t, B('hook2') + 0.4, 0.4);
       R.g.position.y = 0.86 + 0.05 * K.pulse(t, C.CTA, 0.8) + 0.03 * K.pulse(t, B('cta2'), 0.6);
       FAIRY.forEach(f => { const v = 0.65 + 0.35 * Math.sin(tq * 2.2 + f.k * 1.3); f.b.material.color.setRGB(1 * v + 0.2, 0.83 * v + 0.12, 0.54 * v); });
       tv.intensity = 0.5 + 0.12 * Math.sin(tq * 7.3) * Math.sin(tq * 3.1);
@@ -478,6 +481,7 @@ window.SCENE = {
       neo: [Pp([0.55, 1.55, 3.6], [0.05, 1.2, -0.9], 40), Pp([0.35, 1.5, 3.1], [0.05, 1.2, -0.9], 40)],
       toon: [Pp([-0.15, 0.82, 1.15], [MX, 1.35, MZ], 40), Pp([-0.2, 0.86, 0.92], [MX, 1.38, MZ], 40)],
       dio: [Pp([3.4, 5.4, 5.2], [0.0, 0.35, -0.45], 50), Pp([2.6, 5.3, 5.7], [0.0, 0.35, -0.45], 50)],
+      hook: [Pp([0.18, 1.4, 2.6], [0.06, 1.12, -0.7], 36), Pp([0.12, 1.38, 2.0], [0.06, 1.14, -0.7], 36)],
       toy: [Pp([0.2, 1.42, 2.4], [0.08, 1.15, -0.7], 36), Pp([0.15, 1.42, 2.15], [0.08, 1.15, -0.7], 36)],
       robo: [Pp([0.25, 1.26, 1.45], RHL, 30), Pp([0.27, 1.27, 1.25], RHL, 30)],
       code: [Pp([0.45, 1.62, 3.4], [0.05, 1.15, -0.9], 40), Pp([0.25, 1.55, 2.7], [0.05, 1.15, -0.9], 40)],
@@ -485,7 +489,7 @@ window.SCENE = {
       cta: [Pp([0.12, 1.45, 2.7], [0.1, 1.2, -0.7], 38), Pp([0.12, 1.44, 2.5], [0.1, 1.2, -0.7], 38)],
     };
     const plan = [
-      [C.PIX, C.VOX, sh.pix], [C.VOX, C.COM, sh.vox], [C.COM, C.PAP, sh.com], [C.PAP, C.NEO, sh.pap], [C.NEO, C.TOON, sh.neo], [C.TOON, C.DIO, sh.toon],
+      [C.HOOK, C.PIX, sh.hook], [C.PIX, C.VOX, sh.pix], [C.VOX, C.COM, sh.vox], [C.COM, C.PAP, sh.com], [C.PAP, C.NEO, sh.pap], [C.NEO, C.TOON, sh.neo], [C.TOON, C.DIO, sh.toon],
       [C.DIO, C.TOY, sh.dio], [C.TOY, C.REV1, sh.toy], [C.REV1, C.CODE, sh.robo], [C.CODE, C.REV3, sh.code], [C.REV3, C.REV4, sh.mad], [C.REV4, C.CTA, sh.robo], [C.CTA, D + 5, sh.cta],
     ];
     const smooth = k => k * k * (3 - 2 * k);
@@ -510,7 +514,7 @@ window.SCENE = {
     const chip = (t, st, a) => {
       const k = pop(t, a, 0.3), idx = ORDER.indexOf(st) + 1; if (idx < 1) return;
       h.save(); h.translate(W / 2, 205); h.scale(k, k);
-      const label = NAMES[st], tag = `STYLE ${idx} / 7`;
+      const label = NAMES[st], tag = `STYLE #${idx}`;
       if (st === 'pixel') { h.fillStyle = '#000'; h.fillRect(-300, -78, 600, 156); h.fillStyle = '#fff'; h.fillRect(-292, -70, 584, 140); h.fillStyle = '#1b1b3a'; h.fillRect(-284, -62, 568, 124); pixText(tag, 0, -28, 34, '#9fe7ff'); pixText(label, 0, 26, 64, '#ffe14d'); }
       else if (st === 'voxel') { h.fillStyle = '#5b3a1e'; h.fillRect(-300, -78, 600, 156); h.fillStyle = '#6fb544'; h.fillRect(-300, -78, 600, 34); for (let i = 0; i < 20; i++) { h.fillStyle = i % 2 ? '#5aa035' : '#7cc451'; h.fillRect(-300 + i * 30, -44, 30, 10 + (i % 3) * 5); }
         txt(tag, 0, -2, 30, '#f3e3c4', 800, 'center', MONO); txt(label, 0, 40, 60, '#fff', 900, 'center', MONO); }
@@ -522,16 +526,17 @@ window.SCENE = {
         for (let i = 0; i < 3; i++) { const a2 = t * 3 + i * 2.1; txt('✦', Math.cos(a2) * 330, Math.sin(a2) * 90, 40, '#fff6a8', 900); } }
       else if (st === 'dio') { rr(-300, -78, 600, 156, 16, '#efe6d2', '#3a2a1a', 5); txt(tag, 0, -28, 30, '#6b5a44', 800, 'center', MONO); txt(label, 0, 26, 62, '#3a2a1a', 900); }
       h.restore();
-      for (let i = 0; i < 7; i++) { const on = i < idx; h.beginPath(); h.arc(W / 2 - 96 + i * 32, 312, i === idx - 1 ? 10 : 7, 0, 7); h.fillStyle = on ? (i === idx - 1 ? ACC : 'rgba(255,255,255,0.85)') : 'rgba(255,255,255,0.28)'; h.fill(); }
+      const kb = pop(t, a + 0.08, 0.3) * (1 + 0.3 * (1 - eo(pr(t, a + 0.08, a + 0.45)))); h.save(); h.translate(W / 2 - 300, 190); h.rotate(-0.08); h.scale(kb, kb);
+      h.beginPath(); h.arc(0, 0, 74, 0, 7); h.fillStyle = ACC; h.fill(); h.lineWidth = 8; h.strokeStyle = '#141414'; h.stroke(); txt(String(idx), 0, 6, 104, '#141414', 900); h.restore();
     };
     // style extras
     const burst = (cx, cy, r1, r2, n, fill, stroke, rot = 0) => { h.beginPath(); for (let i = 0; i < n * 2; i++) { const a2 = rot + i * Math.PI / n, r = i % 2 ? r1 : r2; h.lineTo(cx + Math.cos(a2) * r, cy + Math.sin(a2) * r); } h.closePath(); h.fillStyle = fill; h.fill(); if (stroke) { h.lineWidth = 9; h.strokeStyle = stroke; h.stroke(); } };
     const extras = (t, st) => {
       if (st === 'pixel') {                                         // health bar + score over Maddie
-        const [x, y] = scr(headPos()); const hp = t < B('pix2') ? 3 : 2;
+        const [x, y] = scr(headPos()); const hp = 3;
         pixText('MADDIE', x, y - 64, 30, '#fff'); for (let i = 0; i < 3; i++) { h.fillStyle = '#000'; h.fillRect(x - 78 + i * 54, y - 36, 44, 36); h.fillStyle = i < hp ? '#ff3b5c' : '#3a3a4a'; h.fillRect(x - 74 + i * 54, y - 32, 36, 28); }
         pixText('SCORE 008', 140, 1700 - 1340 + 1340, 30, '#ffe14d'); pixText('LIVES x3', 940, 1700, 30, '#9fe7ff');
-        if (t < 0.5) { h.fillStyle = `rgba(255,255,255,${(1 - t / 0.5) * 0.6})`; h.fillRect(0, 0, W, H); }
+        if (t < C.PIX + 0.5) { h.fillStyle = `rgba(255,255,255,${(1 - (t - C.PIX) / 0.5) * 0.6})`; h.fillRect(0, 0, W, H); }
       } else if (st === 'voxel') {                                  // hotbar
         const y0 = 1690; for (let i = 0; i < 9; i++) { const x0 = W / 2 - 4.5 * 84 + i * 84; h.fillStyle = 'rgba(0,0,0,0.55)'; h.fillRect(x0, y0, 80, 80); h.strokeStyle = i === 2 ? '#fff' : '#8b8b8b'; h.lineWidth = i === 2 ? 6 : 3; h.strokeRect(x0 + 2, y0 + 2, 76, 76);
           const cols = ['#6fb544', '#8a5a2b', '#5ec8c0', '#d9413a', '#ffc53d', '#9a9a9a', '#3b6ea8', '#e8dcc8', '#8a5cc7']; h.fillStyle = cols[i]; h.fillRect(x0 + 22, y0 + 22, 36, 36); h.fillStyle = 'rgba(0,0,0,0.25)'; h.fillRect(x0 + 22, y0 + 46, 36, 12); }
@@ -587,13 +592,31 @@ window.SCENE = {
       if (t >= C.CTA2) { const k = pop(t, C.CTA2, 0.35); h.save(); h.translate(W / 2, 1258); h.scale(k, k); h.shadowColor = 'rgba(255,197,61,0.6)'; h.shadowBlur = 40; rr(-330, -62, 660, 124, 30, ACC); h.shadowBlur = 0;
         txt('Comment CLAUDE', 0, -8, 62, '#141414', 900); txt('all styles + prompts in your DMs 📩', 0, 38, 26, '#141414', 700); h.restore(); }
     };
+
+    // hook: the question, big, over the normal room
+    const hookTitle = (t) => {
+      h.fillStyle = `rgba(6,5,12,${0.35 * (1 - pr(t, C.PIX - 0.3, C.PIX))})`; h.fillRect(0, 0, W, 520);
+      [['HOW MANY', 150, 0.05, '#fff', 92], ['ANIMATION STYLES', 255, 0.2, ACC, 92], ['CAN CLAUDE DO?', 360, 0.35, '#fff', 92]].forEach(([s2, y, d, c, sz]) => {
+        const k = pop(t, d, 0.35); if (k <= 0) return; h.save(); h.translate(W / 2, y); h.scale(k, k); h.lineWidth = 14; h.strokeStyle = 'rgba(10,8,20,0.9)'; h.font = `900 ${sz}px ${FR}`; h.textAlign = 'center'; h.textBaseline = 'middle'; h.strokeText(s2, 0, 0); h.fillStyle = c; h.fillText(s2, 0, 0); h.restore(); });
+    };
+    // running count badge (top-right) during the styles
+    const counter = (t, n, a) => { const k = 1 + 0.35 * (1 - eo(pr(t, a, a + 0.3))); h.save(); h.translate(W - 120, 400); h.scale(k, k);
+      h.beginPath(); h.arc(0, 0, 70, 0, 7); h.fillStyle = INK; h.fill(); h.lineWidth = 6; h.strokeStyle = ACC; h.stroke(); txt(String(n), 0, 4, 78, ACC, 900); txt('COUNT', 0, -100, 26, '#fff', 800); h.restore(); };
+    // the turn: 7 ... then it runs away to infinity
+    const LA = B('toy2') + 0.4, LS = 0.13;
+    const LADDER = ['7', '12', '30', '99', '500', '∞'];
+    const ladderAt = t => { const a = LA; if (t < a) return 0; return Math.min(LADDER.length - 1, Math.floor((t - a) / LS)); };
+    const bigCount = (t) => {
+      const i = ladderAt(t), a = i ? LA + i * LS : C.TOY, inf = i === LADDER.length - 1;
+      const k = pop(t, C.TOY, 0.3) * (1 + (inf ? 0.25 : 0.12) * (1 - eo(pr(t, a, a + 0.25))));
+      h.save(); h.translate(W / 2, 300); h.scale(k, k); rr(-250, -150, 500, 300, 40, INK, inf ? ACC : 'rgba(255,255,255,0.45)', inf ? 8 : 4);
+      txt('STYLES', 0, -100, 34, 'rgba(255,255,255,0.75)', 800); txt(LADDER[i], 0, 22, inf ? 230 : 170, inf ? ACC : '#fff', 900); h.restore(); };
     const hudDraw = (t, st) => {
       h.clearRect(0, 0, W, H);
       const a = segStart(t);
-      if (t < C.TOY) { extras(t, st); chip(t, st, a); }
-      if (t >= C.TOY && t < C.REV1) { const k = pop(t, C.TOY, 0.3); h.save(); h.translate(W / 2, 205); h.scale(k, k); rr(-220, -54, 440, 108, 54, INK, 'rgba(255,255,255,0.4)', 3); txt('BACK TO NORMAL', 0, 2, 44, TXT, 800); h.restore(); }
-      if (t >= C.REV1 && t < C.CODE) { [['NO CAMERA', B('rev1')], ['NO EDITOR', B('rev1') + 0.75]].forEach(([s2, a2], i) => { const k = pop(t, a2, 0.3); if (k <= 0) return; h.save(); h.translate(W / 2, 330 + i * 150); h.rotate(i ? 0.03 : -0.03); h.scale(k, k); rr(-300, -58, 600, 116, 20, INK, '#ff4d5a', 5); txt(s2, 0, 2, 64, TXT, 900);
-        const s3 = eo(pr(t, a2 + 0.25, a2 + 0.5)); h.strokeStyle = '#ff4d5a'; h.lineWidth = 12; h.beginPath(); h.moveTo(-250, 0); h.lineTo(-250 + 500 * s3, 0); h.stroke(); h.restore(); }); }
+      if (t < C.PIX) hookTitle(t);
+      else if (t < C.TOY) { extras(t, st); chip(t, st, a); }
+      if (t >= C.TOY && t < C.CODE) bigCount(t);
       if (t >= C.CODE && t < C.REV3) { codeWin(t, C.CODE + 0.1); const k = pop(t, C.CODE, 0.3); h.save(); h.translate(W / 2, 205); h.scale(k, k); rr(-260, -54, 520, 108, 54, 'rgba(6,14,10,0.9)', '#3ddc97', 4); txt('IT\'S ALL CODE', 0, 2, 50, '#7dffb5', 900); h.restore(); }
       if (t >= C.REV3 && t < C.REV4) { const k = pop(t, C.REV3, 0.25); h.save(); h.translate(840, 470); h.rotate(0.12); h.scale(k, k); txt('?!', 0, 0, 170, ACC, 900); h.restore(); }
       if (t >= C.REV4 && t < C.CTA) { const k = pop(t, C.REV4, 0.3), f = Math.floor(t * 30); h.save(); h.translate(W / 2, 330); h.scale(k, k); rr(-330, -80, 660, 160, 24, INK, ACC, 4); txt('FRAME', 0, -36, 34, 'rgba(255,255,255,0.7)', 800, 'center', MONO); txt(String(f).padStart(4, '0') + ' / ' + String(Math.round(D * 30)).padStart(4, '0'), 0, 24, 66, ACC, 900, 'center', MONO); h.restore(); }
@@ -625,7 +648,7 @@ window.SCENE = {
       K.shoot(tq, shots);
       acting(t, tq);
       postU.st.value = SID(st); postU.time.value = t;
-      const g = CUTS.reduce((m, c) => Math.max(m, 1 - Math.abs(t - c) / 0.13), 0); postU.glitch.value = cl(g) * (t < C.REV3 + 0.2 ? 1 : 0) + (t < 0.22 ? 1 - t / 0.22 : 0);
+      const g = CUTS.reduce((m, c) => Math.max(m, 1 - Math.abs(t - c) / 0.13), 0); postU.glitch.value = cl(g) * (t < C.REV3 + 0.2 ? 1 : 0) + 0;
       postU.flash.value = Math.max(0, 0.55 - Math.abs(t - C.TOY) / 0.12 * 0.55, 0.5 - Math.abs(t - C.CODE) / 0.1 * 0.5);
       postU.expo.value = st === 'dio' ? 1.05 : 1.0;
       postU.fy.value = 0.53;
@@ -636,14 +659,14 @@ window.SCENE = {
     };
 
     // ================= SOUND =================
-    const sfx = [['zap', 0.0, 0.35], ['coin', 0.25, 0.3], ['bass', 0.02, 0.5]];
-    [C.VOX, C.COM, C.PAP, C.NEO, C.TOON, C.DIO, C.TOY].forEach(c => sfx.push(['whoosh', c - 0.12, 0.35], ['zap', c - 0.02, 0.22]));
+    const sfx = [['pop', 0.05, 0.25], ['pop', 0.2, 0.25], ['pop', 0.35, 0.25], ['coin', C.PIX + 0.25, 0.3], ['bass', C.PIX + 0.02, 0.5]];
+    [C.PIX, C.VOX, C.COM, C.PAP, C.NEO, C.TOON, C.DIO, C.TOY].forEach(c => sfx.push(['whoosh', c - 0.12, 0.35], ['zap', c - 0.02, 0.22]));
     sfx.push(['pop', C.VOX + 0.15, 0.3], ['thud', B('com1') + Math.max(0.6, (E('com1') - B('com1')) * 0.62), 0.6], ['boing', B('com1') + Math.max(0.6, (E('com1') - B('com1')) * 0.62) + 0.05, 0.35]);
     sfx.push(['rustle', C.PAP + 0.05, 0.35], ['rustle', B('pap2'), 0.5], ['buzz', C.NEO + 0.05, 0.12], ['chime', C.TOON + 0.1, 0.35], ['boing', C.DIO + 0.25, 0.25], ['ding', C.DIO + 0.3, 0.2]);
-    sfx.push(['bass', C.REV1, 0.6], ['thud', B('rev1') + 0.25, 0.35], ['thud', B('rev1') + 1.0, 0.35], ['riser', C.CODE - 0.4, 0.25], ['zap', C.CODE, 0.3], ['beep', C.REV4 + 0.05, 0.3], ['bass', C.REV3, 0.45]);
+    sfx.push(...LADDER.slice(1).map((_, i) => ['beep', LA + (i + 1) * LS, 0.18]), ['bass', LA + 5 * LS, 0.6], ['riser', C.CODE - 0.4, 0.25], ['zap', C.CODE, 0.3], ['beep', C.REV4 + 0.05, 0.3], ['bass', C.REV3, 0.45]);
     for (let i = 0; i < 16; i++) sfx.push(['pop', C.CTA + 0.1 + i * 0.045, 0.12]);
     sfx.push(['kaching', C.CTA2 + 0.05, 0.35], ['chime', C.CTA3 + 0.2, 0.3]);
 
-    return { duration: D, update, shots, sfx, watermark: false, endCard: false, music: { muteFrom: C.REV1, muteTo: C.REV1 + 1.4 }, capFont: 'Fredoka Light', capMarginV: 520, capSize: 66 };
+    return { duration: D, update, shots, sfx, watermark: false, endCard: false, music: { muteFrom: B('toy2') + 0.4, muteTo: B('toy2') + 1.9 }, capFont: 'Fredoka Light', capMarginV: 520, capSize: 66 };
   },
 };

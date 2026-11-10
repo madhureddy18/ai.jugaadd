@@ -14,7 +14,7 @@ window.ST_LINES = [
   LN('maddie', 'Seven… Claude, why am I so *small*?!', 'Seven... Claude, why am I so small?!', { omni: '[surprise-wa] Seven... Claude, why am I so small?!', id: 'dio1', gap: 0.42, fx: 'tiny', omniSpeed: 1.1 }),
   LN('maddie', 'Okay Claude… how many can you *actually* do?', 'Okay Claude... how many can you actually do?', { omni: '[sigh] Okay Claude... how many can you actually do?', id: 'toy1', gap: 0.42 }),
   LN('claude', 'Honestly? I *lost count*.', 'Honestly? I lost count.', { id: 'toy2', gap: 0.12 }),
-  LN('claude', 'Every style you saw is *code*. I wrote it.', 'Every style you saw is code. I wrote it.', { id: 'rev2', gap: 0.3 }),
+  LN('claude', 'Every style you saw is *code*. I wrote it.', 'Every style you saw is code. I wrote it.', { id: 'rev2', gap: 0.65 }),
   LN('maddie', '*This reel* too?!', 'This reel too?!', { omni: '[surprise-oh] This reel too?!', id: 'rev3', gap: 0.12 }),
   LN('claude', 'Every *frame*.', 'Every frame.', { id: 'rev4', gap: 0.1 }),
   LN('claude', 'Comment *CLAUDE*. I\'ll send you *all* of them.', "Comment CLAUDE. I'll send you all of them.", { id: 'cta2', gap: 0.3 }),
