@@ -6,13 +6,14 @@ jobs:
     steps:
       - run: |
           for i in 0 1 2; do git clone -q --depth 1 -b voices-out-$i https://github.com/${{ github.repository }}.git s$i; done
-          pip install -q faster-whisper
+          pip install -q faster-whisper soundfile
           python - <<'P'
-          import glob
+          import glob, subprocess, soundfile as sf
           from faster_whisper import WhisperModel
           m = WhisperModel('small.en', device='cpu', compute_type='int8')
           for f in sorted(glob.glob('s*/[0-9][0-9].wav'), key=lambda p: p[-6:]):
-              segs, _ = m.transcribe(f, word_timestamps=True)
+              subprocess.run(['ffmpeg','-v','error','-y','-i',f,'-ar','16000','-ac','1','/tmp/a.wav'],check=True); a,_ = sf.read('/tmp/a.wav', dtype='float32')
+              segs, _ = m.transcribe(a, word_timestamps=True)
               ws = [f"{w.word.strip()}@{w.start:.2f}" for s in segs for w in s.words]
               print(f[-6:-4], ' '.join(ws), flush=True)
           P
