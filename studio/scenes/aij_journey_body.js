@@ -26,7 +26,7 @@ window.SCENE = {
 
     // ================= TIMELINE =================
     const s4d = Math.max(0.6, E('s4a') - B('s4a'));
-    const WF = window.JR_WORDS || [0.35, 0.485, 0.6, 0.71];            // where "pixel / neon / anime / stop" start inside line s4a
+    const WF = window.JR_WORDS || [0.33, 0.45, 0.54, 0.69];            // where "pixel / neon / anime / stop" start inside line s4a
     const C = {
       HOOK: 0, NICE: B('hook3') - 0.05,
       S1: B('s1a') - 0.25, BUILD: E('s1b') - 0.42,
@@ -352,7 +352,7 @@ window.SCENE = {
       const mT = K.voice('maddie', t), rT = K.voice('claude', t) * 0.6;
       const k = last < 0 || Math.abs(t - last) > 0.2 ? 1 : cl((t - last) * 5); last = t;
       let mL = toR, face = 'neutral', lean = 0.1, pose = 'rest', bounce = 0, typing = 0, rL = [-0.35, 0.05], mood = 'calm';
-      if (t < C.S1) { mL = t < B('hook2') ? toCam : toR; face = t < C.NICE ? (t < B('hook2') ? 'smile' : 'neutral') : 'worried'; pose = t < C.NICE ? 'rest' : 'chin'; rL = t < B('hook2') ? [-0.3, 0.05] : [-0.45, 0.08]; mood = t < B('hook2') + 0.4 ? 'calm' : 'wink'; lean = -0.05; }
+      if (t < C.S1) { mL = toR; face = t < C.NICE ? (t < B('hook2') ? 'smile' : 'neutral') : 'worried'; pose = t < C.NICE ? 'rest' : 'chin'; rL = [-0.45, 0.06]; mood = t < B('hook2') + 0.4 ? 'calm' : 'wink'; lean = -0.05; }
       else if (t < C.S2) { const bld = t >= B('s1b'); mL = t < B('s1b') ? toCam : t < B('s1c') ? toR : toCam; face = t >= B('s1c') ? 'smile' : 'neutral'; pose = t < B('s1b') ? 'type' : t < B('s1c') ? 'rest' : 'shrug'; typing = t < B('s1b') ? 1 : 0; rL = bld ? [-0.45, 0.06] : [0.3, -0.1]; mood = t >= C.BUILD ? 'smile' : 'calm'; bounce = t >= B('s1c') ? 0.6 : 0; }
       else if (t < C.S3) { mL = t < C.POT ? toCam : t < C.POTOFF ? toCam : toR; face = t < C.POT ? 'smile' : 'worried'; pose = t < C.POT ? 'point' : 'rest'; rL = [-0.5, 0.05]; mood = t >= B('s2b') ? 'flat' : 'smile'; lean = -0.05; }
       else if (t < C.S4) { const kid = t >= C.KID && t < C.FIX; mL = t < C.KID ? toR : kid ? toCam : toR; face = t < C.KID ? 'shock' : kid ? 'shock' : 'smile'; pose = kid ? 'cheeks' : t < C.KID ? 'rest' : 'rest'; lean = kid ? -0.25 : 0.05; rL = [-0.45, 0.04]; mood = t < C.KID ? 'stern' : kid ? 'wide' : 'smile'; bounce = kid ? 0.8 : 0; }
@@ -427,10 +427,9 @@ window.SCENE = {
     const tag = (t, a, s, anchor, dx, dy, col = ACC) => { const k = pop(t, a, 0.3); if (k <= 0) return; const [x, y] = scr(anchor);
       h.globalAlpha = k; h.strokeStyle = '#fff'; h.lineWidth = 4; h.beginPath(); h.moveTo(x, y); h.lineTo(x + dx * 0.6, y + dy); h.lineTo(x + dx, y + dy); h.stroke();
       h.font = `900 44px ${FR}`; const w = h.measureText(s).width + 50, bx = dx > 0 ? x + dx : x + dx - w; rr(bx, y + dy - 40, w, 80, 20, INK, col, 4); txt(s, bx + w / 2, y + dy + 2, 44, col, 900); h.globalAlpha = 1; };
-    const hookTitle = (t) => { h.fillStyle = `rgba(6,5,12,${0.35 * (1 - pr(t, C.S1 - 0.3, C.S1))})`; h.fillRect(0, 0, W, 560);
-      [['HOW WE MAKE', 165, 0.05, '#fff', 104], ['THESE REELS', 285, 0.2, ACC, 112]].forEach(([s, y, d, c, sz]) => { const k = pop(t, d, 0.35); if (k <= 0) return; h.save(); h.translate(W / 2, y); h.scale(k, k); otxt(s, 0, 0, sz, c, 16); h.restore(); });
-      if (t >= B('hook2') + 0.2) sticker(t, B('hook2') + 0.2, 'the TRUTH?', 300, 420, -0.07, '#fff', '#141414', 50);
-      if (t >= C.NICE) { h.save(); h.globalAlpha = 1; const k2 = pop(t, C.NICE, 0.2); h.strokeStyle = RED; h.lineWidth = 12 * k2; h.beginPath(); h.moveTo(140, 400); h.lineTo(460, 440); h.stroke(); h.restore(); sticker(t, C.NICE + 0.2, 'the NICE version ✨', 690, 470, 0.06, ACC, '#141414', 52); } };
+    const hookTitle = (t) => {                                  // no big title: only two small joke stickers
+      if (t >= B('hook2') + 0.5) sticker(t, B('hook2') + 0.5, 'the TRUTH?', 300, 250, -0.07, '#fff', '#141414', 50);
+      if (t >= C.NICE + 0.3) { const k2 = pop(t, C.NICE + 0.3, 0.2); h.strokeStyle = RED; h.lineWidth = 12 * k2; h.beginPath(); h.moveTo(140, 232); h.lineTo(460, 270); h.stroke(); sticker(t, C.NICE + 0.5, 'the NICE version ✨', 700, 330, 0.06, ACC, '#141414', 52); } };
     const keyCap = (t) => { const a = C.BUILD - 0.25; if (t < a || t > B('s1c') + 0.8) return; const k = pop(t, a, 0.3), press = K.pulse(t, C.BUILD, 0.35);
       h.save(); h.translate(W / 2, 620 + press * 18); h.scale(k, k); rr(-230, -60, 460, 160, 34, '#2a2b33'); rr(-230, -86 + press * 18, 460, 160, 34, '#f4efe4', '#141414', 6); txt('BUILD', 0, -6 + press * 18, 92, '#141414', 900, 'center', MONO); h.restore();
       if (t >= C.BUILD) for (let i = 0; i < 10; i++) { const a2 = i * 0.63, r = 260 + eo(pr(t, C.BUILD, C.BUILD + 0.5)) * 140; h.globalAlpha = 1 - pr(t, C.BUILD + 0.2, C.BUILD + 0.7); h.fillStyle = i % 2 ? ACC : '#fff'; h.fillRect(W / 2 + Math.cos(a2) * r - 8, 620 + Math.sin(a2) * r * 0.6 - 8, 16, 16); h.globalAlpha = 1; }
@@ -505,7 +504,7 @@ window.SCENE = {
     };
 
     // ================= SOUND =================
-    const sfx = [['pop', 0.05, 0.3], ['pop', 0.2, 0.3], ['pop', B('hook2') + 0.2, 0.25], ['thud', C.NICE, 0.4], ['pop', C.NICE + 0.2, 0.3]];
+    const sfx = [['pop', B('hook2') + 0.5, 0.2], ['pop', C.NICE + 0.5, 0.25]];
     STEPS.forEach(([a]) => sfx.push(['whoosh', a - 0.1, 0.3], ['pop', a + 0.05, 0.3], ['ding', a + 0.08, 0.15]));
     for (let i = 0; i < 14; i++) sfx.push(['tick', C.S1 + 0.2 + i * 0.11, 0.25]);
     sfx.push(['thud', C.BUILD, 0.7], ['kaching', C.BUILD + 0.02, 0.25], ['boing', B('s1c') + 0.3, 0.25]);
