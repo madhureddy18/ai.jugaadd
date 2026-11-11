@@ -44,19 +44,16 @@ async function mediaInfo(mediaId) {
   return mediaCache[mediaId];
 }
 const permalink = async id => (await mediaInfo(id)).link;
-const code = a => (a.reel || '').replace(/\/+$/, '').split('/').pop();
-const onReel = (a, info) => (info.link && code(a) && info.link.includes(code(a))) || (a.caption_has && norm(info.caption).includes(norm(a.caption_has)));
+const code = r => (r || '').replace(/\/+$/, '').split('/').pop();
+const onReel = (a, info) => (info.link && [a.reel, ...(a.reels || [])].some(r => code(r) && info.link.includes(code(r)))) || (a.caption_has && norm(info.caption).includes(norm(a.caption_has)));
 // Which DM a comment gets:
-// 0) a reel marked reel_first (e.g. the career-ops reel): EVERY comment on it gets its DM, even "prompt"
-// 1) else the keyword's DM, on any reel ("HR" under the resume reel -> HR prompt)
-// 2) else the DM set up for that reel  3) else the default DM (CONFIG.default). Every comment, words or emoji, gets one.
+// 1) the DM set up for THAT reel, whatever the comment says ("CLAUDE" under the prompt reel -> the prompt reel's DM)
+// 2) only on a reel with no DM of its own: the keyword's DM  3) else the default DM (CONFIG.default).
 async function pickAuto(mediaId, text) {
   const info = await mediaInfo(mediaId);
-  const first = autos().find(x => x.reel_first && onReel(x, info));
-  if (first) return first;
-  const byKw = autos().find(a => !a.reel_first && hasKw(a, text));
-  if (byKw) return byKw;
-  return autos().find(x => onReel(x, info)) || autos().find(x => x.id === CONFIG.default) || null;
+  const own = autos().find(x => x.reel_first && onReel(x, info)) || autos().find(x => onReel(x, info));
+  if (own) return own;
+  return autos().find(a => hasKw(a, text)) || autos().find(x => x.id === CONFIG.default) || null;
 }
 const directText = (a, who) => `${fill(a.direct_text || a.final_text, who)}\n\n👉 ${a.link}\n\n${fill(a.direct_follow || CONFIG.direct_follow || 'Follow @maddiee.makess for new AI reels every day 🚀', who)}`;
 const autoById = id => autos().find(a => a.id === id);
@@ -149,9 +146,9 @@ async function onMessage(m) {
     if (kind !== 'SEND' && kind !== 'FOLLOWED') return;
     a = autoById(id); tries = Number(n) || 0;
   } else {
-    const t = (m.message.text || '').toLowerCase();
-    a = autoByKeyword(t);                          // they typed the keyword in DMs
-    if (!a && /send it|i followed|followed|^yes|^done|^ok/.test(t)) a = await lastAutoInChat(uid);   // tapped an old button / typed yes
+    // typed DMs never trigger by keyword (people chat normally in DMs); only the old buttons' words continue a flow
+    const t = (m.message.text || '').toLowerCase().trim();
+    if (/^(send it|i followed)\b/.test(t)) a = await lastAutoInChat(uid);
   }
   if (!a) { log('message ignored (no matching reel):', m.message.text); return; }
   let follows = true, name = '';

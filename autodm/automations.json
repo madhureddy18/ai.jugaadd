@@ -142,7 +142,11 @@
    "direct": false,
    "direct_text": "Hey {{name}} 👋 here are the prompts to make reels like this with Claude 🤖🎬 idea → script → 3D reel → caption → 30-day plan. No editing needed!",
    "any_comment": true,
-   "comment_replies_off": []
+   "comment_replies_off": [],
+   "reels": [
+    "https://www.instagram.com/reel/DfjVCpqjcfW/",
+    "https://www.instagram.com/reel/DfWfQSnm6kW/"
+   ]
   },
   {
    "id": "jobs",
@@ -166,7 +170,10 @@
    "direct": false,
    "direct_text": "Hey {{name}} 👋 here's career-ops 🎓 GitHub: https://github.com/career-ops-hq/career-ops — full setup guide below.",
    "any_comment": true,
-   "comment_replies_off": []
+   "comment_replies_off": [],
+   "reels": [
+    "https://www.instagram.com/reel/DfZsDWLm1fv/"
+   ]
   },
   {
    "id": "auto",
@@ -189,7 +196,10 @@
    "direct": false,
    "direct_text": "Hey {{name}} 👋 here's the secret: MoneyPrinterTurbo https://github.com/harry0703/MoneyPrinterTurbo — full setup guide below.",
    "any_comment": true,
-   "comment_replies_off": []
+   "comment_replies_off": [],
+   "reels": [
+    "https://www.instagram.com/reel/DfkJbChlKVt/"
+   ]
   },
   {
    "id": "styles",
@@ -212,7 +222,10 @@
    "direct": false,
    "direct_text": "Hey {{name}} 👋 here are all the animation styles + prompts: https://madhureddy18.github.io/ai.jugaadd/p/styles/",
    "any_comment": true,
-   "comment_replies_off": []
+   "comment_replies_off": [],
+   "reels": [
+    "https://www.instagram.com/reel/Dfl8bKrEsH6/"
+   ]
   },
   {
    "id": "doc",
