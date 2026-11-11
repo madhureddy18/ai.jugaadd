@@ -1,0 +1,34 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 3 (American teen Maddie + young British Claude), re-chosen 2026-11-11). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Hey guys, I'm Maddie. Today I'll show you something crazy I made with my robot.",
+  "claude": "Good evening. I am Claude. I write the code, and I render the whole reel."
+ },
+ "voices": {
+  "claude_B": "male, young adult, moderate pitch, british accent"
+ },
+ "cast": {
+  "maddie": "maddie_C",
+  "claude": "claude_B"
+ },
+ "jobs": [
+  {
+   "voice": "claude_B",
+   "text": "Want every step, start to end? Comment... dock.",
+   "speed": 1.0,
+   "file": "21.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Want every step, start to end? Just comment the word: doc.",
+   "speed": 1.0,
+   "file": "21b.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Want every step, start to end? Comment: D. O. C.",
+   "speed": 1.0,
+   "file": "21c.wav"
+  }
+ ]
+}
