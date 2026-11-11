@@ -7,6 +7,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 20 }
+      - run: node tools/route_test.js
+        env:
+          IG_TOKEN: ${{ secrets.AIJUGAADIGTOKEN }}
       - run: node tools/stats.js
         env:
           IG_TOKEN: ${{ secrets.AIJUGAADIGTOKEN }}

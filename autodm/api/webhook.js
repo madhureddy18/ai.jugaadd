@@ -3,7 +3,7 @@
 // Instagram calls this URL the moment someone comments or messages:
 //   comment containing a keyword  -> public reply under the comment + private-reply DM with a "Send it" button
 //   they tap "Send it"/"I followed" -> follow check -> link (or "follow first", up to 3 tries, then link anyway)
-//   they DM the keyword itself     -> same flow, starting in the DM
+//   typed DMs never trigger by keyword; each reel's comments get THAT reel's DM
 // Stateless: which reel/step someone is on travels inside the button payload, so no database is needed.
 //
 // Env (Vercel → Settings → Environment Variables):
