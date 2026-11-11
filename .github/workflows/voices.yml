@@ -16,7 +16,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: '3.11' }
-      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - run: pip install -q imageio-ffmpeg && sudo ln -sf "$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')" /usr/local/bin/ffmpeg && ffmpeg -version | head -1
+        timeout-minutes: 5
       - run: pip install -q torch torchaudio --index-url https://download.pytorch.org/whl/cpu && pip install -q omnivoice
       - uses: actions/cache@v4
         with: { path: ~/.cache/huggingface, key: hf-omnivoice-v1 }
