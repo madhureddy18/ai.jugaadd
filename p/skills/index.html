@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>13 Free Claude Skills for Instagram</title>
+<meta name="description" content="The free, open-source Instagram skill pack for Claude Code: link, install steps and what each of the 13 commands does.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--ink:#1d1c1a;--mute:#6b6862;--line:#e6e2da;--card:#fff;--acc:#d62976;--soft:#f3efe7;--code:#14161f;--codeink:#e6e9f5}
+@media (prefers-color-scheme:dark){:root{--bg:#17161a;--ink:#ecebe7;--mute:#a19d95;--line:#33313a;--card:#211f25;--acc:#ff5ca8;--soft:#29272e}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-text-size-adjust:100%}
+main{max-width:720px;margin:0 auto;padding:0 16px 64px}
+.hero{margin:0 -16px 24px;padding:36px 20px 28px;background:linear-gradient(135deg,#feda75,#fa7e1e 28%,#d62976 55%,#962fbf 78%,#4f5bd5);color:#fff}
+.hero h1{margin:0 0 6px;font-size:clamp(28px,7.5vw,40px);line-height:1.1;font-weight:800}
+.hero p{margin:0;opacity:.92}
+h2{font-size:22px;margin:32px 0 8px}
+a{color:var(--acc)}
+.btn{display:block;text-align:center;background:var(--ink);color:var(--bg);text-decoration:none;font-weight:800;padding:14px 18px;border-radius:14px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:12px 0}
+.step{display:flex;gap:12px;align-items:flex-start}
+.n{flex:0 0 30px;height:30px;border-radius:50%;background:var(--acc);color:#fff;font-weight:800;display:grid;place-items:center}
+pre{position:relative;background:var(--code);color:var(--codeink);border-radius:12px;padding:14px 14px;overflow-x:auto;font:14px/1.5 "JetBrains Mono",monospace;margin:8px 0 0}
+.copy{position:absolute;top:8px;right:8px;background:#ffffff22;color:#fff;border:0;border-radius:8px;padding:4px 10px;font:600 12px Inter,sans-serif;cursor:pointer}
+.grid{display:grid;grid-template-columns:1fr;gap:8px}
+.sk{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.sk code{font:600 15px "JetBrains Mono",monospace;color:var(--acc)}
+.sk span{display:block;color:var(--mute);font-size:14px}
+@media (min-width:560px){.grid{grid-template-columns:1fr 1fr}}
+.note{background:var(--soft);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--mute)}
+footer{color:var(--mute);font-size:13px;margin-top:40px}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+<h1>13 free Claude skills that run your Instagram</h1>
+<p>Open source (MIT) by Jake Schincariol. No Instagram password, no API key, no signup.</p>
+</header>
+
+<a class="btn" href="https://github.com/Jakeschincariol/instagram-agent-skill" target="_blank" rel="noopener">Open the GitHub repo →</a>
+
+<h2>Install (2 minutes)</h2>
+<div class="card step"><div class="n">1</div><div style="min-width:0;flex:1">Open <b>Claude Code</b> (terminal, or the Code tab in the Claude desktop app) and run:
+<pre><button class="copy">copy</button>/plugin marketplace add Jakeschincariol/instagram-agent-skill
+/plugin install instagram-agent</pre></div></div>
+<div class="card step"><div class="n">2</div><div style="min-width:0;flex:1">Or the easy way: paste this into Claude Code and let it install everything:
+<pre><button class="copy">copy</button>https://github.com/Jakeschincariol/instagram-agent-skill
+
+Install this skill, then confirm /ig-reel works.</pre></div></div>
+<div class="card step"><div class="n">3</div><div style="min-width:0;flex:1"><b>Set your voice once.</b> Copy <code>templates/voice.md</code> to <code>~/.claude/instagram/voice.md</code> and fill it in, or send Claude three of your reels and ask it to write that file for you. Every skill reads it, so spend ~10 minutes here.</div></div>
+<div class="card step"><div class="n">4</div><div style="min-width:0;flex:1">Type <code>/ig-reel</code> with your idea. That's it.</div></div>
+
+<h2>The 13 commands</h2>
+<div class="grid">
+<div class="sk"><code>/ig-viral</code><span>Finds what's working in your niche, ranked against each account's normal views</span></div>
+<div class="sk"><code>/ig-reel</code><span>One idea → scored hooks, script, on-screen text, timed beats</span></div>
+<div class="sk"><code>/ig-human</code><span>Removes AI-sounding words from any draft</span></div>
+<div class="sk"><code>/ig-plan</code><span>Your week: what to post, format, timing, accounts to engage</span></div>
+<div class="sk"><code>/ig-dm</code><span>Keyword DMs, first messages, collab pitches, follow-ups</span></div>
+<div class="sk"><code>/ig-caption</code><span>Writes and checks captions, previewed like the feed</span></div>
+<div class="sk"><code>/ig-carousel</code><span>Swipe posts: cover, slide copy, 1080×1350 files</span></div>
+<div class="sk"><code>/ig-story</code><span>Daily story sequence and what each sticker is for</span></div>
+<div class="sk"><code>/ig-profile</code><span>Scores your profile out of 100, then rewrites it</span></div>
+<div class="sk"><code>/ig-repurpose</code><span>One video or podcast → a week of reels and carousels</span></div>
+<div class="sk"><code>/ig-audit</code><span>Reviews your past posts by outlier multiple</span></div>
+<div class="sk"><code>/ig-comment</code><span>Comments on others' posts, matched to what each post says</span></div>
+<div class="sk"><code>/ig-reply</code><span>Sorts the replies under your post and drafts answers</span></div>
+</div>
+
+<h2>Good to know</h2>
+<p class="note">The skills are free, but they run inside Claude Code, which needs a Claude plan. They write things for you to copy; they never log in to Instagram or post for you. <code>/ig-viral</code> works from links or screenshots you give it. Read the repo files before installing any community skill.</p>
+
+<footer>Found this useful? Follow for the next one 🤍</footer>
+</main>
+<script>
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{const t=b.parentElement.innerText.replace(/^copy\n?/,'');try{navigator.clipboard.writeText(t);b.textContent='copied ✓';setTimeout(()=>b.textContent='copy',1500)}catch(e){}}));
+</script>
+</body>
+</html>

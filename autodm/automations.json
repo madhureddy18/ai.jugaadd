@@ -249,6 +249,30 @@
    "direct_text": "Hey {{name}} 👋 here's the full start-to-end guide: https://madhureddy18.github.io/ai.jugaadd/p/doc/",
    "any_comment": true,
    "comment_replies_off": []
+  },
+  {
+   "id": "skills",
+   "active": true,
+   "reel": "",
+   "caption_has": "#claudeskills",
+   "reel_first": false,
+   "keywords": [
+    "skills",
+    "skill"
+   ],
+   "comment_replies": [],
+   "opening": "Hey {{name}} 👋 Thanks for watching! Tap below and I'll send you the 13 free Claude skills for Instagram + the 2-minute setup 📲",
+   "opening_button": "Send it 🚀",
+   "follow_gate": true,
+   "follow_text": "Almost there {{name}}! 😄 The skills pack is only for followers. Follow @maddiee.makess (new AI reels daily) and tap below 👇",
+   "follow_button": "I followed ✅",
+   "final_text": "Here you go {{name}} 📲\n\n13 free Claude skills for Instagram: /ig-viral, /ig-reel, /ig-human, /ig-plan, /ig-dm + 8 more.\n\nGitHub link, install commands and what each one does 👇",
+   "link_label": "Open the skills + setup 📲",
+   "link": "https://madhureddy18.github.io/ai.jugaadd/p/skills/",
+   "direct": false,
+   "direct_text": "Hey {{name}} 👋 here are the 13 free Claude skills + setup: https://madhureddy18.github.io/ai.jugaadd/p/skills/",
+   "any_comment": true,
+   "comment_replies_off": []
   }
  ],
  "default": "prompt",
