@@ -1,0 +1,119 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 3 (American teen Maddie + young British Claude), re-chosen 2026-11-11). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Hey guys, I'm Maddie. Today I'll show you something crazy I made with my robot.",
+  "claude": "Good evening. I am Claude. I write the code, and I render the whole reel."
+ },
+ "voices": {
+  "maddie_C": "male, teenager, moderate pitch, american accent",
+  "claude_B": "male, young adult, moderate pitch, british accent"
+ },
+ "cast": {
+  "maddie": "maddie_C",
+  "claude": "claude_B"
+ },
+ "jobs": [
+  {
+   "voice": "maddie_C",
+   "text": "[sigh] Claude... I post every single day... and two hundred views.",
+   "speed": 1,
+   "file": "01.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[dissatisfaction-hnn] What am I doing wrong?",
+   "speed": 1,
+   "file": "02.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "You're doing it... all alone.",
+   "speed": 1,
+   "file": "03.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Install this. Thirteen free... Instagram skills.",
+   "speed": 1,
+   "file": "04.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-wa] Thirteen?! Okay... show me.",
+   "speed": 1,
+   "file": "05.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Slash viral. It finds reels in your niche... doing three times normal.",
+   "speed": 1,
+   "file": "06.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Slash reel. It writes the script... with the hook.",
+   "speed": 1,
+   "file": "07.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-oh] Wait... it writes my hooks?!",
+   "speed": 1,
+   "file": "08.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Slash human. It deletes the A I words.",
+   "speed": 1,
+   "file": "09.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[laughter] Hehe! Bye bye, delve!",
+   "speed": 1,
+   "file": "10.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Slash plan. Your whole week... planned.",
+   "speed": 1,
+   "file": "11.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "And slash D M... drafts your replies.",
+   "speed": 1,
+   "file": "12.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[question-en] Okay... how much does it cost?",
+   "speed": 1,
+   "file": "13.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Zero. No A P I key. No login.",
+   "speed": 1,
+   "file": "14.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-wa] No way! Send me the link!",
+   "speed": 1,
+   "file": "15.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Comment... skills. I'll send the link, and the setup.",
+   "speed": 1,
+   "file": "16.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[laughter] Two hundred views... you are done.",
+   "speed": 1,
+   "file": "17.wav"
+  }
+ ]
+}
