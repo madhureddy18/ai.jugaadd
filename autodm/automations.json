@@ -244,9 +244,9 @@
    "follow_button": "I followed ✅",
    "final_text": "Here you go {{name}} 🎬\n\nThe full guide: script → 3D character → voices → styles → render → post. Copy-paste prompts, the free voice app, and 10 script ideas.\n\n(The potato version is in there too 🥔)",
    "link_label": "Open the full guide 📘",
-   "link": "https://madhureddy18.github.io/ai.jugaadd/p/doc/",
+   "link": "https://claude.ai/artifact/1YtZe8LvPiJwbxaBZR2AXk",
    "direct": false,
-   "direct_text": "Hey {{name}} 👋 here's the full start-to-end guide: https://madhureddy18.github.io/ai.jugaadd/p/doc/",
+   "direct_text": "Hey {{name}} 👋 here's the full start-to-end guide: https://claude.ai/artifact/1YtZe8LvPiJwbxaBZR2AXk",
    "any_comment": true,
    "comment_replies_off": []
   }
