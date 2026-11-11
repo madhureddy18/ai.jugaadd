@@ -92,7 +92,7 @@ window.SCENE = {
 
     // ================= SOFA + TABLE + LAPTOP =================
     const MX = -0.32, MZ = -0.85, SY = 0.46;
-    const sofaF = SM(0x2b2f3d, 0.6), cush = SM(0xe0a53a, 0.85), cush2 = SM(0xf4efe4, 0.85);
+    const sofaF = SM(0x2b2f3d, 0.6), cush = SM(0xe0a53a, 0.85), cush2 = SM(0xe4573e, 0.85);
     rbox(1.5, 0.3, 0.72, sofaF, MX + 0.2, 0.2, MZ, 0.04); rbox(1.4, 0.12, 0.62, cush, MX + 0.2, SY - 0.06, MZ + 0.03, 0.05);
     rbox(1.5, 0.62, 0.18, sofaF, MX + 0.2, 0.55, MZ - 0.32, 0.05); rbox(1.36, 0.4, 0.14, cush, MX + 0.2, 0.62, MZ - 0.24, 0.06);
     [-1, 1].forEach(s => rbox(0.16, 0.48, 0.72, sofaF, MX + 0.2 + s * 0.75, 0.4, MZ, 0.05));
@@ -367,7 +367,7 @@ window.SCENE = {
       const kb = pop(t, B('cta1') + 0.6, 0.35); h.save(); h.translate(0, 250); h.scale(kb, kb); h.shadowColor = 'rgba(255,197,61,0.6)'; h.shadowBlur = 40; rr(-260, -58, 520, 116, 30, ACC, '#141414', 6); h.shadowBlur = 0; txt('Comment SKILLS', 0, 2, 60, '#141414', 900); h.restore();
       h.restore();
       if (t >= C.DONE2) { const kp = pop(t, C.DONE2, 0.35); phone(t, 175, 430, 0.5 * kp, 200, '😰', 1); sticker(t, C.DONE2 + 0.45, 'you are DONE.', 230, 680, -0.08, RED, '#fff', 42); } };
-    const hudDraw = (t) => { h.clearRect(0, 0, W, H);
+    const hudDraw = (t) => { if (h.reset) h.reset(); else { h.setTransform(1, 0, 0, 1, 0, 0); h.globalAlpha = 1; h.shadowBlur = 0; } h.clearRect(0, 0, W, H);
       if (t < C.SOLO) hookHud(t);
       else if (t < C.INST) soloHud(t);
       else if (t < C.K1) installHud(t);
