@@ -1,154 +1,183 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>How We Make 3D AI Reels · Full Guide</title>
-<meta name="description" content="The full start-to-end guide: script, 3D character, voices, styles, render, post. Plus 10 script ideas.">
-<meta property="og:title" content="How we make 3D AI reels in code: the full guide">
-<meta property="og:description" content="Script → character → voices → styles → render → post. Free tools only.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Make a 3D AI Reel in Code — Start to Finish</title>
+<meta name="description" content="Every step from idea to posted reel: script, characters, animation styles, voices with OmniVoice Studio, scene code, render, posting, results, plus 10 script ideas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#120f1a;--card:#1c1826;--line:#2e2840;--ink:#f7f3ec;--mute:#aaa3b8;--gold:#ffc53d;--org:#ff7a3d;--green:#3ddc97;--blue:#5a8cff}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55}
-.top{height:6px;background:linear-gradient(90deg,#f6a070,#d97a9a,#6d5fa8)}
-main{max-width:680px;margin:0 auto;padding:28px 16px 64px}
-.tag{display:inline-block;background:var(--org);color:#fff;font-weight:900;font-size:13px;padding:6px 14px;border-radius:99px}
-h1{font-size:33px;line-height:1.12;margin:16px 0 10px;font-weight:900}h1 span{color:var(--gold)}
-p.sub{color:var(--mute);margin:0 0 18px;font-size:16px}
-.repo{display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--ink);background:linear-gradient(135deg,#221d33,#2d2140);border:1px solid #40365a;border-radius:18px;padding:16px;margin:6px 0 10px}
-.repo i{font-style:normal;font-size:34px}.repo b{font-size:18px}.repo small{display:block;color:var(--mute)}
-.badges{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}.badges span{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:5px 12px;font-size:13px;font-weight:700}
-.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:18px 0 4px}
-.flow div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:9px 4px;text-align:center;font-size:12px;color:var(--mute)}.flow b{display:block;font-size:20px}
-h2{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:34px 0 12px;font-weight:800}
-h3{margin:0 0 6px;font-size:19px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:12px}
-.lvl{display:inline-block;font-size:12px;font-weight:800;padding:4px 10px;border-radius:99px;background:#12291f;color:var(--green);margin-bottom:8px}.lvl.b{background:#2a1d12;color:var(--org)}.lvl.c{background:#151d38;color:var(--blue)}
-ol{padding-left:20px;margin:6px 0 0}li{margin:7px 0}li b{color:var(--ink)}
-.cmd{display:flex;gap:8px;align-items:stretch;margin:8px 0}
-code,.cmd pre{font-family:"JetBrains Mono",monospace;font-size:14px}
-.cmd pre{flex:1;margin:0;background:#0d0b13;border:1px solid var(--line);border-radius:10px;padding:11px 12px;white-space:pre-wrap;word-break:break-all;color:#f3efe6}
-.cmd button{border:0;border-radius:10px;padding:0 14px;font:800 14px Inter,sans-serif;background:var(--gold);color:#1a1206;cursor:pointer;min-width:70px}
-.cmd button.done{background:var(--green)}
-code{background:#0d0b13;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px}
-table{width:100%;border-collapse:collapse;font-size:15px}td{border-top:1px solid var(--line);padding:9px 6px;vertical-align:top}td:first-child{white-space:nowrap;width:1%}
-.note{font-size:14px;color:var(--mute);margin-top:8px}
-.tip{background:#1f1a12;border:1px solid #4a3a1c;border-radius:14px;padding:12px 14px;font-size:15px;margin-bottom:10px}.tip b{color:var(--gold)}
-footer{margin-top:40px;text-align:center;color:var(--mute);font-size:14px}footer a{color:var(--gold);font-weight:700;text-decoration:none}
-</style></head>
+:root{--bg:#fbfaf7;--ink:#1d1c1a;--mute:#6b6862;--line:#e6e2da;--card:#fff;--acc:#c96442;--soft:#f3efe7}
+@media (prefers-color-scheme:dark){:root{--bg:#1b1a18;--ink:#ecebe7;--mute:#a19d95;--line:#34322e;--card:#232220;--acc:#e08a68;--soft:#2a2926}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-text-size-adjust:100%}
+main{max-width:760px;margin:0 auto;padding:32px 16px 64px}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:clamp(28px,7vw,40px);line-height:1.15;margin:0 0 8px}
+.meta{color:var(--mute);font-size:14px;margin-bottom:20px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-block;background:var(--acc);color:#fff;text-decoration:none;padding:6px 12px;border-radius:999px;font-weight:600;font-size:13px}
+h2{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;margin:40px 0 8px}
+p{margin:10px 0}
+ol,ul{padding-left:22px}li{margin:6px 0}
+a{color:var(--acc)}
+code{background:var(--soft);padding:1px 5px;border-radius:4px;font-size:.92em}
+.toc{background:var(--soft);border-radius:12px;padding:12px 16px;font-size:14px}
+.toc a{color:var(--ink);text-decoration:none}.toc ol{margin:4px 0}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0 6px}
+.flow div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 8px;text-align:center;font-size:13px}
+.flow b{display:block;font-size:14px}.flow span{color:var(--mute);font-size:12px}
+@media (max-width:520px){.flow{grid-template-columns:repeat(2,1fr)}}
+.cap{color:var(--mute);font-size:13px;margin:0 0 8px}
+.tw{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:460px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--soft);font-weight:600}tr:last-child td{border-bottom:0}
+.wide table{min-width:720px}
+footer{color:var(--mute);font-size:13px;margin-top:48px;border-top:1px solid var(--line);padding-top:16px}
+</style>
+</head>
 <body>
-<div class="top"></div>
 <main>
-<span class="tag">The full guide · start → end</span>
-<h1>How we make a 3D AI reel <span>in code.</span></h1>
-<p class="sub">No camera, no editing app. An AI (Claude) writes the script and the 3D scenes, a free voice app makes the voices, and you review and approve. A 36-second reel takes about 3 hours, half of it the render.</p>
-<div class="flow"><div><b>✍️</b>script</div><div><b>🧍</b>character</div><div><b>🎙</b>voices</div><div><b>🎨</b>styles</div><div><b>🎬</b>render</div></div>
+<h1>How to Make a 3D AI Reel in Code — Start to Finish</h1>
+<div class="meta"><span>Nov 11, 2026</span><a class="btn" href="how-to-make-3d-ai-reels.pdf">Download PDF</a></div>
 
-<h2>Step 1 · Idea and script</h2>
-<div class="card"><ol>
-<li><b>Pick the idea.</b> One relatable moment or one useful thing (a prompt, a tool, a trick). Reels that give something away for free get saved and shared most.</li>
-<li><b>Write the hook first.</b> The first 2 seconds must say what's coming. A hook that hides the point loses people.</li>
-<li><b>Write the lines.</b> One character asks or reacts, the AI sidekick answers short and dry. 12–23 lines, 30–40 seconds.</li>
-<li><b>Mark the emotions.</b> [sigh], [laughter], surprise, a question tone. Your characters have tiny faces, so the voice carries the feeling.</li>
-<li><b>Mark caption keywords</b> so they show in yellow.</li>
-<li><b>End with a one-word CTA.</b> "Comment DOC". Never a sentence for people to type.</li>
-<li><b>Review, then say "build".</b></li>
+<nav class="toc"><ol>
+<li><a href="#s1">Idea and script</a></li><li><a href="#s2">Characters and look</a></li><li><a href="#s3">Animation style selection</a></li><li><a href="#s4">Voices</a></li><li><a href="#s5">Building the scene in code</a></li><li><a href="#s6">Previews and the final render</a></li><li><a href="#s7">Posting</a></li><li><a href="#s8">Checking results</a></li><li><a href="#tools">Time and tools</a></li><li><a href="#ideas">10 script ideas</a></li>
+</ol></nav>
+
+<h2>Overview</h2>
+<p>Each reel is made entirely in code, with no camera and no editing app: an AI (Claude) writes the script and the 3D scenes, a free voice tool makes the voices, and you review and approve. A 36-second reel takes about 3 hours end to end, half of it the render.</p>
+<div class="flow">
+<div><b>1 Script</b><span>hook, lines, CTA</span></div><div><b>2 Characters</b><span>Maddie + sidekick</span></div><div><b>3 Style</b><span>pick from 8 looks</span></div><div><b>4 Voices</b><span>OmniVoice Studio</span></div>
+<div><b>5 Scene code</b><span>shots, HUD, sound</span></div><div><b>6 Render</b><span>previews, then ~1.5 h</span></div><div><b>7 Post</b><span>cover, caption, CTA</span></div><div><b>8 Results</b><span>saves, shares, watch</span></div>
+</div>
+<p class="cap">reel pipeline · 8 steps</p>
+<p>Steps 1–3 decide what the reel says and looks like, 4–6 produce the video, and 7–8 get it posted and measure it.</p>
+
+<h2 id="s1">Step 1: Idea and script</h2>
+<p>Every reel starts as a written script, and nothing is built until I say "build".</p>
+<ol>
+<li><strong>Pick the idea.</strong> One relatable moment or one useful thing (a prompt, a GitHub repo, a trick). Reels that give something away for free get saved and shared most.</li>
+<li><strong>Write the hook first.</strong> The first 2 seconds must say what's coming. Example: "Hey Claude… how many animation styles can you do?" A hook that hides the point loses people.</li>
+<li><strong>Write the lines.</strong> Maddie asks or reacts; Claude answers short and dry. 12–18 lines, about 30–40 seconds.</li>
+<li><strong>Mark the emotions.</strong> Tags like [sigh], [laughter], [surprise-oh], [surprise-wa], [question-en] go on the lines that need them.</li>
+<li><strong>Mark the caption keywords.</strong> Words in <code>*stars*</code> turn yellow in the subtitles.</li>
+<li><strong>End with a one-word CTA.</strong> "Comment CLAUDE", "Comment PROMPT". Never a sentence for viewers to type.</li>
+<li><strong>Review and approve.</strong> I read the script, ask for changes, then say "build".</li>
 </ol>
-<div class="cmd"><pre>Write a 35-second Instagram reel script. Two characters: [main character] and a dry, funny AI sidekick. Topic: [topic]. The hook must reveal the premise in the first line. 15–20 short lines, mark emotions like [sigh] [laughter] [surprise] on lines that need them, end with "Comment [WORD]". Make it genuinely funny.</pre><button onclick="cp(this)">Copy</button></div></div>
 
-<h2>Step 2 · Characters and look</h2>
-<div class="card"><ol>
-<li><b>Build the characters once in code</b> with three.js (a free JavaScript 3D library) and reuse them in every reel.</li>
-<li><b>Rules that make them look right:</b> shoulders, arms and legs connected to the body; small lip movement when talking; no blush dots.</li>
-<li><b>The set:</b> a room built from simple shapes. Change the location when the story needs it.</li>
-<li><b>Acting:</b> poses per line (look at the sidekick, lean in, both arms up) and a camera shot per beat.</li>
-<li><b>Screen rules:</b> full 9:16, no black bars, captions high on screen.</li>
+<h2 id="s2">Step 2: Characters and look</h2>
+<p>The two characters and the room are built once in code and reused in every reel.</p>
+<ul>
+<li><strong>Maddie:</strong> a 3D cartoon boy made from shapes in three.js (a JavaScript 3D library). Rules: human-looking body with shoulders, arms and legs connected; small lip movement while talking; no blush dots.</li>
+<li><strong>The AI sidekick:</strong> a round hover-bot with headphones and a glowing face. It blinks, winks, tilts and hovers.</li>
+<li><strong>The set:</strong> a purple living room with a couch, popcorn bowl, curtains, fairy lights and a city window. Each reel can move to a new location when the story needs it.</li>
+<li><strong>Acting:</strong> each line gets poses (look at Claude, chin on hand, lean in, smile) and camera shots (close-up, two-shot, push-in).</li>
+<li><strong>Screen rules:</strong> full 9:16 frame with no black bars, captions high on screen with yellow keywords, no page handle or name tags on the video.</li>
+</ul>
+
+<h2 id="s3">Step 3: Animation style selection</h2>
+<p>The same 3D scene can be redrawn in different styles, so a new look costs code, not a new set of models. The style is switched per shot by a shader (a small program that recolors every pixel after the 3D render).</p>
+<div class="tw"><table>
+<thead><tr><th>#</th><th>Style</th><th>How it's made</th><th>Best for</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>Toy 3D (default)</td><td>Normal 3D render with soft lights and bloom glow</td><td>Every reel's base look</td></tr>
+<tr><td>1</td><td>Pixel art</td><td>Screen cut into big pixels, limited colors, game HUD (score, lives)</td><td>Retro or gaming jokes</td></tr>
+<tr><td>2</td><td>Voxel</td><td>Characters rebuilt from little cubes, like Minecraft</td><td>Gaming, building themes</td></tr>
+<tr><td>3</td><td>Comic book</td><td>Thick ink outlines, halftone dots, POW text</td><td>Loud, funny moments</td></tr>
+<tr><td>4</td><td>Paper cut-out</td><td>Flat paper colors, white cut edges, tape strips</td><td>Soft, crafty, explainers</td></tr>
+<tr><td>5</td><td>Neon</td><td>Black room, glowing outlines, grid floor</td><td>Night, tech, "wow" moments</td></tr>
+<tr><td>6</td><td>Anime</td><td>Cel shading, bright hair, sparkles, speed lines</td><td>Emotional or hype beats</td></tr>
+<tr><td>7</td><td>Tiny diorama</td><td>Whole room shrunk on a table, tilt-shift blur</td><td>Surprise or scale jokes</td></tr>
+<tr><td>—</td><td>Code view</td><td>Green wireframe + the actual code typing on screen</td><td>"I made this with code" reveals</td></tr>
+</tbody></table></div>
+<p><strong>How I choose:</strong> pick the style that matches the line's emotion, keep one style per beat, and cut on the line where the style changes. A reel can stay in one style or switch on every line, like a "how many styles can you do?" reel.</p>
+
+<h2 id="s4">Step 4: Voices</h2>
+<p>Voices come from <a href="https://github.com/debpalash/OmniVoice-Studio" target="_blank" rel="noopener">OmniVoice Studio</a>, a free, open-source voice app (an ElevenLabs alternative) that runs on your own computer with no API key. It can design a new voice from a description and clone it from a short clip. The cast used here: Maddie = American teen, the AI sidekick = young British.</p>
+<ol>
+<li><strong>Install OmniVoice Studio</strong> from its <a href="https://github.com/debpalash/OmniVoice-Studio" target="_blank" rel="noopener">GitHub page</a> and open it.</li>
+<li><strong>Design each voice once.</strong> In Voice Design, set gender, age, accent and pitch ("male, teenager, moderate pitch, American accent"), generate one sample line and save it.</li>
+<li><strong>Clone from that saved sample every time.</strong> Generate every line from the same saved clip in Voice Clone, so the characters sound identical in every reel.</li>
+<li><strong>One file per script line.</strong> Name them in order (01.wav, 02.wav…). Add emotion where the script marks it: a sigh, a laugh, surprise, a question tone.</li>
+<li><strong>Clean up.</strong> Trim the silence at both ends of each clip. Add a style effect where it fits: crunchy 8-bit sound for pixel art, echo for neon, a tiny high voice for the diorama.</li>
+<li><strong>Listen and fix.</strong> Regenerate any line that sounds rushed or flat, slower or reworded. 18 lines take about 10–15 minutes.</li>
 </ol>
-<div class="cmd"><pre>Using three.js, build a cute toy-style 3D character sitting on a chair: rounded head, connected shoulders/arms/legs, simple eyes, a mouth that opens with a talk value 0–1, and functions to set poses (rest, wave, both arms up, hand on chin). Keep it all in code, no model files.</pre><button onclick="cp(this)">Copy</button></div></div>
 
-<h2>Step 3 · Animation styles</h2>
-<div class="card"><table>
-<tr><td>Toy 3D</td><td>Soft lights and glow. Every reel's base look.</td></tr>
-<tr><td>Pixel art</td><td>Big pixels, limited colors, game HUD. Retro or gaming jokes.</td></tr>
-<tr><td>Voxel</td><td>Everything rebuilt from cubes. Gaming, building themes.</td></tr>
-<tr><td>Comic book</td><td>Ink outlines, halftone dots, POW. Loud, funny moments.</td></tr>
-<tr><td>Paper cut-out</td><td>Flat paper colors, white cut edges, tape. Soft explainers.</td></tr>
-<tr><td>Neon</td><td>Black room, glowing outlines, grid floor. "Wow" moments.</td></tr>
-<tr><td>Anime</td><td>Cel shading, sparkles, speed lines. Hype beats.</td></tr>
-<tr><td>Tiny diorama</td><td>The room as a miniature, tilt-shift blur. Scale jokes.</td></tr>
-<tr><td>Code view</td><td>Green wireframe + code typing. "I made this with code" reveals.</td></tr>
-</table>
-<p class="note">The same 3D scene is redrawn by a shader (a small program that recolors every pixel), so a new look costs code, not new models. Match the style to the line's emotion, and cut on the line where it changes.</p></div>
+<h2 id="s5">Step 5: Building the scene in code</h2>
+<p>Each reel is one scene file: a lines file (the script) plus a body file (everything you see and hear). Claude writes both.</p>
+<ol>
+<li><strong>Timeline from the voices.</strong> The real length of each voice clip sets when every line starts, so cuts and effects are tied to the words, not to guessed seconds.</li>
+<li><strong>Shots.</strong> Each beat gets a camera shot; a cut lands on the line that changes the style or the mood.</li>
+<li><strong>Acting.</strong> Poses and expressions are set per line: Maddie looks at Claude, leans in, smiles; Claude winks or tilts.</li>
+<li><strong>Motion graphics (the HUD).</strong> Titles, style badges (1–7), counters (7 → ∞), code on screen, the "PICK YOURS" wall and the comment card are drawn on top of the 3D.</li>
+<li><strong>Captions.</strong> Each line becomes a subtitle placed high on screen, keyword in yellow.</li>
+<li><strong>Sound.</strong> Pops, whooshes, coins and bass hits on the cuts, background music that dips under key lines and goes quiet for the big turn.</li>
+</ol>
 
-<h2>Step 4 · Voices</h2>
-<a class="repo" href="https://github.com/debpalash/OmniVoice-Studio" target="_blank" rel="noopener"><i>🎙</i><span><b>OmniVoice Studio</b><small>Free, open source, runs on your computer. No API key.</small></span></a>
-<div class="card"><ol>
-<li><b>Install OmniVoice Studio</b> from its GitHub page and open it.</li>
-<li><b>Design each voice once.</b> In Voice Design set gender, age, accent and pitch ("male, teenager, moderate pitch, American accent"), generate one sample and save it.</li>
-<li><b>Clone from that saved sample every time</b> so your characters sound the same in every reel.</li>
-<li><b>One file per line</b>, named in order (01.wav, 02.wav…). Add emotion where the script marks it.</li>
-<li><b>Clean up:</b> trim silence at both ends. Add a style effect where it fits: 8-bit crunch for pixel art, echo for neon.</li>
-<li><b>Listen and fix:</b> regenerate any line that sounds rushed or flat. 20 lines take about 15 minutes.</li>
-</ol></div>
+<h2 id="s6">Step 6: Previews and the final render</h2>
+<p>The video is drawn frame by frame in a hidden Chrome browser, then joined with the voices, music and sound into one MP4.</p>
+<ol>
+<li><strong>Still previews.</strong> A few frames at the busiest moments are drawn and checked first: captions, badges, nothing overlapping.</li>
+<li><strong>Line preview.</strong> One frame per line, with voices, to check timing and that every graphic shows when it should (for example, ∞ appears before the code reveal).</li>
+<li><strong>Full render.</strong> Every frame at 1080 × 1920, 30 fps. A 36-second reel = about 1,090 frames at about 5 seconds each, so <strong>about 1.5 hours</strong>.</li>
+<li><strong>Check the result.</strong> A contact sheet (one frame every 2.3 seconds) confirms every section before you watch the MP4.</li>
+</ol>
+<p>Important: changing only the voices still needs a full render, because the new clip lengths shift every cut, caption and mouth movement.</p>
 
-<h2>Step 5 · Building the scene</h2>
-<div class="card"><ol>
-<li><b>Timeline from the voices:</b> each clip's real length sets when every line starts, so cuts land on words.</li>
-<li><b>Shots:</b> one camera shot per beat, cut where the mood changes.</li>
-<li><b>Motion graphics:</b> titles, step badges, counters, stickers drawn on top of the 3D.</li>
-<li><b>Captions</b> high on screen, keyword in yellow.</li>
-<li><b>Sound:</b> pops and whooshes on cuts, music that dips under the big line.</li>
-</ol></div>
+<h2 id="s7">Step 7: Posting</h2>
+<p>Post the MP4 straight from the Instagram app as a Reel.</p>
+<ol>
+<li><strong>Watch it once on your phone.</strong> Check sound levels and that the captions are readable at phone size.</li>
+<li><strong>Cover.</strong> Pick the frame with the hook title so the grid shows what the reel is about.</li>
+<li><strong>Caption.</strong> First line repeats the hook, then a short list of what's inside, then the one-word CTA ("Comment CLAUDE and I'll send you all of them").</li>
+<li><strong>Hashtags.</strong> 3–5 specific ones (#animationstyles, #3danimation, #claudeai), not 30 generic ones.</li>
+<li><strong>Time.</strong> Post when your audience is online; midday and 7–9 PM work well in India.</li>
+<li><strong>Deliver the freebie.</strong> Send what you promised to everyone who comments the word.</li>
+</ol>
 
-<h2>Step 6 · Render</h2>
-<div class="card"><ol>
-<li><b>Check a few still frames first</b> at the busiest moments.</li>
-<li><b>Full render:</b> every frame at 1080×1920, 30 fps, drawn in headless Chrome, joined with voices and sound by ffmpeg. 36 seconds ≈ 1,100 frames ≈ 1.5 hours.</li>
-<li><b>Changing only the voices still needs a full render:</b> new clip lengths move every cut, caption and mouth.</li>
-</ol></div>
+<h2 id="s8">Step 8: Checking results</h2>
+<p>Open the reel's Insights after 24 hours and compare it with your usual numbers. These four matter most:</p>
+<div class="tw"><table>
+<thead><tr><th>Metric</th><th>What it tells you</th></tr></thead>
+<tbody>
+<tr><td>Saves</td><td>People want to come back to it: the strongest push signal</td></tr>
+<tr><td>Shares</td><td>People sent it to friends: reach beyond your followers</td></tr>
+<tr><td>Avg watch time</td><td>Whether the hook and pacing held them (aim for over half the reel)</td></tr>
+<tr><td>Comments</td><td>Whether the CTA worked</td></tr>
+</tbody></table></div>
+<p>One example: a reel with a free prompt giveaway got 13,000 views, 554 saves and 201 shares, against about 1,500 views on a normal reel, with average watch time more than doubled.</p>
 
-<h2>Step 7 · Post</h2>
-<div class="card"><ol>
-<li><b>Watch it once on your phone.</b> Sound levels, captions readable.</li>
-<li><b>Cover:</b> the frame with the hook title.</li>
-<li><b>Caption:</b> hook, a short list, then the one-word CTA.</li>
-<li><b>3–5 specific hashtags</b>, not 30 generic ones.</li>
-<li><b>Post when your audience is online.</b> Midday and 7–9 PM work well in India.</li>
-<li><b>Deliver the freebie</b> to everyone who comments the word.</li>
-</ol></div>
+<h2 id="tools">Time and tools for one reel</h2>
+<div class="tw"><table>
+<thead><tr><th>Stage</th><th>Time</th><th>Tool (all free)</th></tr></thead>
+<tbody>
+<tr><td>Script</td><td>15–30 min with review</td><td>Claude</td></tr>
+<tr><td>Voices</td><td>10–15 min</td><td><a href="https://github.com/debpalash/OmniVoice-Studio" target="_blank" rel="noopener">OmniVoice Studio</a></td></tr>
+<tr><td>Scene code + previews</td><td>30–60 min</td><td>Claude, three.js</td></tr>
+<tr><td>Full render</td><td>about 1.5 h</td><td>Chrome (headless) + ffmpeg</td></tr>
+<tr><td>Posting</td><td>10 min</td><td>Instagram app</td></tr>
+</tbody></table></div>
 
-<h2>Step 8 · Read the results</h2>
-<div class="card"><table>
-<tr><td>Saves</td><td>People want to come back to it. The strongest push signal.</td></tr>
-<tr><td>Shares</td><td>Reach beyond your followers.</td></tr>
-<tr><td>Watch time</td><td>Did the hook hold them? Aim for over half the reel.</td></tr>
-<tr><td>Comments</td><td>Did the CTA work?</td></tr>
-</table><p class="note">Our free-prompt reel: 13,000 views, 554 saves, 201 shares, against about 1,500 views on a normal reel.</p></div>
+<h2 id="ideas">10 script ideas to start with</h2>
+<p>Each idea follows the same pattern: a question or problem in the hook, a quick visual payoff, and a free giveaway behind a one-word comment.</p>
+<div class="tw wide"><table>
+<thead><tr><th>#</th><th>Idea</th><th>Hook line</th><th>Payoff</th><th>Best style</th><th>CTA word</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>One prompt, five looks</td><td>"Can you make me look like a movie poster?"</td><td>The character flips through 5 poster styles, one per beat</td><td>Comic, neon, anime</td><td>POSTER</td></tr>
+<tr><td>2</td><td>Resume in 60 seconds</td><td>"300 applications. Zero calls. Why?"</td><td>The AI rewrites one bullet on screen, before vs after</td><td>Toy 3D + code view</td><td>RESUME</td></tr>
+<tr><td>3</td><td>Build a website by talking</td><td>"Can you build my portfolio while I eat?"</td><td>A site builds itself on screen, bite by bite</td><td>Toy 3D, then code view</td><td>SITE</td></tr>
+<tr><td>4</td><td>Faceless channel in a day</td><td>"This channel has no face and 1 million views."</td><td>The AI shows the 4 tools behind it, one per cut</td><td>Pixel art (gamer feel)</td><td>FACELESS</td></tr>
+<tr><td>5</td><td>Study plan for exams</td><td>"Exam in 7 days. I know nothing."</td><td>A 7-day plan stacks up as blocks, day by day</td><td>Voxel</td><td>PLAN</td></tr>
+<tr><td>6</td><td>Excel to dashboard</td><td>"My boss wants a dashboard by 5 PM."</td><td>A messy sheet turns into a clean chart</td><td>Paper cut-out</td><td>DASHBOARD</td></tr>
+<tr><td>7</td><td>Shrink a long video into Shorts</td><td>"I have a 1-hour podcast. Make it 10 reels."</td><td>The long bar splits into 10 small clips</td><td>Tiny diorama</td><td>CLIPS</td></tr>
+<tr><td>8</td><td>Talk to your PDF</td><td>"300-page textbook. One question."</td><td>The book opens and the answer glows on the page</td><td>Neon</td><td>PDF</td></tr>
+<tr><td>9</td><td>Cold message that gets replies</td><td>"Why does nobody reply to my DMs?"</td><td>Bad message vs 3-line good message, side by side</td><td>Comic (red X, green tick)</td><td>REPLY</td></tr>
+<tr><td>10</td><td>"Is this real or AI?" game</td><td>"Guess which one is AI."</td><td>3 rounds, the reveal is the last line: all of it was code</td><td>Switches every round</td><td>GUESS</td></tr>
+</tbody></table></div>
+<p>Tips that apply to all ten: keep it under 40 seconds, show the result before explaining it, and make the giveaway something people would save (a prompt, a checklist, a tool list).</p>
 
-<h2>10 script ideas</h2>
-<div class="card"><table>
-<tr><td>1</td><td><b>One prompt, five looks.</b> "Can you make me look like a movie poster?" → CTA POSTER</td></tr>
-<tr><td>2</td><td><b>Resume in 60 seconds.</b> "300 applications. Zero calls. Why?" → RESUME</td></tr>
-<tr><td>3</td><td><b>Build a website by talking.</b> "Can you build my portfolio while I eat?" → SITE</td></tr>
-<tr><td>4</td><td><b>Faceless channel.</b> "This channel has no face and 1 million views." → FACELESS</td></tr>
-<tr><td>5</td><td><b>Exam study plan.</b> "Exam in 7 days. I know nothing." → PLAN</td></tr>
-<tr><td>6</td><td><b>Excel to dashboard.</b> "My boss wants a dashboard by 5 PM." → DASHBOARD</td></tr>
-<tr><td>7</td><td><b>Long video to Shorts.</b> "1-hour podcast. Make it 10 reels." → CLIPS</td></tr>
-<tr><td>8</td><td><b>Talk to your PDF.</b> "300-page textbook. One question." → PDF</td></tr>
-<tr><td>9</td><td><b>Cold message that gets replies.</b> "Why does nobody reply to my DMs?" → REPLY</td></tr>
-<tr><td>10</td><td><b>Real or AI?</b> "Guess which one is AI." → GUESS</td></tr>
-</table><p class="note">Keep it under 40 seconds, show the result before explaining it, and make the giveaway something people would save.</p></div>
-
-<h2>Tools (all free)</h2>
-<div class="card"><table>
-<tr><td>Script + scene code</td><td>Claude</td></tr>
-<tr><td>3D</td><td>three.js</td></tr>
-<tr><td>Voices</td><td><a style="color:var(--gold)" href="https://github.com/debpalash/OmniVoice-Studio" target="_blank" rel="noopener">OmniVoice Studio</a></td></tr>
-<tr><td>Render</td><td>Headless Chrome + ffmpeg</td></tr>
-<tr><td>Posting</td><td>Instagram app</td></tr>
-</table></div>
-
-<footer>Made by <a href="https://instagram.com/maddiee.makess">@maddiee.makess</a> · even the potato version 🥔</footer>
+<footer>Swipe tables sideways on your phone. Want it offline? <a href="how-to-make-3d-ai-reels.pdf">Download the PDF</a>.</footer>
 </main>
-<script>function cp(b){navigator.clipboard.writeText(b.previousElementSibling.innerText).then(()=>{b.textContent='Copied';b.classList.add('done');setTimeout(()=>{b.textContent='Copy';b.classList.remove('done')},1500)})}</script>
-</body></html>
+</body>
+</html>
