@@ -1,0 +1,157 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 3 (American teen Maddie + young British Claude), re-chosen 2026-11-11). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Hey guys, I'm Maddie. Today I'll show you something crazy I made with my robot.",
+  "claude": "Good evening. I am Claude. I write the code, and I render the whole reel."
+ },
+ "voices": {
+  "maddie_C": "male, teenager, moderate pitch, american accent",
+  "claude_B": "male, young adult, moderate pitch, british accent",
+  "maddie_D": "male, child, high pitch, american accent",
+  "claude_C": "male, middle-aged, very low pitch, american accent"
+ },
+ "cast": {
+  "maddie": "maddie_C",
+  "claude": "claude_B"
+ },
+ "jobs": [
+  {
+   "voice": "maddie_C",
+   "text": "Hey Claude... everyone keeps asking me, how do we make these reels?",
+   "speed": 1,
+   "file": "01.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "[question-en] Hmm... should we tell them... the truth?",
+   "speed": 1,
+   "file": "02.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[dissatisfaction-hnn] Ehh... tell them the nice version.",
+   "speed": 1,
+   "file": "03.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Okay! Step one. I write the script.",
+   "speed": 1,
+   "file": "04.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "He types... one word... Build.",
+   "speed": 1,
+   "file": "05.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[laughter] Hehe! It's a very powerful word!",
+   "speed": 1,
+   "file": "06.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Step two! Claude built me in three D!",
+   "speed": 1,
+   "file": "07.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Version one... had no arms.",
+   "speed": 1,
+   "file": "08.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[sigh] Ugh... I looked like a potato.",
+   "speed": 1,
+   "file": "09.wav"
+  },
+  {
+   "voice": "claude_C",
+   "text": "Good evening... human.",
+   "speed": 0.9,
+   "file": "10.wav"
+  },
+  {
+   "voice": "maddie_D",
+   "text": "[surprise-wa] Wait! Why do I sound five?!",
+   "speed": 1,
+   "file": "11.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Fixed it. You're welcome.",
+   "speed": 1,
+   "file": "12.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Step four! Styles! Pixel! Neon! Anime! Stop... I'm dizzy!",
+   "speed": 1,
+   "file": "13.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[question-en] Step five. Render. How long?",
+   "speed": 1,
+   "file": "14.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "One and a half... hours.",
+   "speed": 1,
+   "file": "15.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-oh] What?! For a thirty-second video?!",
+   "speed": 1,
+   "file": "16.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "You wanted lips... that move.",
+   "speed": 1,
+   "file": "17.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[sigh] Step six. Post it... sixty-nine views.",
+   "speed": 1,
+   "file": "18.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Next one? Thirteen... thousand.",
+   "speed": 1,
+   "file": "19.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-wa] What?! We're famous!",
+   "speed": 1,
+   "file": "20.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Want every step, start to end? Comment... dock.",
+   "speed": 1,
+   "file": "21.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[question-en] Even... the potato version?",
+   "speed": 1,
+   "file": "22.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Especially... the potato version.",
+   "speed": 1,
+   "file": "23.wav"
+  }
+ ]
+}
