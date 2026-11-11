@@ -26,7 +26,7 @@ window.SCENE = {
 
     // ================= TIMELINE =================
     const s4d = Math.max(0.6, E('s4a') - B('s4a'));
-    const WF = window.JR_WORDS || [0.3, 0.45, 0.6, 0.76];            // where "pixel / neon / anime / stop" start inside line s4a
+    const WF = window.JR_WORDS || [0.35, 0.485, 0.6, 0.71];            // where "pixel / neon / anime / stop" start inside line s4a
     const C = {
       HOOK: 0, NICE: B('hook3') - 0.05,
       S1: B('s1a') - 0.25, BUILD: E('s1b') - 0.42,
@@ -394,18 +394,20 @@ window.SCENE = {
       s1: [Pp([-0.75, 1.42, 1.9], [-0.05, 1.5, -1.2], 36), Pp([-0.62, 1.42, 1.65], [-0.05, 1.5, -1.2], 36)],
       robo: [Pp([0.32, 1.28, 1.42], RHL, 30), Pp([0.34, 1.28, 1.22], RHL, 30)],
       mad: [Pp([-0.1, 1.38, 1.3], MHL, 32), Pp([-0.12, 1.38, 1.08], MHL, 32)],
+      madL: [Pp([0.02, 1.4, 1.6], [MX + 0.2, 1.3, MZ], 36), Pp([0.0, 1.4, 1.4], [MX + 0.2, 1.3, MZ], 36)],
+      wide2L: [Pp([0.24, 1.5, 3.0], [0.2, 1.4, -1.0], 40), Pp([0.22, 1.48, 2.7], [0.2, 1.38, -1.0], 40)],
       two: [Pp([0.15, 1.35, 2.1], [0.05, 1.2, -0.75], 34), Pp([0.12, 1.35, 1.85], [0.05, 1.22, -0.75], 34)],
       potato: [Pp([-0.3, 1.0, 1.0], [MX, 0.95, MZ], 36), Pp([-0.3, 1.0, 0.82], [MX, 0.95, MZ], 36)],
       styles: [Pp([0.15, 1.42, 2.45], [0.05, 1.25, -0.8], 36), Pp([0.1, 1.42, 2.15], [0.05, 1.25, -0.8], 36)],
       wide: [Pp([0.75, 1.6, 3.2], [0.35, 1.5, -1.2], 40), Pp([0.6, 1.58, 2.8], [0.35, 1.5, -1.2], 40)],
       wide2: [Pp([0.12, 1.5, 2.9], [0.06, 1.42, -1.0], 38), Pp([0.12, 1.48, 2.5], [0.06, 1.4, -1.0], 38)],
-      cta: [Pp([0.12, 1.45, 2.75], [0.1, 1.22, -0.75], 38), Pp([0.12, 1.44, 2.5], [0.1, 1.22, -0.75], 38)],
+      cta: [Pp([0.24, 1.45, 2.9], [0.22, 1.22, -0.75], 40), Pp([0.22, 1.44, 2.65], [0.2, 1.22, -0.75], 40)],
     };
     const plan = [
       [0, C.S1, sh.hook], [C.S1, B('s1b') - 0.1, sh.s1], [B('s1b') - 0.1, B('s1c') - 0.1, sh.robo], [B('s1c') - 0.1, C.S2, sh.mad],
       [C.S2, C.POT, sh.two], [C.POT, C.S3, sh.potato], [C.S3, C.KID, sh.robo], [C.KID, C.FIX, sh.mad], [C.FIX, C.S4, sh.robo],
       [C.S4, C.S5, sh.styles], [C.S5, C.S5Q, sh.wide], [C.S5Q, B('s5d') - 0.1, sh.mad], [B('s5d') - 0.1, C.S6, sh.robo],
-      [C.S6, C.BIG, sh.mad], [C.BIG, C.CTA, sh.wide2], [C.CTA, D + 5, sh.cta],
+      [C.S6, C.BIG, sh.madL], [C.BIG, C.CTA, sh.wide2L], [C.CTA, D + 5, sh.cta],
     ];
     const smooth = q => q * q * (3 - 2 * q);
     const shots = plan.map(([a, b, s]) => ({ t: [a, b], from: s[0], to: s[1], fov: s[0].fov, ease: smooth, shake: [C.POT, C.KID, C.BIG, C.S5Q].includes(a) ? (t => 0.01 * Math.exp(-(t - a) * 5)) : null }));
@@ -453,7 +455,7 @@ window.SCENE = {
       if (t >= C.S5Q && t < B('s5d') + 0.2) { const kq = pop(t, C.S5Q, 0.25); h.save(); h.translate(220, 760); h.rotate(-0.12); h.scale(kq, kq); otxt('30 sec?!', 0, 0, 96, ACC, 16); h.restore(); }
       if (t >= B('s5d')) sticker(t, B('s5d') + 0.35, 'LIP SYNC: ON 👄', 330, 760, -0.06, '#fff', '#141414', 46); };
     const postHud = (t) => { const big = t >= C.BIG, k = pop(t, C.S6 + 0.15, 0.35);
-      h.save(); h.translate(W / 2, 620); h.scale(k, k); h.rotate(big ? 0 : -0.03);
+      h.save(); h.translate(W - 300, 700); h.scale(k * 0.74, k * 0.74); h.rotate(big ? 0.03 : 0.05);
       rr(-250, -330, 500, 660, 60, '#111', '#2b2b33', 10); rr(-222, -300, 444, 600, 40, big ? '#1a1030' : '#16161c');
       h.beginPath(); h.roundRect(-60, -292, 120, 26, 13); h.fillStyle = '#000'; h.fill();
       txt('your reel', 0, -220, 34, 'rgba(255,255,255,0.6)', 700);
@@ -462,11 +464,10 @@ window.SCENE = {
       if (!big) { txt('😐', 0, 170, 110, '#fff', 400); }
       else { [['554', 'saves'], ['201', 'shares']].forEach(([n, l], i) => { const kk = pop(t, C.BIG + 0.9 + i * 0.2, 0.3); h.save(); h.translate(i ? 105 : -105, 190); h.scale(kk, kk); rr(-95, -55, 190, 110, 26, 'rgba(255,255,255,0.1)', ACC, 3); txt(n, 0, -12, 46, '#fff', 900); txt(l, 0, 30, 26, 'rgba(255,255,255,0.7)', 700); h.restore(); }); }
       h.restore();
-      if (!big && t >= B('s6a') + 0.8) { const kk = pop(t, B('s6a') + 0.8, 0.3); h.save(); h.translate(W / 2 + 230, 340); h.rotate(0.15); h.scale(kk, kk); otxt('69', 0, 0, 90, '#9aa0b8', 14); h.restore(); }
       if (big) { const r3 = K.rng(7); for (let i = 0; i < 60; i++) { const ph = (t - C.BIG - 0.2) * (0.6 + r3() * 0.5); if (ph < 0) continue; const x = r3() * W, y = -40 + ph * (600 + r3() * 500) % 1400, s = 10 + r3() * 14; h.save(); h.translate(x, y); h.rotate(ph * 6 + i); h.fillStyle = ['#ffc53d', '#ff4fd8', '#4fd8ff', '#3ddc97', '#fff'][i % 5]; h.fillRect(-s / 2, -s / 4, s, s / 2); h.restore(); } }
-      if (t >= C.FAME) sticker(t, C.FAME + 0.1, 'FAMOUS (237 followers)', W / 2, 1090, -0.04, ACC, '#141414', 44); };
-    const ctaHud = (t) => { const a = C.CTA; h.fillStyle = `rgba(6,5,12,${0.55 * eo(pr(t, a, a + 0.4))})`; h.fillRect(0, 0, W, H);
-      const k = pop(t, a + 0.05, 0.4); h.save(); h.translate(W / 2, 700); h.rotate(-0.03); h.scale(k, k);
+      if (t >= C.FAME) sticker(t, C.FAME + 0.1, 'FAMOUS (237 followers)', W / 2, 1170, -0.04, ACC, '#141414', 44); };
+    const ctaHud = (t) => { const a = C.CTA; h.fillStyle = `rgba(6,5,12,${0.3 * eo(pr(t, a, a + 0.4))})`; h.fillRect(0, 0, W, H);
+      const k = pop(t, a + 0.05, 0.4); h.save(); h.translate(W / 2 + 175, 720); h.rotate(0.03); h.scale(k * 0.78, k * 0.78);
       h.shadowColor = 'rgba(0,0,0,0.5)'; h.shadowBlur = 40; h.shadowOffsetY = 16; rr(-300, -480, 600, 820, 26, '#f4efe4'); h.shadowColor = 'transparent';
       h.fillStyle = '#e1d8c6'; h.beginPath(); h.moveTo(220, -480); h.lineTo(300, -400); h.lineTo(220, -400); h.closePath(); h.fill();
       txt('THE FULL GUIDE', 0, -400, 54, '#1b1e2a', 900); txt('start → end', 0, -340, 34, '#8a7a62', 700);
@@ -475,8 +476,8 @@ window.SCENE = {
         txt(`${i + 1}. ${s}`, -180, y + 2, 42, '#1b1e2a', 800, 'left'); h.globalAlpha = 1; });
       const kb = pop(t, B('cta1') + 0.9, 0.35); h.save(); h.translate(0, 270); h.scale(kb, kb); h.shadowColor = 'rgba(255,197,61,0.6)'; h.shadowBlur = 40; rr(-250, -58, 500, 116, 30, ACC, '#141414', 6); h.shadowBlur = 0; txt('Comment DOC', 0, 2, 66, '#141414', 900); h.restore();
       h.restore();
-      if (t >= C.CTAP) { const kp = pop(t, C.CTAP, 0.35); h.save(); h.translate(W / 2 + 290, 330); h.rotate(0.15); h.scale(kp, kp); rr(-95, -120, 190, 240, 18, '#fff', '#141414', 5); potato2D(h, 0, 0, 1.1, t); txt('v1.0', 0, 95, 30, '#c2452d', 900); h.restore();
-        sticker(t, C.CTAP + 0.25, 'included.', W / 2 + 270, 520, 0.08, ACC, '#141414', 40); } };
+      if (t >= C.CTAP) { const kp = pop(t, C.CTAP, 0.35); h.save(); h.translate(W / 2 + 400, 360); h.rotate(0.15); h.scale(kp, kp); rr(-95, -120, 190, 240, 18, '#fff', '#141414', 5); potato2D(h, 0, 0, 1.1, t); txt('v1.0', 0, 95, 30, '#c2452d', 900); h.restore();
+        sticker(t, C.CTAP + 0.25, 'included.', W / 2 + 330, 560, 0.08, ACC, '#141414', 40); } };
     const hudDraw = (t) => { h.clearRect(0, 0, W, H);
       if (t < C.S1) hookTitle(t);
       const st = stepAt(t);
