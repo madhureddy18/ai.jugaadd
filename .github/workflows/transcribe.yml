@@ -1,0 +1,18 @@
+name: transcribe voices (check)
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for i in 0 1 2; do git clone -q --depth 1 -b voices-out-$i https://github.com/${{ github.repository }}.git s$i; done
+          pip install -q faster-whisper
+          python - <<'P'
+          import glob
+          from faster_whisper import WhisperModel
+          m = WhisperModel('small.en', device='cpu', compute_type='int8')
+          for f in sorted(glob.glob('s*/[0-9][0-9].wav'), key=lambda p: p[-6:]):
+              segs, _ = m.transcribe(f, word_timestamps=True)
+              ws = [f"{w.word.strip()}@{w.start:.2f}" for s in segs for w in s.words]
+              print(f[-6:-4], ' '.join(ws), flush=True)
+          P
