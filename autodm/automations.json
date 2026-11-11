@@ -213,6 +213,29 @@
    "direct_text": "Hey {{name}} 👋 here are all the animation styles + prompts: https://madhureddy18.github.io/ai.jugaadd/p/styles/",
    "any_comment": true,
    "comment_replies_off": []
+  },
+  {
+   "id": "doc",
+   "active": true,
+   "reel": "",
+   "caption_has": "#behindthescenes",
+   "reel_first": false,
+   "keywords": [
+    "doc"
+   ],
+   "comment_replies": [],
+   "opening": "Hey {{name}} 👋 Thanks for watching! Tap below and I'll send you the FULL guide: how we make these reels, start to end 🎬",
+   "opening_button": "Send it 🚀",
+   "follow_gate": true,
+   "follow_text": "Almost there {{name}}! 😄 The full guide is only for followers. Follow @maddiee.makess (new AI reels daily) and tap below 👇",
+   "follow_button": "I followed ✅",
+   "final_text": "Here you go {{name}} 🎬\n\nThe full guide: script → 3D character → voices → styles → render → post. Copy-paste prompts, the free voice app, and 10 script ideas.\n\n(The potato version is in there too 🥔)",
+   "link_label": "Open the full guide 📘",
+   "link": "https://madhureddy18.github.io/ai.jugaadd/p/doc/",
+   "direct": false,
+   "direct_text": "Hey {{name}} 👋 here's the full start-to-end guide: https://madhureddy18.github.io/ai.jugaadd/p/doc/",
+   "any_comment": true,
+   "comment_replies_off": []
   }
  ],
  "default": "prompt",
