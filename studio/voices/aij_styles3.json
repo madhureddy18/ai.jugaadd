@@ -1,0 +1,125 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 1 of the reel-8 round, chosen 2026-11-10 (kid boy + very deep robot)). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Hey guys, I'm Maddie. Today I'll show you something crazy I made with my robot.",
+  "claude": "Good evening. I am Claude. I write the code, and I render the whole reel."
+ },
+ "voices": {
+  "maddie_C": "male, teenager, moderate pitch, american accent",
+  "claude_B": "male, young adult, moderate pitch, british accent"
+ },
+ "cast": {
+  "maddie": "maddie_C",
+  "claude": "claude_B"
+ },
+ "jobs": [
+  {
+   "voice": "maddie_C",
+   "text": "[question-en] Hey Claude... how many animation styles can you do?",
+   "speed": 1.05,
+   "file": "01.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Count with me.",
+   "speed": 1.05,
+   "file": "02.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-wa] One! I'm eight-bit!",
+   "speed": 1.08,
+   "file": "03.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Two... Minecraft me!",
+   "speed": 1.05,
+   "file": "04.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[laughter] Three! Pow!",
+   "speed": 1.08,
+   "file": "05.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-oh] Four. Wait, I'm paper?!",
+   "speed": 1.05,
+   "file": "06.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Don't fold me!",
+   "speed": 1.15,
+   "file": "07.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Five. Neon.",
+   "speed": 0.95,
+   "file": "08.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-ah] Ohhh.",
+   "speed": 1.05,
+   "file": "09.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Six! Anime me! Keep this one!",
+   "speed": 1.12,
+   "file": "10.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-wa] Seven... Claude, why am I so small?!",
+   "speed": 1.1,
+   "file": "11.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[sigh] Okay Claude... how many can you actually do?",
+   "speed": 1.05,
+   "file": "12.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Honestly? I lost count.",
+   "speed": 1.05,
+   "file": "13.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Every style you saw is code. I wrote it.",
+   "speed": 1.05,
+   "file": "14.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-oh] This reel too?!",
+   "speed": 1.05,
+   "file": "15.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Every frame.",
+   "speed": 1.05,
+   "file": "16.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Comment CLAUDE. I'll send you all of them.",
+   "speed": 1.05,
+   "file": "17.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Pick yours.",
+   "speed": 1.05,
+   "file": "18.wav"
+  }
+ ]
+}
