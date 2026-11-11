@@ -1,5 +1,5 @@
 {
- "_help": "Every comment on every reel (words or emoji) gets a DM: 'Send it' button -> follow check -> the link only for followers (non-followers get 'I followed' button; after 3 tries the link is sent anyway). Which DM: the keyword's entry if the comment has a keyword (any reel) -> else the entry whose reel link matches -> else the 'default' entry. No public replies. A backup check (GitHub Actions, every 10 min) DMs anyone the instant webhook missed.",
+ "_help": "Every comment on every reel (words or emoji) gets a DM: 'Send it' button -> follow check -> the link only for followers (non-followers get 'I followed' button; after 3 tries the link is sent anyway). Which DM: the entry bound to THAT reel ('reel'/'reels' link or 'caption_has' tag) whatever the comment says -> only on a reel with no entry, the keyword's entry -> else 'default'. Typed DMs never trigger by keyword. No public replies. A backup check (GitHub Actions, every 10 min) DMs anyone the instant webhook missed.",
  "automations": [
   {
    "id": "resume",
