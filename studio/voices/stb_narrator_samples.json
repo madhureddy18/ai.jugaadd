@@ -1,0 +1,21 @@
+{
+ "_help": "@scraptobuild narrator candidates (one voice for the whole page). Pick one, then copy its ref wav into the scraptobuild project and clone every line from it.",
+ "seed": 7,
+ "ref_text": {
+  "narr": "Some things were not built in a day. Some were carved, stone by stone, over a hundred years. This is their story."
+ },
+ "voices": {
+  "narr_A": "male, middle-aged, low pitch, indian accent",
+  "narr_B": "male, young adult, moderate pitch, indian accent",
+  "narr_C": "male, middle-aged, low pitch, british accent",
+  "narr_D": "male, young adult, low pitch, american accent"
+ },
+ "mixes": { "narratorA": ["narr_A", "narr_A"], "narratorB": ["narr_B", "narr_B"], "narratorC": ["narr_C", "narr_C"], "narratorD": ["narr_D", "narr_D"] },
+ "lines": [
+  ["narr", "This temple was not built. It was carved... from a single rock."],
+  ["narr", "Twelve hundred years ago, workers cut straight down into a mountain."],
+  ["narr", "[surprise-oh] Two hundred thousand tonnes of stone. Removed by hand."],
+  ["narr", "No cranes. No machines. Just hammers... and chisels."],
+  ["narr", "And the craziest part? They started from the top."]
+ ]
+}
