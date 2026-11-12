@@ -530,6 +530,7 @@ window.SCENE = {
           const cs = rw / 900; if (ci === 0) zackCaps(ht, ct, rx, ry, cs); else if (ci === 1) kurzCaps(ht, ct, rx, ry, cs); else tedCaps(ht, ct, rx, ry, cs);
         } }
       if (t >= C.CTA) drawCTA(t);
+      topQ.visible = clipOn || t >= C.CTA;
       hTex.needsUpdate = true; tTex.needsUpdate = true; };
 
     // ================= UPDATE =================
