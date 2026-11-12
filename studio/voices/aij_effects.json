@@ -1,0 +1,119 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 3 (American teen Maddie + young British Claude), re-chosen 2026-11-11). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Hey guys, I'm Maddie. Today I'll show you something crazy I made with my robot.",
+  "claude": "Good evening. I am Claude. I write the code, and I render the whole reel."
+ },
+ "voices": {
+  "maddie_C": "male, teenager, moderate pitch, american accent",
+  "claude_B": "male, young adult, moderate pitch, british accent"
+ },
+ "cast": {
+  "maddie": "maddie_C",
+  "claude": "claude_B"
+ },
+ "jobs": [
+  {
+   "voice": "maddie_C",
+   "text": "[sigh] Claude... I filmed one clip. Just me... talking.",
+   "speed": 1,
+   "file": "01.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[dissatisfaction-hnn] It looks so boring.",
+   "speed": 1,
+   "file": "02.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Give it here... Watch.",
+   "speed": 1,
+   "file": "03.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Spotlight.",
+   "speed": 1,
+   "file": "04.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-oh] Whoa!",
+   "speed": 1,
+   "file": "05.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Orbit.",
+   "speed": 1,
+   "file": "06.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Backdrop word.",
+   "speed": 1,
+   "file": "07.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-wa] Wait, wait! That's me?!",
+   "speed": 1,
+   "file": "08.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Cover star.",
+   "speed": 1,
+   "file": "09.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "L E D sign.",
+   "speed": 1,
+   "file": "10.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Countdown flip.",
+   "speed": 1,
+   "file": "11.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "And... reject stamp.",
+   "speed": 1,
+   "file": "12.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-oh] Seven edits... from one clip?!",
+   "speed": 1,
+   "file": "13.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Fifty-one effects. All free... No editing app.",
+   "speed": 1,
+   "file": "14.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[laughter] Hehe... this is basically cheating.",
+   "speed": 1,
+   "file": "15.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Comment... effects. I'll send the repo.",
+   "speed": 1,
+   "file": "16.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "My video editor... is crying right now.",
+   "speed": 1,
+   "file": "17.wav"
+  }
+ ]
+}
