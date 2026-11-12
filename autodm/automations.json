@@ -297,6 +297,31 @@
    "direct_text": "Hey {{name}} 👋 here's the free /effects repo + setup: https://madhureddy18.github.io/ai.jugaadd/p/effects/",
    "any_comment": true,
    "comment_replies_off": []
+  },
+  {
+   "id": "animate",
+   "active": true,
+   "reel": "",
+   "caption_has": "#claudeanimate",
+   "reel_first": false,
+   "keywords": [
+    "animate",
+    "animation",
+    "animations"
+   ],
+   "comment_replies": [],
+   "opening": "Hey {{name}} 👋 Thanks for watching! Tap below and I'll send you all 10 animation commands for Claude 🎬",
+   "opening_button": "Send them 🚀",
+   "follow_gate": true,
+   "follow_text": "Almost there {{name}}! 😄 The command pack is only for followers. Follow @maddiee.makess (new AI reels daily) and tap below 👇",
+   "follow_button": "I followed ✅",
+   "final_text": "Here you go {{name}} 🎬\n\nType one line, get an animated video. All 10 commands (Zack D style, space explainer, storybook + 7 more), the 1-line install and how to use them 👇",
+   "link_label": "Open the 10 commands 🎬",
+   "link": "https://madhureddy18.github.io/ai.jugaadd/p/animate/",
+   "direct": false,
+   "direct_text": "Hey {{name}} 👋 here are the 10 animation commands + setup: https://madhureddy18.github.io/ai.jugaadd/p/animate/",
+   "any_comment": true,
+   "comment_replies_off": []
   }
  ],
  "default": "prompt",
