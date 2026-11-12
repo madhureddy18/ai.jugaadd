@@ -49,14 +49,14 @@ window.SCENE = {
     for (let i = 0; i < 3; i++) for (let j = 0; j < 2; j++) { const tm = new THREE.Mesh(new THREE.PlaneGeometry(0.06, 0.06), BM(0xeef8ee)); tm.position.set(-1.2 + i * 1.2, 1.3 + j * 1.1, GZ + 0.004); tm.rotation.z = Math.PI / 4; S.add(tm); }
     // giant backdrop word (backdrop-word effect) + LED sign (led-sign effect), both live canvases on the green wall
     const bwc = document.createElement('canvas'); bwc.width = 1024; bwc.height = 512; const bwx = bwc.getContext('2d'); const bwTex = new THREE.CanvasTexture(bwc); bwTex.colorSpace = THREE.SRGBColorSpace;
-    bwx.clearRect(0, 0, 1024, 512); bwx.font = '900 300px "Fredoka Light", "Inter Display"'; bwx.textAlign = 'center'; bwx.textBaseline = 'middle'; bwx.fillStyle = '#fff6e0'; bwx.fillText('BORING?', 512, 270); bwTex.needsUpdate = true;
-    const bword = new THREE.Mesh(new THREE.PlaneGeometry(2.5, 1.25), new THREE.MeshBasicMaterial({ map: bwTex, transparent: true, toneMapped: false, depthWrite: false })); bword.position.set(-0.15, 1.75, GZ + 0.02); bword.visible = false; S.add(bword);
+    bwx.clearRect(0, 0, 1024, 512); bwx.font = '900 250px "Fredoka Light", "Inter Display"'; bwx.textAlign = 'center'; bwx.textBaseline = 'middle'; bwx.fillStyle = '#fff6e0'; bwx.fillText('BORING?', 512, 270); bwTex.needsUpdate = true;
+    const bword = new THREE.Mesh(new THREE.PlaneGeometry(1.45, 0.72), new THREE.MeshBasicMaterial({ map: bwTex, transparent: true, toneMapped: false, depthWrite: false })); bword.position.set(-0.15, 1.75, GZ + 0.02); bword.visible = false; S.add(bword);
     const ledc = document.createElement('canvas'); ledc.width = 1024; ledc.height = 256; const ledx = ledc.getContext('2d'); const ledTex = new THREE.CanvasTexture(ledc); ledTex.colorSpace = THREE.SRGBColorSpace;
-    const ledBox = rbox(2.3, 0.64, 0.06, SM(0x08090c, 0.4), -0.1, 2.3, GZ + 0.04, 0.03); ledBox.visible = false;
-    const ledM = new THREE.Mesh(new THREE.PlaneGeometry(2.22, 0.56), new THREE.MeshBasicMaterial({ map: ledTex, transparent: true, toneMapped: false })); ledM.position.set(-0.1, 2.3, GZ + 0.075); ledM.visible = false; S.add(ledM);
+    const ledBox = rbox(1.5, 0.42, 0.06, SM(0x08090c, 0.4), -0.1, 2.3, GZ + 0.04, 0.03); ledBox.visible = false;
+    const ledM = new THREE.Mesh(new THREE.PlaneGeometry(1.44, 0.36), new THREE.MeshBasicMaterial({ map: ledTex, transparent: true, toneMapped: false })); ledM.position.set(-0.1, 2.3, GZ + 0.075); ledM.visible = false; S.add(ledM);
     const ledL = new THREE.PointLight(0xff3df0, 0, 3, 1.6); ledL.position.set(-0.1, 2.1, GZ + 0.6); S.add(ledL);
     const drawLED = (s) => { const w = 1024, hh = 256; ledx.fillStyle = '#050508'; ledx.fillRect(0, 0, w, hh);
-      const cv = document.createElement('canvas'); cv.width = 128; cv.height = 32; const c2 = cv.getContext('2d'); c2.fillStyle = '#000'; c2.fillRect(0, 0, 128, 32); c2.font = '900 26px "DejaVu Sans Mono"'; c2.fillStyle = '#fff'; c2.textAlign = 'center'; c2.textBaseline = 'middle'; c2.fillText(s, 64, 17);
+      const cv = document.createElement('canvas'); cv.width = 128; cv.height = 32; const c2 = cv.getContext('2d'); c2.fillStyle = '#000'; c2.fillRect(0, 0, 128, 32); c2.font = '900 19px "DejaVu Sans Mono"'; c2.fillStyle = '#fff'; c2.textAlign = 'center'; c2.textBaseline = 'middle'; c2.fillText(s, 64, 17);
       const d = c2.getImageData(0, 0, 128, 32).data; for (let y = 0; y < 32; y++) for (let x = 0; x < 128; x++) { const on = d[(y * 128 + x) * 4] > 100; ledx.fillStyle = on ? '#ff5cf2' : 'rgba(255,80,240,0.08)'; ledx.beginPath(); ledx.arc(4 + x * 8, 4 + y * 8, on ? 3.4 : 2.2, 0, 7); ledx.fill(); }
       ledTex.needsUpdate = true; };
     let ledLast = null;
@@ -263,7 +263,7 @@ window.SCENE = {
       const sp = fxOn(t, 'spotlight'), led = fxOn(t, 'led-sign');
       const dark = sp ? eo(pr(fxT(t, 'spotlight'), 0, 0.2)) : led ? eo(pr(fxT(t, 'led-sign'), 0, 0.25)) * 0.85 : 0;
       hemi.intensity = DEF.hemi * (1 - 0.85 * dark); fill.intensity = DEF.fill * (1 - 0.8 * dark); [SB1, SB2].forEach(s => { s.l.intensity = DEF.sb * (1 - dark); s.face.material.color.setScalar(1 - 0.85 * dark); });
-      spot.intensity = sp ? 9 * eo(pr(fxT(t, 'spotlight'), 0.05, 0.25)) : 0; cone.material.opacity = sp ? eo(pr(fxT(t, 'spotlight'), 0.05, 0.25)) : 0;
+      spot.intensity = sp ? 9 * eo(pr(fxT(t, 'spotlight'), 0.05, 0.25)) : 0; cone.material.opacity = sp ? 0.0 * eo(pr(fxT(t, 'spotlight'), 0.05, 0.25)) : 0;
       ORB.visible = fxOn(t, 'orbit'); if (ORB.visible) { const ot = fxT(t, 'orbit'), hp = new THREE.Vector3(); M.head.getWorldPosition(hp); const sc = eb(pr(ot, 0, 0.35));
         cards.forEach((c, i) => { const a = ot * 1.6 + i * Math.PI / 4; c.position.set(hp.x + Math.cos(a) * 0.48, hp.y + 0.12 + Math.sin(a * 2) * 0.04, hp.z + Math.sin(a) * 0.48); c.lookAt(hp.x + Math.cos(a) * 3, hp.y + 0.12, hp.z + Math.sin(a) * 3); c.scale.setScalar(sc); }); }
       const bw = fxOn(t, 'backdrop-word'); bword.visible = bw; if (bw) { const bt = fxT(t, 'backdrop-word'); const d = eo(pr(bt, 0, 0.35)); bword.position.y = 2.05 + (1 - d) * 1.6; bword.scale.setScalar(1 + 0.15 * (1 - eb(pr(bt, 0.25, 0.6)))); }
@@ -284,7 +284,7 @@ window.SCENE = {
       wide: [Pp([0.1, 1.6, 3.4], [0.0, 1.45, -1.2], 40), Pp([0.1, 1.56, 3.1], [0.0, 1.43, -1.2], 40)],
       cta: [Pp([0.25, 1.48, 3.0], [0.22, 1.25, -0.75], 40), Pp([0.22, 1.46, 2.7], [0.2, 1.24, -0.75], 40)],
     };
-    const fxShot = { spotlight: sh.high, orbit: sh.fxc, 'backdrop-word': sh.fxw, 'cover-star': sh.fxc, 'led-sign': sh.wide, 'countdown-flip': sh.low, 'reject-stamp': sh.fxw };
+    const fxShot = { spotlight: sh.fxw, orbit: sh.fxc, 'backdrop-word': sh.fxw, 'cover-star': sh.fxc, 'led-sign': sh.wide, 'countdown-flip': sh.low, 'reject-stamp': sh.fxw };
     const plan = [[0, C.BORE, sh.hook], [C.BORE, B('c1') - 0.1, sh.mad], [B('c1') - 0.1, FX[0].a, sh.robo]];
     FX.forEach((f, i) => { const b = i < 6 ? FX[i + 1].a : C.SEVEN; if (f.name === 'backdrop-word') { plan.push([f.a, B('w2') - 0.05, sh.fxw], [B('w2') - 0.05, b, sh.mad]); } else plan.push([f.a, b, fxShot[f.name]]); });
     plan.push([C.SEVEN, C.FREE, sh.mad], [C.FREE, C.CHEAT, sh.robo], [C.CHEAT, C.CTA, sh.wide], [C.CTA, D + 5, sh.cta]);
