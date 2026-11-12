@@ -273,6 +273,30 @@
    "direct_text": "Hey {{name}} 👋 here are the 13 free Claude skills + setup: https://madhureddy18.github.io/ai.jugaadd/p/skills/",
    "any_comment": true,
    "comment_replies_off": []
+  },
+  {
+   "id": "effects",
+   "active": true,
+   "reel": "",
+   "caption_has": "#claudeeffects",
+   "reel_first": false,
+   "keywords": [
+    "effects",
+    "effect"
+   ],
+   "comment_replies": [],
+   "opening": "Hey {{name}} 👋 Thanks for watching! Tap below and I'll send you the free /effects repo: 51 video effects for Claude 🎬",
+   "opening_button": "Send it 🚀",
+   "follow_gate": true,
+   "follow_text": "Almost there {{name}}! 😄 The effects pack is only for followers. Follow @maddiee.makess (new AI reels daily) and tap below 👇",
+   "follow_button": "I followed ✅",
+   "final_text": "Here you go {{name}} 🎬\n\nOne clip → 51 free edits. The GitHub repo, the 1-line install, how to use /effects, and the full list of effects 👇\n\n(Effects by @vibha.in.progress 💛)",
+   "link_label": "Open the effects + setup 🎬",
+   "link": "https://madhureddy18.github.io/ai.jugaadd/p/effects/",
+   "direct": false,
+   "direct_text": "Hey {{name}} 👋 here's the free /effects repo + setup: https://madhureddy18.github.io/ai.jugaadd/p/effects/",
+   "any_comment": true,
+   "comment_replies_off": []
   }
  ],
  "default": "prompt",

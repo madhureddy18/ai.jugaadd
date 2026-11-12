@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>51 Free Video Effects for Claude</title>
+<meta name="description" content="One clip, many edits: the free /effects skill for Claude Code. Install line, how to use it, and all 51 effects.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--ink:#1d1c1a;--mute:#6b6862;--line:#e6e2da;--card:#fff;--acc:#e8692f;--soft:#f3efe7;--code:#14161f;--codeink:#e6e9f5}
+@media (prefers-color-scheme:dark){:root{--bg:#151619;--ink:#ecebe7;--mute:#a19d95;--line:#302f36;--card:#1f2025;--acc:#ff8a4f;--soft:#26272d}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-text-size-adjust:100%}
+main{max-width:720px;margin:0 auto;padding:0 16px 64px}
+.hero{margin:0 -16px 20px;padding:36px 20px 28px;background:#111318;color:#fff;border-bottom:6px solid var(--acc)}
+.hero h1{margin:0 0 6px;font-size:clamp(28px,7.5vw,40px);line-height:1.1;font-weight:800}
+.hero p{margin:0;opacity:.85}
+h2{font-size:22px;margin:30px 0 8px}
+a{color:var(--acc)}
+.btn{display:block;text-align:center;background:var(--acc);color:#fff;text-decoration:none;font-weight:800;padding:14px 18px;border-radius:14px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:12px 0}
+.step{display:flex;gap:12px}.n{flex:0 0 30px;height:30px;border-radius:50%;background:var(--ink);color:var(--bg);font-weight:800;display:grid;place-items:center}
+pre{position:relative;background:var(--code);color:var(--codeink);border-radius:12px;padding:14px;overflow-x:auto;font:14px/1.5 "JetBrains Mono",monospace;margin:8px 0 0;white-space:pre-wrap;word-break:break-all}
+.copy{position:absolute;top:8px;right:8px;background:#ffffff22;color:#fff;border:0;border-radius:8px;padding:4px 10px;font:600 12px Inter,sans-serif;cursor:pointer}
+.grid{display:grid;grid-template-columns:1fr;gap:8px}@media (min-width:560px){.grid{grid-template-columns:1fr 1fr}}
+.fx{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.fx code{font:700 15px "JetBrains Mono",monospace;color:var(--acc)}.fx span{display:block;color:var(--mute);font-size:14px}
+.fx.hot{border-color:var(--acc);box-shadow:0 0 0 2px color-mix(in srgb,var(--acc) 25%,transparent)}
+.note{background:var(--soft);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--mute)}
+footer{color:var(--mute);font-size:13px;margin-top:40px}
+</style>
+</head>
+<body>
+<main>
+<header class="hero"><h1>One clip. 51 free edits.</h1><p>The free <b>/effects</b> skill for Claude Code. Drop in your video, type one command, get a whole new edit.</p></header>
+<p>Made by <a href="https://instagram.com/vibha.in.progress" target="_blank" rel="noopener">@vibha.in.progress</a> (MIT licence). All credit to her 💛</p>
+<a class="btn" href="https://github.com/Vibha-Ramprakash/claude-video-effects" target="_blank" rel="noopener">Open the GitHub repo →</a>
+
+<h2>Install (1 line)</h2>
+<div class="card step"><div class="n">1</div><div style="min-width:0;flex:1">Paste this in your terminal (or the terminal inside Claude Code), then restart Claude Code:
+<pre><button class="copy">copy</button>git clone https://github.com/Vibha-Ramprakash/claude-video-effects ~/.claude/skills/effects</pre>
+<p style="font-size:14px;color:var(--mute);margin:8px 0 0">Windows (PowerShell): use <code>$HOME\.claude\skills\effects</code> instead. Or just paste this into Claude Code and let it install for you:</p>
+<pre><button class="copy">copy</button>Install the skill from github.com/Vibha-Ramprakash/claude-video-effects into ~/.claude/skills/effects</pre></div></div>
+
+<h2>Use it</h2>
+<div class="card step"><div class="n">2</div><div>Open Claude Code and <b>drag your video into the chat</b>. Vertical phone videos with you in frame work best.</div></div>
+<div class="card step"><div class="n">3</div><div style="min-width:0;flex:1">Type the effect you want:
+<pre><button class="copy">copy</button>/effects spotlight when I say "watch"
+/effects orbit from 3 to 6 seconds
+/effects backdrop-word with the word BORING behind me
+/effects reject-stamp on "no"</pre></div></div>
+<div class="card step"><div class="n">4</div><div>Claude checks a few frames, keeps your face clear, and renders <code>yourvideo_effects.mp4</code> next to the original. Your audio stays the same. Stack several in one go.</div></div>
+<p class="note">First run sets itself up (about 2 minutes; it installs ffmpeg + Python if missing). The effects are free, but they run inside Claude Code, which needs a Claude plan. These are starter versions: no sounds or captions are added, so finish in CapCut. Always watch before you post.</p>
+
+<h2>All 51 effects</h2>
+<p style="color:var(--mute);font-size:14px;margin-top:0">Highlighted = the 7 from our reel.</p>
+<div class="grid">
+<div class="fx"><code>noise</code><span>Reels pile up behind your head</span></div>
+<div class="fx"><code>lineup</code><span>Numbered tiles fan out above your head</span></div>
+<div class="fx"><code>locked-on</code><span>Brackets lock onto your face and the camera follows you</span></div>
+<div class="fx hot"><code>orbit</code><span>Your reels circle your head, behind you at the top</span></div>
+<div class="fx"><code>lean-in</code><span>A quick punch-in on one word</span></div>
+<div class="fx hot"><code>backdrop-word</code><span>A giant word drops in behind you</span></div>
+<div class="fx hot"><code>spotlight</code><span>Kill the lights, keep you lit</span></div>
+<div class="fx"><code>the-bill</code><span>Your instructions print out like a receipt</span></div>
+<div class="fx"><code>moody</code><span>A moody colour grade</span></div>
+<div class="fx"><code>swipe</code><span>A before and after slider</span></div>
+<div class="fx"><code>todo</code><span>A checklist beside your head that ticks off as you talk</span></div>
+<div class="fx"><code>comment-box</code><span>An Instagram comment types itself and posts</span></div>
+<div class="fx"><code>tap</code><span>A Follow button flips to Following</span></div>
+<div class="fx"><code>pause-point</code><span>Freeze frame with a hand-drawn arrow</span></div>
+<div class="fx"><code>uninstall</code><span>A glitchy uninstall bar breaks the frame</span></div>
+<div class="fx"><code>reel-frame</code><span>Your video shrinks into a reel card</span></div>
+<div class="fx"><code>shortcut-rain</code><span>Keyboard keys rain down behind you</span></div>
+<div class="fx hot"><code>reject-stamp</code><span>A big red stamp slams down</span></div>
+<div class="fx hot"><code>countdown-flip</code><span>A 3, 2, 1 flip clock above your head</span></div>
+<div class="fx"><code>rabbit-hole</code><span>The room tunnels away behind you</span></div>
+<div class="fx hot"><code>cover-star</code><span>You become a magazine cover</span></div>
+<div class="fx"><code>scribble</code><span>Marker doodles draw themselves around you</span></div>
+<div class="fx"><code>glass-widgets</code><span>Frosted glass widgets and mini artifacts float around your head</span></div>
+<div class="fx"><code>red-collage</code><span>Black and white you, a giant red word behind, three lines slam in</span></div>
+<div class="fx"><code>split-headline</code><span>A headline card slides down and pushes you to the bottom half</span></div>
+<div class="fx"><code>pastel-word</code><span>Lavender room, a giant word behind you, a profile card gets followed</span></div>
+<div class="fx"><code>check-pills</code><span>Grid-paper room, your reels pinned behind you, blue pills get clicked</span></div>
+<div class="fx"><code>timeline</code><span>A dark red film look with an editing timeline and a glowing playhead</span></div>
+<div class="fx"><code>headline-box</code><span>A punch-in with a clean two-line headline</span></div>
+<div class="fx"><code>profile-wall</code><span>Your reels grid fills the wall while a counter ticks up</span></div>
+<div class="fx"><code>tier-list</code><span>A tier list drops in and Claude flies into S tier</span></div>
+<div class="fx"><code>broll-split</code><span>B-roll on top with a price-tag sticker, you below</span></div>
+<div class="fx"><code>phone-fan</code><span>Your reels fan out like a hand of phones</span></div>
+<div class="fx"><code>dot-reveal</code><span>Your shot builds out of glowing dots, then snaps into focus</span></div>
+<div class="fx"><code>headline-wall</code><span>Your headlines pile up behind your head, then a total pops in front</span></div>
+<div class="fx"><code>checklist</code><span>A Claude task list under your chin, each step ticks green</span></div>
+<div class="fx"><code>liquid-glass-graph</code><span>A liquid glass card with a graph that climbs and a number that counts up</span></div>
+<div class="fx"><code>carousel-spin</code><span>Your reels spin around you in a 3D carousel</span></div>
+<div class="fx"><code>match-cut</code><span>News pages cut on one word, locked in place behind your head</span></div>
+<div class="fx"><code>apple-toggles</code><span>iPhone switches flip on under your chin, one line at a time</span></div>
+<div class="fx hot"><code>led-sign</code><span>The lights drop and a glowing LED sign types itself out behind you</span></div>
+<div class="fx"><code>slow-push</code><span>A slow cinematic push-in while the room melts out of focus</span></div>
+<div class="fx"><code>over-the-shoulder-zoom</code><span>Pushes into one corner, a liquid glass graph pops beside your head, then the other corner with a second graph</span></div>
+<div class="fx"><code>messages</code><span>iMessage notifications pop in one after another with a soft glow</span></div>
+<div class="fx"><code>place-in-grid</code><span>You shrink into the centre of your 3x3 profile grid, your reels pop in around you with view counts</span></div>
+<div class="fx"><code>tape-label</code><span>A strip of yellow tape with your line lands on your chest</span></div>
+<div class="fx"><code>select-resize</code><span>A blue selection box grabs your number and a cursor drags it bigger</span></div>
+<div class="fx"><code>wave-trim</code><span>The silent parts of your voice are trimmed away on screen until only your words are left</span></div>
+<div class="fx"><code>huge-strike</code><span>One huge serif word fills the wall behind you, then a red line crosses it out</span></div>
+<div class="fx"><code>crayon-write</code><span>A red crayon writes your word behind your head, then underlines it</span></div>
+<div class="fx"><code>fan-build</code><span>Your reel covers deal into a fan behind your head, one card at a time</span></div>
+</div>
+
+<footer>Follow <a href="https://instagram.com/maddiee.makess">@maddiee.makess</a> for the next free tool 🤍</footer>
+</main>
+<script>document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{const t=b.parentElement.innerText.replace(/^copy\n?/,'');try{navigator.clipboard.writeText(t);b.textContent='copied ✓';setTimeout(()=>b.textContent='copy',1500)}catch(e){}}));</script>
+</body>
+</html>
