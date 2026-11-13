@@ -315,11 +315,11 @@
    "follow_gate": true,
    "follow_text": "Almost there {{name}}! 😄 The command pack is only for followers. Follow @maddiee.makess (new AI reels daily) and tap below 👇",
    "follow_button": "I followed ✅",
-   "final_text": "Here you go {{name}} 🎬\n\nType one line, get an animated video. All 10 commands (Zack D style, space explainer, storybook + 7 more), the 1-line install and how to use them 👇",
-   "link_label": "Open the 10 commands 🎬",
+   "final_text": "Here you go {{name}} 🎬\n\nEverything in one link:\n📘 The full PDF guide: how we make these videos, start to end (setup, voice, growing the channel, getting paid, 30 video ideas)\n⚡ All 10 commands (Zack D style, space explainer, storybook + 7 more) with the 1-line install 👇",
+   "link_label": "Open the guide + commands 🎬",
    "link": "https://madhureddy18.github.io/ai.jugaadd/p/animate/",
    "direct": false,
-   "direct_text": "Hey {{name}} 👋 here are the 10 animation commands + setup: https://madhureddy18.github.io/ai.jugaadd/p/animate/",
+   "direct_text": "Hey {{name}} 👋 here's the full PDF guide + all 10 animation commands: https://madhureddy18.github.io/ai.jugaadd/p/animate/",
    "any_comment": true,
    "comment_replies_off": []
   }
