@@ -1,0 +1,209 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 3 (American teen Maddie + young British Claude), re-chosen 2026-11-11). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Hey guys, I'm Maddie. Today I'll show you something crazy I made with my robot.",
+  "claude": "Good evening. I am Claude. I write the code, and I render the whole reel."
+ },
+ "voices": {
+  "maddie_C": "male, teenager, moderate pitch, american accent",
+  "claude_B": "male, young adult, moderate pitch, british accent"
+ },
+ "cast": {
+  "maddie": "maddie_C",
+  "claude": "claude_B"
+ },
+ "jobs": [
+  {
+   "voice": "maddie_C",
+   "text": "[sigh] Hey Claude... I posted every day for a month... Twelve followers.",
+   "speed": 0.9,
+   "file": "01.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[dissatisfaction-hnn] And four of them... are my mom.",
+   "speed": 0.9,
+   "file": "02.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "[question-en] Your mom has... four accounts?",
+   "speed": 0.9,
+   "file": "03.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "She keeps forgetting the password.",
+   "speed": 0.9,
+   "file": "04.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Maddie... I grew a page from zero... to fifty-two thousand. In thirty days.",
+   "speed": 0.9,
+   "file": "05.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-wa] Fifty-two thousand... rupees?",
+   "speed": 0.9,
+   "file": "06.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Followers... Maddie.",
+   "speed": 0.9,
+   "file": "07.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Okay genius... teach me. Slowly. Like... very... slowly.",
+   "speed": 0.9,
+   "file": "08.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "I was already planning to.",
+   "speed": 0.9,
+   "file": "09.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "First... I find reels in your niche that already blew up.",
+   "speed": 0.9,
+   "file": "10.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[question-en] So we just... repost them?",
+   "speed": 0.9,
+   "file": "11.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "That's called stealing... We copy the structure.",
+   "speed": 0.9,
+   "file": "12.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-ah] Ohhh... Structure.",
+   "speed": 0.9,
+   "file": "13.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[question-en] What's structure?",
+   "speed": 0.9,
+   "file": "14.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Hook... Problem... Proof... Payoff.",
+   "speed": 0.9,
+   "file": "15.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Then I write ten hooks.",
+   "speed": 0.9,
+   "file": "16.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-oh] Hey! That last one's mine!",
+   "speed": 0.9,
+   "file": "17.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "I know... It's been failing since twenty sixteen.",
+   "speed": 0.9,
+   "file": "18.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[dissatisfaction-hnn] But I can't edit videos.",
+   "speed": 0.9,
+   "file": "19.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "You can't spell edit.",
+   "speed": 0.9,
+   "file": "20.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[laughter] E... D... okay, fine.",
+   "speed": 0.9,
+   "file": "21.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "I build it in code... You just say yes.",
+   "speed": 0.9,
+   "file": "22.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-wa] Yes!",
+   "speed": 1,
+   "file": "23.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "... Not yet.",
+   "speed": 0.9,
+   "file": "24.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "And when someone comments one word... they get a DM. Automatically.",
+   "speed": 0.9,
+   "file": "25.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[question-en] Like... magic?",
+   "speed": 0.9,
+   "file": "26.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Like code.",
+   "speed": 0.9,
+   "file": "27.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-wa] Claude! Ten thousand followers!",
+   "speed": 0.9,
+   "file": "28.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Ten thousand... four hundred and eighty-two.",
+   "speed": 0.9,
+   "file": "29.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[question-en] ... Is my mom still following?",
+   "speed": 0.9,
+   "file": "30.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "All four of her.",
+   "speed": 0.9,
+   "file": "31.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[laughter] Hahaha!",
+   "speed": 1,
+   "file": "32.wav"
+  }
+ ]
+}
