@@ -1,0 +1,179 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 3 (American teen Maddie + young British Claude), re-chosen 2026-11-11). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Hey guys, I'm Maddie. Today I'll show you something crazy I made with my robot.",
+  "claude": "Good evening. I am Claude. I write the code, and I render the whole reel."
+ },
+ "voices": {
+  "maddie_C": "male, teenager, moderate pitch, american accent",
+  "claude_B": "male, young adult, moderate pitch, british accent"
+ },
+ "cast": {
+  "maddie": "maddie_C",
+  "claude": "claude_B"
+ },
+ "jobs": [
+  {
+   "voice": "maddie_C",
+   "text": "[sigh] Hey Claude... I need fifteen thousand rupees... by the end of the month.",
+   "speed": 0.9,
+   "file": "01.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "[question-en] For what?",
+   "speed": 0.9,
+   "file": "02.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "... A gaming chair.",
+   "speed": 0.9,
+   "file": "03.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Of course.",
+   "speed": 0.9,
+   "file": "04.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Open Google Maps... Search, bakery near me.",
+   "speed": 0.9,
+   "file": "05.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[question-en] I'm not hungry.",
+   "speed": 0.9,
+   "file": "06.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Look at the listings, Maddie... Not the cakes.",
+   "speed": 0.9,
+   "file": "07.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Seven of these... have no website.",
+   "speed": 0.9,
+   "file": "08.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[question-en] So... they're poor?",
+   "speed": 0.9,
+   "file": "09.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "They're customers.",
+   "speed": 0.9,
+   "file": "10.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "I build each one a site in ten minutes... You send them the link.",
+   "speed": 0.9,
+   "file": "11.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-wa] For free?!",
+   "speed": 0.9,
+   "file": "12.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Free preview... Five thousand to keep it.",
+   "speed": 0.9,
+   "file": "13.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Five thousand... times... three...",
+   "speed": 0.9,
+   "file": "14.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Fifteen.",
+   "speed": 0.9,
+   "file": "15.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[dissatisfaction-hnn] I was getting there!",
+   "speed": 0.9,
+   "file": "16.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "You were on your fingers.",
+   "speed": 0.9,
+   "file": "17.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-oh] Claude! The bakery replied!",
+   "speed": 0.9,
+   "file": "18.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Say five thousand... And don't say, please.",
+   "speed": 0.9,
+   "file": "19.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "... Please.",
+   "speed": 0.9,
+   "file": "20.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Maddie.",
+   "speed": 0.9,
+   "file": "21.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-wa] Fifteen thousand! Gaming chair!",
+   "speed": 1,
+   "file": "22.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Claude... this chair is amazing.",
+   "speed": 0.9,
+   "file": "23.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "It's still in the box.",
+   "speed": 0.9,
+   "file": "24.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "I'm sitting on the box.",
+   "speed": 0.9,
+   "file": "25.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "That'll be five thousand more.",
+   "speed": 0.9,
+   "file": "26.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[sigh] ... Find me another bakery.",
+   "speed": 0.9,
+   "file": "27.wav"
+  }
+ ]
+}
