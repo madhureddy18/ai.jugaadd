@@ -438,7 +438,7 @@ window.SCENE = {
       c.shadowColor = 'rgba(0,0,0,0.6)'; c.shadowBlur = 60; c.shadowOffsetY = 24; rr(c, -PWd / 2, -PHt / 2, PWd, PHt, 84, '#141210'); c.shadowColor = 'transparent';
       rr(c, -PWd / 2 + 2, -PHt / 2 + 2, PWd - 4, PHt - 4, 82, null, '#4a4440', 4); rr(c, PWd / 2 - 2, -260, 6, 110, 3, '#3a3430'); rr(c, -PWd / 2 - 4, -300, 6, 70, 3, '#3a3430'); rr(c, -PWd / 2 - 4, -210, 6, 70, 3, '#3a3430');
       c.save(); c.beginPath(); c.roundRect(-SW / 2, -SH / 2, SW, SH, 62); c.clip(); c.translate(-SW / 2, -SH / 2);
-      if (lv > 0.001 && lv < 0.999) { c.fillStyle = '#0b0a09'; c.fillRect(0, 0, SW, SH); }
+      if (lv > 0.001 && lv < 0.999) { const ri = CM.findIndex(q => t >= q.rot && t < q.clip); drawApp(c, t, ri >= 0 ? ri : ci); }
       else if (lv >= 0.999) { c.fillStyle = '#000'; c.fillRect(0, 0, SW, SH); }
       else if (t >= C.CTA) drawPack(c, t);
       else if (t < C.APP) drawFeed(c, t);
@@ -446,7 +446,7 @@ window.SCENE = {
       c.restore(); rr(c, -62, -SH / 2 + 16, 124, 36, 18, '#000');
       c.restore();
       // landscape title above the phone
-      if (lv > 0.5 && ci >= 0) { const cm = CM[ci], a = cl((lv - 0.5) * 2); c.save(); c.globalAlpha = a; rr(c, W / 2 - 128, 150, 256, 54, 27, cm.col); txt(c, `COMMAND ${ci + 1}/3`, W / 2, 178, 26, '#fff8ea', 800);
+      const li = CM.findIndex(q => t >= q.rot && t < q.endL + 0.45); if (lv > 0.5 && li >= 0) { const cm = CM[li], a = cl((lv - 0.5) * 2); c.save(); c.globalAlpha = a; rr(c, W / 2 - 128, 150, 256, 54, 27, cm.col); txt(c, `COMMAND ${li + 1}/3`, W / 2, 178, 26, '#fff8ea', 800);
         c.font = `900 76px ${SERIF}`; c.fillStyle = CREAM; c.textAlign = 'center'; c.textBaseline = 'alphabetic'; c.lineWidth = 10; c.strokeStyle = 'rgba(20,12,8,0.85)'; c.strokeText(cm.title, W / 2, 290); c.fillText(cm.title, W / 2, 290); c.restore(); }
       return { cx, cy, lv };
     };
