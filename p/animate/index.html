@@ -38,6 +38,7 @@ footer{color:var(--mute);font-size:13px;margin-top:40px}
 <header class="hero"><small>THE COMMAND PACK</small><h1>Start a faceless channel.<br>Type one line.</h1><p>10 free commands for Claude Code. Type <b>/zack-d-films</b> + any topic, and Claude writes, animates and renders the whole video in code. No camera, no face, no editing.</p></header>
 
 <a class="btn" href="faceless-channel-guide.pdf" style="background:#231a14;margin-top:0">📘 Download the full guide (PDF): how we make these videos, start to end</a>
+<a class="btn" href="../doc/how-to-make-3d-ai-reels.pdf" style="background:#c4161f;margin-top:0">🎬 BONUS PDF: how we make our 3D AI reels (Maddie + Claude), start to end</a>
 <h2>Install all 10 (1 line)</h2>
 <div class="card step"><div class="n">1</div><div style="min-width:0;flex:1">Paste this in your terminal (Mac / Linux), then restart Claude Code:
 <pre><button class="copy">copy</button>mkdir -p ~/.claude/skills && curl -sL https://madhureddy18.github.io/ai.jugaadd/p/animate/animate-commands.zip -o /tmp/animate.zip && unzip -o /tmp/animate.zip -d ~/.claude/skills</pre>
@@ -466,7 +467,7 @@ Turn one line into a finished vertical (9:16) animated video, made entirely in c
 <p>• These are starter commands: the first render usually needs one or two rounds of "make it better". Each one takes a few minutes.</p>
 <p style="margin-bottom:0">• The styles are <i>inspired by</i> famous channels. The commands tell Claude not to use their names, logos, characters or music, so what you post is your own.</p>
 </div>
-<footer>From the faceless-channel reel by @maddiee.makess · new AI reels daily. Want it offline? <a href="faceless-channel-guide.pdf">Download the PDF guide</a>.</footer>
+<footer>From the faceless-channel reel by @maddiee.makess · new AI reels daily. Want it offline? <a href="faceless-channel-guide.pdf">Download the PDF guide</a> · <a href="../doc/how-to-make-3d-ai-reels.pdf">How we make our 3D AI reels (PDF)</a>.</footer>
 </main>
 <script>
 document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();const t=b.parentElement.innerText.replace(/^copy\s*/,'');navigator.clipboard.writeText(t).then(()=>{b.textContent='copied';setTimeout(()=>b.textContent='copy',1400)})}));
