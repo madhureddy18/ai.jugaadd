@@ -25,7 +25,7 @@ window.JR_LINES = [
   LN('maddie', '…*Please*.', 'Please.', { omni: '... Please.', id: 'm9', gap: 0.6 }),
   LN('claude', '*Maddie*.', 'Maddie.', { omni: 'Maddie.', id: 'c12', gap: 0.45 }),
   LN('maddie', '*Fifteen thousand*! Gaming chair!', 'Fifteen thousand! Gaming chair!', { omni: '[surprise-wa] Fifteen thousand! Gaming chair!', id: 'm10', gap: 2.6, omniSpeed: 1.0 }),
-  LN('maddie', 'Claude… this chair is *amazing*.', 'Claude... this chair is amazing.', { omni: 'Claude... this chair is amazing.', id: 'm11', gap: 1.6 }),
+  LN('maddie', 'Claude… this chair is *amazing*.', 'Claude... this chair is amazing.', { omni: 'Claude... this chair is amazing.', id: 'm11', gap: 2.2 }),
   LN('claude', 'It\'s still in the *box*.', "It's still in the box.", { omni: "It's still in the box.", id: 'c13', gap: 0.45 }),
   LN('maddie', 'I\'m sitting on the *box*.', "I'm sitting on the box.", { omni: "I'm sitting on the box.", id: 'm12', gap: 0.4 }),
   LN('claude', 'That\'ll be *five thousand* more.', "That'll be five thousand more.", { omni: "That'll be five thousand more.", id: 'c14', gap: 1.5 }),

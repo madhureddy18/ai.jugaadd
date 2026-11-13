@@ -1,0 +1,57 @@
+diff --git a/codevid/kit/kit.js b/codevid/kit/kit.js
+index a72d575..f3f9322 100644
+--- a/codevid/kit/kit.js
++++ b/codevid/kit/kit.js
+@@ -1497,7 +1497,7 @@
+     window.sceneInfo = () => ({
+       duration: R.duration, sfx: R.sfx || [], badges: R.badges || [], big: R.big || [], music: R.music || {},
+       counter: R.counter ? Array.from({ length: Math.ceil(R.duration * 15) }, (_, i) => R.counter(i / 15)) : null,
+-      endCard: R.endCard, watermark: R.watermark, capFont: R.capFont, capMarginV: R.capMarginV, capSize: R.capSize,
++      endCard: R.endCard, watermark: R.watermark, capFont: R.capFont, capMarginV: R.capMarginV, capSize: R.capSize, capKey: R.capKey, capOutline: R.capOutline, capShadow: R.capShadow, capZones: R.capZones,
+     });
+     window.ready = true;
+   };
+diff --git a/codevid/render.js b/codevid/render.js
+index 584543b..720df58 100644
+--- a/codevid/render.js
++++ b/codevid/render.js
+@@ -91,6 +91,9 @@ const SFX = {
+   chime: "aevalsrc='0.4*sin(2*PI*988*t)*exp(-7*t)*lt(t,0.15)+0.45*sin(2*PI*1319*t)*exp(-4*(t-0.14))*gte(t,0.14)':s=44100:d=1.1",
+   buzz: "aevalsrc='0.3*sin(2*PI*150*t)*(0.6+0.4*sin(2*PI*33*t))*lt(mod(t,0.45),0.28)':s=44100:d=0.95",
+   boing: "aevalsrc='0.7*sin(2*PI*(180+520*t)*t)*exp(-4*t)':s=44100:d=0.7",
++  crunch: 'anoisesrc=d=0.7:c=brown:a=1.0,bandpass=f=900:w=1400,tremolo=f=38:d=0.9,afade=t=out:st=0.05:d=0.6',
++  rain: 'anoisesrc=d=95:c=pink:a=0.5,lowpass=f=2600,highpass=f=300,afade=t=in:d=1.5',
++  type: "aevalsrc='0.35*sin(2*PI*1800*t)*exp(-90*t)+0.2*sin(2*PI*900*t)*exp(-120*t)':s=44100:d=0.06",
+ };
+ function music(D, m) {
+   // lo-fi loop at 88 BPM: kick, off-beat hats, Am-F-C-G pad. Muted between muteFrom..muteTo (before a reveal).
+@@ -125,11 +128,11 @@ function mix(info, T, D) {
+ // ---------------------------------------------------------------- captions (ASS)
+ const ts = t => `0:${String(Math.floor(t / 60)).padStart(2, '0')}:${(t % 60).toFixed(2).padStart(5, '0')}`;
+ function captions(info, T, D, file) {
+-  const font = info.capFont || 'DejaVu Sans', capV = info.capMarginV || 470, capS = info.capSize || 72;
++  const font = info.capFont || 'DejaVu Sans', capV = info.capMarginV || 470, capS = info.capSize || 72, KEY = info.capKey || '&H0036C8FF&', OUT = info.capOutline != null ? info.capOutline : Math.round(capS / 10), SHD = info.capShadow != null ? info.capShadow : 2;
+   const style = (n, size, prim, out, back, border, outline, shadow, align, mv, spacing = 0) => `Style: ${n},${font},${size},${prim},${prim},${out},${back},-1,0,0,0,100,100,${spacing},0,${border},${outline},${shadow},${align},70,70,${mv},1`;
+   const head = '[Script Info]\nScriptType: v4.00+\nPlayResX: 1080\nPlayResY: 1920\nWrapStyle: 0\n\n[V4+ Styles]\n' +
+     'Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\n' +
+-    [style('Raju', capS, '&H00FFFFFF', '&H00101010', '&H96000000', 1, Math.round(capS / 10), 2, 2, capV),
++    [style('Raju', capS, '&H00FFFFFF', '&H00101010', '&H64000000', 1, OUT, SHD, 2, capV),
+      style('Bloc', capS, '&H0036C8FF', '&H00101010', '&H96000000', 1, Math.round(capS / 10), 2, 2, capV),
+      style('Count', 64, '&H00FFFFFF', '&H00000000', '&HC8301808', 3, 18, 0, 8, 150, 2),
+      style('Badge', 46, '&H00FFFFFF', '&H00000000', '&HB4E46F2F', 3, 16, 0, 8, 160, 2),
+@@ -139,11 +142,13 @@ function captions(info, T, D, file) {
+     '\n\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n';
+   const esc = s => String(s).replace(/[{}]/g, '');
+   const ev = info.watermark === false ? [] : [`Dialogue: 6,${ts(0)},${ts(D)},Mark,,0,0,0,,${esc(info.watermark || 'VERSE FILMS')}`];
++  const capPos = t => { const z = (info.capZones || []).find(([a, b]) => t >= a && t < b); return z ? `{\\an2\\pos(540,${z[2]})}` : ''; };
++  const HL = T.lines.some(l => l.text.includes('*'));            // *keyword* -> yellow, everything else white
+   for (const l of T.lines) {                                    // speaker-coloured captions, 2-4 word chunks
+-    const words = l.text.split(/\s+/), chunks = [];
++    const words = l.text.replace(/\*([^*]+)\*/g, (m, s) => s.split(' ').map(w => '\u0001' + w + '\u0002').join(' ')).split(/\s+/), chunks = [];
+     for (let k = 0; k < words.length;) { const n = words.length - k <= 4 ? words.length - k : 3; chunks.push(words.slice(k, k + n).join(' ')); k += n; }
+     const span = (l.end - l.t) / chunks.length;
+-    chunks.forEach((c, k) => ev.push(`Dialogue: 1,${ts(l.t + k * span)},${ts(l.t + (k + 1) * span + (k === chunks.length - 1 ? 0.15 : 0))},${(l.who === 'bloc' || l.who === 'chotu' || l.who === 'bittu' || l.who === 'claude') ? 'Bloc' : 'Raju'},,0,0,0,,{\\fscx88\\fscy88\\t(0,110,\\fscx100\\fscy100)}${esc(c)}`));
++    chunks.forEach((c, k) => ev.push(`Dialogue: 1,${ts(l.t + k * span)},${ts(l.t + (k + 1) * span + (k === chunks.length - 1 ? 0.15 : 0))},${!HL && (l.who === 'bloc' || l.who === 'chotu' || l.who === 'bittu' || l.who === 'claude') ? 'Bloc' : 'Raju'},,0,0,0,,${capPos(l.t + k * span)}{\\fscx80\\fscy80\\t(0,110,\\fscx100\\fscy100)}${esc(c).replace(/\u0001/g, '{\\c' + KEY + '}').replace(/\u0002/g, '{\\c&H00FFFFFF&}')}`));
+   }
+   for (const b of info.badges) ev.push(`Dialogue: 2,${ts(b.t)},${ts(b.end)},Badge,,0,0,0,,{\\fad(120,120)}${esc(b.text)}`);
+   for (const b of info.big) ev.push(`Dialogue: 3,${ts(b.t)},${ts(b.end)},Big,,0,0,0,,{\\fscx30\\fscy30\\t(0,180,\\fscx112\\fscy112)\\t(180,300,\\fscx100\\fscy100)}${esc(b.text)}`);
