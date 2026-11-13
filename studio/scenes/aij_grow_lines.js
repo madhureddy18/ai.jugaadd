@@ -23,7 +23,7 @@ window.JR_LINES = [
   LN('claude', 'I know. It\'s been failing since *2016*.', "I know. It's been failing since 2016.", { omni: "I know... It's been failing since twenty sixteen.", id: 'c9', gap: 0.35 }),
   LN('maddie', 'But I can\'t *edit* videos.', "But I can't edit videos.", { omni: "[dissatisfaction-hnn] But I can't edit videos.", id: 'm9', gap: 0.7 }),
   LN('claude', 'You can\'t *spell* edit.', "You can't spell edit.", { omni: "You can't spell edit.", id: 'c10', gap: 0.35 }),
-  LN('maddie', 'E… D… okay *fine*.', 'E... D... okay fine.', { omni: '[laughter] E... D... okay, fine.', id: 'm10', gap: 0.4 }),
+  LN('maddie', 'E… D… okay *fine*.', 'E... D... okay fine.', { omni: '[laughter] Eee... Dee... okay, fine.', id: 'm10', gap: 0.4 }),
   LN('claude', 'I build it in *code*. You just say yes.', 'I build it in code. You just say yes.', { omni: 'I build it in code... You just say yes.', id: 'c11', gap: 0.45 }),
   LN('maddie', '*YES!*', 'Yes!', { omni: '[surprise-wa] Yes!', id: 'm11', gap: 0.2, omniSpeed: 1.0 }),
   LN('claude', '…Not *yet*.', 'Not yet.', { omni: '... Not yet.', id: 'c12', gap: 0.55 }),
