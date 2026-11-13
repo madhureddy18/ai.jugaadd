@@ -27,9 +27,13 @@ window.SCENE = {
     // ================= TIMELINE =================
     const C = { PH: B('m1') + 0.15, LATER: E('c14') + 0.35, COUNT: B('m13') - 0.35 };
     const SCR = [   // [name, start]
-      ['profile', 0], ['followers', B('m1b') - 0.05], ['graph', B('c2') - 0.1], ['slow', B('m4') - 0.1], ['viral', B('c5') - 0.1],
-      ['struct', B('m6') - 0.1], ['hooks', B('c8') - 0.1], ['edit', B('m9') - 0.1], ['build', B('c11') - 0.1], ['dm', B('c13') - 0.1],
-      ['later', C.LATER], ['count', C.COUNT], ['final', B('m14') - 0.1]];
+      ['profile', 0], ['followers', B('m1b') - 0.05], ['graph', B('c2') - 0.1], ['viral', B('c5') - 0.1],
+      ['struct', B('c7') - 0.15], ['hooks', B('c8') - 0.1], ['build', B('c11') - 0.1], ['dm', B('c13') - 0.1],
+      ['later', C.LATER], ['count', C.COUNT], ['final', B('c16') - 0.1]];
+    // the phone only shows when the beat needs it; the rest is a normal face-to-face chat
+    const PON = [[B('m1') + 0.15, E('m2') + 0.3], [B('c2') - 0.1, E('c3') + 0.3], [B('c5') - 0.1, E('c6') + 0.3], [B('c7') - 0.15, E('c7') + 0.35],
+      [B('c8') - 0.1, E('c9') + 0.3], [B('c11') - 0.1, E('c12') + 0.3], [B('c13') - 0.1, E('m12') + 0.2], [C.COUNT, E('c15') + 0.3], [B('c16') - 0.1, E('c16') + 0.45]];
+    const phoneOn = t => PON.some(([a, b]) => t >= a && t < b);
     const scrAt = t => { let k = 0; SCR.forEach((s, i) => { if (t >= s[1]) k = i; }); return k; };
     const TR = 0.32;   // screen swipe duration
 
@@ -374,13 +378,13 @@ window.SCENE = {
       const z = zoomOf(name, t); const foc = SCREENS[name](cx, t);
       if (z > 1.001 && foc) { cx.clearRect(0, 0, SW, SH); cx.save(); cx.translate(SW / 2, SH / 2); cx.scale(z, z); const fx = cl(lerp(SW / 2, foc[0], 0.85), SW / (2 * z), SW - SW / (2 * z)), fy = cl(lerp(SH / 2, foc[1], 0.85), SH / (2 * z), SH - SH / (2 * z)); cx.translate(-fx, -fy); SCREENS[name](cx, t); cx.restore(); } };
     // the phone
-    const phoneAt = t => { const k = pop(t, C.PH, 0.5); const out = 1 - sm(pr(t, D - 0.9, D - 0.25)); const lat = t >= C.LATER && t < C.COUNT ? 1 - sm(pr(t, C.LATER, C.LATER + 0.3)) + sm(pr(t, C.COUNT - 0.3, C.COUNT)) : 1; return k * out * cl(lat); };
+    const phoneAt = t => { let v = 0; PON.forEach(([a, b]) => { if (t >= a - 0.01 && t < b + 0.3) v = Math.max(v, (t < b ? eb(pr(t, a, a + 0.38)) : 1 - sm(pr(t, b, b + 0.28)))); }); return cl(v, 0, 1.2); };
     const bump = t => { let b = 0; SCR.forEach(([n, a]) => { if (a > 0) b = Math.max(b, K.pulse(t, a, 0.3) * 0.035); }); ['m3', 'm8', 'm11', 'm13'].forEach(id => { b = Math.max(b, K.pulse(t, B(id), 0.28) * 0.045); }); return b; };
     const drawPhone = (t) => { const c = h, k = phoneAt(t); if (k <= 0.001) return;
-      const si = scrAt(t), name = SCR[si][0], ts = t - SCR[si][1], swipe = si > 0 && ts < TR && SCR[si][0] !== 'later' && SCR[si - 1][0] !== 'later' ? sm(ts / TR) : 1;
+      const si = scrAt(t), name = SCR[si][0], ts = t - SCR[si][1], swipe = si > 0 && ts < TR && SCR[si][0] !== 'later' && SCR[si - 1][0] !== 'later' && phoneOn(SCR[si][1] - 0.05) ? sm(ts / TR) : 1;
       renderScreen(sA, xA, name, t); if (swipe < 1) renderScreen(sB, xB, SCR[si - 1][0], t);
-      const s = lerp(0.15, 1, k) * (1 + bump(t)), bob = Math.sin(t * 1.3) * 5, tilt = Math.sin(t * 0.9) * 0.012;
-      c.save(); c.translate(PCX, PCY + bob + (1 - k) * 200); c.rotate(tilt); c.scale(s, s); c.globalAlpha = cl(k * 1.4);
+      const s = lerp(0.15, 1, cl(k)) * (1 + bump(t)), bob = Math.sin(t * 1.3) * 5, tilt = Math.sin(t * 0.9) * 0.012;
+      c.save(); c.translate(PCX, PCY + bob + (1 - cl(k)) * 260); c.rotate(tilt * cl(k)); c.scale(s, s); c.globalAlpha = cl(k * 1.6);
       c.shadowColor = 'rgba(0,0,0,0.65)'; c.shadowBlur = 70; c.shadowOffsetY = 30; rr(c, -PWd / 2, -PHt / 2, PWd, PHt, 84, '#0c0d10'); c.shadowColor = 'transparent';
       rr(c, -PWd / 2 + 2, -PHt / 2 + 2, PWd - 4, PHt - 4, 82, null, '#3a3d46', 4); rr(c, PWd / 2 - 2, -260, 6, 110, 3, '#2a2c33'); rr(c, -PWd / 2 - 4, -300, 6, 70, 3, '#2a2c33'); rr(c, -PWd / 2 - 4, -210, 6, 70, 3, '#2a2c33');
       c.save(); c.beginPath(); c.roundRect(-SW / 2, -SH / 2, SW, SH, 62); c.clip();
@@ -415,11 +419,11 @@ window.SCENE = {
       c3: [['shock', 'rest', toR, 0.0, 0], ['flat', rCam]], m4: [['smile', 'point', toR, 0.1, 0], ['calm', toM]],
       c4: [['neutral', 'rest', toR, 0.05, 0], ['wink', toM]], c5: [['neutral', 'hold', up, -0.05, 0], ['smile', rUp]],
       m5: [['neutral', 'shrug', toR, 0.05, 0], ['calm', toM]], c6: [['worried', 'rest', toR, 0.1, 0], ['flat', toM]],
-      m6: [['smile', 'point', up, 0.0, 0], ['calm', toM]], m7: [['worried', 'rest', toCam, 0.0, 0], ['side', rCam]],
+      m6: [['smile', 'point', toR, 0.0, 0], ['calm', toM]], m7: [['worried', 'rest', toCam, 0.0, 0], ['side', rCam]],
       c7: [['neutral', 'hold', up, -0.05, 0], ['smile', rUp]], c8: [['neutral', 'hold', up, -0.05, 0], ['smile', rUp]],
       m8: [['shock', 'point', up, -0.1, 0.8], ['calm', toM]], c9: [['worried', 'slump', toR, 0.2, 0], ['flat', toM]],
       m9: [['worried', 'slump', toR, 0.25, 0], ['calm', toM]], c10: [['shock', 'rest', toR, 0.0, 0], ['wink', toM]],
-      m10: [['smile', 'chin', up, 0.05, 0.4], ['calm', toM]], c11: [['neutral', 'hold', up, -0.05, 0], ['smile', rUp]],
+      m10: [['smile', 'chin', toCam, 0.05, 0.4], ['calm', toM]], c11: [['neutral', 'hold', up, -0.05, 0], ['smile', rUp]],
       m11: [['shock', 'both', toR, -0.15, 1.6], ['calm', toM]], c12: [['worried', 'slump', toR, 0.15, 0], ['flat', rCam]],
       c13: [['neutral', 'hold', up, -0.05, 0], ['smile', rUp]], m12: [['shock', 'both', toR, -0.05, 0.5], ['calm', toM]],
       c14: [['smile', 'rest', toR, 0.0, 0], ['wink', toM]], m13: [['shock', 'both', toCam, -0.15, 1.8], ['star', toM, 0.04]],
@@ -459,12 +463,20 @@ window.SCENE = {
       rob: [Pp([0.38, 1.47, 3.65], [RX - 0.18, 1.87, RZ]), Pp([0.4, 1.46, 3.45], [RX - 0.18, 1.85, RZ])],
       end: [Pp([0.2, 1.52, 4.3], [0.2, 1.98, -0.6]), Pp([0.2, 1.56, 5.0], [0.2, 2.02, -0.6])],
     };
+    // face-to-face shots (no phone): characters centred, eye level
+    const chat = {
+      two: [Pp([0.2, 1.45, 3.95], [0.2, 1.3, -0.5]), Pp([0.18, 1.44, 3.7], [0.2, 1.29, -0.5])],
+      mad: [Pp([MX + 0.5, 1.42, MZ + 3.2], [MX - 0.1, 1.3, MZ]), Pp([MX + 0.47, 1.41, MZ + 2.95], [MX - 0.1, 1.29, MZ])],
+      rob: [Pp([RX - 0.55, 1.42, RZ + 3.0], [RX - 0.1, 1.3, RZ]), Pp([RX - 0.52, 1.41, RZ + 2.75], [RX - 0.1, 1.29, RZ])],
+      end: [Pp([0.2, 1.45, 3.7], [0.2, 1.3, -0.5]), Pp([0.2, 1.5, 4.6], [0.2, 1.33, -0.5])],
+    };
     const SHOT = { m1: 'two', m1b: 'mad', c1: 'rob', m2: 'mad', c2: 'twoL', m3: 'mad', c3: 'rob', m4: 'mad', c4: 'rob', c5: 'two', m5: 'mad', c6: 'rob', m6: 'mad', m7: 'mad', c7: 'two',
       c8: 'two', m8: 'mad', c9: 'rob', m9: 'mad', c10: 'rob', m10: 'mad', c11: 'two', m11: 'mad', c12: 'rob', c13: 'two', m12: 'mad', c14: 'rob', m13: 'mad', c15: 'rob', m14: 'mad', c16: 'rob', m15: 'end' };
     const ids = window.SCENE.lines.map(l => l.id);
     const plan = []; ids.forEach((id, i) => { const a = i ? B(id) - 0.12 : 0, b = i < ids.length - 1 ? B(ids[i + 1]) - 0.12 : D + 5; let s = SHOT[id];
       if (id === 'm13') plan.push([C.LATER, a, sh.two]);
-      plan.push([a, b, sh[s]]); });
+      const set = phoneOn(B(id) + 0.05) ? sh : chat; if (s === 'twoL' && set === chat) s = 'two';
+      plan.push([a, b, set[s]]); });
     // merge identical consecutive shots so the move continues instead of restarting
     const shots = []; plan.forEach(([a, b, s]) => { const p = shots[shots.length - 1]; if (p && p.s === s && Math.abs(p.t[1] - a) < 0.01) { p.t[1] = b; } else shots.push({ t: [a, b], s, from: s[0], to: s[1], ease: sm, shake: null }); });
     shots.forEach(x => { x.shake = t => shakeAt(t); });
