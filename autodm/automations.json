@@ -299,15 +299,38 @@
    "comment_replies_off": []
   },
   {
+   "id": "reel3d",
+   "active": true,
+   "reel": "",
+   "caption_has": "#how3d",
+   "reel_first": false,
+   "keywords": [
+    "animation",
+    "animations",
+    "animate"
+   ],
+   "comment_replies": [],
+   "opening": "Hey {{name}} 👋 Thanks for watching! Tap below and I'll send you the PDF: how we make our 3D AI reels 🎬",
+   "opening_button": "Send it 🚀",
+   "follow_gate": true,
+   "follow_text": "Almost there {{name}}! 😄 The PDF is only for followers. Follow @maddiee.makess (new AI reels daily) and tap below 👇",
+   "follow_button": "I followed ✅",
+   "final_text": "Here you go {{name}} 🎬 How we make our 3D AI reels, start to end (every tool + step, free) 👇",
+   "link_label": "Open the PDF 📘",
+   "link": "https://madhureddy18.github.io/ai.jugaadd/p/doc/how-to-make-3d-ai-reels.pdf",
+   "direct": false,
+   "direct_text": "Hey {{name}} 👋 here's the PDF: how we make our 3D AI reels 🎬 https://madhureddy18.github.io/ai.jugaadd/p/doc/how-to-make-3d-ai-reels.pdf",
+   "any_comment": true,
+   "comment_replies_off": []
+  },
+  {
    "id": "animate",
    "active": true,
    "reel": "",
    "caption_has": "#claudeanimate",
    "reel_first": false,
    "keywords": [
-    "animate",
-    "animation",
-    "animations"
+    "faceless"
    ],
    "comment_replies": [],
    "opening": "Hey {{name}} 👋 Thanks for watching! Tap below and I'll send you all 10 animation commands for Claude 🎬",
