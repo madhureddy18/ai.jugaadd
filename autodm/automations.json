@@ -305,9 +305,7 @@
    "caption_has": "#how3d",
    "reel_first": false,
    "keywords": [
-    "animation",
-    "animations",
-    "animate"
+    "animation"
    ],
    "comment_replies": [],
    "opening": "Hey {{name}} 👋 Thanks for watching! Tap below and I'll send you the PDF: how we make our 3D AI reels 🎬",
@@ -321,7 +319,8 @@
    "direct": false,
    "direct_text": "Hey {{name}} 👋 here's the PDF: how we make our 3D AI reels 🎬 https://madhureddy18.github.io/ai.jugaadd/p/doc/how-to-make-3d-ai-reels.pdf",
    "any_comment": true,
-   "comment_replies_off": []
+   "comment_replies_off": [],
+   "only_keywords": true
   },
   {
    "id": "animate",

@@ -49,10 +49,11 @@ const onReel = (a, info) => (info.link && [a.reel, ...(a.reels || [])].some(r =>
 // Which DM a comment gets:
 // 1) the DM set up for THAT reel, whatever the comment says ("CLAUDE" under the prompt reel -> the prompt reel's DM)
 // 2) only on a reel with no DM of its own: the keyword's DM  3) else the default DM (CONFIG.default).
+//    (an entry with only_keywords:true answers ONLY its keywords on its reels; any other comment there gets no DM)
 async function pickAuto(mediaId, text) {
   const info = await mediaInfo(mediaId);
   const own = autos().find(x => x.reel_first && onReel(x, info)) || autos().find(x => onReel(x, info));
-  if (own) return own;
+  if (own) return own.only_keywords && !hasKw(own, text) ? null : own;   // only_keywords: on this reel, only the keyword gets a DM
   return autos().find(a => hasKw(a, text)) || autos().find(x => x.id === CONFIG.default) || null;
 }
 const directText = (a, who) => `${fill(a.direct_text || a.final_text, who)}\n\n👉 ${a.link}\n\n${fill(a.direct_follow || CONFIG.direct_follow || 'Follow @maddiee.makess for new AI reels every day 🚀', who)}`;
