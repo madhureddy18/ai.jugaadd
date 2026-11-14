@@ -1,0 +1,221 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 3 (American teen Maddie + young British Claude), re-chosen 2026-11-11). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Hey guys, I'm Maddie. Today I'll show you something crazy I made with my robot.",
+  "claude": "Good evening. I am Claude. I write the code, and I render the whole reel."
+ },
+ "voices": {
+  "maddie_C": "male, teenager, moderate pitch, american accent",
+  "claude_B": "male, young adult, moderate pitch, british accent"
+ },
+ "cast": {
+  "maddie": "maddie_C",
+  "claude": "claude_B"
+ },
+ "jobs": [
+  {
+   "voice": "maddie_C",
+   "text": "[sigh] Hey Claude...",
+   "speed": 1.03,
+   "file": "01.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "GTA six comes out on the nineteenth.",
+   "speed": 1.03,
+   "file": "02.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[dissatisfaction-hnn] And I have three hundred and twelve rupees.",
+   "speed": 1.03,
+   "file": "03.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Some people are getting paid for GTA six.",
+   "speed": 1.06,
+   "file": "04.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-oh] Wait...",
+   "speed": 1.03,
+   "file": "05.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-wa] Rockstar pays us to play?!",
+   "speed": 1.03,
+   "file": "06.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "No.",
+   "speed": 1.06,
+   "file": "07.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Rockstar doesn't pay you.",
+   "speed": 1.06,
+   "file": "08.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "But one company does.",
+   "speed": 1.06,
+   "file": "09.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Kalshi posted a job.",
+   "speed": 1.06,
+   "file": "10.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Play GTA six from midnight. Stream it.",
+   "speed": 1.06,
+   "file": "11.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Write reports on the game's money system.",
+   "speed": 1.06,
+   "file": "12.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Up to a hundred and twenty thousand dollars.",
+   "speed": 1.06,
+   "file": "13.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-wa] I'm applying!",
+   "speed": 1.03,
+   "file": "14.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "You need ten years of gaming.",
+   "speed": 1.06,
+   "file": "15.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "And three years of streaming.",
+   "speed": 1.06,
+   "file": "16.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "I have ten years of gaming!",
+   "speed": 1.03,
+   "file": "17.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "And zero years of streaming.",
+   "speed": 1.06,
+   "file": "18.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "The realistic way?",
+   "speed": 1.06,
+   "file": "19.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Clipping.",
+   "speed": 1.06,
+   "file": "20.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Brands pay you for views on GTA six clips.",
+   "speed": 1.06,
+   "file": "21.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "One campaign pays seventy cents per thousand views.",
+   "speed": 1.06,
+   "file": "22.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Up to thirty-five dollars a clip.",
+   "speed": 1.06,
+   "file": "23.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Step one. Use your own gameplay.",
+   "speed": 1.06,
+   "file": "24.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Step two. Mark it as an ad.",
+   "speed": 1.06,
+   "file": "25.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Or it gets rejected.",
+   "speed": 1.06,
+   "file": "26.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Step three. Never buy views.",
+   "speed": 1.06,
+   "file": "27.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "You get banned.",
+   "speed": 1.06,
+   "file": "28.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Okay. I'll play it on my laptop.",
+   "speed": 1.03,
+   "file": "29.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "No PC version.",
+   "speed": 1.06,
+   "file": "30.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Console only.",
+   "speed": 1.06,
+   "file": "31.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[sigh] ... So I need a PS five",
+   "speed": 1.03,
+   "file": "32.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "and the game.",
+   "speed": 1.03,
+   "file": "33.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Send this to the friend who's going to play GTA six all night.",
+   "speed": 1.06,
+   "file": "34.wav"
+  }
+ ]
+}
