@@ -26,7 +26,7 @@ window.SCENE = {
 
     // ================= TIMELINE =================
     const SCR = [['hook', B('c1') - 0.1], ['timeline', B('c2') - 0.1], ['proof', B('c6') - 0.1], ['stock', B('c8') - 0.1], ['interim', B('c9') - 0.1], ['next', B('c10') - 0.1]];
-    const PON = [[B('c1') - 0.1, E('c5') + 0.05], [B('c6') - 0.1, E('c7') + 0.05], [B('c8') - 0.1, E('c8') + 0.05], [B('c9') - 0.1, E('c9') + 0.05], [B('c10') - 0.1, E('c11') + 0.15]];
+    const PON = [[B('c1') - 0.1, B('m2') - 0.15], [B('c6') - 0.1, B('m3') - 0.15], [B('c8') - 0.1, B('m4') - 0.15], [B('c9') - 0.1, B('m5') - 0.15], [B('c10') - 0.1, B('m6') - 0.15]];
     const panelOn = t => PON.some(([a, b]) => t >= a && t < b);
     const scrAt = t => { let k = 0; SCR.forEach((s, i) => { if (t >= s[1]) k = i; }); return k; };
     const TABS = ['THE NEWS', 'TIMELINE', 'PROOF?', 'STOCK', "WHO'S NEXT"], TI = { hook: 0, timeline: 1, proof: 2, stock: 3, interim: 4, next: 4 };
