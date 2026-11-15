@@ -320,7 +320,12 @@
    "direct_text": "Hey {{name}} 👋 here's the PDF: how we make our 3D AI reels 🎬 https://madhureddy18.github.io/ai.jugaadd/p/doc/how-to-make-3d-ai-reels.pdf",
    "any_comment": true,
    "comment_replies_off": [],
-   "only_keywords": true
+   "only_keywords": true,
+   "reels": [
+    "https://www.instagram.com/reel/Dfurt0Roa0q/",
+    "https://www.instagram.com/reel/DfuU3oaDvoE/",
+    "https://www.instagram.com/reel/Dftz3CjifWO/"
+   ]
   },
   {
    "id": "animate",
@@ -346,6 +351,6 @@
    "comment_replies_off": []
   }
  ],
- "default": "prompt",
+ "default": null,
  "direct_follow": "Follow @maddiee.makess for new AI reels every day 🚀"
 }
