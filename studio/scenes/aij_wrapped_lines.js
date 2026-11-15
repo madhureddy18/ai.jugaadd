@@ -1,4 +1,4 @@
-/* reel 19 "Where did my salary go?" — FIXED TEMPLATE (reel 6 look). Teaser for Kharcha Wrapped (free spending year-in-review site, Dec 1).
+/* reel 19 "Where did my salary go?" — FIXED TEMPLATE (reel 6 look). Teaser for Wrapped (free spending year-in-review site, Dec 1).
    Maddie's numbers are a comedy example, not real data. Comment WRAPPED -> waitlist DM. No burst rays (Maddyy, 15 Nov). */
 const LN = (who, text, say, o = {}) => { const sy = say || text.replace(/\*/g, ''); return { who, text, say: sy.replace(/\[[a-z-]+\]\s*/g, ''), omni: o.omni || sy, ...o }; };
 window.JR_LINES = [
@@ -20,9 +20,7 @@ window.JR_LINES = [
   LN('claude', 'You returned *14*.', 'You returned fourteen.', { id: 'fash3', gap: 0.2 }),
   LN('maddie', '…They didn\'t match my *vibe*.', "They didn't match my vibe.", { omni: "[sigh] ... They didn't match my vibe.", id: 'fash4', gap: 0.2 }),
   LN('claude', 'And you\'re still wearing the *same blue t-shirt*.', "And you're still wearing the same blue t-shirt.", { id: 'fash5', gap: 0.2 }),
-  LN('maddie', 'It\'s my *signature look*.', "It's my signature look.", { id: 'fash6', gap: 0.2 }),
   LN('claude', '*47* orders after *midnight*.', 'Forty-seven orders after midnight.', { id: 'night', gap: 0.35 }),
-  LN('maddie', 'Night me is a *different person*.', 'Night me is a different person.', { id: 'night2', gap: 0.2 }),
   LN('claude', 'And *3 subscriptions* you forgot.', 'And three subscriptions you forgot.', { id: 'leak', gap: 0.35 }),
   LN('maddie', 'I have a *gym membership*?!', 'I have a gym membership?!', { omni: '[surprise-wa] I have a gym membership?!', id: 'gym', gap: 0.2 }),
   LN('claude', 'You have a gym membership.', 'You have a gym membership.', { id: 'gym2', gap: 0.2 }),
@@ -31,8 +29,14 @@ window.JR_LINES = [
   LN('maddie', '₹37,000… that\'s a *new phone*!', "Thirty-seven thousand... that's a new phone!", { omni: "[surprise-oh] Thirty-seven thousand... that's a new phone!", id: 'phone', gap: 0.2 }),
   LN('claude', 'Your money personality?', 'Your money personality?', { id: 'pers', gap: 0.35 }),
   LN('claude', '*The Midnight Swiggy Guy.*', 'The Midnight Swiggy Guy.', { id: 'pers2', gap: 0.15 }),
-  LN('maddie', 'Claude… make this for *everyone*.', 'Claude... make this for everyone.', { id: 'every', gap: 0.3 }),
-  LN('claude', 'Already *building it*.', 'Already building it.', { id: 'build', gap: 0.2 }),
+  LN('maddie', 'Claude… can *everyone* get this?', 'Claude... can everyone get this?', { omni: '[question-en] Claude... can everyone get this?', id: 'every', gap: 0.3 }),
+  LN('claude', 'That\'s the plan. *Wrapped.*', "That's the plan. Wrapped.", { id: 'plan', gap: 0.2 }),
+  LN('claude', 'Upload your *PhonePe or bank statement*…', 'Upload your PhonePe or bank statement...', { id: 'up', gap: 0.25 }),
+  LN('claude', '…get your whole year in *7 cards*.', '...get your whole year in seven cards.', { id: 'cards', gap: 0.1 }),
+  LN('claude', 'It never leaves your phone. And it\'s *free*.', "It never leaves your phone. And it's free.", { id: 'safe', gap: 0.2 }),
+  LN('maddie', 'When?!', 'When?!', { omni: '[surprise-wa] When?!', id: 'when', gap: 0.2 }),
+  LN('claude', '*December 1st.*', 'December first.', { id: 'dec', gap: 0.15 }),
+  LN('maddie', 'Comment *WRAPPED*. We\'ll send it to you *first*.', "Comment wrapped. We'll send it to you first.", { id: 'cta', gap: 0.3 }),
   LN('maddie', 'Wait. Can it *hide* my Swiggy number?', 'Wait. Can it hide my Swiggy number?', { omni: '[question-en] Wait. Can it hide my Swiggy number?', id: 'hide', gap: 0.35 }),
   LN('claude', '*No.*', 'No.', { id: 'no', gap: 0.25 }),
 ].map(l => ({ ...l, omniSpeed: l.omniSpeed || (l.who === 'claude' ? 1.02 : 1.0) }));
