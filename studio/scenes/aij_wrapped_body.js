@@ -1,7 +1,7 @@
 /* @maddiee.makess reel 19 — "Where did my salary go?" — FIXED TEMPLATE (reel 6 "Claude made this" look): navy neon-grid world, Maddie at
    his desk + the headphones hover-bot, hook card (salary ₹25,000 → ₹312 on day 12), reveal counter (₹2,41,860 spent), then Maddie's
-   year as Wrapped story cards on a PHONE screen (food, chai, fashion, late night, money leaks, the fix, personality), end card
-   "Kharcha Wrapped · free · Dec 1". Maddie has a slightly fuller beard (Maddyy, 15 Nov). NO burst rays anywhere (Maddyy, 15 Nov).
+   year as Wrapped story cards on a PHONE screen (food, chai, fashion, late night, money leaks, the fix, personality), then the
+   product pitch: logo, 3 steps (upload statement → 7 cards → share), never leaves your phone, free, Dec 1, "Comment WRAPPED" CTA. Maddie has a slightly fuller beard (Maddyy, 15 Nov). NO burst rays anywhere (Maddyy, 15 Nov).
    Full 9:16, no bars, no blush dots, no handle. Numbers are a comedy example, not real data. */
 window.SCENE = {
   setup: { width: 1080, height: 1920, bg: 0x050920, fog: [6, 24], fov: 36, bloom: { strength: 0.42, radius: 0.55, threshold: 0.97 } },
@@ -24,7 +24,7 @@ window.SCENE = {
 
     // ================= TIMELINE =================
     const C = { HOOK: 0, STMT: B('stmt') - 0.12, TOTAL: B('total') - 0.15, SWG: B('swg') - 0.12, CHAI: B('chai') - 0.12, FASH: B('fash') - 0.12, NIGHT: B('night') - 0.12,
-      LEAK: B('leak') - 0.12, SAVE: B('save') - 0.12, PERS: B('pers') - 0.12, EVERY: B('every') - 0.12, BUILD: B('build') - 0.1 };
+      LEAK: B('leak') - 0.12, SAVE: B('save') - 0.12, PERS: B('pers') - 0.12, EVERY: B('every') - 0.12, PITCH: B('plan') - 0.1, STEPS: B('up') - 0.1, DEC: B('dec') - 0.1, CTA: B('cta') - 0.1 };
     const inS = (t, a, b) => t >= C[a] && t < C[b];
 
     // ================= WORLD: navy void + glowing grid =================
@@ -180,12 +180,16 @@ window.SCENE = {
       else if (t < C.SWG) { mL = t < B('unwrap') ? toCam : toR; face = 'shock'; lean = -0.1; up = eo(pr(t, B('total') + 0.6, B('total') + 0.95)) * (1 - pr(t, C.SWG - 0.3, C.SWG)); }
       else if (t < C.CHAI) { mL = t < B('swg2') - 0.1 ? toCam : toR; face = t < B('swg2') - 0.1 ? 'shock' : t < B('swg3') - 0.1 ? 'smile' : 'worried'; lean = 0.2; }
       else if (t < C.FASH) { mL = t < B('chai2') - 0.1 ? toCam : toR; face = t < B('chai2') - 0.1 ? 'worried' : 'smile'; lean = 0.05; }
-      else if (t < C.NIGHT) { mL = toR; face = t < B('fash2') - 0.1 ? 'shock' : t < B('fash3') - 0.1 ? 'smile' : t < B('fash5') - 0.1 ? 'worried' : t < B('fash6') - 0.1 ? 'shock' : 'smile'; lean = 0.15; }
-      else if (t < C.LEAK) { mL = t < B('night2') - 0.1 ? lapLook : toCam; face = t < B('night2') - 0.1 ? 'worried' : 'smile'; lean = 0.3; }
+      else if (t < C.NIGHT) { mL = toR; face = t < B('fash2') - 0.1 ? 'shock' : t < B('fash3') - 0.1 ? 'smile' : t < B('fash5') - 0.1 ? 'worried' : 'shock'; lean = 0.15; }
+      else if (t < C.LEAK) { mL = t < B('night') + 1.0 ? lapLook : toCam; face = 'worried'; lean = 0.3; }
       else if (t < C.SAVE) { mL = t < B('gym') - 0.1 ? toR : toCam; face = t < B('gym') - 0.1 ? 'worried' : 'shock'; lean = -0.05; up = eo(pr(t, B('gym'), B('gym') + 0.3)) * (1 - pr(t, B('gym2'), B('gym2') + 0.3)); }
       else if (t < C.PERS) { mL = t < B('phone') - 0.1 ? toR : toCam; face = t < B('phone') - 0.1 ? 'neutral' : 'smile'; lean = 0.1; up = eo(pr(t, B('phone'), B('phone') + 0.3)) * (1 - pr(t, C.PERS - 0.3, C.PERS)); }
       else if (t < C.EVERY) { mL = toR; face = 'worried'; lean = 0.3; }
-      else if (t < B('hide') - 0.1) { mL = t < C.BUILD ? toR : toCam; face = 'smile'; lean = 0.05; }
+      else if (t < C.PITCH) { mL = toR; face = 'neutral'; lean = 0.1; }
+      else if (t < B('when') - 0.1) { mL = toR; face = 'smile'; lean = 0.05; type = t >= B('up') && t < B('safe') ? 0.5 : 0; }
+      else if (t < C.DEC) { mL = toR; face = 'shock'; lean = -0.1; up = eo(pr(t, B('when'), B('when') + 0.3)) * (1 - pr(t, C.DEC, C.DEC + 0.3)); }
+      else if (t < C.CTA) { mL = toR; face = 'smile'; lean = 0.05; }
+      else if (t < B('hide') - 0.1) { mL = toCam; face = 'smile'; lean = 0.0; }
       else if (t < B('no') + 0.1) { mL = toR; face = 'worried'; lean = 0.35; }
       else { mL = toCam; face = 'shock'; lean = -0.05; }
       if (face === 'smile' && mT > 0.05) face = 'neutral';
@@ -193,10 +197,10 @@ window.SCENE = {
       M.update(t, { talk: mT * 0.95, face, look: [mYaw, mPitch], type, lean });
       const [aL, aR] = M.arms; if (up > 0) { aL.sh.rotation.set(-0.3 - up * 0.9, 0.2, -0.05 - up * 0.3); aL.el.rotation.x = -0.1 - up * 1.1; aR.sh.rotation.set(-0.3 - up * 0.9, -0.2, 0.05 + up * 0.3); aR.el.rotation.x = -0.1 - up * 1.1; }
       let rL = [-0.15, 0.05];
-      if ((t >= C.TOTAL && t < C.SWG) || (t >= C.SAVE && t < C.EVERY) || (t >= C.BUILD && t < B('hide'))) rL = [0.42, 0.02];   // explaining to us
+      if ((t >= C.TOTAL && t < C.SWG) || (t >= C.SAVE && t < C.EVERY) || (t >= C.PITCH && t < C.CTA)) rL = [0.42, 0.02];   // explaining to us
       rYaw = sm(rYaw, rL[0], k); rPitch = sm(rPitch, rL[1], k);
       const flat = [['swg3', 0.9], ['fash5', 1.2], ['gym2', 1.0], ['no', 3]].some(([id, d]) => t >= B(id) - 0.05 && t < B(id) + d);
-      const mood = flat ? 'flat' : (t >= B('pers2') - 0.05 && t < C.EVERY) || (t >= C.BUILD && t < B('hide')) || (t >= B('unwrap') && t < C.SWG + 0.5) ? 'smile' : 'calm';
+      const mood = flat ? 'flat' : (t >= B('pers2') - 0.05 && t < C.EVERY) || (t >= C.PITCH && t < B('hide')) || (t >= B('unwrap') && t < C.SWG + 0.5) ? 'smile' : 'calm';
       R.update(t, { talk: rT, look: [rYaw, rPitch], mood });
       R.head.rotation.y += 0.25 * Math.sin((t - B('no')) * 18) * K.pulse(t, B('no') - 0.05, 0.6);   // head shake on the final "No."
       R.head.rotation.z += 0.12 * K.pulse(t, B('fash5') - 0.1, 0.9) + 0.1 * K.pulse(t, B('gym2') - 0.1, 0.8);
@@ -205,14 +209,14 @@ window.SCENE = {
       holo.forEach(o => { o.m.position.y = o.y + Math.sin(t * 0.7 + o.ph) * 0.06; });
     };
 
-    // ================= LAPTOP SCREEN (Kharcha Wrapped reading the statement) =================
+    // ================= LAPTOP SCREEN (Wrapped reading the statement) =================
     const lr = (X, Y, W, H, r, f) => { lx.fillStyle = f; lx.beginPath(); lx.roundRect(X, Y, W, H, r); lx.fill(); };
     const ltxt = (s, X, Y, size, col, w = 500, al = 'left', fam = '"Inter", sans-serif') => { lx.font = `${w} ${size}px ${fam}`; lx.fillStyle = col; lx.textAlign = al; lx.textBaseline = 'middle'; lx.fillText(s, X, Y); };
     const drawLaptop = t => {
       lx.fillStyle = '#1c1b22'; lx.fillRect(0, 0, LSW, LSH);
       if (t < C.STMT) { ltxt('Bank · balance', 60, 70, 34, '#9a9aa8', 700); ltxt('₹312', 60, 190, 140, '#ff4d5a', 900); ltxt('12 Nov · salary was ₹25,000', 60, 320, 32, '#9a9aa8', 600);
         for (let i = 0; i < 6; i++) { lr(60, 380 + i * 34, 840, 24, 8, i % 2 ? '#26252e' : '#2c2b35'); } lTex.needsUpdate = true; return; }
-      lx.fillStyle = '#26252e'; lx.fillRect(0, 0, LSW, 70); ltxt('🧾 Kharcha Wrapped', 40, 36, 30, '#ffc53d', 800);
+      lx.fillStyle = '#26252e'; lx.fillRect(0, 0, LSW, 70); ltxt('🧾 Wrapped', 40, 36, 30, '#ffc53d', 800);
       const rows = ['Reading statement · 1,284 payments', 'Food + chai', 'Fashion', 'Late-night orders', 'Subscriptions', 'Savings plan'];
       const n = t < C.TOTAL ? 1 : t < C.CHAI ? 2 : t < C.NIGHT ? 3 : t < C.LEAK ? 4 : t < C.SAVE ? 5 : 6;
       rows.slice(0, n).forEach((r, i) => ltxt((i < n - 1 || t >= C.PERS ? '✓ ' : '● ') + r, 60, 130 + i * 70, 32, i < n - 1 || t >= C.PERS ? '#6fe3b5' : '#ffc53d', 600));
@@ -239,17 +243,18 @@ window.SCENE = {
       [C.SWG, B('swg2') - 0.1, sh.robo], [B('swg2') - 0.1, B('swg3') - 0.1, sh.mad], [B('swg3') - 0.1, C.CHAI, sh.robL],
       [C.CHAI, B('chai2') - 0.1, sh.two], [B('chai2') - 0.1, C.FASH, sh.mad],
       [C.FASH, B('fash2') - 0.1, sh.robo], [B('fash2') - 0.1, B('fash3') - 0.1, sh.mad], [B('fash3') - 0.1, B('fash4') - 0.1, sh.robL], [B('fash4') - 0.1, B('fash5') - 0.1, sh.wait],
-      [B('fash5') - 0.1, B('fash6') - 0.1, sh.robo], [B('fash6') - 0.1, C.NIGHT, sh.mad],
-      [C.NIGHT, B('night2') - 0.1, sh.ots], [B('night2') - 0.1, C.LEAK, sh.mad],
+      [B('fash5') - 0.1, C.NIGHT, sh.robo],
+      [C.NIGHT, C.LEAK, sh.ots],
       [C.LEAK, B('gym') - 0.1, sh.robo], [B('gym') - 0.1, B('gym2') - 0.1, sh.wait], [B('gym2') - 0.1, C.SAVE, sh.robL],
       [C.SAVE, B('phone') - 0.1, sh.pair], [B('phone') - 0.1, C.PERS, sh.mad],
-      [C.PERS, C.EVERY, sh.robo], [C.EVERY, C.BUILD, sh.mad], [C.BUILD, B('hide') - 0.1, sh.cta], [B('hide') - 0.1, B('no') - 0.05, sh.wait], [B('no') - 0.05, D + 5, sh.robo],
+      [C.PERS, C.EVERY, sh.robo], [C.EVERY, C.PITCH, sh.mad], [C.PITCH, C.STEPS, sh.robo], [C.STEPS, B('safe') - 0.1, sh.cta], [B('safe') - 0.1, B('when') - 0.1, sh.robL],
+      [B('when') - 0.1, C.DEC, sh.wait], [C.DEC, C.CTA, sh.robo], [C.CTA, B('hide') - 0.1, sh.mad], [B('hide') - 0.1, B('no') - 0.05, sh.wait], [B('no') - 0.05, D + 5, sh.robo],
     ];
-    const SHAKE = [B('all') - 0.1, B('gym') - 0.1];
+    const SHAKE = [B('all') - 0.1, B('gym') - 0.1, B('when') - 0.1];
     const smooth = k => k * k * (3 - 2 * k);
     const lift = (p, dy) => ({ pos: [p.pos[0], p.pos[1] + dy, p.pos[2]], look: [p.look[0], p.look[1] + dy, p.look[2]], fov: p.fov });   // pan up so faces sit under the phone
     const DYS = new Map([[sh.mad, 0.085], [sh.wait, 0.075], [sh.robo, 0.035], [sh.robL, 0.035], [sh.two, 0.05], [sh.pair, 0.05], [sh.ots, 0.05]]);
-    plan.forEach(p => { if (p[0] >= C.SWG - 0.2 && p[0] < C.EVERY && DYS.has(p[2])) { const d = DYS.get(p[2]); p[2] = [lift(p[2][0], d), lift(p[2][1], d)]; p[2].base = true; } });
+    plan.forEach(p => { if (((p[0] >= C.SWG - 0.2 && p[0] < C.EVERY) || p[0] >= C.PITCH - 0.05) && DYS.has(p[2])) { const d = DYS.get(p[2]); p[2] = [lift(p[2][0], d), lift(p[2][1], d)]; p[2].base = true; } });
     const shots = plan.map(([a, b, s]) => ({ t: [a, b], from: s[0], to: s[1], fov: s[0].fov, ease: smooth,
       shake: SHAKE.includes(a) ? (t => 0.006 * Math.exp(-(t - a) * 6)) : null }));
     const curFov = t => { const p = plan.find(([a, b]) => t >= a && t < b) || plan[plan.length - 1]; const k = smooth(cl((t - p[0]) / (p[1] - p[0]))); return lerp(p[2][0].fov, p[2][1].fov, k); };
@@ -294,11 +299,16 @@ window.SCENE = {
         const q = fin(t, B('h3'), 0.3); if (q > 0) txt('where did ₹24,688 go? 🤔', 540, 548, 32, ACC, 700, 'center', q, FR); }); };
     // ---------- the statement ----------
     const drawStmt = t => { if (t < C.STMT || t >= C.TOTAL) return;
-      const a = pop(t, C.STMT + 0.05, 0.4); scaleAt(540, 440, a, () => { card(170, 300, 740, 300, 36);
-        txt('📄', 255, 400, 90, '#000', 400, 'center'); txt('PhonePe statement', 330, 375, 44, TXT, 700, 'left', 1, FR); txt('Jan – Nov 2026 · PDF', 330, 430, 30, DIM, 600);
-        const p = eo(pr(t, B('all2'), E('all2') + 0.5)); h.fillStyle = 'rgba(255,255,255,0.12)'; h.beginPath(); h.roundRect(220, 500, 640, 22, 11); h.fill();
-        if (p > 0) { h.fillStyle = ACC; h.beginPath(); h.roundRect(220, 500, 640 * p, 22, 11); h.fill(); txt(inr(p * 1284) + ' payments', 540, 560, 30, ACC, 700, 'center', 1, FR); } });
-      chip('ALL OF IT 😳', 540, 700, 40, RED, '#fff', fin(t, B('all2'), 0.25), pop(t, B('all2'), 0.3), 900, FR); };
+      const a = pop(t, C.STMT + 0.05, 0.4); scaleAt(540, 470, a, () => { card(150, 280, 780, 400, 36, INK, 'rgba(255,197,61,0.7)');
+        logo(540, 335, 40, TXT); h.fillStyle = 'rgba(255,255,255,0.1)'; h.fillRect(190, 372, 700, 2);
+        h.save(); h.setLineDash([14, 10]); h.strokeStyle = 'rgba(170,190,255,0.6)'; h.lineWidth = 3; h.beginPath(); h.roundRect(200, 395, 680, 140, 24); h.stroke(); h.restore();
+        const up = fin(t, B('stmt') + 0.6, 0.3);
+        if (up < 1) txt('⬆ upload your statement', 540, 465, 36, DIM, 700, 'center', 1 - up, FR);
+        if (up > 0) { txt('📄', 270, 465, 60, '#000', 400, 'center', up); txt('phonepe_statement.pdf', 320, 448, 32, TXT, 700, 'left', up, FR); txt('Jan – Nov 2026', 320, 492, 26, DIM, 600, 'left', up); }
+        const p = eo(pr(t, B('all2'), E('all2') + 0.6)); h.fillStyle = 'rgba(255,255,255,0.12)'; h.beginPath(); h.roundRect(200, 565, 680, 20, 10); h.fill();
+        if (p > 0) { h.fillStyle = ACC; h.beginPath(); h.roundRect(200, 565, 680 * p, 20, 10); h.fill(); }
+        txt(p > 0 ? `reading ${inr(p * 1284)} payments… 🔒 on your phone` : '🔒 read on your phone, never uploaded', 540, 625, 28, p > 0 ? ACC : GRN, 700, 'center', 1, FR); });
+      chip('ALL OF IT 😳', 540, 760, 40, RED, '#fff', fin(t, B('all2'), 0.25), pop(t, B('all2'), 0.3), 900, FR); };
     // ---------- the reveal ----------
     const drawTotal = t => { if (t < C.TOTAL || t >= C.SWG) return;
       const a = pop(t, C.TOTAL + 0.05, 0.45); scaleAt(540, 450, a, () => { glowCard(110, 300, 860, 320, 40, 'rgba(255,197,61,0.8)');
@@ -319,9 +329,11 @@ window.SCENE = {
     const row = (e, s, v, y, a, hi = false) => { if (a <= 0) return; h.save(); h.globalAlpha *= a; h.translate((1 - a) * 50, 0);
       h.fillStyle = hi ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.14)'; h.beginPath(); h.roundRect(SX + 30, y - 40, SW - 60, 80, 20); h.fill();
       txt(e, SX + 75, y, 40, '#000', 400, 'center'); txt(s, SX + 112, y, 31, '#fff', 700, 'left', 1, FR); txt(v, SX + SW - 50, y, 31, '#fff', 700, 'right', 1, FR); h.restore(); };
+    const logo = (x, y, size, col, a = 1) => { if (a <= 0) return; h.save(); h.globalAlpha *= a; h.font = F(size, 700, FR); const w1 = h.measureText('Wrapped').width; h.font = F(size * 0.6, 700, FR); const w2 = h.measureText(" '26").width;
+      const W = size * 1.15 + w1 + w2, x0 = x - W / 2; txt('🧾', x0 + size * 0.5, y, size * 0.95, '#000', 400, 'center'); txt('Wrapped', x0 + size * 1.15, y + 2, size, col, 700, 'left', 1, FR); txt(" '26", x0 + size * 1.15 + w1, y + 2, size * 0.6, ACC, 700, 'left', 1, FR); h.restore(); };
     const content = (id, t) => {          // draws one story card inside the phone screen (screen space)
       const t0 = C[id];
-      sTxt("KHARCHA WRAPPED '26", CX, SY + 92, 24, 'rgba(255,255,255,0.8)', 700);
+      logo(CX, SY + 90, 30, '#fff');
       if (id === 'SWG') { sTxt('your top spend', CX, SY + 150, 34, '#fff');
         txt('🍔', CX, SY + 265, 110, '#000', 400, 'center'); bigNum(String(Math.round(lerp(0, 212, eo(pr(t, B('swg') + 0.15, E('swg')))))), CX, SY + 410, 150);
         sTxt('Swiggy orders', CX, SY + 510, 42, '#fff'); sTxt('₹38,160 on food delivery', CX, SY + 570, 28, 'rgba(255,255,255,0.85)', 600, 'center', fin(t, E('swg'), 0.3));
@@ -341,7 +353,7 @@ window.SCENE = {
         for (let i = 0; i < 26; i++) { const r = K.rng(90 + i); const x = SX + r() * SW, y = SY + 120 + r() * 300; h.fillStyle = `rgba(255,255,255,${0.3 + 0.5 * Math.abs(Math.sin(t * 2 + i))})`; h.beginPath(); h.arc(x, y, 2 + r() * 2, 0, 7); h.fill(); }
         txt('🌙', CX, SY + 265, 110, '#000', 400, 'center'); bigNum(String(Math.round(lerp(0, 47, eo(pr(t, B('night') + 0.1, E('night')))))), CX, SY + 410, 150);
         sTxt('orders after 12 AM', CX, SY + 510, 40, '#fff'); sTxt('peak: 1:47 AM 🍕', CX, SY + 570, 30, 'rgba(255,255,255,0.85)', 600, 'center', fin(t, E('night'), 0.3));
-        if (t >= B('night2')) stamp('NIGHT MADDIE 😈', CX, SY + 632, 32, ACC, B('night2') + 0.3, t, 0.08); }
+        if (t >= B('night') + 1.0) stamp('NIGHT MADDIE 😈', CX, SY + 632, 32, ACC, B('night') + 1.0, t, 0.08); }
       if (id === 'LEAK') { sTxt('money leaks', CX, SY + 150, 34, '#fff'); sTxt('3 subscriptions you forgot', CX, SY + 200, 28, 'rgba(255,255,255,0.85)', 600);
         row('🏋️', 'Gym', '₹999/mo', SY + 300, fin(t, B('leak') + 0.25, 0.25), t >= B('gym')); row('🎵', 'Music app', '₹119/mo', SY + 400, fin(t, B('leak') + 0.45, 0.25)); row('📺', 'OTT', '₹379/mo', SY + 500, fin(t, B('leak') + 0.65, 0.25));
         sTxt('= ₹1,497 every month', CX, SY + 600, 34, '#fff', 700, 'center', fin(t, E('leak'), 0.3));
@@ -372,19 +384,35 @@ window.SCENE = {
         const f = i < idx ? 1 : i > idx ? 0 : cl((t - C[id]) / ((i < 6 ? C[ORDER[i + 1]] : C.EVERY) - C[id])); h.fillStyle = '#fff'; h.fillRect(x, SY + 28, w * f, 6); });
       h.restore(); h.fillStyle = '#0b0c12'; h.beginPath(); h.roundRect(CX - 60, SY + 2, 120, 26, 13); h.fill();       // notch
       h.restore(); };
-    // ---------- end card: Kharcha Wrapped, Dec 1 ----------
-    const drawEnd = t => { if (t < C.BUILD - 0.1) return;
-      const a = pop(t, C.BUILD, 0.45); scaleAt(540, 450, a, () => { glowCard(130, 290, 820, 360, 40, 'rgba(255,197,61,0.85)');
-        txt('🧾', 540, 365, 70, '#000', 400, 'center'); otxt('Kharcha Wrapped', 540, 465, 88, ACC, 1, 'center', 12);
-        txt('your year of UPI, unwrapped', 540, 540, 34, TXT, 600, 'center'); chip('FREE · DEC 1', 540, 605, 32, GRN, '#06281a', 1, 1, 900, FR); });
-      if (t >= B('no')) stamp('SWIGGY NUMBER STAYS', 540, 712, 40, RED, B('no') + 0.15, t, -0.06); };
+    // ---------- the pitch: what Wrapped is, how it works, when, how to get it ----------
+    const drawPitch = t => { if (t < C.PITCH - 0.1) return;
+      if (t < C.STEPS) { const a = pop(t, C.PITCH + 0.05, 0.5); scaleAt(540, 450, a, () => { glowCard(130, 280, 820, 360, 40, 'rgba(255,197,61,0.85)');
+          txt('🧾', 540, 355, 74, '#000', 400, 'center'); otxt('Wrapped', 540, 470, 130, ACC, 1, 'center', 14); txt('your year of UPI, unwrapped', 540, 575, 36, TXT, 600, 'center'); }); return; }
+      if (t < C.DEC) { logo(540, 215, 44, TXT, fin(t, C.STEPS, 0.25));
+        card(110, 285, 860, 450, 34); txt('how it works', 150, 335, 30, DIM, 700);
+        const ST = [['up', 0.05, '📄', 'Upload your statement', 'PhonePe or any bank'], ['cards', 0.05, '🎴', 'Get your 7 cards', 'food · chai · fashion · leaks…'], ['cards', 1.1, '📲', 'Share your story', 'your money personality']];
+        ST.forEach(([id, d, e, s1, s2], i) => { const t0 = B(id) + d, r = fin(t, t0, 0.3); const y = 420 + i * 108;
+          h.save(); h.globalAlpha = 0.35 + 0.65 * r; card(140, y - 46, 800, 92, 22, r > 0.5 ? 'rgba(255,197,61,0.12)' : 'rgba(255,255,255,0.04)', r > 0.5 ? 'rgba(255,197,61,0.7)' : 'rgba(130,160,255,0.3)');
+          chip(String(i + 1), 195, y, 30, r > 0.5 ? ACC : 'rgba(255,255,255,0.15)', r > 0.5 ? '#1a1206' : TXT, 1, 1, 900, FR); txt(e, 265, y, 42, '#000', 400, 'center');
+          txt(s1, 310, y - 14, 34, TXT, 700, 'left', 1, FR); txt(s2, 310, y + 24, 24, DIM, 600); h.restore(); });
+        const sa = fin(t, B('safe'), 0.25); if (sa > 0) { chip('🔒 never leaves your phone', 400, 800, 30, 'rgba(8,12,40,0.92)', GRN, sa, pop(t, B('safe'), 0.35), 800, FR);
+          chip('FREE', 800, 800, 34, GRN, '#06281a', fin(t, B('safe') + 1.0, 0.2), pop(t, B('safe') + 1.0, 0.35), 900, FR); }
+        return; }
+      if (t < C.CTA) { const a = pop(t, C.DEC + 0.05, 0.45); scaleAt(540, 450, a, () => { glowCard(190, 290, 700, 330, 40, 'rgba(61,220,151,0.85)');
+          txt('🚀 launching', 540, 350, 36, DIM, 700, 'center', 1, FR); otxt('DEC 1', 540, 465, 150, GRN, 1, 'center', 14); txt('free for everyone', 540, 565, 34, TXT, 600, 'center'); }); return; }
+      const a = pop(t, C.CTA + 0.05, 0.45); scaleAt(540, 450, a, () => { glowCard(110, 270, 860, 430, 40, 'rgba(255,197,61,0.85)');
+        logo(540, 340, 56, TXT); chip('FREE · DEC 1', 540, 420, 30, GRN, '#06281a', 1, 1, 900, FR);
+        const pl = 1 + 0.04 * Math.sin(t * 7) * fin(t, B('cta') + 0.4, 0.3); scaleAt(540, 530, pl, () => { h.save(); h.shadowColor = 'rgba(255,197,61,0.9)'; h.shadowBlur = 30; h.fillStyle = ACC; h.beginPath(); h.roundRect(170, 480, 740, 100, 50); h.fill(); h.restore();
+          txt('💬 Comment', 395, 532, 44, '#1a1206', 700, 'center', 1, FR); txt('WRAPPED', 700, 532, 54, '#1a1206', 900, 'center', 1, FR); });
+        txt('→ early access in your DMs', 540, 640, 32, TXT, 600, 'center', fin(t, B('cta') + 0.8, 0.3)); });
+      if (t >= B('no')) stamp('SWIGGY NUMBER STAYS', 540, 780, 40, RED, B('no') + 0.15, t, -0.06); };
 
     const vig = document.createElement('canvas'); vig.width = HW; vig.height = HH; { const x = vig.getContext('2d'), g = x.createRadialGradient(HW / 2, HH * 0.5, HH * 0.3, HW / 2, HH * 0.5, HH * 0.75); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,10,0.45)'); x.fillStyle = g; x.fillRect(0, 0, HW, HH); }
-    const cuts = [C.TOTAL, C.SWG, C.LEAK, C.BUILD];
+    const cuts = [C.TOTAL, C.SWG, C.LEAK, C.PITCH, C.CTA];
     const flash = t => { let a = 0; cuts.forEach(c => { const d = t - c; if (d >= 0 && d < 0.18) a = Math.max(a, 1 - d / 0.18); }); return a; };
     const hudDraw = t => {
       h.clearRect(0, 0, HW, HH); h.globalAlpha = 1; h.drawImage(vig, 0, 0);
-      drawHook(t); drawStmt(t); drawTotal(t); drawPhone(t); drawEnd(t);
+      drawHook(t); drawStmt(t); drawTotal(t); drawPhone(t); drawPitch(t);
       LABELS.forEach(([a, b, s1, s2]) => { if (inS(t, a, b)) label(t, s1, s2, C[a]); });
       const f = flash(t); if (f > 0) { h.fillStyle = `rgba(255,255,255,${f * 0.6})`; h.fillRect(0, 0, HW, HH); }
       const fi = 1 - pr(t, 0, 0.3); if (fi > 0) { h.fillStyle = `rgba(0,0,0,${fi})`; h.fillRect(0, 0, HW, HH); }
@@ -402,11 +430,12 @@ window.SCENE = {
     for (let t2 = B('swg') + 0.15; t2 < E('swg'); t2 += 0.07) sfx.push(['tick', t2, 0.08]); sfx.push(['thud', B('swg3') + 0.4, 0.5]);
     for (let t2 = B('chai') + 0.1; t2 < E('chai') + 0.2; t2 += 0.07) sfx.push(['tick', t2, 0.08]); sfx.push(['ding', B('chai2') + 0.3, 0.25]);
     sfx.push(['zap', B('fash3') + 0.1, 0.2], ['pop', B('fash5') + 0.4, 0.3], ['thud', B('fash5') + 0.9, 0.5]);
-    sfx.push(['chime', B('night') + 0.1, 0.25], ['boing', B('night2') + 0.3, 0.25]);
+    sfx.push(['chime', B('night') + 0.1, 0.25], ['boing', B('night') + 1.0, 0.25]);
     [0.25, 0.45, 0.65].forEach(d => sfx.push(['pop', B('leak') + d, 0.2])); sfx.push(['buzz', E('leak'), 0.15], ['boing', B('gym'), 0.3], ['thud', B('gym2') + 0.3, 0.5]);
     sfx.push(['pop', B('save') + 0.2, 0.2], ['pop', B('save') + 1.0, 0.2]); for (let t2 = B('save2'); t2 < E('save2'); t2 += 0.06) sfx.push(['coin', t2, 0.07]); sfx.push(['kaching', E('save2'), 0.35], ['ding', B('phone') + 0.5, 0.3]);
     sfx.push(['riser', B('pers') , 0.2], ['chime', B('pers2'), 0.4]);
-    sfx.push(['whoosh', C.BUILD, 0.3], ['kaching', C.BUILD + 0.1, 0.3], ['thud', B('no') + 0.15, 0.6]);
+    sfx.push(['whoosh', C.PITCH, 0.3], ['riser', C.PITCH - 1.2, 0.18], ['kaching', C.PITCH + 0.1, 0.35], ['whoosh', C.STEPS, 0.25], ['pop', B('up') + 0.05, 0.3], ['pop', B('cards') + 0.05, 0.3], ['pop', B('cards') + 1.1, 0.3]);
+    sfx.push(['ding', B('safe'), 0.3], ['ding', B('safe') + 1.0, 0.3], ['boing', B('when'), 0.3], ['bass', C.DEC, 0.4], ['kaching', C.DEC + 0.1, 0.35], ['whoosh', C.CTA, 0.3], ['chime', B('cta') + 0.4, 0.4], ['thud', B('no') + 0.15, 0.6]);
     return { duration: D, update, shots, sfx, watermark: false, endCard: false, capFont: 'Fredoka Light', capMarginV: 520, capSize: 66 };
   },
 };
