@@ -1,0 +1,215 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 3 (American teen Maddie + young British Claude), re-chosen 2026-11-11). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Hey guys, I'm Maddie. Today I'll show you something crazy I made with my robot.",
+  "claude": "Good evening. I am Claude. I write the code, and I render the whole reel."
+ },
+ "voices": {
+  "maddie_C": "male, teenager, moderate pitch, american accent",
+  "claude_B": "male, young adult, moderate pitch, british accent"
+ },
+ "cast": {
+  "maddie": "maddie_C",
+  "claude": "claude_B"
+ },
+ "jobs": [
+  {
+   "voice": "maddie_C",
+   "text": "[sigh] Hey Claude...",
+   "speed": 1,
+   "file": "01.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[dissatisfaction-hnn] It's the twelfth... and I have three hundred and twelve rupees.",
+   "speed": 1,
+   "file": "02.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[question-en] Where did my salary go?",
+   "speed": 1,
+   "file": "03.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Give me your PhonePe statement.",
+   "speed": 1.02,
+   "file": "04.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[question-en] All of it?",
+   "speed": 1,
+   "file": "05.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "All of it.",
+   "speed": 1.02,
+   "file": "06.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "This year, you spent two lakh, forty-one thousand rupees.",
+   "speed": 1.02,
+   "file": "07.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Let's unwrap it.",
+   "speed": 1.02,
+   "file": "08.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Two hundred and twelve Swiggy orders.",
+   "speed": 1.02,
+   "file": "09.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "That's not even one a day.",
+   "speed": 1,
+   "file": "10.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Maddie. That's one every other day.",
+   "speed": 1.02,
+   "file": "11.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Six hundred and forty chais.",
+   "speed": 1.02,
+   "file": "12.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Chai is a need.",
+   "speed": 1,
+   "file": "13.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Twenty-three Myntra orders.",
+   "speed": 1.02,
+   "file": "14.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "I needed clothes.",
+   "speed": 1,
+   "file": "15.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "You returned fourteen.",
+   "speed": 1.02,
+   "file": "16.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[sigh] ... They didn't match my vibe.",
+   "speed": 1,
+   "file": "17.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "And you're still wearing the same blue t-shirt.",
+   "speed": 1.02,
+   "file": "18.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "It's my signature look.",
+   "speed": 1,
+   "file": "19.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Forty-seven orders after midnight.",
+   "speed": 1.02,
+   "file": "20.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Night me is a different person.",
+   "speed": 1,
+   "file": "21.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "And three subscriptions you forgot.",
+   "speed": 1.02,
+   "file": "22.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-wa] I have a gym membership?!",
+   "speed": 1,
+   "file": "23.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "You have a gym membership.",
+   "speed": 1.02,
+   "file": "24.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Cut half the Swiggy... and those subscriptions.",
+   "speed": 1.02,
+   "file": "25.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Thirty-seven thousand rupees saved a year.",
+   "speed": 1.02,
+   "file": "26.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[surprise-oh] Thirty-seven thousand... that's a new phone!",
+   "speed": 1,
+   "file": "27.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Your money personality?",
+   "speed": 1.02,
+   "file": "28.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "The Midnight Swiggy Guy.",
+   "speed": 1.02,
+   "file": "29.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Claude... make this for everyone.",
+   "speed": 1,
+   "file": "30.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Already building it.",
+   "speed": 1.02,
+   "file": "31.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "[question-en] Wait. Can it hide my Swiggy number?",
+   "speed": 1,
+   "file": "32.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "No.",
+   "speed": 1.02,
+   "file": "33.wav"
+  }
+ ]
+}
