@@ -373,6 +373,30 @@
    "any_comment": true,
    "comment_replies_off": [],
    "only_keywords": true
+  },
+  {
+   "id": "replica",
+   "active": true,
+   "reel": "",
+   "caption_has": "#replicaapps",
+   "reel_first": false,
+   "keywords": [
+    "replica"
+   ],
+   "comment_replies": [],
+   "opening": "Hey {{name}} 👋 Want the 10 apps you can replicate for India? Tap below 📲",
+   "opening_button": "Send it 📲",
+   "follow_gate": true,
+   "follow_text": "Almost there {{name}}! 😄 The app list is only for followers. Follow @maddiee.makess (new AI reels daily) and tap below 👇",
+   "follow_button": "I followed ✅",
+   "final_text": "Here you go {{name}} 📲 10 apps already earning online + the India version of each, who'd pay, a price, and a starter prompt for Claude 👇 Copy the idea, never the code or the name.",
+   "link_label": "Open the 10 apps 📲",
+   "link": "https://madhureddy18.github.io/ai.jugaadd/p/replica/",
+   "direct": false,
+   "direct_text": "Hey {{name}} 👋 here are 10 apps you can replicate for India 📲 https://madhureddy18.github.io/ai.jugaadd/p/replica/",
+   "any_comment": true,
+   "comment_replies_off": [],
+   "only_keywords": true
   }
  ],
  "default": null,
