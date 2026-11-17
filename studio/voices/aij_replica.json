@@ -1,0 +1,131 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 3 (American teen Maddie + young British Claude), re-chosen 2026-11-11). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Hey guys, I'm Maddie. Today I'll show you something crazy I made with my robot.",
+  "claude": "Good evening. I am Claude. I write the code, and I render the whole reel."
+ },
+ "voices": {
+  "maddie_C": "male, teenager, moderate pitch, american accent",
+  "claude_B": "male, young adult, moderate pitch, british accent"
+ },
+ "cast": {
+  "maddie": "maddie_C",
+  "claude": "claude_B"
+ },
+ "jobs": [
+  {
+   "voice": "maddie_C",
+   "text": "Hey Claude... how do people actually make money with apps?",
+   "speed": 1,
+   "file": "01.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "They copy the ones that are already making money.",
+   "speed": 1.02,
+   "file": "02.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Isn't that illegal?!",
+   "speed": 1,
+   "file": "03.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Copying the code or the name is.",
+   "speed": 1.02,
+   "file": "04.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Copying the idea isn't.",
+   "speed": 1.02,
+   "file": "05.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "There's a site called Trust M R R.",
+   "speed": 1.02,
+   "file": "06.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Thousands of apps... with their real earnings.",
+   "speed": 1.02,
+   "file": "07.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "This one makes app designs from an idea. Twenty thousand dollars a month.",
+   "speed": 1.02,
+   "file": "08.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Step one. Pick an app that's already earning.",
+   "speed": 1.02,
+   "file": "09.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Step two. Rebuild it for India. Rupees, U P I, Hindi.",
+   "speed": 1.02,
+   "file": "10.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Step three. Charge two hundred ninety-nine rupees instead of twenty dollars.",
+   "speed": 1.02,
+   "file": "11.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "So... the same app, but made for us?",
+   "speed": 1,
+   "file": "12.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "That's a replica app.",
+   "speed": 1.02,
+   "file": "13.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "A thousand users... that's three lakhs a month!",
+   "speed": 1,
+   "file": "14.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "If you get a thousand.",
+   "speed": 1.02,
+   "file": "15.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "Okay, I'll get ten.",
+   "speed": 1,
+   "file": "16.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Ten is three thousand rupees. Start there.",
+   "speed": 1.02,
+   "file": "17.wav"
+  },
+  {
+   "voice": "maddie_C",
+   "text": "But Claude... what apps can I even make? I don't know.",
+   "speed": 1,
+   "file": "18.wav"
+  },
+  {
+   "voice": "claude_B",
+   "text": "Comment replica. I'll send you ten app ideas.",
+   "speed": 1.02,
+   "file": "19.wav"
+  }
+ ]
+}
