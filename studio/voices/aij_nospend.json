@@ -1,0 +1,138 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 3 (American teen Maddie + young British Claude), re-chosen 2026-11-11). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Claude, I graduated today. Zero offers. So I'm going back. Master's. Stanford.",
+  "claude": "Okay. Give me your resume. Step one. Connect Playwright. Free, made by Microsoft. Two hundred career pages."
+ },
+ "voices": {
+  "maddie_G": "cloned from Maddyy's graduation reel",
+  "claude_G": "cloned from Maddyy's graduation reel"
+ },
+ "cast": {
+  "maddie": "maddie_G",
+  "claude": "claude_G"
+ },
+ "jobs": [
+  {
+   "voice": "maddie_G",
+   "text": "Hey Claude... I don't even spend money. So where is my salary going?",
+   "speed": 0.94,
+   "file": "01.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "There's a free website that shows you exactly where your money went.",
+   "speed": 0.98,
+   "file": "02.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Free? What does it do?",
+   "speed": 0.94,
+   "file": "03.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Upload your bank or PhonePe statement.",
+   "speed": 0.98,
+   "file": "04.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "It shows every month, every payment, and where it all went.",
+   "speed": 0.98,
+   "file": "05.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Wait... will they save my statement?",
+   "speed": 0.94,
+   "file": "06.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "No. It's read on your phone. Nothing is uploaded. Nothing is saved.",
+   "speed": 0.98,
+   "file": "07.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Okay... See? Nothing.",
+   "speed": 0.94,
+   "file": "08.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "One lakh thirty-six thousand. In six months.",
+   "speed": 0.98,
+   "file": "09.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "That's not me.",
+   "speed": 0.94,
+   "file": "10.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "July. Fifty thousand.",
+   "speed": 0.98,
+   "file": "11.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "July was... a mistake.",
+   "speed": 0.94,
+   "file": "12.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Thirty-five tiny payments under a hundred rupees.",
+   "speed": 0.98,
+   "file": "13.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "That's just chai! Chai is not spending. Chai is oxygen.",
+   "speed": 0.94,
+   "file": "14.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "And eighty-nine percent went to other people.",
+   "speed": 0.98,
+   "file": "15.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "[sigh] They said they'll pay me back.",
+   "speed": 0.94,
+   "file": "16.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "They won't.",
+   "speed": 0.98,
+   "file": "17.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Set a monthly limit. The website warns you before you cross it.",
+   "speed": 0.98,
+   "file": "18.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "It's free? Send me the link!",
+   "speed": 0.94,
+   "file": "19.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Comment paisa. I'll send you the link.",
+   "speed": 0.98,
+   "file": "20.wav"
+  }
+ ],
+ "_help_ref": "Voices cloned from Maddyy's graduation reel (Video-43019, 18 Nov 2026): maddie_G = 0.00-6.85 s, claude_G = 10.45-18.95 s. He prefers these expressive voices."
+}
