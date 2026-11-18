@@ -397,6 +397,30 @@
    "any_comment": true,
    "comment_replies_off": [],
    "only_keywords": true
+  },
+  {
+   "id": "paisa",
+   "active": true,
+   "reel": "",
+   "caption_has": "#paisamap",
+   "reel_first": false,
+   "keywords": [
+    "paisa"
+   ],
+   "comment_replies": [],
+   "opening": "Hey {{name}} 👋 Want to see where your money went? PaisaMap shows every month, every payment. Tap below 📍",
+   "opening_button": "Send the link 📍",
+   "follow_gate": true,
+   "follow_text": "Almost there {{name}}! 😄 The link is for followers first. Follow @maddiee.makess and tap below 👇",
+   "follow_button": "I followed ✅",
+   "final_text": "Here you go {{name}} 📍 Upload your PhonePe, Google Pay or bank statement. It's read on your phone only. Nothing is uploaded. Nothing is saved. Rate it at the end and tell us what to add 🙏",
+   "link_label": "Open PaisaMap 📍",
+   "link": "https://paisamap.online",
+   "direct": false,
+   "direct_text": "Hey {{name}} 👋 PaisaMap: see where your money went 📍 https://paisamap.online",
+   "any_comment": true,
+   "comment_replies_off": [],
+   "only_keywords": true
   }
  ],
  "default": null,
