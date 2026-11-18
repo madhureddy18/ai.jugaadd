@@ -1,143 +1,144 @@
 {
  "_help": "THE voices for every @maddiee.makess reel (Option 3 (American teen Maddie + young British Claude), re-chosen 2026-11-11). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
  "ref_text": {
-  "maddie": "Hey guys, I'm Maddie. Today I'll show you something crazy I made with my robot.",
-  "claude": "Good evening. I am Claude. I write the code, and I render the whole reel."
+  "maddie": "Claude, I graduated today. Zero offers. So I'm going back. Master's. Stanford.",
+  "claude": "Okay. Give me your resume. Step one. Connect Playwright. Free, made by Microsoft. Two hundred career pages."
  },
  "voices": {
-  "maddie_C": "male, teenager, moderate pitch, american accent",
-  "claude_B": "male, young adult, moderate pitch, british accent"
+  "maddie_G": "cloned from Maddyy's graduation reel",
+  "claude_G": "cloned from Maddyy's graduation reel"
  },
  "cast": {
-  "maddie": "maddie_C",
-  "claude": "claude_B"
+  "maddie": "maddie_G",
+  "claude": "claude_G"
  },
  "jobs": [
   {
-   "voice": "maddie_C",
+   "voice": "maddie_G",
    "text": "Hey Claude... where did my whole salary go?",
-   "speed": 0.97,
+   "speed": 0.9,
    "file": "01.wav"
   },
   {
-   "voice": "claude_B",
+   "voice": "claude_G",
    "text": "Let's find out. Open PaisaMap.",
-   "speed": 1,
+   "speed": 0.92,
    "file": "02.wav"
   },
   {
-   "voice": "maddie_C",
+   "voice": "maddie_G",
    "text": "[dissatisfaction-hnn] It wants my bank statement... what if they save it?",
-   "speed": 0.97,
+   "speed": 0.9,
    "file": "03.wav"
   },
   {
-   "voice": "claude_B",
+   "voice": "claude_G",
    "text": "Nothing is saved. Anywhere.",
-   "speed": 1,
+   "speed": 0.92,
    "file": "04.wav"
   },
   {
-   "voice": "maddie_C",
+   "voice": "maddie_G",
    "text": "[question-en] Seriously?",
-   "speed": 0.97,
+   "speed": 0.9,
    "file": "05.wav"
   },
   {
-   "voice": "claude_B",
+   "voice": "claude_G",
    "text": "Your statement never leaves your phone.",
-   "speed": 1,
+   "speed": 0.92,
    "file": "06.wav"
   },
   {
-   "voice": "claude_B",
+   "voice": "claude_G",
    "text": "No upload. No login. No account.",
-   "speed": 1,
+   "speed": 0.92,
    "file": "07.wav"
   },
   {
-   "voice": "claude_B",
+   "voice": "claude_G",
    "text": "Your phone reads the file itself.",
-   "speed": 1,
+   "speed": 0.92,
    "file": "08.wav"
   },
   {
-   "voice": "maddie_C",
+   "voice": "maddie_G",
    "text": "And when I close it?",
-   "speed": 0.97,
+   "speed": 0.9,
    "file": "09.wav"
   },
   {
-   "voice": "claude_B",
+   "voice": "claude_G",
    "text": "Gone. Like it never happened.",
-   "speed": 1,
+   "speed": 0.92,
    "file": "10.wav"
   },
   {
-   "voice": "maddie_C",
+   "voice": "maddie_G",
    "text": "[surprise-wa] Okay... wait. One lakh thirty-six thousand in six months?!",
-   "speed": 0.97,
+   "speed": 0.9,
    "file": "11.wav"
   },
   {
-   "voice": "claude_B",
+   "voice": "claude_G",
    "text": "Every month. Every payment. Every small chai.",
-   "speed": 1,
+   "speed": 0.92,
    "file": "12.wav"
   },
   {
-   "voice": "claude_B",
+   "voice": "claude_G",
    "text": "July was the worst. Fifty thousand rupees. It gets a crown.",
-   "speed": 1,
+   "speed": 0.92,
    "file": "13.wav"
   },
   {
-   "voice": "claude_B",
+   "voice": "claude_G",
    "text": "And eighty-nine percent went to other people.",
-   "speed": 1,
+   "speed": 0.92,
    "file": "14.wav"
   },
   {
-   "voice": "maddie_C",
+   "voice": "maddie_G",
    "text": "[sigh] I'm basically everyone's A T M...",
-   "speed": 0.97,
+   "speed": 0.9,
    "file": "15.wav"
   },
   {
-   "voice": "claude_B",
+   "voice": "claude_G",
    "text": "Set a monthly limit. It warns you before you cross it.",
-   "speed": 1,
+   "speed": 0.92,
    "file": "16.wav"
   },
   {
-   "voice": "maddie_C",
+   "voice": "maddie_G",
    "text": "This is actually useful. Is it free?",
-   "speed": 0.97,
+   "speed": 0.9,
    "file": "17.wav"
   },
   {
-   "voice": "claude_B",
+   "voice": "claude_G",
    "text": "Free. PhonePe, Google Pay, or your bank statement.",
-   "speed": 1,
+   "speed": 0.92,
    "file": "18.wav"
   },
   {
-   "voice": "maddie_C",
+   "voice": "maddie_G",
    "text": "Can I ask for new features?",
-   "speed": 0.97,
+   "speed": 0.9,
    "file": "19.wav"
   },
   {
-   "voice": "claude_B",
+   "voice": "claude_G",
    "text": "Rate it right there. Tell us what to add, and we'll build it.",
-   "speed": 1,
+   "speed": 0.92,
    "file": "20.wav"
   },
   {
-   "voice": "claude_B",
+   "voice": "claude_G",
    "text": "Comment paisa, and I'll send you the link.",
-   "speed": 1,
+   "speed": 0.92,
    "file": "21.wav"
   }
- ]
+ ],
+ "_help_ref": "Voices cloned from Maddyy's graduation reel (Video-43019, 18 Nov 2026): maddie_G = 0.00-6.85 s, claude_G = 10.45-18.95 s. He prefers these expressive voices."
 }
