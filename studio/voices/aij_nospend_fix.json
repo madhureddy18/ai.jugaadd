@@ -1,0 +1,24 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 3 (American teen Maddie + young British Claude), re-chosen 2026-11-11). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Claude, I graduated today. Zero offers. So I'm going back. Master's. Stanford.",
+  "claude": "Okay. Give me your resume. Step one. Connect Playwright. Free, made by Microsoft. Two hundred career pages."
+ },
+ "voices": {
+  "maddie_G": "cloned from Maddyy's graduation reel",
+  "claude_G": "cloned from Maddyy's graduation reel"
+ },
+ "cast": {
+  "maddie": "maddie_G",
+  "claude": "claude_G"
+ },
+ "jobs": [
+  {
+   "voice": "claude_G",
+   "text": "Nope. They won't.",
+   "speed": 0.98,
+   "file": "17.wav"
+  }
+ ],
+ "_help_ref": "Voices cloned from Maddyy's graduation reel (Video-43019, 18 Nov 2026): maddie_G = 0.00-6.85 s, claude_G = 10.45-18.95 s. He prefers these expressive voices."
+}

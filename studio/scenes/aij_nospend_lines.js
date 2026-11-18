@@ -18,7 +18,7 @@ window.JR_LINES = [
   LN('maddie', 'That\'s just *chai!* Chai is not spending. Chai is *oxygen.*', "That's just chai! Chai is not spending. Chai is oxygen.", { id: 'chai', gap: 0.2 }),
   LN('claude', 'And *89%* went to other people.', 'And eighty-nine percent went to other people.', { id: 'people', gap: 0.25 }),
   LN('maddie', 'They said they\'ll *pay me back.*', "[sigh] They said they'll pay me back.", { id: 'payback', gap: 0.2 }),
-  LN('claude', 'They won\'t.', "They won't.", { id: 'wont', gap: 0.2 }),
+  LN('claude', 'Nope. They *won\'t.*', "Nope. They won't.", { id: 'wont', gap: 0.2 }),
   LN('claude', 'Set a *monthly limit*. The website warns you before you cross it.', 'Set a monthly limit. The website warns you before you cross it.', { id: 'limit', gap: 0.15 }),
   LN('maddie', 'It\'s *free?* Send me the link!', "It's free? Send me the link!", { id: 'link', gap: 0.25 }),
   LN('claude', 'Comment *PAISA*. I\'ll send you the link.', "Comment paisa. I'll send you the link.", { id: 'cta', gap: 0.2 }),
