@@ -1,0 +1,102 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 3 (American teen Maddie + young British Claude), re-chosen 2026-11-11). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Claude, I graduated today. Zero offers. So I'm going back. Master's. Stanford.",
+  "claude": "Okay. Give me your resume. Step one. Connect Playwright. Free, made by Microsoft. Two hundred career pages."
+ },
+ "voices": {
+  "maddie_G": "cloned from Maddyy's graduation reel",
+  "claude_G": "cloned from Maddyy's graduation reel"
+ },
+ "cast": {
+  "maddie": "maddie_G",
+  "claude": "claude_G"
+ },
+ "jobs": [
+  {
+   "voice": "maddie_G",
+   "text": "Hey Claude... a website just roasted me.",
+   "speed": 0.94,
+   "file": "01.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "What did you do?",
+   "speed": 0.98,
+   "file": "02.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "I uploaded my bank statement to see where my money went.",
+   "speed": 0.94,
+   "file": "03.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "The free one? It reads your statement right on your phone. Nothing is saved.",
+   "speed": 0.98,
+   "file": "04.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Yeah. Then it said... You're basically everyone's A T M.",
+   "speed": 0.94,
+   "file": "05.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Because eighty-nine percent of your money went to other people.",
+   "speed": 0.98,
+   "file": "06.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "[sigh] Then it said... July was wild.",
+   "speed": 0.94,
+   "file": "07.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Fifty thousand rupees. In one month.",
+   "speed": 0.98,
+   "file": "08.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "And then it gave me a personality... The Generous One.",
+   "speed": 0.94,
+   "file": "09.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "That's the polite way of saying broke.",
+   "speed": 0.98,
+   "file": "10.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Hey! ...Okay, fair.",
+   "speed": 0.94,
+   "file": "11.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "It also shows every month, every payment, and warns you before you cross your limit.",
+   "speed": 0.98,
+   "file": "12.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "I'm sending this to my friends. Let them get roasted too.",
+   "speed": 0.94,
+   "file": "13.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Comment paisa. I'll send you the free link.",
+   "speed": 0.98,
+   "file": "14.wav"
+  }
+ ],
+ "_help_ref": "Voices cloned from Maddyy's graduation reel (Video-43019, 18 Nov 2026): maddie_G = 0.00-6.85 s, claude_G = 10.45-18.95 s. He prefers these expressive voices."
+}
