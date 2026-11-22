@@ -164,7 +164,7 @@ window.SCENE = {
     const keyLed = new THREE.Mesh(new THREE.PlaneGeometry(0.16, 0.05), new THREE.MeshBasicMaterial({ color: 0xff3040, toneMapped: false })); keyLed.position.set(1.25, 1.4, -2.02); bank.add(keyLed);
     // coins
     const CN = 240, coinGeo = new THREE.CylinderGeometry(0.1, 0.1, 0.022, 18), coinM = new THREE.MeshStandardMaterial({ color: 0xf5c542, roughness: 0.25, metalness: 0.9, emissive: 0x5a3a00, emissiveIntensity: 0.3 });
-    const coins = new THREE.InstancedMesh(coinGeo, coinM, CN); coins.castShadow = true; bank.add(coins);
+    const coins = new THREE.InstancedMesh(coinGeo, coinM, CN); coins.castShadow = true; coins.frustumCulled = false; bank.add(coins);
     const coinD = Array.from({ length: CN }, (_, i) => ({ t0: i * 0.012, vx: (rng() - 0.5) * 1.6, vz: 0.6 + rng() * 1.6, vy: 0.6 + rng() * 1.2, rx: rng() * 6, ry: rng() * 6, gx: (rng() - 0.5) * 2.2, gz: -1.2 + rng() * 2.2 }));
     const dummy = new THREE.Object3D();
     const bLight = new THREE.PointLight(0xfff4e0, 1.2, 7, 1.3); bLight.position.set(0.5, 3, 1.2); bank.add(bLight);
