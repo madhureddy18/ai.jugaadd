@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Make a movie with one sentence: Google Vids, free</title>
+<meta name="description" content="How to make 15-second AI videos with sound in Google Vids for free, plus 10 prompts. From @maddiee.makess.">
+<style>
+:root{--bg:#0b0f2a;--card:#141a40;--ink:#f6f4ee;--mute:#aab0d0;--acc:#ffc53d;--grn:#3ddc97;--line:rgba(150,170,255,.25)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:680px;margin:0 auto;padding:0 16px 60px}
+.hero{padding:34px 4px 10px}.hero h1{margin:0 0 6px;font-size:clamp(28px,8vw,40px);line-height:1.1;color:var(--acc)}.hero p{margin:0;color:var(--mute)}
+.rule{background:rgba(61,220,151,.12);border:1px solid rgba(61,220,151,.5);border-radius:14px;padding:12px 14px;margin:18px 0}
+.steps{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px 16px 8px 34px;margin:0 0 18px}.steps li{margin:7px 0}
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px 12px;margin:12px 0}
+.card h2{margin:0 0 8px;font-size:18px}.num{position:absolute;top:12px;right:14px;color:var(--mute);font-weight:800}
+pre{white-space:pre-wrap;background:#0a0d22;border:1px solid var(--line);border-radius:10px;padding:10px;font-size:14px;margin:0 0 8px}
+button{background:var(--acc);color:#1a1206;border:0;border-radius:10px;padding:8px 14px;font-weight:800;cursor:pointer}
+.foot{color:var(--mute);font-size:13px;margin-top:22px}a{color:var(--acc)}
+</style></head><body><main>
+<div class="hero"><p>🎬 from @maddiee.makess</p><h1>Make a movie with one sentence</h1><p>Google Vids turns one line into a 15-second video with sound. Free with a Google account.</p></div>
+<div class="rule">✅ <b>Free limit:</b> 3 AI videos a month, up to 15 seconds each, with a normal Google account. Make each one count, so use the prompts below.</div>
+<ol class="steps">
+<li>On a <b>laptop or computer</b>, open <a href="https://vids.new" target="_blank" rel="noopener">vids.new</a> and sign in with your Google account.</li>
+<li>Find the AI video option (it says something like <b>"Create AI video"</b> or <b>"Generate video"</b>).</li>
+<li><b>Paste one prompt</b> from below. Pick the length (up to 15 seconds).</li>
+<li>Press generate and wait a minute. Download it, then post it.</li>
+<li>Tip: say the <b>camera</b> ("slow motion", "drone shot", "close-up") and the <b>sound</b> ("crowd cheering", "thunder") in your line.</li>
+</ol>
+<div id="list"></div>
+<p class="foot">Google's free allowance can depend on your account and country, and may change. AI videos carry an invisible watermark that marks them as AI-made. Follow <a href="https://www.instagram.com/maddiee.makess/">@maddiee.makess</a> for more.</p>
+</main>
+<script>
+const P = [
+ ['Superhero on Charminar', 'A caped superhero lands on top of Charminar in Hyderabad at sunset, dust bursts out, pigeons fly away, slow-motion, epic orchestral music, deep boom on impact.'],
+ ['Slow-motion biryani', 'Hyderabadi biryani pouring out of a giant copper handi in ultra slow motion, rice grains and saffron flying, a chicken leg piece spinning toward the camera, sizzling sounds, warm light.'],
+ ['Rainy Hyderabad street', 'A rainy Hyderabad street at night, neon shop signs reflecting in puddles, an auto-rickshaw splashing past, a chai stall glowing, drone shot moving forward, rain and traffic sounds.'],
+ ['Movie trailer of your life', 'Cinematic movie trailer shot of a young Indian guy walking out of an office at night, city lights behind him, dramatic slow push-in, deep trailer voice says "This winter… one man… one salary."'],
+ ['Cricket last ball', 'Last ball of a gully cricket match in an Indian street, the batsman hits a six, the ball flies over a tea stall in slow motion, the whole street cheers, crowd sounds.'],
+ ['Diwali drone shot', 'Drone shot over an Indian colony on Diwali night, thousands of diyas on rooftops, fireworks bursting in the sky, kids laughing, firecracker sounds.'],
+ ['Mom finds your phone bill', 'Funny cartoon-style scene: an Indian mom holding a phone bill with shocked eyes, the camera zooms in dramatically, comedic dun-dun-dun sound effect.'],
+ ['Tiny chai stall in space', 'A tiny Indian chai stall floating in outer space, a robot pouring masala chai, Earth in the background, steam floating in zero gravity, calm lo-fi music.'],
+ ['Product ad in one line', 'A premium product ad: a steel water bottle spinning slowly on a black background, water droplets, golden light sweep, clean modern music, the text "Stay Cool" appears.'],
+ ['Monsoon at the beach', 'Waves crashing at a Vizag beach during monsoon, dark clouds, lightning in the distance, a lone umbrella vendor running, thunder and wave sounds, cinematic wide shot.']
+];
+const list = document.getElementById('list');
+P.forEach(([t, p], i) => { const d = document.createElement('div'); d.className = 'card';
+  d.innerHTML = `<span class="num">${i + 1}/10</span><h2>${t}</h2><pre>${p}</pre><button>Copy prompt</button>`;
+  d.querySelector('button').onclick = e => { navigator.clipboard.writeText(p).then(() => { e.target.textContent = 'Copied ✓'; setTimeout(() => e.target.textContent = 'Copy prompt', 1500); }); };
+  list.appendChild(d); });
+</script></body></html>

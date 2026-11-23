@@ -421,6 +421,31 @@
    "any_comment": true,
    "comment_replies_off": [],
    "only_keywords": true
+  },
+  {
+   "id": "vids",
+   "active": true,
+   "reel": "",
+   "caption_has": "#onesentencemovie",
+   "reel_first": true,
+   "keywords": [
+    "video",
+    "vids"
+   ],
+   "comment_replies": [],
+   "opening": "Hey {{name}} 🎬 Want to make a movie with one sentence? Tap below and I'll send the steps + 10 prompts 👇",
+   "opening_button": "Send it 🎬",
+   "follow_gate": true,
+   "follow_text": "Almost there {{name}}! 😄 The guide is for followers. Follow @maddiee.makess and tap below 👇",
+   "follow_button": "I followed ✅",
+   "final_text": "Here you go {{name}} 🎬 How to make 15-second AI videos with sound in Google Vids (3 free a month) + 10 prompts that look insane. Copy, paste, generate 👇",
+   "link_label": "Open the guide 🎬",
+   "link": "https://madhureddy18.github.io/ai.jugaadd/p/vids/",
+   "direct": false,
+   "direct_text": "Hey {{name}} 🎬 here's how to make a movie with one sentence + 10 prompts: https://madhureddy18.github.io/ai.jugaadd/p/vids/",
+   "any_comment": true,
+   "comment_replies_off": [],
+   "only_keywords": false
   }
  ],
  "default": null,
