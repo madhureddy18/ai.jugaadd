@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How our Instagram runs itself (it's just Claude)</title>
+<meta name="description" content="The 5 parts that post, reply, DM, voice and render @maddiee.makess reels automatically, built with Claude.">
+<style>
+:root{--bg:#0b0f2a;--card:#141a40;--ink:#f6f4ee;--mute:#aab0d0;--acc:#ffc53d;--grn:#3ddc97;--line:rgba(150,170,255,.25)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:680px;margin:0 auto;padding:0 16px 60px}
+.hero{padding:34px 4px 10px}.hero h1{margin:0 0 6px;font-size:clamp(28px,8vw,40px);line-height:1.1;color:var(--acc)}.hero p{margin:0;color:var(--mute)}
+.rule{background:rgba(61,220,151,.12);border:1px solid rgba(61,220,151,.5);border-radius:14px;padding:12px 14px;margin:18px 0}
+.steps{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px 16px 8px 34px;margin:0 0 18px}.steps li{margin:7px 0}
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px 12px;margin:12px 0}
+.card h2{margin:0 0 8px;font-size:18px}.num{position:absolute;top:12px;right:14px;color:var(--mute);font-weight:800}
+pre{white-space:pre-wrap;background:#0a0d22;border:1px solid var(--line);border-radius:10px;padding:10px;font-size:14px;margin:0 0 8px}
+button{background:var(--acc);color:#1a1206;border:0;border-radius:10px;padding:8px 14px;font-weight:800;cursor:pointer}
+.foot{color:var(--mute);font-size:13px;margin-top:22px}a{color:var(--acc)}
+</style></head><body><main>
+<div class="hero"><p>🤖 from @maddiee.makess</p><h1>How our Instagram runs itself</h1><p>No team. It's just Claude, plus a few free tools. Here are the 5 parts and how to start each one.</p></div>
+<div class="rule">✅ <b>The idea:</b> you tell Claude what you want, Claude writes the code, free tools run it on a schedule. You never touch a server.</div>
+<div id="list"></div>
+<p class="foot">Tools named here have free tiers at the time of writing; limits can change. The Instagram parts need a Professional (Creator or Business) account connected to a Facebook Page, and follow Instagram's rules for automated messages. Follow <a href="https://www.instagram.com/maddiee.makess/">@maddiee.makess</a> to see it in action.</p>
+</main>
+<script>
+const P = [
+ ['1. The scheduler: posts at the exact time', 'A small website (our "posting site") where we drop a finished video, caption and time. A GitHub Actions job wakes up every 15 minutes, finds anything due, and posts it with the Instagram Graph API.', 'Free tools: GitHub (repo + Actions), Instagram Graph API', 'Build me a GitHub repo with a queue/ folder. Each video has a .json with caption and an "at" time. Write a GitHub Actions workflow that runs every 15 minutes, finds videos whose time has passed, posts them as Instagram Reels with the Graph API, and records them in posted.json.'],
+ ['2. The comment → DM bot', 'When someone comments, Instagram sends a webhook to a tiny serverless function. It checks the comment, asks them to follow, then DMs the link. Works at 3 AM.', 'Free tools: Vercel (serverless function), Instagram webhooks + Messaging API', 'Write a Vercel serverless function for Instagram comment webhooks. For each new comment on a reel, send a private reply with a button. When they tap it, check if they follow the account; if yes DM the link, if not ask them to follow first. Read the rules per reel from automations.json.'],
+ ['3. The voices', 'Every line is spoken by two fixed voices, cloned once from short reference clips, so the characters always sound the same. Runs as a free GitHub Actions job.', 'Free tools: an open-source text-to-speech model with voice cloning, GitHub Actions', 'Write a Python script that takes a JSON list of lines (speaker, text, speed), clones each speaker from a reference wav with an open-source voice-cloning TTS model, and saves 01.wav, 02.wav… Run it in GitHub Actions on CPU.'],
+ ['4. The 3D video, written in code', 'Claude writes the whole scene in code: the characters, the sets, the camera, the captions. No AI video generator: it is a 3D engine (three.js) running in a browser.', 'Free tools: three.js, a headless browser (Playwright/Chromium)', 'Using three.js, build a 9:16 scene with two toy characters talking. Make a timeline from these lines with timings, move the camera per line, and show big captions. Export an update(t) function I can render frame by frame.'],
+ ['5. The renderer', 'A script opens the scene in a headless browser, takes a picture of every frame (30 a second), then ffmpeg joins them with the voices, sound effects and music into an MP4.', 'Free tools: Node.js, Playwright, ffmpeg', 'Write a Node script that loads my three.js scene in headless Chromium, calls update(t) for every frame at 30 fps, screenshots each frame, then uses ffmpeg to join the frames with the voice wavs and sound effects into a 1080x1920 MP4.']
+];
+const list = document.getElementById('list');
+P.forEach(([t, d, tools, p]) => { const c = document.createElement('div'); c.className = 'card';
+  c.innerHTML = `<h2>${t}</h2><p>${d}</p><p style="color:var(--mute)">${tools}</p><pre>${p}</pre><button>Copy prompt for Claude</button>`;
+  c.querySelector('button').onclick = e => { navigator.clipboard.writeText(p).then(() => { e.target.textContent = 'Copied ✓'; setTimeout(() => e.target.textContent = 'Copy prompt for Claude', 1500); }); };
+  list.appendChild(c); });
+</script></body></html>

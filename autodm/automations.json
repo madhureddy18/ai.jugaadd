@@ -446,6 +446,31 @@
    "any_comment": true,
    "comment_replies_off": [],
    "only_keywords": false
+  },
+  {
+   "id": "autopilot",
+   "active": true,
+   "reel": "",
+   "caption_has": "#justclaude",
+   "reel_first": true,
+   "keywords": [
+    "claude",
+    "built"
+   ],
+   "comment_replies": [],
+   "opening": "Hey {{name}} 🤖 Want to see how our Instagram runs itself? Tap below 👇",
+   "opening_button": "Show me 🤖",
+   "follow_gate": true,
+   "follow_text": "Almost there {{name}}! 😄 The guide is for followers. Follow @maddiee.makess and tap below 👇",
+   "follow_button": "I followed ✅",
+   "final_text": "Here you go {{name}} 🤖 The 5 parts that post, reply, DM, voice and render our reels, the free tools behind each, and a copy-paste prompt for Claude for every part 👇",
+   "link_label": "Open the guide 🤖",
+   "link": "https://madhureddy18.github.io/ai.jugaadd/p/autopilot/",
+   "direct": false,
+   "direct_text": "Hey {{name}} 🤖 here's how our Instagram runs itself (it's just Claude): https://madhureddy18.github.io/ai.jugaadd/p/autopilot/",
+   "any_comment": true,
+   "comment_replies_off": [],
+   "only_keywords": false
   }
  ],
  "default": null,
