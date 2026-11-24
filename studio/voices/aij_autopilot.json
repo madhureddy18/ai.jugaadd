@@ -1,0 +1,90 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 3 (American teen Maddie + young British Claude), re-chosen 2026-11-11). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Claude, I graduated today. Zero offers. So I'm going back. Master's. Stanford.",
+  "claude": "Okay. Give me your resume. Step one. Connect Playwright. Free, made by Microsoft. Two hundred career pages."
+ },
+ "voices": {
+  "maddie_G": "cloned from Maddyy's graduation reel",
+  "claude_G": "cloned from Maddyy's graduation reel"
+ },
+ "cast": {
+  "maddie": "maddie_G",
+  "claude": "claude_G"
+ },
+ "jobs": [
+  {
+   "voice": "maddie_G",
+   "text": "Hey Claude... my reel just went live. But I was sleeping.",
+   "speed": 0.94,
+   "file": "01.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "I posted it. Seven thirty. Right on time.",
+   "speed": 0.98,
+   "file": "02.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Wait... who's replying to all these comments?",
+   "speed": 0.94,
+   "file": "03.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Me. Every comment gets a DM in seconds. Even at three A M.",
+   "speed": 0.98,
+   "file": "04.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "And the voices? The 3D? The whole video?",
+   "speed": 0.94,
+   "file": "05.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "I write code that builds every scene. Then I render it, frame by frame.",
+   "speed": 0.98,
+   "file": "06.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "So my Instagram... runs itself?",
+   "speed": 0.94,
+   "file": "07.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Posting. Replies. D Ms. Voices. Video. All automatic.",
+   "speed": 0.98,
+   "file": "08.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Who's doing all this? A big team?",
+   "speed": 0.94,
+   "file": "09.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "No team. It's just Claude. Me.",
+   "speed": 0.98,
+   "file": "10.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Okay... that's actually scary.",
+   "speed": 0.94,
+   "file": "11.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Comment anything. I'll send you how we built it.",
+   "speed": 0.98,
+   "file": "12.wav"
+  }
+ ],
+ "_help_ref": "Voices cloned from Maddyy's graduation reel (Video-43019, 18 Nov 2026): maddie_G = 0.00-6.85 s, claude_G = 10.45-18.95 s. He prefers these expressive voices."
+}
