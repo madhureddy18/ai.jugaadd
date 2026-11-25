@@ -1,0 +1,90 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 3 (American teen Maddie + young British Claude), re-chosen 2026-11-11). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Claude, I graduated today. Zero offers. So I'm going back. Master's. Stanford.",
+  "claude": "Okay. Give me your resume. Step one. Connect Playwright. Free, made by Microsoft. Two hundred career pages."
+ },
+ "voices": {
+  "maddie_G": "cloned from Maddyy's graduation reel",
+  "claude_G": "cloned from Maddyy's graduation reel"
+ },
+ "cast": {
+  "maddie": "maddie_G",
+  "claude": "claude_G"
+ },
+ "jobs": [
+  {
+   "voice": "maddie_G",
+   "text": "Claude, why did my flight bend like a banana? A straight line is shorter, na?",
+   "speed": 0.94,
+   "file": "01.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "On a flat map, yes. But the Earth is a ball.",
+   "speed": 0.98,
+   "file": "02.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Obviously. So?",
+   "speed": 0.94,
+   "file": "03.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Watch. Stretch a string from Delhi to New York on a globe.",
+   "speed": 0.98,
+   "file": "04.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Pull it tight. It doesn't go across. It goes up, over the top of the world.",
+   "speed": 0.98,
+   "file": "05.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Wait... that's the shortest path?",
+   "speed": 0.94,
+   "file": "06.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Yes. Pilots call it a great circle. Now peel the globe flat.",
+   "speed": 0.98,
+   "file": "07.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Same tight string. On a flat map, it looks curved.",
+   "speed": 0.98,
+   "file": "08.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "So the curve... was the shortcut?",
+   "speed": 0.94,
+   "file": "09.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Exactly. Flat maps lie. Greenland looks as big as Africa. Africa is fourteen times bigger.",
+   "speed": 0.98,
+   "file": "10.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Bro... my whole geography is fake.",
+   "speed": 0.94,
+   "file": "11.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Send this to the friend who always wants the window seat.",
+   "speed": 0.98,
+   "file": "12.wav"
+  }
+ ],
+ "_help_ref": "Voices cloned from Maddyy's graduation reel (Video-43019, 18 Nov 2026): maddie_G = 0.00-6.85 s, claude_G = 10.45-18.95 s. He prefers these expressive voices."
+}
