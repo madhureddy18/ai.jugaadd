@@ -70,10 +70,10 @@ ACT=r"""
       else if (t >= C.count && !show500 && t < C.size) { lines = l100; t0 = B('count') + 1.4; n = 4; }
       else if (show500 && t < C.size) { lines = l500; t0 = B('count') + 3.9; n = 5; }
       [...l100, ...l500].forEach(m => m.material.emissiveIntensity = 0);
-      if (lines) { const note = lines === l100 ? n100 : n500; const q = cl((t - t0) / (0.45 * n)); const k = Math.min(n - 1, Math.floor(q * n));
+      if (lines) { const note = lines === l100 ? n100 : n500; const per_ = n === 5 ? 0.26 : 0.45; const q = cl((t - t0) / (per_ * n)); const k = Math.min(n - 1, Math.floor(q * n));
         lines.forEach((m, i) => m.material.emissiveIntensity = i <= k && t >= t0 ? 1.2 : 0);
         const lp = new THREE.Vector3(); lines[k].getWorldPosition(lp); finger.position.copy(lp).sub(mus.position).add(V(0, 0.01, 0.03)); finger.scale.setScalar(0.5); fOn = true;
-        cnt.material.map = cntTex[k]; cnt.position.copy(finger.position).add(V(0.22, 0.12, 0.1)); cnt.material.opacity = t >= t0 && (t < C.blind || t >= C.count) ? 1 : 0; cnt.scale.setScalar(0.14 * (1 + 0.15 * Math.exp(-((t - t0) % (0.45)) * 8))); }
+        cnt.material.map = cntTex[k]; cnt.position.copy(finger.position).add(V(0.22, 0.12, 0.1)); cnt.material.opacity = t >= t0 && (t < C.blind || t >= C.count) ? 1 : 0; cnt.scale.setScalar(0.14 * (1 + 0.15 * Math.exp(-((t - t0) % per_) * 8))); }
       else cnt.material.opacity = 0;
       finger.visible = fOn;
       markM.emissiveIntensity = t >= C.size - 1 && t < C.size ? 1.2 : 0;
@@ -85,7 +85,7 @@ SHOTS=r"""
       edge: [P([NX - 0.3, 1.4, 1.2], [NX - 0.42, 1.33, -0.2], 40), P([NX - 0.32, 1.38, 1.0], [NX - 0.45, 1.34, -0.2], 40)],
       row: [P([NX, 1.05, 2.4], [NX, 0.85, -0.9], 42), P([NX, 1.0, 2.2], [NX, 0.85, -0.9], 42)],
 """
-PLAN="[0, 'two'], [1.8, 'desk'], [C.touch, 'mad'], [C.touch + 1.0, 'edge'], [C.raised, 'mad'], [C.blind, 'note'], [C.count, 'edge'], [C.bytouch, 'mad'], [C.size, 'row'], [C.code, 'mad'], [C.feel, 'two'], [C.cta, 'cta']"
+PLAN="[0, 'two'], [1.8, 'desk'], [C.touch, 'mad'], [C.touch + 1.0, 'edge'], [C.raised, 'mad'], [C.blind, 'note'], [C.count, 'edge'], [C.bytouch + 0.4, 'mad'], [C.size, 'row'], [C.code, 'mad'], [C.feel, 'two'], [C.cta, 'cta']"
 FACE="{ hook: 'neutral', raised: 'shock', bytouch: 'shock', code: 'shock' }"
 BEATS=r"""
       label(t, 1.9, C.touch, '💵 the little lines on the sides');
@@ -97,7 +97,7 @@ BEATS=r"""
 """
 SFX=r"""
     sfx.push(['chime', 0.3, 0.2], ['whoosh', 1.8, 0.25], ['bass', C.touch + 0.4, 0.3], ['boing', C.raised, 0.2], ['chime', C.blind + 0.3, 0.35]);
-    for (let i = 0; i < 4; i++) sfx.push(['ding', C.touch + 0.4 + i * 0.45, 0.2]); for (let i = 0; i < 4; i++) sfx.push(['ding', B('count') + 1.4 + i * 0.45, 0.25]); for (let i = 0; i < 5; i++) sfx.push(['ding', B('count') + 3.9 + i * 0.45, 0.25]);
+    for (let i = 0; i < 4; i++) sfx.push(['ding', C.touch + 0.4 + i * 0.45, 0.2]); for (let i = 0; i < 4; i++) sfx.push(['ding', B('count') + 1.4 + i * 0.45, 0.25]); for (let i = 0; i < 5; i++) sfx.push(['ding', B('count') + 3.9 + i * 0.26, 0.25]);
     sfx.push(['boing', C.bytouch, 0.2]); for (let i = 0; i < 6; i++) sfx.push(['pop', C.size + 0.2 + i * 0.15, 0.2]); sfx.push(['boing', C.code, 0.2], ['whoosh', C.cta, 0.3], ['chime', B('cta') + 0.5, 0.4]);
 """
 CUTS="C.blind, C.count, C.size, C.cta"

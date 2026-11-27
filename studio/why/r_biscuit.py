@@ -77,7 +77,7 @@ ACT=r"""
       const puff = t < C.trapped ? 0 : t < C.balloon ? 0.12 * pr(t, C.trapped + 0.5, E('trapped')) : lerp(0.12, 0.55, eo(pr(t, C.balloon + 0.2, B('balloon') + 3.0)));
       const crackT = B('balloon') + 4.3, cracked = t >= crackT;
       dome.scale.set(1, Math.max(0.001, puff * (cracked ? 0.8 : 1) / bigR), 1); domeM.map = cracked ? crTex : noTex; bB.material[1].map = cracked ? crTex : noTex;
-      burst.forEach((b, i) => { const q = t - crackT; const on = q > 0 && q < 1.4 && t < C.chimney + 0.2; b.s.position.set(0.62 + b.v[0] * q * 0.8, TY + puff + b.v[1] * q * 0.8, -0.4 + b.v[2] * q * 0.8); b.s.material.opacity = on ? (1 - q / 1.4) * 0.9 : 0; });
+      burst.forEach((b, i) => { const q = t - crackT; const on = q > 0 && q < 1.4 && t < C.chimney + 1.1; b.s.position.set(0.62 + b.v[0] * q * 0.8, TY + puff + b.v[1] * q * 0.8, -0.4 + b.v[2] * q * 0.8); b.s.material.opacity = on ? (1 - q / 1.4) * 0.9 : 0; });
       // with holes: steam streams out of every hole, stays flat
       const holesOut = (t >= C.flat && t < C.docking + 0.2) || (t >= C.trapped && t < C.so + 99 && t < C.flat && false);
       stm.forEach(m => { const q = (t * 0.9 + m.o + m.h[0]) % 1; m.s.position.set(-0.62 + m.h[0] * bigR * 0.78, TY + bH + 0.05 + q * 0.5, -0.4 + m.h[1] * bigR * 0.78); m.s.material.opacity = holesOut ? Math.sin(q * Math.PI) * 0.45 : 0; });
@@ -95,13 +95,13 @@ SHOTS=r"""
       ovA: [P([BX - 0.62, 1.4, 2.5], [BX - 0.62, 0.8, -0.4], 42), P([BX - 0.62, 1.4, 2.2], [BX - 0.62, 0.85, -0.4], 42)],
       dock: [P([BX + 0.2, 1.7, 3.4], [BX, 0.6, -0.4], 44), P([BX + 0.1, 1.6, 3.0], [BX, 0.6, -0.4], 44)],
 """
-PLAN="[0, 'two'], [1.8, 'plate'], [C.oven, 'robo'], [C.steam, 'oven'], [C.so, 'mad'], [C.trapped, 'ovB'], [C.chimney, 'mad'], [C.flat, 'ovA'], [C.docking, 'dock'], [C.childhood, 'mad'], [C.cta, 'cta']"
+PLAN="[0, 'two'], [1.8, 'plate'], [C.oven, 'robo'], [C.steam, 'oven'], [C.so, 'mad'], [C.trapped, 'ovB'], [C.chimney + 0.9, 'mad'], [C.flat, 'ovA'], [C.docking, 'dock'], [C.childhood, 'mad'], [C.cta, 'cta']"
 FACE="{ hook: 'neutral', so: 'neutral', chimney: 'shock', childhood: 'shock' }"
 BEATS=r"""
       label(t, 1.9, C.oven, '🍪 the tiny holes in every biscuit');
       label(t, C.steam + 0.6, C.so, '💧 water in the dough → 💨 steam', '#2a6fd6');
       label(t, C.trapped + 0.3, C.balloon, '❌ no holes: steam is trapped', '#e5484d');
-      if (t >= B('balloon') + 4.3 && t < C.chimney) stamp('CRACK!', 540, 300, 64, '#e5484d', B('balloon') + 4.3, t, -0.08, 'rgba(255,255,255,0.95)');
+      if (t >= B('balloon') + 4.3 && t < C.chimney + 0.9) stamp('CRACK!', 540, 300, 64, '#e5484d', B('balloon') + 4.3, t, -0.08, 'rgba(255,255,255,0.95)');
       label(t, C.flat + 0.3, C.docking, '✅ holes = steam escapes → flat + crisp', '#2fbf71');
       if (t >= C.docking + 1.0 && t < C.childhood) stamp('IT\'S CALLED "DOCKING"', 540, 300, 50, '#ffd34a', C.docking + 1.0, t, -0.05, 'rgba(10,14,40,0.95)');
       endCard(t, '🍪 The holes are steam vents', 'no holes = puffed + cracked', '📤 Send to your chai-biscuit friend');

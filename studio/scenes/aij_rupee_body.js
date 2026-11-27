@@ -17,7 +17,7 @@ window.SCENE = {
     const sph = (r, m, x, y, z, parent = S) => { const o = new THREE.Mesh(new THREE.SphereGeometry(r, 18, 12), m); o.position.set(x, y, z); o.castShadow = true; parent.add(o); return o; };
     const V = (x, y, z) => new THREE.Vector3(x, y, z);
 
-    const rng = K.rng(923);
+    const rng = K.rng(68);
     const C = {}; window.SCENE.lines.forEach(l => C[l.id] = B(l.id) - 0.1);
     const RY = 0.86; const dummy = new THREE.Object3D();
     // ================= HOME SET =================
@@ -181,10 +181,10 @@ window.SCENE = {
       else if (t >= C.count && !show500 && t < C.size) { lines = l100; t0 = B('count') + 1.4; n = 4; }
       else if (show500 && t < C.size) { lines = l500; t0 = B('count') + 3.9; n = 5; }
       [...l100, ...l500].forEach(m => m.material.emissiveIntensity = 0);
-      if (lines) { const note = lines === l100 ? n100 : n500; const q = cl((t - t0) / (0.45 * n)); const k = Math.min(n - 1, Math.floor(q * n));
+      if (lines) { const note = lines === l100 ? n100 : n500; const per_ = n === 5 ? 0.26 : 0.45; const q = cl((t - t0) / (per_ * n)); const k = Math.min(n - 1, Math.floor(q * n));
         lines.forEach((m, i) => m.material.emissiveIntensity = i <= k && t >= t0 ? 1.2 : 0);
         const lp = new THREE.Vector3(); lines[k].getWorldPosition(lp); finger.position.copy(lp).sub(mus.position).add(V(0, 0.01, 0.03)); finger.scale.setScalar(0.5); fOn = true;
-        cnt.material.map = cntTex[k]; cnt.position.copy(finger.position).add(V(0.22, 0.12, 0.1)); cnt.material.opacity = t >= t0 && (t < C.blind || t >= C.count) ? 1 : 0; cnt.scale.setScalar(0.14 * (1 + 0.15 * Math.exp(-((t - t0) % (0.45)) * 8))); }
+        cnt.material.map = cntTex[k]; cnt.position.copy(finger.position).add(V(0.22, 0.12, 0.1)); cnt.material.opacity = t >= t0 && (t < C.blind || t >= C.count) ? 1 : 0; cnt.scale.setScalar(0.14 * (1 + 0.15 * Math.exp(-((t - t0) % per_) * 8))); }
       else cnt.material.opacity = 0;
       finger.visible = fOn;
       markM.emissiveIntensity = t >= C.size - 1 && t < C.size ? 1.2 : 0;
@@ -206,7 +206,7 @@ window.SCENE = {
       row: [P([NX, 1.05, 2.4], [NX, 0.85, -0.9], 42), P([NX, 1.0, 2.2], [NX, 0.85, -0.9], 42)],
 
     };
-    const PLAN = [[0, 'two'], [1.8, 'desk'], [C.touch, 'mad'], [C.touch + 1.0, 'edge'], [C.raised, 'mad'], [C.blind, 'note'], [C.count, 'edge'], [C.bytouch, 'mad'], [C.size, 'row'], [C.code, 'mad'], [C.feel, 'two'], [C.cta, 'cta']];
+    const PLAN = [[0, 'two'], [1.8, 'desk'], [C.touch, 'mad'], [C.touch + 1.0, 'edge'], [C.raised, 'mad'], [C.blind, 'note'], [C.count, 'edge'], [C.bytouch + 0.4, 'mad'], [C.size, 'row'], [C.code, 'mad'], [C.feel, 'two'], [C.cta, 'cta']];
     const plan = PLAN.map((p, i) => [p[0], i + 1 < PLAN.length ? PLAN[i + 1][0] : D + 5, sh[p[1]], p[1]]).filter(p => p[1] > p[0]);
     const smooth = k => k * k * (3 - 2 * k);
     const lift = (p, dy) => ({ pos: [p.pos[0], p.pos[1] + dy, p.pos[2]], look: [p.look[0], p.look[1] + dy, p.look[2]], fov: p.fov });
@@ -270,7 +270,7 @@ window.SCENE = {
     const sfx = [];
 
     sfx.push(['chime', 0.3, 0.2], ['whoosh', 1.8, 0.25], ['bass', C.touch + 0.4, 0.3], ['boing', C.raised, 0.2], ['chime', C.blind + 0.3, 0.35]);
-    for (let i = 0; i < 4; i++) sfx.push(['ding', C.touch + 0.4 + i * 0.45, 0.2]); for (let i = 0; i < 4; i++) sfx.push(['ding', B('count') + 1.4 + i * 0.45, 0.25]); for (let i = 0; i < 5; i++) sfx.push(['ding', B('count') + 3.9 + i * 0.45, 0.25]);
+    for (let i = 0; i < 4; i++) sfx.push(['ding', C.touch + 0.4 + i * 0.45, 0.2]); for (let i = 0; i < 4; i++) sfx.push(['ding', B('count') + 1.4 + i * 0.45, 0.25]); for (let i = 0; i < 5; i++) sfx.push(['ding', B('count') + 3.9 + i * 0.26, 0.25]);
     sfx.push(['boing', C.bytouch, 0.2]); for (let i = 0; i < 6; i++) sfx.push(['pop', C.size + 0.2 + i * 0.15, 0.2]); sfx.push(['boing', C.code, 0.2], ['whoosh', C.cta, 0.3], ['chime', B('cta') + 0.5, 0.4]);
 
     return { duration: D, update, shots, sfx, watermark: false, endCard: false, capFont: 'Fredoka Light', capMarginV: 520, capSize: 66 };
