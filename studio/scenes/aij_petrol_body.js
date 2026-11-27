@@ -17,7 +17,7 @@ window.SCENE = {
     const sph = (r, m, x, y, z, parent = S) => { const o = new THREE.Mesh(new THREE.SphereGeometry(r, 18, 12), m); o.position.set(x, y, z); o.castShadow = true; parent.add(o); return o; };
     const V = (x, y, z) => new THREE.Vector3(x, y, z);
 
-    const rng = K.rng(363);
+    const rng = K.rng(330);
     const C = {}; window.SCENE.lines.forEach(l => C[l.id] = B(l.id) - 0.1);
     const RY = 0.92; const dummy = new THREE.Object3D();
     // ================= HOME SET =================
@@ -188,7 +188,7 @@ window.SCENE = {
       const phOn = t >= C.twist && t < C.static; phone.visible = phOn; phone.position.set(-0.6, 0.78, 0.85); phone.rotation.set(0, -0.3, Math.sin(t * 40) * 0.08 * (phOn ? 1 : 0));
       rings.forEach((r, i) => { const q = (t * 0.9 + i / 3) % 1; r.position.copy(phone.position); r.scale.setScalar(0.1 + q * 0.4); r.material.opacity = phOn ? (1 - q) * 0.8 : 0; });
       // the person: stands at the nozzle, gets back in the car, charges up, comes back, touches the nozzle → spark
-      const t0 = C.nozzle + 0.6; const q = t - t0; let px = -0.25, pz = 1.05, inCar = false;
+      const t0 = C.nozzle + 2.3; const q = t - t0; let px = -0.25, pz = 1.05, inCar = false;
       if (t >= C.nozzle) { if (q < 0) {} else if (q < 1.0) { px = lerp(-0.25, 0.3, q); pz = lerp(1.05, 0.85, q); } else if (q < 2.2) { px = 0.3; pz = 0.35; inCar = true; } else if (q < 3.2) { const k = q - 2.2; px = lerp(0.3, -0.45, k); pz = lerp(0.85, 1.0, k); } else { px = -0.45; pz = 1.0; } }
       per.position.set(px, inCar ? 0.15 : 0, pz); per.rotation.y = t >= C.nozzle && q > 0 && q < 1 ? -1.3 : t >= C.nozzle && q > 2.2 && q < 3.2 ? 1.3 : 0.3; per.visible = t >= C.static;
       door.rotation.y = t >= C.nozzle && q > 0.8 && q < 2.4 ? -0.9 : 0; door.position.x = t >= C.nozzle && q > 0.8 && q < 2.4 ? 0.0 : 0.25;
@@ -217,7 +217,7 @@ window.SCENE = {
       wide: [P([PX - 0.4, 1.4, 4.6], [PX - 0.45, 0.65, 0.6], 44), P([PX - 0.45, 1.35, 4.3], [PX - 0.5, 0.65, 0.6], 44)],
 
     };
-    const PLAN = [[0, 'two'], [2.2, 'pump'], [C.twist, 'ph'], [C.board, 'mad'], [C.rumour, 'pump'], [C.static, 'lab'], [C.shock, 'mad'], [C.vapour, 'vap'], [C.nozzle, 'wide'], [C.innocent, 'mad'], [C.follow, 'two'], [C.cta, 'cta']];
+    const PLAN = [[0, 'two'], [2.2, 'pump'], [C.twist, 'ph'], [C.board, 'mad'], [C.rumour, 'pump'], [C.static, 'lab'], [C.shock, 'mad'], [C.vapour, 'vap'], [C.nozzle, 'wide'], [C.innocent + 0.9, 'mad'], [C.follow, 'two'], [C.cta, 'cta']];
     const plan = PLAN.map((p, i) => [p[0], i + 1 < PLAN.length ? PLAN[i + 1][0] : D + 5, sh[p[1]], p[1]]).filter(p => p[1] > p[0]);
     const smooth = k => k * k * (3 - 2 * k);
     const lift = (p, dy) => ({ pos: [p.pos[0], p.pos[1] + dy, p.pos[2]], look: [p.look[0], p.look[1] + dy, p.look[2]], fov: p.fov });
@@ -284,7 +284,7 @@ window.SCENE = {
 
     sfx.push(['chime', 0.3, 0.2], ['whoosh', 2.2, 0.25]); for (let t2 = C.twist + 0.2; t2 < C.twist + 1.2; t2 += 0.3) sfx.push(['beep', t2, 0.15]); sfx.push(['ding', C.twist + 1.2, 0.35]);
     sfx.push(['boing', C.board, 0.2], ['chime', B('rumour') + 2.0, 0.25], ['zap', C.static + 0.8, 0.3], ['boing', C.shock, 0.2], ['riser', C.vapour + 0.3, 0.2], ['zap', C.vapour + 2.6, 0.25]);
-    sfx.push(['whoosh', C.nozzle + 0.6, 0.2], ['thud', C.nozzle + 1.4, 0.2], ['riser', C.nozzle + 1.6, 0.2], ['zap', C.nozzle + 4.0, 0.4], ['whoosh', C.nozzle + 4.05, 0.4], ['bass', C.nozzle + 4.05, 0.4]);
+    sfx.push(['whoosh', C.nozzle + 2.3, 0.2], ['thud', C.nozzle + 3.1, 0.2], ['riser', C.nozzle + 3.3, 0.2], ['zap', C.nozzle + 5.7, 0.4], ['whoosh', C.nozzle + 5.75, 0.4], ['bass', C.nozzle + 5.75, 0.4]);
     sfx.push(['boing', C.innocent, 0.2], ['chime', C.follow + 0.3, 0.25], ['whoosh', C.cta, 0.3], ['chime', B('cta') + 0.5, 0.4]);
 
     return { duration: D, update, shots, sfx, watermark: false, endCard: false, capFont: 'Fredoka Light', capMarginV: 520, capSize: 66 };
