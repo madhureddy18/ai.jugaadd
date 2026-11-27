@@ -1,0 +1,354 @@
+{
+ "_help": "THE voices for every @maddiee.makess reel (Option 3 (American teen Maddie + young British Claude), re-chosen 2026-11-11). Never change the refs: every line is cloned from them so Maddie and Claude always sound the same. Per reel: copy this file to studio/voices/<scene>.json, fill 'jobs' (one per line, emotion tags like [sigh] [laughter] [surprise-oh] [surprise-wa] [question-en] [dissatisfaction-hnn] go inside the text), run the 'voices (OmniVoice)' workflow with that config, then put the wavs in codevid/voice/<scene>/NN.wav (render.js uses them automatically).",
+ "ref_text": {
+  "maddie": "Claude, I graduated today. Zero offers. So I'm going back. Master's. Stanford.",
+  "claude": "Okay. Give me your resume. Step one. Connect Playwright. Free, made by Microsoft. Two hundred career pages."
+ },
+ "voices": {
+  "maddie_G": "cloned from Maddyy's graduation reel",
+  "claude_G": "cloned from Maddyy's graduation reel"
+ },
+ "cast": {
+  "maddie": "maddie_G",
+  "claude": "claude_G"
+ },
+ "jobs": [
+  {
+   "voice": "maddie_G",
+   "text": "Claude, why is there a big X on the last coach of every train?",
+   "speed": 0.94,
+   "file": "trainx_01.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "It's not decoration. It's a safety check.",
+   "speed": 0.98,
+   "file": "trainx_02.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "When a train passes a station, the station master looks for that X.",
+   "speed": 0.98,
+   "file": "trainx_03.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Why? To say bye?",
+   "speed": 0.94,
+   "file": "trainx_04.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "To make sure the whole train arrived. No coaches left behind.",
+   "speed": 0.98,
+   "file": "trainx_05.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Coaches can get left behind?!",
+   "speed": 0.94,
+   "file": "trainx_06.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "If a coupling breaks, the last coaches can detach and stop right on the track.",
+   "speed": 0.98,
+   "file": "trainx_07.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "No X means a missing piece. The next train is stopped before it hits them.",
+   "speed": 0.98,
+   "file": "trainx_08.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Wait... so one letter stops a crash?",
+   "speed": 0.94,
+   "file": "trainx_09.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Yes. In the day there's also an L V board. Last Vehicle. At night, a blinking red lamp.",
+   "speed": 0.98,
+   "file": "trainx_10.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "And I thought it was just for style.",
+   "speed": 0.94,
+   "file": "trainx_11.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Send this to the friend who always takes the window in sleeper class.",
+   "speed": 0.98,
+   "file": "trainx_12.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Claude! I looked away for five seconds and the milk exploded!",
+   "speed": 0.94,
+   "file": "milk_01.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Classic. Water never does that. Milk does.",
+   "speed": 0.98,
+   "file": "milk_02.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Why though? Now I have to clean all this.",
+   "speed": 0.94,
+   "file": "milk_03.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "When milk heats up, its proteins and fat float up and form a thin skin on top.",
+   "speed": 0.98,
+   "file": "milk_04.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "In water, bubbles reach the top and just pop.",
+   "speed": 0.98,
+   "file": "milk_05.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "But milk bubbles hit that skin... and get trapped.",
+   "speed": 0.98,
+   "file": "milk_06.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "So they pile up?",
+   "speed": 0.94,
+   "file": "milk_07.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "More and more steam pushes the skin up like a lid. Then whoosh. All over the stove.",
+   "speed": 0.98,
+   "file": "milk_08.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "How do I stop it?",
+   "speed": 0.94,
+   "file": "milk_09.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Lower the flame and keep stirring. That breaks the skin, so the steam can escape.",
+   "speed": 0.98,
+   "file": "milk_10.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "So the skin was the villain all along.",
+   "speed": 0.94,
+   "file": "milk_11.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Send this to the friend whose chai always boils over.",
+   "speed": 0.98,
+   "file": "milk_12.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Claude, why do biscuits have these tiny holes? Is it just design?",
+   "speed": 0.94,
+   "file": "biscuit_01.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Nope. Those holes are there because of the oven.",
+   "speed": 0.98,
+   "file": "biscuit_02.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Biscuit dough has water in it. In the oven, that water turns into steam.",
+   "speed": 0.98,
+   "file": "biscuit_03.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Okay... so?",
+   "speed": 0.94,
+   "file": "biscuit_04.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Steam needs a way out. With no holes, it gets trapped inside.",
+   "speed": 0.98,
+   "file": "biscuit_05.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "The biscuit puffs up like a balloon, bakes uneven, and cracks.",
+   "speed": 0.98,
+   "file": "biscuit_06.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Wait. So the holes are tiny chimneys?",
+   "speed": 0.94,
+   "file": "biscuit_07.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Exactly. Steam slips out through them, and the biscuit stays flat and crisp.",
+   "speed": 0.98,
+   "file": "biscuit_08.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Bakers even have a name for it. It's called docking.",
+   "speed": 0.98,
+   "file": "biscuit_09.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "My whole childhood... I was eating chimneys.",
+   "speed": 0.94,
+   "file": "biscuit_10.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Send this to the friend who dips every biscuit in chai.",
+   "speed": 0.98,
+   "file": "biscuit_11.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Claude, why do our notes have these little lines on the sides?",
+   "speed": 0.94,
+   "file": "rupee_01.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Close your eyes. Now touch them.",
+   "speed": 0.98,
+   "file": "rupee_02.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Wait... they're raised?",
+   "speed": 0.94,
+   "file": "rupee_03.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Yes. They're for people who can't see.",
+   "speed": 0.98,
+   "file": "rupee_04.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Count them. The hundred rupee note has four. The five hundred has five.",
+   "speed": 0.98,
+   "file": "rupee_05.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "So you can tell the note just by touch?!",
+   "speed": 0.94,
+   "file": "rupee_06.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Yes. There's also a raised mark to feel, and every note is a different size.",
+   "speed": 0.98,
+   "file": "rupee_07.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "My wallet had a secret code this whole time.",
+   "speed": 0.94,
+   "file": "rupee_08.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Next time you get a note, close your eyes and feel the edges.",
+   "speed": 0.98,
+   "file": "rupee_09.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Send this to someone who still counts money twice.",
+   "speed": 0.98,
+   "file": "rupee_10.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Claude, why can't we use phones at petrol pumps? Will it really blast?",
+   "speed": 0.94,
+   "file": "petrol_01.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Here's the twist. Experts have never found a single fire caused by a phone.",
+   "speed": 0.98,
+   "file": "petrol_02.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "What?! Then why the board?",
+   "speed": 0.94,
+   "file": "petrol_03.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Partly an old rumour. And partly because a phone distracts you near fuel.",
+   "speed": 0.98,
+   "file": "petrol_04.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "The real danger is something smaller. Static electricity.",
+   "speed": 0.98,
+   "file": "petrol_05.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "Static? Like the shock from a door handle?",
+   "speed": 0.94,
+   "file": "petrol_06.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Exactly. Petrol gives off vapour. One tiny spark from your body can light it.",
+   "speed": 0.98,
+   "file": "petrol_07.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Most of these fires happened when people got back into the car while filling, then touched the nozzle.",
+   "speed": 0.98,
+   "file": "petrol_08.wav"
+  },
+  {
+   "voice": "maddie_G",
+   "text": "So the phone was innocent this whole time.",
+   "speed": 0.94,
+   "file": "petrol_09.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Mostly. But still follow the board at the pump. And never smoke there.",
+   "speed": 0.98,
+   "file": "petrol_10.wav"
+  },
+  {
+   "voice": "claude_G",
+   "text": "Send this to the friend who always says, phone off bro, it'll blast.",
+   "speed": 0.98,
+   "file": "petrol_11.wav"
+  }
+ ],
+ "_help_ref": "Voices cloned from Maddyy's graduation reel (Video-43019, 18 Nov 2026): maddie_G = 0.00-6.85 s, claude_G = 10.45-18.95 s. He prefers these expressive voices."
+}
