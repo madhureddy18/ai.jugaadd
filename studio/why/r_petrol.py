@@ -78,7 +78,7 @@ ACT=r"""
       rings.forEach((r, i) => { const q = (t * 0.9 + i / 3) % 1; r.position.copy(phone.position); r.scale.setScalar(0.1 + q * 0.4); r.material.opacity = phOn ? (1 - q) * 0.8 : 0; });
       // the person: stands at the nozzle, gets back in the car, charges up, comes back, touches the nozzle → spark
       const t0 = C.nozzle + 0.6; const q = t - t0; let px = -0.25, pz = 1.05, inCar = false;
-      if (t >= C.nozzle) { if (q < 0) {} else if (q < 1.0) { px = lerp(-0.25, 0.3, q); pz = lerp(1.05, 0.85, q); } else if (q < 2.2) { px = 0.3; pz = 0.35; inCar = true; } else if (q < 3.2) { const k = q - 2.2; px = lerp(0.3, -0.6, k); pz = lerp(0.85, 0.95, k); } else { px = -0.6; pz = 0.95; } }
+      if (t >= C.nozzle) { if (q < 0) {} else if (q < 1.0) { px = lerp(-0.25, 0.3, q); pz = lerp(1.05, 0.85, q); } else if (q < 2.2) { px = 0.3; pz = 0.35; inCar = true; } else if (q < 3.2) { const k = q - 2.2; px = lerp(0.3, -0.45, k); pz = lerp(0.85, 1.0, k); } else { px = -0.45; pz = 1.0; } }
       per.position.set(px, inCar ? 0.15 : 0, pz); per.rotation.y = t >= C.nozzle && q > 0 && q < 1 ? -1.3 : t >= C.nozzle && q > 2.2 && q < 3.2 ? 1.3 : 0.3; per.visible = t >= C.static;
       door.rotation.y = t >= C.nozzle && q > 0.8 && q < 2.4 ? -0.9 : 0; door.position.x = t >= C.nozzle && q > 0.8 && q < 2.4 ? 0.0 : 0.25;
       const touch = t >= C.nozzle && q > 3.2; pArm.rotation.x = touch ? -1.2 : 0;
@@ -86,15 +86,15 @@ ACT=r"""
       pluses.forEach((p, i) => { p.s.position.set(Math.cos(p.a + t * 2) * 0.22, p.y, Math.sin(p.a + t * 2) * 0.22); p.s.material.opacity = i / pluses.length < charge ? 1 : 0; });
       const sT = t >= C.nozzle ? t0 + 3.4 : C.vapour + 2.6; const sq = t - sT; spark.material.opacity = sq > 0 && sq < 0.35 && t < C.innocent ? 1 - sq / 0.35 : 0; spark.scale.setScalar(0.22 * (1 + Math.random() * 0.3));
       const fq = t - (t0 + 3.45), fOn = t >= C.nozzle && fq > 0 && fq < 1.4;
-      fire.forEach(f => { f.s.position.set(-0.85 + f.o[0] * 0.3, 0.65 + f.o[1] * 0.4 * cl(fq * 3), 0.8 + f.o[2] * 0.2); f.s.scale.setScalar(0.35 * eo(cl(fq * 3)) * (1 - pr(fq, 0.9, 1.4))); f.s.material.opacity = fOn ? 0.95 : 0; });
-      fireL.intensity = fOn ? 4 * (1 - pr(fq, 0.9, 1.4)) : 0;
+      fire.forEach(f => { f.s.position.set(-0.85 + f.o[0] * 0.35, 0.7 + f.o[1] * 0.5 * cl(fq * 3), 0.95 + f.o[2] * 0.2); f.s.scale.setScalar(0.7 * eo(cl(fq * 3)) * (1 - pr(fq, 0.9, 1.4))); f.s.material.opacity = fOn ? 0.95 : 0; });
+      fireL.intensity = fOn ? 9 * (1 - pr(fq, 0.9, 1.4)) : 0;
 """
 SHOTS=r"""
       pump: [P([-1.0, 1.7, 0.4], [-1.05, 1.8, -2.15], 40), P([-1.0, 1.75, 0.0], [-1.08, 1.85, -2.15], 40)],
       lab: [P([PX - 0.3, 1.2, 3.6], [PX - 0.4, 0.65, 0.4], 42), P([PX - 0.4, 1.1, 3.2], [PX - 0.5, 0.65, 0.4], 42)],
       ph: [P([PX - 0.45, 0.95, 2.1], [PX - 0.7, 0.75, 0.8], 38), P([PX - 0.5, 0.9, 1.8], [PX - 0.7, 0.75, 0.8], 38)],
       vap: [P([PX - 0.6, 1.0, 2.3], [PX - 0.8, 0.75, 0.75], 40), P([PX - 0.65, 0.95, 2.0], [PX - 0.82, 0.75, 0.75], 40)],
-      wide: [P([PX - 0.2, 1.5, 4.4], [PX - 0.2, 0.6, 0.5], 44), P([PX - 0.3, 1.4, 4.0], [PX - 0.3, 0.6, 0.5], 44)],
+      wide: [P([PX - 0.4, 1.4, 4.6], [PX - 0.45, 0.65, 0.6], 44), P([PX - 0.45, 1.35, 4.3], [PX - 0.5, 0.65, 0.6], 44)],
 """
 PLAN="[0, 'two'], [2.2, 'pump'], [C.twist, 'ph'], [C.board, 'mad'], [C.rumour, 'pump'], [C.static, 'lab'], [C.shock, 'mad'], [C.vapour, 'vap'], [C.nozzle, 'wide'], [C.innocent, 'mad'], [C.follow, 'two'], [C.cta, 'cta']"
 FACE="{ hook: 'worried', board: 'shock', shock: 'neutral', innocent: 'shock' }"
